@@ -22,6 +22,18 @@ export default function Hero() {
   const start = chunkIndex * chunkSize;
   const visible = TeamData.slice(start, start + chunkSize);
 
+
+  //   const [currentIndex, setCurrentIndex] = useState(0);
+  // const itemsPerPage = 4; // Show one card at a time
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentIndex(prev => (prev + 1) % TeamData.length);
+  //   }, 5000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
   return (
     <section className="relative bg-white pt-24 pb-16">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
@@ -40,11 +52,31 @@ export default function Hero() {
             imagePosition="left"
           />
           {/* {visible.map((member, i) => (
+            // <div 
+            //   key={i}
+            //   className={`absolute inset-0 transition-opacity duration-500 ${
+            //     i === chunkIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+            //   }`}
+            // >
             <TeamCard
               key={i}
               {...member}
               imagePosition={member.imagePosition as "left" | "right"}
             />
+            //  </div>
+          ))} */}
+            {/* {TeamData.map((member, index) => (
+            <div 
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-500 ${
+                index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
+            >
+              <TeamCard
+                {...member}
+                imagePosition={member.imagePosition as "left" | "right"}
+              />
+            </div>
           ))} */}
         </div>
       </div>
