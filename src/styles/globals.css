@@ -1,14 +1,25 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+@layer base {
+  :root {
+    --primery-color: #C50202;
+    --secondery-color: #FFCCD6;
+    --pink: #C502021A;
+    --light-pink: #C502020D;
+  }
+
+  html {
+    font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+
+
+
+/* @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-
-:root {
-  --primery-color: #C50202;
-  --secondery-color: #FFCCD6;
-  --primery-color: #c50202;
-  --primery-color: #c50202;
-}
+} */

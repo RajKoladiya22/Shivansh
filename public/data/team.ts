@@ -14,8 +14,8 @@ export const TeamData = [
         rating: 4.6,
         reviews: 95,
         description: "Rajesh leads our engineering teams in crafting robust technical solutions.",
-        imgSrc: "/images/team/hero/team2.png",
-        imagePosition: "right",
+        imgSrc: "/images/team/hero/team7.png",
+        imagePosition: "left",
     },
     {
         name: "Priya Sharma",
@@ -23,8 +23,8 @@ export const TeamData = [
         rating: 4.7,
         reviews: 110,
         description: "Priya manages all strategic financial initiatives with precision and insight.",
-        imgSrc: "/images/team/hero/team1.png",
-        imagePosition: "left",
+        imgSrc: "/images/team/hero/team3.png",
+        imagePosition: "right",
     },
     {
         name: "Amit Singh",
@@ -32,7 +32,7 @@ export const TeamData = [
         rating: 4.5,
         reviews: 85,
         description: "Amit creates engaging campaigns that elevate our brand and reach.",
-        imgSrc: "/images/team/hero/team2.png",
+        imgSrc: "/images/team/hero/team5.png",
         imagePosition: "right",
     },
     {
@@ -41,7 +41,7 @@ export const TeamData = [
         rating: 4.9,
         reviews: 130,
         description: "Sneha spearheads product development from ideation to launch.",
-        imgSrc: "/images/team/hero/team1.png",
+        imgSrc: "/images/team/hero/team4.png",
         imagePosition: "left",
     },
     {
@@ -50,8 +50,8 @@ export const TeamData = [
         rating: 4.4,
         reviews: 70,
         description: "Vikram crafts intuitive designs that bring ideas to life.",
-        imgSrc: "/images/team/hero/team2.png",
-        imagePosition: "right",
+        imgSrc: "/images/team/hero/team6.png",
+        imagePosition: "left",
     },
     {
         name: "Nisha Mehta",
@@ -59,8 +59,8 @@ export const TeamData = [
         rating: 4.6,
         reviews: 88,
         description: "Nisha builds and maintains a thriving company culture.",
-        imgSrc: "/images/team/hero/team1.png",
-        imagePosition: "left",
+        imgSrc: "/images/team/hero/team7.png",
+        imagePosition: "right",
     },
     {
         name: "Rohan Patel",
@@ -68,7 +68,7 @@ export const TeamData = [
         rating: 4.3,
         reviews: 60,
         description: "Rohan drives revenue growth and client relationships across regions.",
-        imgSrc: "/images/team/hero/team2.png",
+        imgSrc: "/images/team/hero/team8.png",
         imagePosition: "right",
     },
     {
@@ -87,7 +87,7 @@ export const TeamData = [
         reviews: 78,
         description: "Aditya automates and scales our infrastructure with precision.",
         imgSrc: "/images/team/hero/team2.png",
-        imagePosition: "right",
+        imagePosition: "left",
     },
     {
         name: "Pooja Nair",
@@ -95,8 +95,8 @@ export const TeamData = [
         rating: 4.7,
         reviews: 100,
         description: "Pooja ensures our products meet the highest quality standards.",
-        imgSrc: "/images/team/hero/team1.png",
-        imagePosition: "left",
+        imgSrc: "/images/team/hero/team3.png",
+        imagePosition: "right",
     },
     {
         name: "Manish Gupta",
@@ -104,7 +104,9 @@ export const TeamData = [
         rating: 4.6,
         reviews: 92,
         description: "Manish extracts valuable insights from data to drive decisions.",
-        imgSrc: "/images/team/hero/team2.png",
+        imgSrc: "/images/team/hero/team4.png",
         imagePosition: "right",
     },
 ];
+
+
