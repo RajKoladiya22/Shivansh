@@ -46,7 +46,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
   grayscaleOnHover = false,
   spacing = "lg",
   priority = 3,
-  respectReducedMotion = true,
+  // respectReducedMotion = true,
 }) => {
   // Spacing classes
   const spacingClasses = {

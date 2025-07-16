@@ -1,12 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
-import {Button} from "../../../molecules";
+import { Button } from "../../../molecules";
 
 export default function HeroContent() {
   return (
     <>
       {/* Text Content */}
-      <section aria-labelledby="hero-heading" className="space-y-4 md:space-y-6 lg:space-y-8">
+      <section
+        aria-labelledby="hero-heading"
+        className="space-y-4 md:space-y-6 lg:space-y-8"
+      >
         <div className="relative inline-block">
           <p className="z-10 text-base font-[400] tracking-[3px] text-(--primery-color) sm:text-lg lg:text-xl">
             Quick Response – Quick Support
@@ -22,7 +23,10 @@ export default function HeroContent() {
           />
         </div>
 
-        <h1 id="hero-heading" className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
+        <h1
+          id="hero-heading"
+          className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl"
+        >
           Empowering Businesses with{" "}
           <span className="text-(--primery-color)">
             Trusted Tally Solutions

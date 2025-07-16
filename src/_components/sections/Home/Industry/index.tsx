@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+
 import React from "react";
 // import {ImageSlider} from "../../molecules";
 import { ImageSlider } from "../../../molecules";

@@ -35,7 +35,7 @@ export function Header() {
   return (
     <header
       // className="fixed top-0 left-0 z-50 w-full bg-white/50 backdrop-blur-md"
-      className={`fixed top-0 left-0 z-50 w-full transition-all transition-colors duration-300 ease-in-out ${
+      className={`fixed pt-[10px] top-0 left-0 z-50 w-full transition-all transition-colors duration-300 ease-in-out ${
         scrollPosition
           ? "bg-white/50 shadow-lg backdrop-blur-md"
           : "bg-transparent"
@@ -55,12 +55,12 @@ export function Header() {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden space-x-12 rounded-[50px] bg-(--light-pink) px-[40px] py-[15px] md:flex">
+          <nav className="hidden 2xl:space-x-15 sm:space-x-3 md:space-x-3  rounded-[50px] bg-(--light-pink) px-[40px] py-[15px] md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`font-medium text-gray-700 hover:text-red-600 ${pathname === item.href ? "text-red-600 underline underline-offset-4" : "text-gray-700 hover:text-red-600"}`}
+                className={`text-[15px] font-[600] text-gray-700 hover:text-red-600 ${pathname === item.href ? "text-red-600 underline underline-offset-4" : "text-gray-700 hover:text-red-600"}`}
               >
                 {item.label}
               </Link>

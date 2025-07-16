@@ -75,10 +75,9 @@
 
 
 // page.tsx - Updated with structured data and SEO optimizations
-import Link from "next/link";
-import { LatestPost } from "src/_components/post";
+
 import { auth } from "src/server/auth";
-import { api, HydrateClient } from "src/trpc/server";
+import { api } from "src/trpc/server";
 import {AboutUsSection, Hero, IndustrySlider} from "../_components/sections/Home";
 
 // JSON-LD structured data
@@ -114,7 +113,7 @@ const structuredData = {
 };
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
+  // const hello = await api.post.hello({ text: "from tRPC" });
   const session = await auth();
 
   if (session?.user) {
