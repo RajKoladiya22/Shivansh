@@ -9,6 +9,41 @@
     --secondery-color: #FFCCD6;
     --pink: #C502021A;
     --light-pink: #C502020D;
+    --black : #000000;
+    --white: #FFFFFF;
+    --off-white: #EEF6FF;
+    --light-red: #C5020280;
+    --light-2-red: #C5020233;
+    --bg-pink: #FCF2F2;
+    --yellow: #ffc700;
+    --pink-border: #FFCCD6;
+
+
+    --fs-13: 0.8125rem; /* 13px */
+    --fs-14: 0.875rem; /* 14px */
+    --fs-15: 0.9375rem; /* 15px */
+    --fs-16: 1rem; /* 16px */
+    --fs-18: 1.125rem; /* 18px */ 
+    --fs-22: 1.375rem; /* 22px */
+    --fs-24: 1.5rem; /* 24px */
+    --fs-26: 1.625rem; /* 26px */
+    --fs30: 1.875rem; /* 30px */
+    --fs-28: 1.75rem; /* 28px */
+    --fs-31: 1.9375rem; /* 31px */
+    --fs-32: 2rem; /* 32px */
+    --fs-36: 2.25rem; /* 36px */
+    --fs-40: 2.5rem; /* 40px */
+    --fs-43: 2.6875rem; /* 43px */
+    --fs-48: 3rem; /* 48px */
+    --fs-50: 3.125rem; /* 50px */
+    --fs-60: 3.75rem; /* 60px */
+    --fs-70: 4.375rem; /* 70px */
+    --fs-80: 5rem; /* 80px */
+
+    --fw-400: 400;
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
   }
 
   html {
@@ -19,7 +54,3 @@
 
 
 
-/* @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-} */
