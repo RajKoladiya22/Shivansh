@@ -88,14 +88,14 @@ export const Button: React.FC<ButtonProps> = ({
     xl: "text-xl",
   };
 
-  const trackingMap = {
-  tighter: 'tracking-tighter',
-  tight: 'tracking-tight',
-  normal: 'tracking-normal',
-  wide: 'tracking-wide',
-  wider: 'tracking-wider',
-  widest: 'tracking-widest',
-};
+//   const trackingMap = {
+//   tighter: 'tracking-tighter',
+//   tight: 'tracking-tight',
+//   normal: 'tracking-normal',
+//   wide: 'tracking-wide',
+//   wider: 'tracking-wider',
+//   widest: 'tracking-widest',
+// };
 
   // Combine all styles
   const combinedClassName = twMerge(

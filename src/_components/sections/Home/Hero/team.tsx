@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 // TeamCard Component matching the exact design
 export type TeamCardProps = {
   name: string;
@@ -81,9 +83,11 @@ const TeamCard: React.FC<TeamCardProps> = ({
           zIndex: 10,
         }}
       >
-        <img
+        <Image
           src={imgSrc}
           alt={name}
+          width={200}
+          height={200}
           className="h-full w-full object-contain"
           style={{
             objectFit: "contain",
