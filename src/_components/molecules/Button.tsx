@@ -3,64 +3,69 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import type { LinkProps } from "next/link";
 
 export interface ButtonProps {
   children: ReactNode;
   href?: string;
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  fontWeight?: 'light' | 'normal' | 'semibold' | 'bold';
-  fontSize?: 'sm' | 'base' | 'lg' | 'xl';
-  bgColor?: string;       // Tailwind class string, e.g. "bg-blue-500"
-  textColor?: string;     // e.g. "text-white"
-  padding?: string;       // e.g. "px-6 py-3"
-  margin?: string;        // e.g. "my-4"
-  hoverBgColor?: string;  // e.g. "hover:bg-blue-600"
+  variant?: "primary" | "secondary" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg" | "xl";
+  fontWeight?: "light" | "normal" | "semibold" | "bold";
+  fontSize?: "sm" | "base" | "lg" | "xl";
+  bgColor?: string; // Tailwind class string, e.g. "bg-blue-500"
+  textColor?: string; // e.g. "text-white"
+  padding?: string; // e.g. "px-6 py-3"
+  margin?: string; // e.g. "my-4"
+  hoverBgColor?: string; // e.g. "hover:bg-blue-600"
   className?: string;
-  target?: '_blank' | '_self' | '_parent' | '_top';
+  target?: "_blank" | "_self" | "_parent" | "_top";
   rel?: string;
   external?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
   disabled?: boolean;
   onClick?: (e: React.MouseEvent) => void;
   fullWidth?: boolean;
   loading?: boolean;
   icon?: ReactNode;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
 }
 
 export const Button: React.FC<ButtonProps> = ({
   children,
   href,
-  variant = 'primary',
-  size = 'md',
-  fontWeight = 'normal',
+  variant = "primary",
+  size = "md",
+  fontWeight = "normal",
   fontSize,
   bgColor,
   textColor,
   padding,
   margin,
   hoverBgColor,
-  className = '',
+  className = "",
   target,
   rel,
   external = false,
-  type = 'button',
+  type = "button",
   disabled = false,
   onClick,
   fullWidth = false,
   loading = false,
   icon,
-  iconPosition = 'left',
+  iconPosition = "left",
 }) => {
   // Base styles
-  const baseStyles = "inline-flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none";
+  const baseStyles =
+    "inline-flex items-center justify-center transition-all duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none";
 
   // Variant styles
   const variantStyles: Record<string, string> = {
-    primary: "bg-(--primery-color) text-white hover:bg-red-700 focus:ring-red-500 shadow-lg hover:shadow-xl",
-    secondary: "bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 shadow-lg hover:shadow-xl",
-    outline: "border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white focus:ring-red-500",
+    primary:
+      "bg-(--primery-color) text-white hover:bg-red-700 focus:ring-red-500 shadow-lg hover:shadow-xl",
+    secondary:
+      "bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 shadow-lg hover:shadow-xl",
+    outline:
+      "border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white focus:ring-red-500",
     ghost: "text-red-600 hover:bg-red-50 focus:ring-red-500",
   };
 
@@ -88,14 +93,14 @@ export const Button: React.FC<ButtonProps> = ({
     xl: "text-xl",
   };
 
-//   const trackingMap = {
-//   tighter: 'tracking-tighter',
-//   tight: 'tracking-tight',
-//   normal: 'tracking-normal',
-//   wide: 'tracking-wide',
-//   wider: 'tracking-wider',
-//   widest: 'tracking-widest',
-// };
+  //   const trackingMap = {
+  //   tighter: 'tracking-tighter',
+  //   tight: 'tracking-tight',
+  //   normal: 'tracking-normal',
+  //   wide: 'tracking-wide',
+  //   wider: 'tracking-wider',
+  //   widest: 'tracking-widest',
+  // };
 
   // Combine all styles
   const combinedClassName = twMerge(
@@ -114,31 +119,54 @@ export const Button: React.FC<ButtonProps> = ({
       loading && "cursor-wait",
       disabled && "pointer-events-none",
       className,
-      
-    )
+    ),
   );
 
   // Build content with icon and loading indicator
   const buttonContent = (
     <>
-      {loading && <span className="animate-spin mr-2 h-4 w-4 border-2 border-current border-t-transparent rounded-full" />}
-      {icon && iconPosition === 'left' && !loading && <span className="mr-2">{icon}</span>}
+      {loading && (
+        <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+      )}
+      {icon && iconPosition === "left" && !loading && (
+        <span className="mr-2">{icon}</span>
+      )}
       {children}
-      {icon && iconPosition === 'right' && !loading && <span className="ml-2">{icon}</span>}
+      {icon && iconPosition === "right" && !loading && (
+        <span className="ml-2">{icon}</span>
+      )}
     </>
   );
 
   if (href) {
-    const linkProps: any = {
+    // const linkProps: any = {
+    //   href,
+    //   className: combinedClassName,
+    //   ...(external || target === '_blank'
+    //     ? { target: target || '_blank', rel: rel || 'noopener noreferrer' }
+    //     : {}),
+    //   onClick,
+    // };
+
+    const linkProps: LinkProps = {
       href,
-      className: combinedClassName,
-      ...(external || target === '_blank'
-        ? { target: target || '_blank', rel: rel || 'noopener noreferrer' }
-        : {}),
-      onClick,
+      // className is not a valid prop for LinkProps
+      // Only pass valid LinkProps here
+      // target and rel are only valid for <a>, so we'll pass them to the <a> element below if needed
     };
 
-    return <Link {...linkProps}>{buttonContent}</Link>;
+    return (
+      <Link {...linkProps} passHref legacyBehavior>
+        <a
+          className={combinedClassName}
+          target={external || target === "_blank" ? (target ?? "_blank") : undefined}
+          rel={rel ?? "noopener noreferrer"}
+          onClick={onClick}
+        >
+          {buttonContent}
+        </a>
+      </Link>
+    );
   }
 
   return (
@@ -155,10 +183,10 @@ export const Button: React.FC<ButtonProps> = ({
 
 // export default Button;
 
-
 // Example usage of the Button component
 
-{/* <Button>Default</Button>
+{
+  /* <Button>Default</Button>
 
 <Button
   variant="outline"
@@ -180,4 +208,5 @@ export const Button: React.FC<ButtonProps> = ({
 
 <Button loading icon={<MyIcon />} size="sm">
   Loading
-</Button> */}
+</Button> */
+}

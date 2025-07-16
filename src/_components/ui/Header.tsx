@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Button } from "../molecules/Button";
+import Image from "next/image";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -46,7 +47,9 @@ export function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <img
+              <Image
+                width={200}
+                height={200}
                 src="/images/logo/logo.png"
                 alt="Shivansh Infosys"
                 className="h-8 w-auto cursor-pointer"
