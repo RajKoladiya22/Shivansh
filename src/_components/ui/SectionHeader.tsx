@@ -132,7 +132,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       {/* Main Heading Text */}
       {showHeadingText && headingText && (
         <HeadingTag className={`
-          text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight
+          text-3xl sm:text-4xl lg:text-[36px] font-bold tracking-tight
           ${headingTextColor}
           ${headingTextClassName}
         `.trim()}>

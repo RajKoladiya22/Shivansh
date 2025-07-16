@@ -16,7 +16,7 @@ export const AboutUsSection = () => {
                   heading="ABout us"
                   headingClassName="text-sm font-bold text-red-600 tracking-wider"
                   headingText="We Are Standing With 10+ Years Of Experience "
-                  headingTextClassName="text-3xl font-bold text-gray-900"
+                  headingTextClassName="text-(43px) font-[600] text-gray-900"
                   showDescription={false}
                 />
               </div>

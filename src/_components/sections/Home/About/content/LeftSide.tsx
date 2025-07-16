@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { Button } from "src/_components/molecules";
 
 export const AboutUsLeftContent = () => {
   return (
@@ -7,7 +8,7 @@ export const AboutUsLeftContent = () => {
       {/* Left Content */}
       <div className="order-2 p-6 text-white sm:p-8 md:p-10 lg:order-1 lg:p-12 xl:p-16">
         <div className="max-w-2xl">
-          <h3 className="mb-4 text-2xl font-bold sm:mb-6 sm:text-3xl md:mb-8 md:text-4xl">
+          <h3 className="mb-4 text-2xl font-[600] tracking-[2px] sm:mb-6 sm:text-3xl md:mb-8 md:text-3xl">
             SHIVANSH INFOSYS
           </h3>
 
@@ -15,7 +16,7 @@ export const AboutUsLeftContent = () => {
             (TALLY 3 STAR CERTIFIED PARTNER)
           </div>
 
-          <div className="space-y-4 text-sm leading-relaxed sm:space-y-6 sm:text-base md:text-lg">
+          <div className="t space-y-4 text-sm leading-relaxed sm:space-y-6 sm:text-base md:text-lg">
             <p>
               I would like to say something about our company SHIVANSH INFOSYS.
               We have started our company in April-2007 with a vision of serving
@@ -35,6 +36,14 @@ export const AboutUsLeftContent = () => {
           >
             GET A QUOTE
           </button>
+
+          {/* <Button
+            href="/contact"
+            padding="px-[20px] py-[10px] sm:px-[16px] sm:py-[8px]"
+            className=" bg-white text-red-600 tracking-[2px] md:tracking-tight lg:tracking-[0px]"
+          >
+            GET A QUOTE
+          </Button> */}
         </div>
       </div>
     </>

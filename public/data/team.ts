@@ -4,7 +4,7 @@ export const TeamData = [
         role: "CEO & Founder",
         rating: 4.8,
         reviews: 120,
-        description: "Heena is a visionary leader with over a decade of experience in the tech industry, driving innovation and excellence.",
+        description: "Heena is a visionary leader with over a decade of experience in the tech industry, driving innovation and excellence. loremmmmm mmmmmm mmmmm msmmsmsms smsmsms smmsms msmsms msmsms smsms msmsm sms smms s sm s s s ms s smsmsms smsms sms s s ms ms ms msm  ssm smsms s sms s",
         imgSrc: "/images/team/hero/team1.png",
         imagePosition: "left",
     },

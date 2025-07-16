@@ -39,13 +39,19 @@ const TeamCard: React.FC<TeamCardProps> = ({
     <div
       className="absolute"
       style={{
-        width: "320px",
-        height: "150px",
+        // width: "320px",
+        // height: "150px",
+        width: "clamp(300px, 100%, 370px)",
+        height: "clamp(150px, 50%, 215px)",
+        // width: "450px",
+        // height: "215px",
+        // width: "clamp(280px, 35vw, 450px)",
+        // height: "clamp(150px, 18vw, 215px)",
         ...style,
       }}
     >
       {/* Main Card Content */}
-      <div className="relative h-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
+      <div className="relative h-full overflow-hidden rounded-2xl border border-(--pink-border) bg-white shadow-lg">
         {/* Content */}
         <div
           className="flex h-full flex-col justify-center p-4"
@@ -54,20 +60,20 @@ const TeamCard: React.FC<TeamCardProps> = ({
             paddingRight: imagePosition === "left" ? "16px" : "90px",
           }}
         >
-          <h3 className="mb-1 text-lg leading-tight font-bold text-gray-900">
+          <h3 className="mb-1 px-3 text-lg leading-tight font-bold text-gray-900">
             {name}
           </h3>
-          <p className="mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">
+          <p className="mb-2 px-3 text-xs font-semibold tracking-wide text-gray-500 uppercase">
             {role}-
           </p>
 
-          <div className="mb-2 flex items-center">
+          <div className="mb-2 flex items-center px-3">
             <div className="mr-2 flex">{stars}</div>
             <span className="mr-1 text-sm font-bold">{rating}</span>
             <span className="text-xs text-gray-500">[ {reviews} Reviews ]</span>
           </div>
 
-          <p className=" text-xs leading-relaxed text-gray-600 line-clamp-3">
+          <p className="line-clamp-4 px-3 text-xs leading-relaxed text-gray-600">
             {description}
           </p>
         </div>
@@ -91,7 +97,7 @@ const TeamCard: React.FC<TeamCardProps> = ({
           className="h-full w-full object-contain"
           style={{
             objectFit: "contain",
-            objectPosition: "center",
+            objectPosition: "bottom",
           }}
         />
       </div>

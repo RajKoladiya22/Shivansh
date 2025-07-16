@@ -25,20 +25,20 @@ export default function HeroContent() {
 
         <h1
           id="hero-heading"
-          className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl"
+          className="text-3xl font-[600] text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl"
         >
           Empowering Businesses with{" "}
           <span className="text-(--primery-color)">
             Trusted Tally Solutions
           </span>
         </h1>
-        <p className="mt-2 text-gray-700 sm:mt-4 sm:text-lg md:text-xl lg:text-2xl">
+        <p className="mt-2 text-gray-700 sm:mt-4 sm:text-lg md:text-xl lg:text-lg font-[400]">
           Tally Certified 3-Star Partner · 3000+ Customers Served in all Over
           India
         </p>
         <Button
           href="https://bitly.cx/rNEH4"
-          className="tracking-[3px]"
+          className="tracking-[3px] font-[700]"
           external
         >
           Watch on YouTube

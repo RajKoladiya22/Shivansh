@@ -39,7 +39,7 @@ import { type Metadata } from "next";
 import { DM_Sans } from 'next/font/google'
 import '../styles/globals.css';
 import { TRPCReactProvider } from "src/trpc/react";
-import {Header} from "../_components/ui";
+import {Footer, Header} from "../_components/ui";
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -121,6 +121,7 @@ export default function RootLayout({
       <body cz-shortcut-listen="true">
         <Header />
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <Footer />
       </body>
     </html>
   );

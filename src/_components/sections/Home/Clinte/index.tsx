@@ -4,10 +4,10 @@
 import React from "react";
 // import {ImageSlider} from "../../molecules";
 import { ImageSlider } from "../../../molecules";
-import { Partnerlogos } from "../../../../../public/data/partnersLogo";
 import { SectionHeader } from "src/_components/ui";
+import { Clintelogos } from "public/data/clinteLogo";
 
-export const IndustrySlider: React.FC = () => {
+export const ClinteSlider: React.FC = () => {
   return (
     <section className="py-8 md:py-12 lg:py-1">
       {/* Section Header */}
@@ -19,7 +19,7 @@ export const IndustrySlider: React.FC = () => {
       </div>
       
       <ImageSlider
-        items={Partnerlogos}
+        items={Clintelogos}
         direction="left"
         speed="normal"
         pauseOnHover={true}

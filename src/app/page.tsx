@@ -78,7 +78,7 @@
 
 import { auth } from "src/server/auth";
 import { api } from "src/trpc/server";
-import {AboutUsSection, Hero, IndustrySlider} from "../_components/sections/Home";
+import {AboutUsSection, ClinteSlider, Hero, IndustrySlider} from "../_components/sections/Home";
 
 // JSON-LD structured data
 const structuredData = {
@@ -129,6 +129,7 @@ export default async function Home() {
       <Hero />
       <IndustrySlider />
       <AboutUsSection />
+      <ClinteSlider />
 
 
      
