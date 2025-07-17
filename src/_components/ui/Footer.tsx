@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { FaPinterest } from "react-icons/fa";
 
 const navItems = [
@@ -14,15 +16,16 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 const ProductServices = [
-  { label: "Tally Software", href: "/" },
-  { label: "Mobile Apps for Tally", href: "/" },
-  { label: "Tally Customized", href: "/" },
-  { label: "Privacy Policy", href: "/" },
-  { label: "App Privacy Policy", href: "/" },
-  { label: "Partner App Privacy Policy", href: "/" }
+  { label: "Tally Software", href: "/tally" },
+  { label: "Mobile Apps for Tally", href: "/mobilr" },
+  { label: "Tally Customized", href: "/tallyCust" },
+  { label: "Privacy Policy", href: "/pp" },
+  { label: "App Privacy Policy", href: "/appPP" },
+  { label: "Partner App Privacy Policy", href: "/pappPP" },
 ];
 
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
   return (
     <footer className="bg-gray-50 pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -91,7 +94,13 @@ export const Footer: React.FC = () => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-600 underline-offset-4 transition-colors hover:text-red-600 hover:underline"
+                    className={`
+                    relative text-sm text-gray-600 transition-colors
+                     before:absolute before:bottom-[-4px] before:left-0 before:h-[1px] 
+                     before:w-0 before:bg-red-600 before:transition-all before:duration-300 
+                     hover:text-red-600 hover:before:w-full
+                     ${pathname === item.href ? "text-red-600 underline underline-offset-6 before:bg-transparent" : "text-gray-700 hover:text-red-600"}
+                     `}
                   >
                     {item.label}
                   </Link>
@@ -110,7 +119,10 @@ export const Footer: React.FC = () => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-600 underline-offset-4 transition-colors hover:text-red-600 hover:underline"
+                    className={`relative text-sm text-gray-600 transition-colors before:absolute 
+                    before:bottom-[-4px] before:left-0 before:h-[1px] before:w-0
+                     before:bg-red-600 before:transition-all before:duration-300 hover:text-red-600 hover:before:w-full
+                     ${pathname === item.href ? "text-red-600 underline underline-offset-6 before:bg-transparent" : "text-gray-700 hover:text-red-600"}`}
                   >
                     {item.label}
                   </Link>
@@ -173,3 +185,11 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
+
+
+
+
+
+
+

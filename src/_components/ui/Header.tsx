@@ -63,7 +63,15 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[15px] font-[600] text-gray-700 hover:text-red-600 ${pathname === item.href ? "text-red-600 underline underline-offset-4" : "text-gray-700 hover:text-red-600"}`}
+                className={`
+                  text-[15px] font-[600] text-gray-700 hover:text-red-600 
+
+                  relative
+                  transition-colors before:absolute 
+                    before:bottom-0 before:left-0 before:h-[1px] before:w-0
+                     before:bg-red-600 before:transition-all before:duration-300 hover:text-red-600 hover:before:w-full
+                  ${pathname === item.href ? "text-red-600 underline underline-offset-4 before:bg-transparent" : "text-gray-700 hover:text-red-600"}
+                  `}
               >
                 {item.label}
               </Link>
