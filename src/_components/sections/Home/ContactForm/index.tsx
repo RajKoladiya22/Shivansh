@@ -10,13 +10,11 @@ export const ContactForm = () => {
     message: ''
   });
 
-  const handleChange = (e:any) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target;
+  setFormData(prev => ({ ...prev, [name]: value }));
+};
+
 
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -31,7 +29,7 @@ export const ContactForm = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
-            Let's Keep in Touch
+            {`Let's Keep in Touch`}
           </h1>
         </div>
 

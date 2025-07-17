@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { SectionHeader } from "src/_components/ui";
 
@@ -10,7 +11,7 @@ const useIntersectionObserver = (threshold = 0.1) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry && entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setIsIntersecting(true);
         }
       },
@@ -30,8 +31,8 @@ const useIntersectionObserver = (threshold = 0.1) => {
 // Hook for number animation
 const useCountAnimation = (
   targetValue: number,
-  duration: number = 2000,
-  start: boolean = false,
+  duration = 2000,
+  start = false,
 ) => {
   const [currentValue, setCurrentValue] = useState(0);
 
@@ -78,10 +79,10 @@ export const AboutTheFounder = () => {
         <div className="mb-12 text-center sm:mb-16">
           <SectionHeader
             heading="ABOUT THE FOUNDER"
-            headingText="Hello, We're Shivansh Infosys"
-            headingDescription="We are a digital agency with a team of passionate individuals. The
+            headingText={`Hello, We're Shivansh Infosys`}
+            headingDescription={`We are a digital agency with a team of passionate individuals. The
             journey started with a single man's dream to build a company with
-            providing remarkable IT services and here we are!!"
+            providing remarkable IT services and here we are!!`}
           />
         </div>
 
@@ -108,7 +109,9 @@ export const AboutTheFounder = () => {
 
             {/* Office Image */}
             <div className="relative overflow-hidden rounded-2xl shadow-lg">
-              <img
+              <Image
+                width={200}
+                height={200}
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Office environment"
                 className="h-48 w-full object-cover sm:h-56 lg:h-64"
@@ -122,7 +125,9 @@ export const AboutTheFounder = () => {
               {/* Founder Image */}
               <div className="relative">
                 <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                  <img
+                  <Image
+                    width={200}
+                    height={200}
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                     alt="Founder"
                     className="h-64 w-full object-cover sm:h-72 lg:h-80"
@@ -179,12 +184,12 @@ export const AboutTheFounder = () => {
             </div>
             <div className="space-y-4">
               <p className="text-sm leading-relaxed sm:text-base lg:text-lg">
-                Transparency is not just a buzzword. It's one of our core values
-                that continue to impress our clients.
+                {`Transparency is not just a buzzword. It's one of our core values
+                that continue to impress our clients.`}
               </p>
               <p className="text-sm leading-relaxed sm:text-base lg:text-lg">
-                Transparency is not just a buzzword. It's one of our core values
-                that continue to impress our clients.
+                {`Transparency is not just a buzzword. It's one of our core values
+                that continue to impress our clients.`}
               </p>
             </div>
           </div>

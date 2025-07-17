@@ -42,19 +42,15 @@ export const CustomerTestimonials = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const goToTestimonial = (index : any) => {
+  const goToTestimonial = (index : number) => {
     setCurrentTestimonial(index);
   };
 
-  const renderStars = (rating:any) => {
-    console.log(rating);
-    
-    return [...Array(5)].map((_, index) => (
-      <span key={index} className="text-yellow-400 text-xl">
-        ★
-      </span>
-    ));
-  };
+const renderStars = (rating: number) => {
+  return Array.from({ length: rating }, (_, i) => (
+    <span key={i} className="text-yellow-400 text-xl">★</span>
+  ));
+};
 
   const currentData = testimonials[currentTestimonial];
 
@@ -78,7 +74,7 @@ export const CustomerTestimonials = () => {
               WHAT OUR CUSTOMERS SAY
             </div>
             <blockquote className="text-xl lg:text-2xl text-gray-800 font-medium leading-relaxed max-w-4xl mx-auto">
-              "{currentData?.quote}"
+              {`"${currentData?.quote}"`}
             </blockquote>
           </div>
 
@@ -110,7 +106,7 @@ export const CustomerTestimonials = () => {
           {/* Rating */}
           <div className="flex justify-center mb-8">
             <div className="flex space-x-1">
-              {renderStars(currentData?.rating)}
+              {renderStars(currentData?.rating ?? 0)}
             </div>
           </div>
 
