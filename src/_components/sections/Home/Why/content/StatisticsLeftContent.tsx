@@ -135,7 +135,10 @@ const useIntersectionObserver = (threshold = 0.1) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry && entry.isIntersecting) {
+        // if (entry && entry.isIntersecting) {
+        //   setIsIntersecting(true);
+        // }
+        if (entry?.isIntersecting) {
           setIsIntersecting(true);
         }
       },
@@ -196,8 +199,11 @@ const useCountAnimation = (
 // Extract number from string (e.g., "1000+" -> 1000)
 const extractNumber = (str: string): number => {
   // const match = str.match(/[\d,]+/);
+  // const match = /[\d,]+/.exec(str);
+  // return match ? parseInt(match[0].replace(/,/g, "")) : 0;
+
   const match = /[\d,]+/.exec(str);
-  return match ? parseInt(match[0].replace(/,/g, "")) : 0;
+  return match?.[0] ? parseInt(match[0].replace(/,/g, "")) : 0;
 };
 
 // Format number with commas and preserve suffix
