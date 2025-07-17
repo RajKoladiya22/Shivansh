@@ -4,3 +4,6 @@ export { AboutUsSection } from "./About";
 export { ClinteSlider } from "./Clinte"
 export { StatisticsSection } from "./Why"
 export { AboutTheFounder } from "./AboutFounder"
+export { WiseSolutionsIndustry } from "./InsdustrySolution"
+export { ContactForm } from "./ContactForm"
+export { CustomerTestimonials } from "./Testimonials"

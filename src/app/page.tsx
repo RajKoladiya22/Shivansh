@@ -68,48 +68,58 @@
 //           {session?.user && <LatestPost />}
 //         </div>
 //       </main>
-//     </HydrateClient> 
+//     </HydrateClient>
 //     </>
 //   );
 // }
-
 
 // page.tsx - Updated with structured data and SEO optimizations
 
 import { auth } from "src/server/auth";
 import { api } from "src/trpc/server";
-import {AboutTheFounder, AboutUsSection, ClinteSlider, Hero, IndustrySlider, StatisticsSection} from "../_components/sections/Home";
+import {
+  AboutTheFounder,
+  AboutUsSection,
+  ClinteSlider,
+  WiseSolutionsIndustry,
+  Hero,
+  IndustrySlider,
+  StatisticsSection,
+  ContactForm,
+  CustomerTestimonials,
+} from "../_components/sections/Home";
 
 // JSON-LD structured data
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Shivansh Infosys",
-  "description": "Empowering businesses with trusted Tally solutions. Tally Certified 3-Star Partner serving 3000+ customers across India.",
-  "url": "https://shivanshinfosys.in/",
-  "logo": "https://shivanshinfosys.in/logo.png",
-  "contactPoint": {
+  name: "Shivansh Infosys",
+  description:
+    "Empowering businesses with trusted Tally solutions. Tally Certified 3-Star Partner serving 3000+ customers across India.",
+  url: "https://shivanshinfosys.in/",
+  logo: "https://shivanshinfosys.in/logo.png",
+  contactPoint: {
     "@type": "ContactPoint",
-    "telephone": "+91-8141703007",
-    "contactType": "customer service",
-    "availableLanguage": ["English", "Hindi", "Gujarati"],
-    "areaServed": "IN",
-    "email": "shivanshinfosys@gmail.com"
+    telephone: "+91-8141703007",
+    contactType: "customer service",
+    availableLanguage: ["English", "Hindi", "Gujarati"],
+    areaServed: "IN",
+    email: "shivanshinfosys@gmail.com",
   },
-  "address": {
+  address: {
     "@type": "PostalAddress",
-    "addressCountry": "IN",
-    "addressLocality": "Surat",
-    "addressRegion": "Gujarat",
-    "postalCode": "395007",
-    "streetAddress": "214,215 Soham Arcasde, Bagban circle, Adajan, Surat"
+    addressCountry: "IN",
+    addressLocality: "Surat",
+    addressRegion: "Gujarat",
+    postalCode: "395007",
+    streetAddress: "214,215 Soham Arcasde, Bagban circle, Adajan, Surat",
   },
-  "sameAs": [
+  sameAs: [
     "https://www.youtube.com/@HetanshAcademy",
     "https://bitly.cx/rNEH4",
     "https://www.linkedin.com/company/shivansh-infosys",
     // Add other social media URLs
-  ]
+  ],
 };
 
 export default async function Home() {
@@ -132,10 +142,9 @@ export default async function Home() {
       <ClinteSlider />
       <StatisticsSection />
       <AboutTheFounder />
-
-
-     
-      
+      <CustomerTestimonials />
+      <WiseSolutionsIndustry />
+      <ContactForm />
       {/* <HydrateClient>
         <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
           Rest of your content
