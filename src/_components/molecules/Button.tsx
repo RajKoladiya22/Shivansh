@@ -156,15 +156,26 @@ export const Button: React.FC<ButtonProps> = ({
     };
 
     return (
-      <Link {...linkProps} passHref legacyBehavior>
-        <a
-          className={combinedClassName}
-          target={external || target === "_blank" ? (target ?? "_blank") : undefined}
-          rel={rel ?? "noopener noreferrer"}
-          onClick={onClick}
-        >
-          {buttonContent}
-        </a>
+      // <Link {...linkProps} passHref legacyBehavior>
+      //   <a
+      //     className={combinedClassName}
+      //     target={external || target === "_blank" ? (target ?? "_blank") : undefined}
+      //     rel={rel ?? "noopener noreferrer"}
+      //     onClick={onClick}
+      //   >
+      //     {buttonContent}
+      //   </a>
+      // </Link>
+      <Link
+        {...linkProps}
+        className={combinedClassName}
+        target={
+          external || target === "_blank" ? (target ?? "_blank") : undefined
+        }
+        rel={rel ?? "noopener noreferrer"}
+        onClick={onClick}
+      >
+        {buttonContent}
       </Link>
     );
   }

@@ -6,10 +6,20 @@ import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
-    allowedDevOrigins: [
+  allowedDevOrigins: [
     '192.168.29.130',
     '*.192.168.29.130',
   ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        port: '',
+        pathname: '/vi/**',
+      },
+    ],
+  },
 };
 
 export default config;

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Button } from "src/_components/molecules";
+// import { Button } from "src/_components/molecules";
 
 export const AboutUsLeftContent = () => {
   return (

@@ -213,6 +213,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import { mockVideos } from "public/data/YouTubeVideo";
+import Image from "next/image";
 
 interface YouTubeVideo {
   id: string;
@@ -425,7 +426,9 @@ export const YouTubeVideosRightContent = () => {
               >
                 {/* Thumbnail */}
                 <div className="relative aspect-video overflow-hidden">
-                  <img
+                  <Image
+                    width={200}
+                    height={200}
                     src={video.thumbnail}
                     alt={video.title}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
