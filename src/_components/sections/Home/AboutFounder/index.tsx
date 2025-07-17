@@ -205,10 +205,10 @@ export const AboutTheFounder = () => {
               </div>
             </div>
             <p className="text-sm leading-relaxed sm:text-base lg:text-lg">
-              We have partnered with some of the world's most exciting companies
+              {`We have partnered with some of the world's most exciting companies
               to deliver exceptional IT Solutions. We successfully work
               alongside clients to identify the problem and develop effective
-              solutions.
+              solutions.`}
             </p>
           </div>
         </div>
