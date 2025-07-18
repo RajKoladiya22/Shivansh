@@ -21,10 +21,11 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
 }) => {
   const { name, title, rating, quote, document } = testimonial;
   const [showFullScreen, setShowFullScreen] = useState(false);
-  // const [currentDocument, setCurrentDocument] = useState("");
+  const [currentDocument, setCurrentDocument] = useState("");
 
   const openDocument = (documentUrl: string) => {
-    // setCurrentDocument(documentUrl);
+    setCurrentDocument(documentUrl);
+    console.log(currentDocument)
     setShowFullScreen(true);
   };
 

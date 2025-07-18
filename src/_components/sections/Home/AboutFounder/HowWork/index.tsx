@@ -1,72 +1,72 @@
 "use client";
-import Image from "next/image";
-import React, { useState, useEffect, useRef } from "react";
+// import Image from "next/image";
+import React from "react";
 import { SectionHeader } from "src/_components/ui";
 
 // Hook for intersection observer
-const useIntersectionObserver = (threshold = 0.1) => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+// const useIntersectionObserver = (threshold = 0.1) => {
+//   const [isIntersecting, setIsIntersecting] = useState(false);
+//   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setIsIntersecting(true);
-        }
-      },
-      { threshold },
-    );
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry?.isIntersecting) {
+//           setIsIntersecting(true);
+//         }
+//       },
+//       { threshold },
+//     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+//     if (ref.current) {
+//       observer.observe(ref.current);
+//     }
 
-    return () => observer.disconnect();
-  }, [threshold]);
+//     return () => observer.disconnect();
+//   }, [threshold]);
 
-  return { ref, isIntersecting };
-};
+//   return { ref, isIntersecting };
+// };
 
 // Hook for number animation
-const useCountAnimation = (
-  targetValue: number,
-  duration = 2000,
-  start = false,
-) => {
-  const [currentValue, setCurrentValue] = useState(0);
+// const useCountAnimation = (
+//   targetValue: number,
+//   duration = 2000,
+//   start = false,
+// ) => {
+//   const [currentValue, setCurrentValue] = useState(0);
 
-  useEffect(() => {
-    if (!start) return;
+//   useEffect(() => {
+//     if (!start) return;
 
-    let startTime: number;
-    let animationFrame: number;
+//     let startTime: number;
+//     let animationFrame: number;
 
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
+//     const animate = (timestamp: number) => {
+//       if (!startTime) startTime = timestamp;
+//       const progress = Math.min((timestamp - startTime) / duration, 1);
 
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const value = Math.floor(easeOutQuart * targetValue);
+//       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+//       const value = Math.floor(easeOutQuart * targetValue);
 
-      setCurrentValue(value);
+//       setCurrentValue(value);
 
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
+//       if (progress < 1) {
+//         animationFrame = requestAnimationFrame(animate);
+//       }
+//     };
 
-    animationFrame = requestAnimationFrame(animate);
+//     animationFrame = requestAnimationFrame(animate);
 
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [targetValue, duration, start]);
+//     return () => {
+//       if (animationFrame) {
+//         cancelAnimationFrame(animationFrame);
+//       }
+//     };
+//   }, [targetValue, duration, start]);
 
-  return currentValue;
-};
+//   return currentValue;
+// };
 
 export const HowItWork = () => {
   return (
