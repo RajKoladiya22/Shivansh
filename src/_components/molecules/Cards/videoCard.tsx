@@ -17,10 +17,10 @@ interface VideoCardProps {
   className?: string;
 }
 
-export const VideoCard: React.FC<VideoCardProps> = ({ 
-  video, 
-  onPlay, 
-  className = "" 
+export const VideoCard: React.FC<VideoCardProps> = ({
+  video,
+  onPlay,
+  className = "",
 }) => {
   return (
     <div
@@ -43,9 +43,30 @@ export const VideoCard: React.FC<VideoCardProps> = ({
         />
 
         {/* Play Overlay */}
-        <div className="bg-opacity-0 group-hover:bg-opacity-30 absolute inset-0 flex items-center justify-center transition-all duration-300">
+
+        {/* Hover to show */}
+        {/* <div className="bg-opacity-0 group-hover:bg-opacity-30 absolute inset-0 flex items-center justify-center transition-all duration-300">
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white opacity-0 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100">
             <Play className="ml-1 h-6 w-6" />
+          </div>
+        </div> */}
+
+        {/* Normal Show */}
+        {/* <div className="bg-opacity-30 group-hover:bg-opacity-50 absolute inset-0 flex items-center justify-center transition-all duration-300">
+          <div className="flex h-14 w-14 scale-100 items-center justify-center rounded-full bg-red-600 text-white opacity-100 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100">
+            <Play className="ml-1 h-6 w-6" />
+          </div>
+        </div> */}
+
+        {/* Ping Animation Around the Button */}
+        <div className="bg-opacity-30 group-hover:bg-opacity-50 absolute inset-0 flex items-center justify-center">
+          <div className="relative">
+            {/* Ripple */}
+            <span className="absolute inset-0 inline-flex animate-ping rounded-full bg-red-600 opacity-75 bg-opacity-3"></span>
+            {/* Button */}
+            <div className="relative  flex h-10 w-10 items-center justify-center rounded-full bg-(--primery-color) text-white transition-all duration-300 group-hover:scale-110">
+              <Play className="ml-1 h-4 w-4" />
+            </div>
           </div>
         </div>
 
@@ -57,14 +78,14 @@ export const VideoCard: React.FC<VideoCardProps> = ({
 
       {/* Video Info */}
       <div className="p-4">
-        <h3 className="mb-2 line-clamp-2 text-sm font-semibold text-gray-900 group-hover:text-red-600 truncate">
+        <h3 className="mb-2 line-clamp-2 truncate text-sm font-semibold text-gray-900 group-hover:text-red-600">
           {video.title}
         </h3>
-        <p className="line-clamp-2 text-xs text-gray-600 truncate-2">{video.description}</p>
+        <p className="truncate-2 line-clamp-2 text-xs text-gray-600">
+          {video.description}
+        </p>
       </div>
     </div>
-
-    
   );
 };
 

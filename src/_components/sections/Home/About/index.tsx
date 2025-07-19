@@ -6,7 +6,7 @@ import { AboutUsLeftContent, AboutUsRightContent } from "./content";
 export const AboutUsSection = () => {
   return (
     <>
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24">
+      <section className="py-1 sm:py-12 md:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="row">
             <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">

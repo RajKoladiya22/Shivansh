@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { SectionHeader } from "src/_components/ui";
 
+
 // Hook for intersection observer
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -110,7 +111,7 @@ export const TheFounder = () => {
           {/* Founder card (top, overlapping) */}
           <div className="absolute right-0 bottom-8 z-20 h-full w-full max-w-[14rem] overflow-hidden rounded-2xl shadow-lg sm:bottom-10 sm:max-w-[16rem] md:max-w-[18rem] lg:max-w-[20rem] xl:max-w-[22rem]">
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+              src="/images/founder/founder.png"
               alt="Founder"
               width={400}
               height={400}

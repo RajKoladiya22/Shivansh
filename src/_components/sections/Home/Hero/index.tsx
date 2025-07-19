@@ -194,9 +194,9 @@
 
 "use client";
 import { useState, useEffect } from "react";
-import HeroContent from "./content";
-import TeamCard from "./team";
+import HeroContent from "./Content";
 import { TeamData } from "public/data/team";
+import {TeamCard} from "src/_components/molecules";
 
 // Main Hero Component
 export const Hero = () => {

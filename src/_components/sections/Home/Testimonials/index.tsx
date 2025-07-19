@@ -2,14 +2,15 @@
 import React from "react";
 import { SectionHeader } from "src/_components/ui";
 import { testimonials } from "public/data/testimonials";
-import { ReusableSlider } from "src/_components/molecules/Slider";
-import { TestimonialCard } from "./Card/card";
+import { ReusableSlider } from "src/_components/molecules";
+import { TestimonialCard } from "src/_components/molecules";
+
 
 
 export const CustomerTestimonials = () => {
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <div className="py-20">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="py-4">
           <SectionHeader
@@ -19,7 +20,7 @@ export const CustomerTestimonials = () => {
         </div>
 
         {/* Testimonial Section */}
-        <div className="mb-8 rounded-3xl bg-pink-50 p-6 lg:p-12">
+        <div className="rounded-3xl bg-pink-50 p-6 lg:p-12">
           <SectionHeader heading="WHAT OUR CUSTOMERS SAY" />
 
           {/* Testimonial Cards Container */}

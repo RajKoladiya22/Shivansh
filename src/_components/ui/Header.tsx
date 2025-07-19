@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Button } from "../molecules/Button";
+import { Button } from "../molecules/Buttons/Button";
 import Image from "next/image";
 
 const navItems = [

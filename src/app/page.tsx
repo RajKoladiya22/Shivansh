@@ -83,7 +83,7 @@ import {
   ClinteSlider,
   WiseSolutionsIndustry,
   Hero,
-  IndustrySlider,
+  IndustryPartnerSlider,
   StatisticsSection,
   ContactForm,
   CustomerTestimonials,
@@ -137,7 +137,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <Hero />
-      <IndustrySlider />
+      <IndustryPartnerSlider />
       <AboutUsSection />
       <ClinteSlider />
       <StatisticsSection />

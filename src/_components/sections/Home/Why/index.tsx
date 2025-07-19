@@ -12,7 +12,7 @@ export const StatisticsSection = () => {
             <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
               {/* Main Content */}
               <div className="overflow-hidden rounded-2xl bg-white shadow-2xl sm:rounded-3xl">
-                <div className="grid grid-cols-1 gap-0 lg:grid-cols-2">
+                <div className="grid grid-cols-1 gap-0 lg:grid-cols-1 xl:grid-cols-2">
                   {/* Left Content - Statistics */}
                   <StatisticsLeftContent />
 

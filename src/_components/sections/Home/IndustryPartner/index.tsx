@@ -1,13 +1,12 @@
 "use client";
 
-
 import React from "react";
 // import {ImageSlider} from "../../molecules";
 import { ImageSlider } from "../../../molecules";
 import { Partnerlogos } from "../../../../../public/data/partnersLogo";
 import { SectionHeader } from "src/_components/ui";
 
-export const IndustrySlider: React.FC = () => {
+export const IndustryPartnerSlider: React.FC = () => {
   return (
     <section className="py-8 md:py-12 lg:py-1">
       {/* Section Header */}
@@ -17,10 +16,12 @@ export const IndustrySlider: React.FC = () => {
           showDescription={false}
         />
       </div>
-      
+
       <ImageSlider
+        type="image"
         items={Partnerlogos}
-        direction="left"
+        orientation="horizontal"
+        direction="left" // left or right
         speed="normal"
         pauseOnHover={true}
         showFadeEffect={true}

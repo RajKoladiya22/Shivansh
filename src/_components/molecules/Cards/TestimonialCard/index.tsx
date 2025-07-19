@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 // import Image from "next/image";
@@ -54,7 +55,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
             onClick={() => openDocument(document)}
           >
             <div className="flex h-48 items-center justify-center">
-              <div className="text-center">
+              <div className="text-center p-5">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-500 transition-all duration-300 group-hover:scale-110">
                   <svg
                     className="h-8 w-8 text-white"

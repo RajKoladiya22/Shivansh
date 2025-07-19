@@ -1,3 +1,4 @@
+
 import React, { useState, useLayoutEffect, useRef } from 'react';
 
 interface TestimonialQuoteProps {

@@ -1,6 +1,5 @@
 "use client";
 
-
 import React from "react";
 // import {ImageSlider} from "../../molecules";
 import { ImageSlider } from "../../../molecules";
@@ -17,9 +16,11 @@ export const ClinteSlider: React.FC = () => {
           showDescription={false}
         />
       </div>
-      
+
       <ImageSlider
+        type="image"
         items={Clintelogos}
+        orientation="horizontal"
         direction="left"
         speed="normal"
         pauseOnHover={true}

@@ -15,7 +15,7 @@ export type TeamCardProps = {
   style?: React.CSSProperties;
 };
 
-const TeamCard: React.FC<TeamCardProps> = ({
+export const TeamCard: React.FC<TeamCardProps> = ({
   name,
   role,
   rating,
@@ -105,4 +105,4 @@ const TeamCard: React.FC<TeamCardProps> = ({
   );
 };
 
-export default TeamCard;
+// export default TeamCard;

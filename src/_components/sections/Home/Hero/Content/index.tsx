@@ -1,4 +1,4 @@
-import { Button } from "../../../molecules";
+import { Button } from "src/_components/molecules";
 
 export default function HeroContent() {
   return (

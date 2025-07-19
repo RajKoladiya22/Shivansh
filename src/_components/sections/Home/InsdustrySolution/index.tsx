@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-import { IndustryCard } from "./IndustryCard";
+import { IndustryCard } from "src/_components/molecules";
 import { SectionHeader } from "src/_components/ui";
 
 export const WiseSolutionsIndustry = () => {
@@ -43,7 +44,7 @@ export const WiseSolutionsIndustry = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+    <div className="py-3 sm:py-6 md:py-6 lg:py-10 ">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-16 text-center">
