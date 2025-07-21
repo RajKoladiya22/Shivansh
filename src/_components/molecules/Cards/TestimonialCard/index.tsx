@@ -185,6 +185,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   const [showFullScreen, setShowFullScreen] = useState(false);
 
   const renderStars = (count: number) => {
+    const rating = Math.min(Math.max(count, 0), 5); // Ensure rating is between 0 and 5
     return Array.from({ length: 5 }, (_, i) => (
       <span
         key={i}
@@ -288,7 +289,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
               {/* Header */}
               <div className="flex items-center justify-between bg-gray-50 px-6 py-4">
                 <h3 className="text-lg font-bold text-gray-900">
-                  {name}'s Certificate
+                  {`${name}'s Certificate`}
                 </h3>
                 <button
                   className="rounded-full p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900"

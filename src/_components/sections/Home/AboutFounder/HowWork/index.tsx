@@ -134,7 +134,7 @@ export const HowItWork = () => {
                     <div className="flex items-start">
                       <div className="mt-1.5 mr-3 h-2 w-2 rounded-full bg-yellow-300 flex-shrink-0"></div>
                       <p className="text-base leading-relaxed opacity-90">
-                        Transparency is not just a buzzword. It's one of our core values that continues to impress our clients.
+                        {`Transparency is not just a buzzword. It's one of our core values that continues to impress our clients.`}
                       </p>
                     </div>
                     <div className="flex items-start">
@@ -183,7 +183,7 @@ export const HowItWork = () => {
                   
                   <div className="space-y-4">
                     <p className="text-base leading-relaxed opacity-90">
-                      We partner with the world's most exciting companies to deliver exceptional IT Solutions.
+                     {`We partner with the world's most exciting companies to deliver exceptional IT Solutions.`}
                     </p>
                     <p className="text-base leading-relaxed opacity-90">
                       We work alongside clients to identify problems and develop effective, tailored solutions.

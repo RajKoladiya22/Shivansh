@@ -514,7 +514,7 @@ export const ContactForm = () => {
             <div>
               <p className="font-semibold">Message sent successfully!</p>
               <p className="text-sm opacity-90">
-                We'll get back to you within 24 hours.
+                {`We'll get back to you within 24 hours.`}
               </p>
             </div>
           </div>
@@ -525,11 +525,11 @@ export const ContactForm = () => {
         {/* Header Section */}
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-            Let's Work Together
+            {`Let's Work Together`}
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
-            Have a project in mind? We'd love to hear about it. Send us a
-            message and we'll respond within 24 hours.
+            {`Have a project in mind? We'd love to hear about it. Send us a
+            message and we'll respond within 24 hours.`}
           </p>
         </div>
 
@@ -542,7 +542,7 @@ export const ContactForm = () => {
                 Tell us about your project
               </h2>
               <p className="mt-2 text-red-100">
-                Fill out the form below and we'll get back to you soon.
+                {`Fill out the form below and we'll get back to you soon.`}
               </p>
             </div>
 
@@ -851,8 +851,8 @@ export const ContactForm = () => {
                   </button>
 
                   <p className="max-w-md text-center text-sm text-gray-500">
-                    By submitting this form, you agree to our privacy policy.
-                    We'll never share your information with third parties.
+                    {`By submitting this form, you agree to our privacy policy.
+                    We'll never share your information with third parties.`}
                   </p>
                 </div>
               </form>

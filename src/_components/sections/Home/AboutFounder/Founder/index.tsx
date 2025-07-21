@@ -192,10 +192,10 @@ export const TheFounder = () => {
               ABOUT THE FOUNDER
             </h3>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Hello, We're Shivansh Infosys
+              {`Hello, We're Shivansh Infosys`}
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We are a digital agency with a team of passionate individuals. The journey started with a single man's dream to build a company providing remarkable IT services.
+              {`We are a digital agency with a team of passionate individuals. The journey started with a single man's dream to build a company providing remarkable IT services.`}
             </p>
           </motion.div>
         </div>
@@ -282,7 +282,7 @@ export const TheFounder = () => {
           >
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-gray-900">
-                Our Founder's Vision
+                {`Our Founder's Vision`}
               </h3>
               
               <p className="text-gray-600 leading-relaxed">
@@ -290,7 +290,7 @@ export const TheFounder = () => {
               </p>
               
               <p className="text-gray-600 leading-relaxed">
-                With over a decade of experience, we've maintained our commitment to excellence in every project we undertake. Our founder's passion for technology continues to drive our innovation.
+                {`With over a decade of experience, we've maintained our commitment to excellence in every project we undertake. Our founder's passion for technology continues to drive our innovation.`}
               </p>
               
               <div className="pt-4">

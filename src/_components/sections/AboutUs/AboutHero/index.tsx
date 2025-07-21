@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import React from 'react';
 
 export const AboutHero: React.FC = () => {
@@ -23,7 +24,7 @@ export const AboutHero: React.FC = () => {
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                We're building the{' '}
+                {`We're building the`}
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   future
                 </span>{' '}
@@ -31,9 +32,9 @@ export const AboutHero: React.FC = () => {
               </h1>
               
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
-                Our diverse team of passionate innovators, designers, and engineers 
+                {`Our diverse team of passionate innovators, designers, and engineers 
                 work together to create meaningful solutions that make a difference 
-                in people's lives every single day.
+                in people's lives every single day.`}
               </p>
             </div>
 
@@ -72,7 +73,9 @@ export const AboutHero: React.FC = () => {
             <div className="relative">
               {/* Main team image container */}
               <div className="relative overflow-hidden rounded-3xl shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                <img 
+                <Image
+                  width={600}
+                  height={500} 
                   src="/api/placeholder/600/500" 
                   alt="Our amazing team working together"
                   className="w-full h-auto object-cover"
