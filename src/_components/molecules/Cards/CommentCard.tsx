@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ThumbsUp, MoreVertical } from "lucide-react";
+import Image from "next/image";
 
 export interface Comment {
   id: string;
@@ -60,7 +61,9 @@ export const CommentCard: React.FC<CommentCardProps> = ({
       {/* Avatar */}
       <div className="flex-shrink-0">
         {comment.authorProfileImageUrl && comment.authorProfileImageUrl !== "https://yt3.ggpht.com/abcd1234/..." ? (
-          <img
+          <Image
+            width={40}
+            height={40}
             src={comment.authorProfileImageUrl}
             alt={`${comment.author}'s avatar`}
             className={`${avatarSize} rounded-full object-cover`}

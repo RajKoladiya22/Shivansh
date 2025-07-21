@@ -468,7 +468,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
         } else if (typeof item.component === 'function') {
           // If it's a component function, render it with props
           const Component = item.component as React.ComponentType<any>;
-          return <Component {...(item.props || {})} />;
+          return<Component {...(item.props!)} />
         } else {
           // Fallback for other cases
           return item.component;
@@ -478,9 +478,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
     })();
 
     return (
-      <div
-        key={key}
-        className={`flex shrink-0 items-center justify-center ${currentSpacingClasses} ${itemClassName}`}
+      <div key={key} className={`flex shrink-0 items-center justify-center ${currentSpacingClasses} ${itemClassName}`}
       >
         {itemContent}
       </div>

@@ -90,11 +90,11 @@ export const ReusableSlider: React.FC<SliderProps> = ({
 
     const width = window.innerWidth;
     if (width < breakpoints.tablet) {
-      return itemsPerSlide.mobile || 1;
+      return itemsPerSlide.mobile ?? 1;
     } else if (width < breakpoints.desktop) {
-      return itemsPerSlide.tablet || 2;
+      return itemsPerSlide.tablet ?? 2;
     } else {
-      return itemsPerSlide.desktop || 3;
+      return itemsPerSlide.desktop ?? 3;
     }
   }, [itemsPerSlide, breakpoints]);
 
