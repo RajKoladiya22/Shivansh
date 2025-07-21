@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import type { ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 
 // Type definitions
@@ -14,12 +14,12 @@ export interface ResponsiveConfig {
   [key: string]: number | undefined;
 }
 
-export interface SliderProps {
+export interface SliderProps<ItemType = unknown> {
   // Core data
-  items: any[];
+  items: ItemType[];
 
   // Render function
-  renderItem: (item: any, index: number) => ReactNode;
+  renderItem: (item: ElementType | ReactNode | any, index: number) => ReactNode;
 
   // Layout configuration
   layout?: LayoutMode;
@@ -52,7 +52,7 @@ export interface SliderProps {
 
   // Event handlers
   onSlideChange?: (currentSlide: number) => void;
-  onItemClick?: (item: any, index: number) => void;
+  onItemClick?: (item: ItemType, index: number) => void;
 }
 
 export const ReusableSlider: React.FC<SliderProps> = ({

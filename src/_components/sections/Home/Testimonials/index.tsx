@@ -23,7 +23,7 @@ export const CustomerTestimonials = () => {
         <div className="rounded-3xl bg-pink-50 p-6 lg:p-12">
           <SectionHeader heading="WHAT OUR CUSTOMERS SAY" />
 
-          {/* Testimonial Cards Container */}
+          {/* Testimonial Cards Container */} 
 
           <ReusableSlider
             items={testimonials}

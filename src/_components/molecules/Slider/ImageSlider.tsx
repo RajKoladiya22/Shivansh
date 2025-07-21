@@ -301,7 +301,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from "react";
 
 export interface SliderImageItem {
   id: number;
@@ -311,10 +311,16 @@ export interface SliderImageItem {
   height?: number;
 }
 
-export interface SliderComponentItem {
+// export interface SliderComponentItem {
+//   id: number;
+//   component: React.ComponentType<any> | React.ReactNode;
+//   props?: Record<string, any>;
+// }
+
+export interface SliderComponentItem<Tag extends ElementType = ElementType> {
   id: number;
-  component: React.ComponentType<any> | React.ReactNode;
-  props?: Record<string, any>;
+  component: Tag | ReactNode;
+  props?: ComponentPropsWithoutRef<Tag>;
 }
 
 export type SliderItem = SliderImageItem | SliderComponentItem;
@@ -467,7 +473,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
           return item.component;
         } else if (typeof item.component === 'function') {
           // If it's a component function, render it with props
-          const Component = item.component as React.ComponentType<any>;
+          const Component = item.component as ElementType;
           return<Component {...(item.props!)} />
         } else {
           // Fallback for other cases
