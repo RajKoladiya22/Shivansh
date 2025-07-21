@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 
 // Type definitions
@@ -19,7 +19,7 @@ export interface SliderProps<ItemType = unknown> {
   items: ItemType[];
 
   // Render function
-  renderItem: (item: ElementType | ReactNode | any, index: number) => ReactNode;
+  renderItem: (item: ItemType, index: number) => ReactNode;
 
   // Layout configuration
   layout?: LayoutMode;
@@ -75,7 +75,8 @@ export const ReusableSlider: React.FC<SliderProps> = ({
   gap = "1rem",
   onSlideChange,
   onItemClick,
-}) => {
+}) => 
+  {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [currentItemsPerSlide, setCurrentItemsPerSlide] = useState(1);

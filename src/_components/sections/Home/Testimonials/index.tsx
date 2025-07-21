@@ -27,7 +27,7 @@ export const CustomerTestimonials = () => {
 
           <ReusableSlider
             items={testimonials}
-            renderItem={(testimonial) => (
+            renderItem={(testimonial : any) => (
               <TestimonialCard testimonial={testimonial} />
             )}
             layout="row"

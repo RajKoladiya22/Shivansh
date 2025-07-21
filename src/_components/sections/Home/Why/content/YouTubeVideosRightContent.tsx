@@ -72,7 +72,7 @@ export const YouTubeVideosRightContent = () => {
     <div className="relative h-full bg-(--bg-pink)">
       <ReusableSlider
         items={videos}
-        renderItem={(video: YouTubeVideo) => (
+        renderItem={(video: any) => (
           <VideoCard
             key={video.id}
             video={video}
