@@ -5,6 +5,16 @@ import { testimonials } from "public/data/testimonials";
 import { ReusableSlider } from "src/_components/molecules";
 import { TestimonialCard } from "src/_components/molecules";
 
+export interface Testimonial {
+  id: number;
+  quote: string;
+  name: string;
+  title: string;
+  avatar: string;    // URL or path to avatar image
+  document: string;  // URL or path to attached document/image
+  rating: number;    // e.g. 1–5 stars
+}
+
 
 
 export const CustomerTestimonials = () => {
@@ -27,8 +37,8 @@ export const CustomerTestimonials = () => {
 
           <ReusableSlider
             items={testimonials}
-            renderItem={(testimonial : any) => (
-              <TestimonialCard testimonial={testimonial} />
+            renderItem={(testimonial) => (
+              <TestimonialCard testimonial={testimonial as Testimonial} />
             )}
             layout="row"
             itemsPerSlide={{

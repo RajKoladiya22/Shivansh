@@ -44,7 +44,8 @@ const transformCommentsForSlider = (comments: Comment[]) => {
 };
 
 export const YouTubeVideosRightContent = () => {
-  const [videos] = useState<YouTubeVideo[]>(mockVideos);
+  const rawVideos = mockVideos as YouTubeVideo[];
+  const [videos] = useState<YouTubeVideo[]>(rawVideos);
   const [selectedVideo, setSelectedVideo] = useState<YouTubeVideo | null>(null);
 
   const playVideo = (video: YouTubeVideo) => {
@@ -72,10 +73,10 @@ export const YouTubeVideosRightContent = () => {
     <div className="relative h-full bg-(--bg-pink)">
       <ReusableSlider
         items={videos}
-        renderItem={(video: any) => (
+        renderItem={(video) => (
           <VideoCard
-            key={video.id}
-            video={video}
+            key={Math.random().toString(36).substring(2, 15)}
+            video={video as YouTubeVideo}
             onPlay={playVideo}
             className="custom-styles" // optional
           />
