@@ -268,9 +268,15 @@ export const StatisticsLeftContent = () => {
       <div className="relative z-10">
         {/* Header */}
         <div className="mb-8 lg:mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
+                <div className="mb-8 lg:mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
             Why Shivansh Infosys
           </h2>
+          <p className="mt-4 text-gray-600 max-w-xl">
+            With over a decade of experience, we've helped thousands of businesses 
+            streamline their accounting with Tally solutions.
+          </p>
+        </div>
         </div>
 
         {/* Stats Grid */}
