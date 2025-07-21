@@ -166,7 +166,7 @@ export const TheFounder = () => {
       let start = 0;
       const end = 13;
       const duration = 2000;
-      const incrementTime = 50;
+      // const incrementTime = 50;
       
       const timer = setInterval(() => {
         start += 1;

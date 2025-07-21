@@ -221,8 +221,8 @@ const IndustryCard = ({ industry, index }: { industry: IndustryItem; index: numb
             </button>
             
             <div className="flex space-x-1">
-              {[...Array(3)].map((_:number, i) => (
-                <div key={i} className="h-2 w-2 rounded-full bg-gray-300"></div>
+              {[...Array(3)].map((mun:number, i:number) => (
+                <div key={i} className={`h-2 w-2 rounded-full bg-gray-300 ${mun}`}></div>
               ))}
             </div>
           </div>
