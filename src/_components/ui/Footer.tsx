@@ -198,9 +198,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Youtube, Mail, MapPin, Phone } from "lucide-react";
+import {  Mail, MapPin, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { FaPinterest, FaWhatsapp } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -255,11 +255,11 @@ export const Footer: React.FC = () => {
             {/* Social Media Icons */}
             <div className="flex space-x-3">
               {[
-                { icon: <Facebook className="h-5 w-5" />, href: "#" },
+                { icon: <FaFacebook className="h-5 w-5" />, href: "#" },
                 // { icon: <Twitter className="h-5 w-5" />, href: "#" },
-                { icon: <Instagram className="h-5 w-5" />, href: "#" },
+                { icon: <FaInstagram className="h-5 w-5" />, href: "#" },
                 // { icon: <FaPinterest className="h-5 w-5" />, href: "#" },
-                { icon: <Youtube className="h-5 w-5" />, href: "#" },
+                { icon: <FaYoutube className="h-5 w-5" />, href: "#" },
                 { icon: <FaWhatsapp className="h-5 w-5" />, href: "#" }
               ].map((social, index) => (
                 <Link

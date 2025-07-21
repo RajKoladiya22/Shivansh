@@ -83,7 +83,7 @@ import {
   ClinteSlider,
   WiseSolutionsIndustry,
   Hero,
-  IndustryPartnerSlider,
+  // IndustryPartnerSlider,
   StatisticsSection,
   ContactForm,
   CustomerTestimonials,
