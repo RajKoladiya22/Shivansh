@@ -10,9 +10,9 @@ export const ClinteSlider: React.FC = () => {
   return (
     <section className="py-8 md:py-12 lg:py-1 ">
       {/* Section Header */}
-      <div className="py-8 text-center">
+      <div className="text-center">
         <SectionHeader
-          heading="Trusted by Industry Leaders"
+          heading="We Work with Industry Leaders"
           showDescription={false}
         />
       </div>

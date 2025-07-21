@@ -230,7 +230,7 @@ const AnimatedStat: React.FC<{
     <div className="group">
       <div className="flex items-start gap-4">
         {/* Icon */}
-        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-100 transition-all duration-300 group-hover:scale-110 group-hover:bg-red-200">
+        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-800/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-red-500">
           <i
             className={`${stat.icon} text-xl text-red-600`}
             aria-hidden="true"
@@ -260,8 +260,8 @@ export const StatisticsLeftContent = () => {
       ref={ref}
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-red-800" />
+      <div className="absolute inset-0 ">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-100 to-red-100" />
       </div>
 
       {/* Content */}
@@ -273,8 +273,8 @@ export const StatisticsLeftContent = () => {
             Why Shivansh Infosys
           </h2>
           <p className="mt-4 text-gray-600 max-w-xl">
-            With over a decade of experience, we've helped thousands of businesses 
-            streamline their accounting with Tally solutions.
+            {`With over a decade of experience, we've helped thousands of businesses 
+            streamline their accounting with Tally solutions.`}
           </p>
         </div>
         </div>

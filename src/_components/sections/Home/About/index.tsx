@@ -45,6 +45,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { SectionHeader } from "src/_components/ui";
+import { Partnerlogos } from "public/data/partnersLogo";
+import { ImageSlider } from "src/_components/molecules";
 
 // Section Header Component
 // const SectionHeader = ({ heading, headingText, headingClassName, headingTextClassName }) => (
@@ -77,8 +79,8 @@ const AboutUsLeftContent = () => (
         </p>
         
         <p className="bg-red-800/30 backdrop-blur-sm p-4 rounded-xl">
-          Today, we're proud to serve over 1500 end users and 450 companies across India. 
-          Our clients' trust and support have been instrumental in our journey, and we're grateful for the opportunity to contribute to their success.
+          {`Today, we're proud to serve over 1500 end users and 450 companies across India. 
+          Our clients' trust and support have been instrumental in our journey, and we're grateful for the opportunity to contribute to their success.`}
         </p>
       </div>
 
@@ -136,7 +138,7 @@ const AboutUsRightContent = () => {
   };
 
   return (
-    <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] bg-gradient-to-br from-red-100 to-red-100">
+    <div className="relative min-h-[390px] sm:min-h-[400px] lg:min-h-[500px] bg-gradient-to-br from-red-100 to-red-100">
       <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
         <div className="relative w-full max-w-md">
           <div 
@@ -170,6 +172,14 @@ const AboutUsRightContent = () => {
           {/* Floating Tally Logo */}
           <div className="absolute -bottom-8 right-4 sm:right-8 md:right-12 lg:-right-10 lg:bottom-16 bg-white p-3 rounded-full shadow-xl z-10">
             <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+            <Image
+              src="/images/industry_logo/tally.avif"
+              alt="Tally Logo"
+              width={64}
+              height={64}
+              className="absolute inset-0 object-contain"
+              style={{ margin: 'auto', top: '60%', left: '50%', transform: 'translate(-50%, -40%)' }}
+            />
           </div>
         </div>
       </div>
@@ -230,15 +240,43 @@ export const AboutUsSection = () => {
           
           {/* Trusted Partners */}
           <div className="mt-16 text-center">
-            <h3 className="text-xl font-bold text-gray-800 mb-6">Trusted by Industry Leaders</h3>
-            <div className="flex flex-wrap justify-center gap-6">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-gray-200 border-2 border-dashed rounded-xl w-20 h-20 opacity-70 hover:opacity-100 transition-opacity" />
+            <h3 className="text-xl font-bold text-(--primery-color) mb-6">Our Other Services</h3>
+            
+            {/* <div className="flex flex-wrap justify-center gap-6">
+              {Partnerlogos.map((p, i) => (
+                <>
+                
+                <div key={i} className="border-2 border-dashed rounded-xl w-20 h-20  hover:opacity-100 transition-opacity" >
+                  <Image
+                    src={p.src}
+                    alt={p.alt}
+                    width={80}
+                    height={80}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                </>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
+        <ImageSlider
+                    type="image"
+                    items={Partnerlogos}
+                    orientation="horizontal"
+                    direction="left" // left or right
+                    speed="normal"
+                    pauseOnHover={true}
+                    showFadeEffect={true}
+                    fadeWidth="lg"
+                    backgroundColor="bg-red-50"
+                    grayscale={false}
+                    grayscaleOnHover={true}
+                    spacing="lg"
+                    priority={4}
+                    respectReducedMotion={true}
+                  />
     </section>
   );
 };

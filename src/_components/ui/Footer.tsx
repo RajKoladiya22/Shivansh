@@ -266,7 +266,7 @@ export const Footer: React.FC = () => {
                   key={index}
                   href={social.href}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-all duration-300 hover:bg-red-600 hover:scale-110"
-                  aria-label={`Follow us on ${social.icon.type.displayName || 'social media'}`}
+                  aria-label={`Follow us on ${social.icon.type.displayName ?? 'social media'}`}
                 >
                   {social.icon}
                 </Link>

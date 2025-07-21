@@ -19,7 +19,7 @@ export interface Testimonial {
 
 export const CustomerTestimonials = () => {
   return (
-    <div className="py-20">
+    <div className="py-20 bg-gradient-to-b from-red-50 to-red">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="py-4">
@@ -30,8 +30,8 @@ export const CustomerTestimonials = () => {
         </div>
 
         {/* Testimonial Section */}
-        <div className="rounded-3xl bg-pink-50 p-6 lg:p-12">
-          <SectionHeader heading="WHAT OUR CUSTOMERS SAY" />
+        <div className="rounded-3xl bg-gradient-to-t from-red-100 to-red-40 p-6 lg:p-12">
+          {/* <SectionHeader heading="WHAT OUR CUSTOMERS SAY" /> */}
 
           {/* Testimonial Cards Container */} 
 
