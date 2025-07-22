@@ -95,7 +95,7 @@ export const YouTubeVideosRightContent = () => {
         showDots={true}
         // arrowPosition="inside"
         gap="1.5rem"
-        className="px-13 py-8"
+        className="px-4 sm:px-13 py-8"
       />
 
       {/* Video Player Modal */}

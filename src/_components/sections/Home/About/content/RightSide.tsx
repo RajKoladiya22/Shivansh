@@ -33,6 +33,7 @@ export const AboutUsRightContent = () => {
               }}
               aria-label="Click to view certificate in full size"
             >
+              
               <div className="relative">
                 <Image
                   src="/images/certificate/tally.png"

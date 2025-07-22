@@ -139,7 +139,7 @@ export const WiseSolutionsIndustry = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-16 sm:py-20 md:py-24">
+    <section className="py-16 sm:py-20 md:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -227,7 +227,7 @@ const IndustryCard: React.FC<IndustryCardProps> = ({
             <div className="text-4xl font-bold text-white/20">{`0${index + 1}`}</div>
           </div>
         </div>
-
+ 
         {/* Content */}
         <div className="flex flex-1 flex-col p-6">
           <h3 className="mb-3 text-xl font-bold text-gray-900">
