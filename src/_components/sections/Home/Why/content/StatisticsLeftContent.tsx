@@ -87,47 +87,15 @@
 
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import type { IconType } from "react-icons";
+import { stats } from "public/data/countState";
 
-interface StatItem {
+export interface StatItem {
   number: string;
   description: string;
-  icon: string;
+  icon: IconType;
 }
 
-const stats: StatItem[] = [
-  {
-    number: "13+",
-    description: "Years of Experience",
-    icon: "fas fa-chart-line",
-  },
-  {
-    number: "1000+",
-    description: "Happy Tally Customers (All Over India)",
-    icon: "fas fa-users",
-  },
-  {
-    number: "3000+",
-    description: "Happy Customers Base All Over India",
-    icon: "fas fa-handshake",
-  },
-  {
-    number: "65,000+",
-    description: "Youtube Subscribers",
-    icon: "fas fa-star",
-  },
-  {
-    number: "12",
-    description: "GST Expert & Tally Certified Team",
-    icon: "fas fa-certificate",
-  },
-  {
-    number: "400+",
-    description: "Tally Customization Tool",
-    icon: "fas fa-tools",
-  },
-];
-
-// Hook for intersection observer
 const useIntersectionObserver = (threshold = 0.1) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -230,11 +198,8 @@ const AnimatedStat: React.FC<{
     <div className="group">
       <div className="flex items-start gap-4">
         {/* Icon */}
-        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-800/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-red-500">
-          <i
-            className={`${stat.icon} text-xl text-red-600`}
-            aria-hidden="true"
-          />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-red-800/30 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-red-500">
+          <stat.icon className="h-6 w-6 text-red-500 transition-colors duration-200 group-hover:text-white" />
         </div>
 
         {/* Content */}
@@ -260,7 +225,7 @@ export const StatisticsLeftContent = () => {
       ref={ref}
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 ">
+      <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-red-100 to-red-100" />
       </div>
 
@@ -268,15 +233,15 @@ export const StatisticsLeftContent = () => {
       <div className="relative z-10">
         {/* Header */}
         <div className="mb-8 lg:mb-12">
-                <div className="mb-8 lg:mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            Why Shivansh Infosys
-          </h2>
-          <p className="mt-4 text-gray-600 max-w-xl">
-            {`With over a decade of experience, we've helped thousands of businesses 
+          <div className="mb-8 lg:mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+              Why Shivansh Infosys
+            </h2>
+            <p className="mt-4 max-w-xl text-gray-600">
+              {`With over a decade of experience, we've helped thousands of businesses 
             streamline their accounting with Tally solutions.`}
-          </p>
-        </div>
+            </p>
+          </div>
         </div>
 
         {/* Stats Grid */}

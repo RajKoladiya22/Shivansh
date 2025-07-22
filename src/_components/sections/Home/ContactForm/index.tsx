@@ -860,7 +860,7 @@ export const ContactForm = () => {
           </div>
 
           {/* Additional Contact Info */}
-          <div className="w-full lg:w-[30%] mt-12 lg:mt-0 grid gap-10">
+          <div className="hidden lg:grid w-full lg:w-[30%] mt-12 lg:mt-0 grid gap-10">
             <div className="text-center">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
                 <svg

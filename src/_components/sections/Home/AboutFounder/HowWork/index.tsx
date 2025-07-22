@@ -118,7 +118,7 @@ export const HowItWork = () => {
             </div>
             
             <div className="relative z-10">
-              <div className="mb-6 flex items-start gap-5">
+              <div className="mb-6 flex flex-wrap sm:flex-nowrap items-start gap-5">
                 <div className="flex-shrink-0">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
                     <span className="text-3xl font-bold">01</span>
@@ -169,7 +169,7 @@ export const HowItWork = () => {
             </div>
             
             <div className="relative z-10">
-              <div className="mb-6 flex items-start gap-5">
+              <div className="mb-6 flex flex-wrap sm:flex-nowrap items-start gap-5">
                 <div className="flex-shrink-0">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
                     <span className="text-3xl font-bold">02</span>
