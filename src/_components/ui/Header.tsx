@@ -43,7 +43,7 @@ export function Header() {
       }`}
     >
       <div className="mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24">
-        <div className="flex h-16 items-center justify-between sm:h-18">
+        <div className="flex h-16 items-center justify-between sm:h-18 lg:h-19">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="block">
@@ -53,7 +53,7 @@ export function Header() {
                 src="/images/logo/logo.png"
                 alt="Shivansh Infosys"
                 className="h-8 w-auto transition-transform duration-300 hover:scale-105"
-                priority
+                // priority
               />
             </Link>
           </div>
@@ -88,13 +88,13 @@ export function Header() {
                   Call Us{" "}
                   <ArrowRight
                     size={18}
-                    strokeWidth={2.5}
+                    strokeWidth={1.5}
                     className="ml-1 rotate-315 transform text-(--primery-color) transition-all duration-200 ease-in-out group-hover:rotate-0 group-hover:text-red-600"
                   />
                 </span>
                 <a
                   href="tel:+918141703007"
-                  className="text-sm font-bold text-gray-800 transition-colors duration-200 hover:text-red-600"
+                  className="text-lg font-bold text-gray-800 transition-colors duration-200 hover:text-red-600"
                 >
                   +91 81417 03007
                 </a>

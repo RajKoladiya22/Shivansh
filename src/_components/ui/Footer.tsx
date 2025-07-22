@@ -431,8 +431,9 @@ export const Footer: React.FC = () => {
             <p className="text-center text-sm text-gray-500 mb-4 md:mb-0">
               © {currentYear} Shivansh Infosys. All rights reserved.
             </p>
-            <p className="text-center text-sm text-gray-500">
-              Tally 3 Star Certified Partner
+            <p className="text-center text-sm text-gray-500 mb-4 md:mb-0">
+              {/* Tally 3 Star Certified Partner */}
+              Crafted with passion by our team of creative professionals.
             </p>
             <div className="flex space-x-6">
               <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">

@@ -314,7 +314,7 @@ export const HeroContent = () => {
 
           {/* Stats Column */}
           <div className=" pt-6 sm:pt-8 transform transition-all duration-100 hover:scale-[1.01]">
-            <h3 className="text-xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200"></h3>
+            <div className="text-xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200"></div>
             
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
               {[
