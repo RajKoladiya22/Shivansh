@@ -1,0 +1,145 @@
+import React from "react";
+import { Phone, Users, Award, Brain, Zap, Shield } from "lucide-react";
+import { SectionHeader } from "src/_components/ui";
+
+interface StatCardProps {
+  icon: React.ReactNode;
+  number: string;
+  label: string;
+  color: string;
+}
+
+const StatCard: React.FC<StatCardProps> = ({ icon, number, label, color }) => (
+  <div className="group rounded-2xl border border-red-100 bg-white p-8 text-center shadow-lg transition-shadow duration-300 hover:shadow-xl">
+    <div
+      className={`inline-flex h-16 w-16 items-center justify-center rounded-full ${color} mb-6 transition-transform duration-300 group-hover:scale-110`}
+    >
+      {icon}
+    </div>
+    <h3 className="mb-2 text-4xl font-bold text-gray-900 md:text-5xl">
+      {number}
+    </h3>
+    <p className="text-lg font-medium text-gray-600">{label}</p>
+  </div>
+);
+
+const CertificationBadge: React.FC<{ title: string; subtitle: string }> = ({
+  title,
+  subtitle,
+}) => (
+  <div className="flex flex-col items-center rounded-xl bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-lg">
+    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-300">
+      <Award className="h-8 w-8 text-white" />
+    </div>
+    <h4 className="text-center font-bold text-gray-900">{title}</h4>
+    <p className="text-center text-sm text-gray-600">{subtitle}</p>
+  </div>
+);
+
+export const OurSection: React.FC = () => {
+  //   const handleCallNow = () => {
+  //     window.location.href = 'tel:+1234567890'; // Replace with your actual phone number
+  //   };
+
+  return (
+    <section
+      className="bg-gradient-to-b from-white to-red-50 py-16 md:py-24"
+      aria-labelledby="about-heading"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-2 gap-6">
+            <StatCard
+              icon={<Users />}
+              number="600+"
+              label="Companies Trust Us"
+              color="bg-red-500"
+            />
+            <StatCard
+              icon={<Shield />}
+              number="280+"
+              label="Success Stories"
+              color="bg-red-600"
+            />
+            <StatCard
+              icon={<Brain />}
+              number="15+"
+              label="Years of Experience"
+              color="bg-red-700"
+            />
+            <StatCard
+              icon={<Zap />}
+              number="99+"
+              label="Client Satisfaction"
+              color="bg-red-800"
+            />
+          </div>
+
+          <div className="relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 to-red-800 p-8 text-white md:p-12">
+            <div className="mt-auto">
+              <span className="text-6xl font-bold opacity-90 md:text-7xl">
+                2007
+              </span>
+              <h3 className="mt-4 mb-4 text-2xl font-bold md:text-3xl">
+                We Established on
+              </h3>
+              <p className="mb-6 text-lg opacity-90 md:text-xl">
+                Our company has a great history of delivering innovative…
+              </p>
+            </div>
+
+            <div className="relative z-10 mt-auto">
+              <a
+                href="tel:+1234567890"
+                className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-semibold text-red-600 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+              >
+                <Phone className="mr-2 h-5 w-5" /> Call Now
+              </a>
+            </div>
+
+            <div className="absolute top-4 right-4 h-24 w-24 rounded-full bg-white opacity-10"></div>
+            <div className="absolute right-12 bottom-4 h-16 w-16 rounded-full bg-white opacity-10"></div>
+          </div>
+        </div>
+
+        {/* Certifications */}
+        <div className="rounded-2xl bg-white p-8 shadow-lg mt-10">
+          <div className="mb-8 text-center">
+            <h3 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
+              Our Certifications
+            </h3>
+            <p className="mx-auto max-w-4xl text-gray-600">
+              As an <span className="font-semibold">ISO-certified</span>{" "}
+              company, we proudly hold{" "}
+              <span className="font-semibold">ISO 9001:2015</span> for
+              unparalleled quality management and{" "}
+              <span className="font-semibold">ISO 27001:2022</span> for top-tier
+              information security. Your success and data security are at the
+              core of everything we do.
+            </p>
+          </div>
+
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 md:grid-cols-2">
+            <CertificationBadge
+              title="ISO 9001:2015"
+              subtitle="Quality Management"
+            />
+            <CertificationBadge
+              title="ISO 27001:2022"
+              subtitle="Information Security"
+            />
+          </div>
+        </div>
+
+        {/* Trust Statement */}
+        <div className="mt-12 text-center">
+          <p className="text-lg font-medium text-gray-700">
+            Trusted by start-ups, enterprises, and Fortune 500 companies
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// export default OurSection;

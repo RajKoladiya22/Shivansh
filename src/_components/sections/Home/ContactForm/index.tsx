@@ -535,7 +535,7 @@ export const ContactForm = () => {
 
         <div className="flex flex-col lg:flex-row max-w-6xl gap-6 items-center justify-center">
           {/* Contact Form */}
-          <div className="w-full lg:w-[70%] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-2xl">
+          <div className="w-full lg:w-[70%] overflow-hidden rounded-2xl border border-red-100 bg-white shadow-2xl">
             {/* Form Header */}
             <div className="bg-gradient-to-r from-red-600 to-red-700 px-6 py-8 sm:px-8">
               <h2 className="text-2xl font-semibold text-white">

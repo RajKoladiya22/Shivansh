@@ -482,9 +482,9 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
       }
       return null;
     })();
-
+    const Nub:number = Math.random()
     return (
-      <div key={key} className={`flex shrink-0 items-center justify-center ${currentSpacingClasses} ${itemClassName}`}
+      <div key={`${key+Nub} `} className={`flex shrink-0 items-center justify-center ${currentSpacingClasses} ${itemClassName}`}
       >
         {itemContent}
       </div>

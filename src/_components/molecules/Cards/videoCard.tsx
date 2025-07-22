@@ -26,7 +26,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
     <div
       key={video.id}
       onClick={() => onPlay(video)}
-      className={`group cursor-pointer overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none ${className}`}
+      className={`border-2 border-red-100 group cursor-pointer overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none ${className}`}
       role="button"
       tabIndex={0}
       aria-label={`Play video: ${video.title}`}

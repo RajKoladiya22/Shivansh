@@ -76,6 +76,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { LightBulbIcon, FlagIcon, ArrowPathIcon } from "@heroicons/react/24/outline";
+import { Eye, Target } from "lucide-react";
 
 export const HowItWork = () => {
   return (
@@ -126,7 +127,8 @@ export const HowItWork = () => {
                 </div>
                 <div>
                   <h3 className="mb-4 text-2xl font-bold flex items-center gap-2">
-                    <LightBulbIcon className="h-6 w-6 text-yellow-300" />
+                    {/* <LightBulbIcon className="h-6 w-6 text-yellow-300" /> */}
+                    <Eye className="h-8 w-8 text-yellow-300" />
                     Our Vision
                   </h3>
                   
@@ -150,6 +152,7 @@ export const HowItWork = () => {
               <div className="mt-8 pt-6 border-t border-white/20">
                 <div className="flex items-center">
                   <ArrowPathIcon className="h-5 w-5 mr-2 text-yellow-300" />
+                  
                   <span className="text-sm font-medium">Continuous innovation since 2007</span>
                 </div>
               </div>
@@ -177,7 +180,8 @@ export const HowItWork = () => {
                 </div>
                 <div>
                   <h3 className="mb-4 text-2xl font-bold flex items-center gap-2">
-                    <FlagIcon className="h-6 w-6 text-yellow-300" />
+                    {/* <FlagIcon className="h-6 w-6 text-yellow-300" /> */}
+                    <Target className="h-8 w-8 text-yellow-300" />
                     Our Mission
                   </h3>
                   

@@ -27,7 +27,7 @@ export const AboutUsHero = () => {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div

@@ -202,7 +202,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-        className="flex flex-col rounded-2xl bg-gradient-to-br from-white to-gray-50 p-6 shadow-xl"
+        className="flex flex-col rounded-2xl bg-gradient-to-br from-white to-gray-50 p-6 shadow-xl border border-red-100 transition-all duration-300 hover:shadow-2xl"
       >
         {/* Rating */}
         <div className="mb-4 flex gap-1">{renderStars(rating)}</div>

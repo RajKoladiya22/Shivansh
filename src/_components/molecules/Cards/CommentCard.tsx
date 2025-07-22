@@ -57,7 +57,7 @@ export const CommentCard: React.FC<CommentCardProps> = ({
   const authorSize = compact ? "text-sm" : "text-base";
 
   return (
-    <div className={`flex space-x-3 ${compact ? 'p-3' : 'p-4'} ${className}`}>
+    <div className={`border border-red-100 flex space-x-3 ${compact ? 'p-3' : 'p-4'} ${className}`}>
       {/* Avatar */}
       <div className="flex-shrink-0">
         {comment.authorProfileImageUrl && comment.authorProfileImageUrl !== "https://yt3.ggpht.com/abcd1234/..." ? (
