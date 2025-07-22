@@ -17,6 +17,7 @@ import {
   Calendar,
   Phone,
 } from "lucide-react";
+import Image from "next/image";
 
 interface Testimonial {
   id: number;
@@ -451,7 +452,9 @@ export const TeamSection = () => {
               <div className="transform overflow-hidden rounded-2xl border border-red-300 bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <Image
+                    width={200}
+                    height={200}
                     src={member.image}
                     alt={member.name}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -555,7 +558,9 @@ export const TeamSection = () => {
                       <div className="md:flex">
                         {/* Image */}
                         <div className="md:w-1/3">
-                          <img
+                          <Image
+                            width={200}
+                            height={200}
                             src={member.image}
                             alt={member.name}
                             className="h-64 w-full rounded-t-2xl object-cover md:h-full md:rounded-t-none md:rounded-l-2xl"
@@ -734,7 +739,9 @@ export const TeamSection = () => {
                   >
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
-                        <img
+                        <Image
+                            width={160}
+                            height={160}
                           src={selectedMember.image}
                           alt={selectedMember.name}
                           className="mx-auto mb-6 h-32 w-32 rounded-full border-4 border-white object-cover shadow-2xl md:h-40 md:w-40"
@@ -1015,11 +1022,11 @@ export const TeamSection = () => {
                               </div>
 
                               <blockquote className="mb-8 text-xl font-medium text-black italic md:text-2xl">
-                                "
+                                {`"
                                 {selectedMember?.testimonials?.[
                                   activeTestimonial
                                 ]?.testimonial ?? ""}
-                                "
+                                "`}
                               </blockquote>
 
                               <div className="flex flex-col items-center">

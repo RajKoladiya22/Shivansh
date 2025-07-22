@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 export const AboutUsHero = () => {
@@ -24,7 +25,7 @@ export const AboutUsHero = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [currentFactIndex]);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white">
@@ -274,8 +275,10 @@ export const AboutUsHero = () => {
                   className="relative w-full"
                   style={{ aspectRatio: "4 / 3" }}
                 >
-                  <img
-                    src="images/team/hero/TeamGroup.png"
+                  <Image
+                    width={200}
+                    height={200}
+                    src="/images/team/hero/TeamGroup.png"
                     alt="Shivansh Infosys Team - Creative professionals working together"
                     className="absolute inset-0 h-full w-full rounded-2xl object-cover"
                     style={{ filter: "brightness(1.05) contrast(1.1)" }}
