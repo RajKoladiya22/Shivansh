@@ -115,7 +115,7 @@ export const Hero = () => {
       <div className="mx-auto px-4 pt-20 sm:px-6 lg:px-8">
         <div className="grid min-h-[80vh]  grid-cols-1 items-center gap-8 lg:grid-cols-2">
           {/* Left Content */}
-          <div className="order-1 lg:order-1">
+          <div className="order-1 lg:order-1 pt-6 lg:pt-0">
             <HeroContent />
           </div>
 
