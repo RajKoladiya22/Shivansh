@@ -256,7 +256,7 @@ export const AboutUsHero = () => {
           </div>
 
           {/* Right Side - Team Photo */}
-          <div className={`relative transform transition-all delay-300 duration-1000 ${
+          <div className={`relative transform transition-all delay-300 duration-1000 py-9 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
