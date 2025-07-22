@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Target,
@@ -217,7 +218,7 @@ export const CompanyOverview = () => {
                 <button className="transform rounded-xl bg-gradient-to-r from-red-600 to-red-900 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:from-red-700 hover:to-red-700 hover:shadow-xl">
                   Get Started Today
                 </button>
-                <button className="rounded-xl border-2 border-red-300 px-8 py-4 font-semibold text-gray-700 transition-all duration-300 hover:border-red-600 hover:text-red-600">
+                <button className="rounded-xl border-2 border-red-300 px-8 py-4 font-semibold text-gray-700 transition-all duration-300 hover:border-red-600 hover:bg-(--primery-color) hover:text-white hover:-translate-y-1">
                   Schedule a Consultation
                 </button>
               </div>

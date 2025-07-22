@@ -1,6 +1,6 @@
 import React from "react";
 import { Phone, Users, Award, Brain, Zap, Shield } from "lucide-react";
-import { SectionHeader } from "src/_components/ui";
+// import { SectionHeader } from "src/_components/ui";
 
 interface StatCardProps {
   icon: React.ReactNode;
@@ -28,7 +28,7 @@ const CertificationBadge: React.FC<{ title: string; subtitle: string }> = ({
   subtitle,
 }) => (
   <div className="flex flex-col items-center rounded-xl bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-lg">
-    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-300">
+    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-500">
       <Award className="h-8 w-8 text-white" />
     </div>
     <h4 className="text-center font-bold text-gray-900">{title}</h4>
@@ -59,23 +59,23 @@ export const OurSection: React.FC = () => {
               icon={<Shield />}
               number="280+"
               label="Success Stories"
-              color="bg-red-600"
+              color="bg-red-500"
             />
             <StatCard
               icon={<Brain />}
               number="15+"
               label="Years of Experience"
-              color="bg-red-700"
+              color="bg-red-500"
             />
             <StatCard
               icon={<Zap />}
               number="99+"
               label="Client Satisfaction"
-              color="bg-red-800"
+              color="bg-red-500"
             />
           </div>
 
-          <div className="relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-r from-red-600 to-red-800 p-8 text-white md:p-12">
+          <div className="relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-r from-gray-900 to-gray-800 p-8 text-white md:p-12">
             <div className="mt-auto">
               <span className="text-6xl font-bold opacity-90 md:text-7xl">
                 2007
@@ -91,9 +91,9 @@ export const OurSection: React.FC = () => {
             <div className="relative z-10 mt-auto">
               <a
                 href="tel:+1234567890"
-                className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-semibold text-red-600 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-semibold text-gray-900 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
               >
-                <Phone className="mr-2 h-5 w-5" /> Call Now
+                <Phone className="mr-2 h-5 w-5 " /> Call Now
               </a>
             </div>
 
