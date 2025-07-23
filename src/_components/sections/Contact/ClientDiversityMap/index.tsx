@@ -362,15 +362,15 @@ export function ClientDiversityMap() {
                     {/* <Geographies geography={GEO_URL}> */}
                     <Geographies geography={GEO_URL}>
                       {({ geographies }) =>
-                        geographies.map((geo) => {
-                          const state = clientData.find(
+                        geographies.map((geo : string | number | any  ) => {
+                          const state: ClientLocation | undefined = clientData.find(
                             (s: ClientLocation) => s.code === geo.id,
                           );
-                          const isSelected = selectedState?.code === geo.id;
+                          const isSelected: boolean = selectedState?.code === geo.id;
 
                           return (
                             <Geography
-                              key={geo.rsmKey}
+                              // key={geo.rsmKey}
                               geography={geo}
                               fill={
                                 state ? getStateColor(state.clients) : "#F3F4F6"
