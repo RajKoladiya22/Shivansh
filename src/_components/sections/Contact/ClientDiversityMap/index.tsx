@@ -7,7 +7,7 @@ import {
   Marker,
   ZoomableGroup,
 } from "react-simple-maps";
-
+import type { Feature, Geometry, GeoJsonProperties } from 'geojson';
 
 import {
   MapPin,
@@ -361,7 +361,7 @@ export function ClientDiversityMap() {
                   >
                     {/* <Geographies geography={GEO_URL}> */}
                     <Geographies geography={GEO_URL}>
-                      {({ geographies }) =>
+                      {({ geographies }: { geographies: Feature<Geometry, GeoJsonProperties>[] }) =>
                         geographies.map((geo : string | number | any  ) => {
                           const state: ClientLocation | undefined = clientData.find(
                             (s: ClientLocation) => s.code === geo.id,
@@ -370,7 +370,7 @@ export function ClientDiversityMap() {
 
                           return (
                             <Geography
-                              // key={geo.rsmKey}
+                              key={geo.rsmKey}
                               geography={geo}
                               fill={
                                 state ? getStateColor(state.clients) : "#F3F4F6"
