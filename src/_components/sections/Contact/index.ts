@@ -1,3 +1,3 @@
 export { ContactHeroSection } from "./HeroContact";
 export {Gettouch} from "./GetTouch"
-export {ClientDiversityMap} from "./ClientDiversityMap";
+// export {ClientDiversityMap} from "./ClientDiversityMap";

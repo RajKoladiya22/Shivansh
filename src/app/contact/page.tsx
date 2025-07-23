@@ -1,5 +1,5 @@
 import {
-  ClientDiversityMap,
+  // ClientDiversityMap,
   ContactHeroSection,
   Gettouch,
 } from "src/_components/sections/Contact";
@@ -9,7 +9,7 @@ export default function ContactPage() {
     <>
       <ContactHeroSection />
       <Gettouch />
-      <ClientDiversityMap />
+      {/* <ClientDiversityMap /> */}
     </>
   );
 }
