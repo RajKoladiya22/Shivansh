@@ -25,7 +25,7 @@ export const AboutUsHero = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [currentFactIndex]);
+  }, []);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white">

@@ -7,6 +7,8 @@ import {
   Marker,
   ZoomableGroup,
 } from "react-simple-maps";
+
+
 import {
   MapPin,
   Users,
@@ -357,11 +359,12 @@ export function ClientDiversityMap() {
                       setPosition({ coordinates, zoom })
                     }
                   >
+                    {/* <Geographies geography={GEO_URL}> */}
                     <Geographies geography={GEO_URL}>
                       {({ geographies }) =>
                         geographies.map((geo) => {
                           const state = clientData.find(
-                            (s) => s.code === geo.id,
+                            (s: ClientLocation) => s.code === geo.id,
                           );
                           const isSelected = selectedState?.code === geo.id;
 
@@ -391,8 +394,7 @@ export function ClientDiversityMap() {
                         })
                       }
                     </Geographies>
-
-                    {clientData.map((state) => (
+                    {clientData.map((state: ClientLocation) => (
                       <Marker
                         key={state.code}
                         coordinates={getMarkerPosition(state.code)}
@@ -508,7 +510,7 @@ export function ClientDiversityMap() {
             </div>
 
             {/* Right Panel */}
-            <div className="space-y-4 bg-gray-100 p-3 sm:space-y-6 sm:p-4 lg:p-6 hidden lg:block">
+            <div className="hidden space-y-4 bg-gray-100 p-3 sm:space-y-6 sm:p-4 lg:block lg:p-6">
               {/* State Details Section */}
               <div>
                 {selectedState ? (
@@ -587,8 +589,6 @@ export function ClientDiversityMap() {
             </div>
           </div>
         </div>
-
-
 
         {/* Mobile Details Panel (when no bottom sheet) */}
         <div className="mt-6 lg:hidden">
@@ -767,7 +767,7 @@ function getMarkerPosition(stateCode: string): [number, number] {
     "IN-AS": [91.7362, 26.1445], // Assam (Guwahati)
     "IN-KL": [76.2673, 10.8505], // Kerala (Thiruvananthapuram)
   };
-  return positions[stateCode] || [78.9629, 20.5937];
+  return positions[stateCode] ?? [78.9629, 20.5937];
 }
 
 function MobileStateDetails({
