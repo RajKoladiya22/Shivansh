@@ -357,19 +357,21 @@ export const TeamSection = () => {
     <section className="bg-white py-16 pt-20 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Badge */}
-        <div className="relative my-5 ml-[25%] inline-block sm:ml-[30%] md:ml-[35%] lg:ml-[40%]">
-          <p className="z-10 text-center text-base font-[400] tracking-[3px] text-(--primery-color) sm:text-lg lg:text-xl">
-            Meet Our Amazing Team
-          </p>
-          <div
-            className={`absolute top-0 h-[50%] rounded-lg bg-(--pink) sm:h-full`}
-            style={{
-              width: "calc(40% + 20px)",
-              right: "0",
-              transform: "translate(10%, -40%)",
-              zIndex: 1,
-            }}
-          />
+        <div className="my-5 flex justify-center">
+          <div className="relative inline-block">
+            <p className="text-center text-base font-medium tracking-wide text-[var(--primery-color)] sm:text-lg lg:text-xl">
+              Meet Our Amazing Team
+            </p>
+            <div
+              className="absolute top-0 h-[50%] rounded-lg bg-[var(--pink)] sm:h-full"
+              style={{
+                width: "calc(40% + 20px)",
+                right: "0",
+                transform: "translate(10%, -40%)",
+                zIndex: 1,
+              }}
+            />
+          </div>
         </div>
 
         {/* Main Heading */}
@@ -552,8 +554,11 @@ export const TeamSection = () => {
                 style={{ transform: `translateX(-${activeSlide * 100}%)` }}
               >
                 {teamMembers.map((member) => (
-                  <div key={member.id} className="w-full flex-shrink-0 cursor-pointer"
-              onClick={() => openModal(member)} >
+                  <div
+                    key={member.id}
+                    className="w-full flex-shrink-0 cursor-pointer"
+                    onClick={() => openModal(member)}
+                  >
                     <div className="mx-2 rounded-2xl bg-white shadow-lg">
                       <div className="md:flex">
                         {/* Image */}
@@ -740,8 +745,8 @@ export const TeamSection = () => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
                         <Image
-                            width={160}
-                            height={160}
+                          width={160}
+                          height={160}
                           src={selectedMember.image}
                           alt={selectedMember.name}
                           className="mx-auto mb-6 h-32 w-32 rounded-full border-4 border-white object-cover shadow-2xl md:h-40 md:w-40"
@@ -1022,10 +1027,12 @@ export const TeamSection = () => {
                               </div>
 
                               <blockquote className="mb-8 text-xl font-medium text-black italic md:text-2xl">
-                                {`"
-                                {selectedMember?.testimonials?.[
-                                  activeTestimonial
-                                ]?.testimonial ?? ""}
+                                {` "
+                                ${
+                                  selectedMember?.testimonials?.[
+                                    activeTestimonial
+                                  ]?.testimonial ?? ""
+                                }
                                 "`}
                               </blockquote>
 

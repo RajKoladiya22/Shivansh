@@ -229,7 +229,7 @@ export const HeroContent = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="">
           {/* Content Column */}
-          <div className="space-y-6 md:space-y-8">
+          <div className="space-y-6 md:space-y-8 ">
             {/* Top Badge */}
             <div className="relative inline-block ">
               <p className="z-10 text-base font-[400] tracking-[3px] text-(--primery-color) sm:text-lg lg:text-xl">
