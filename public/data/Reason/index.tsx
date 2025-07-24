@@ -35,7 +35,7 @@ export const reasons = [
   },
 ];
 
-export const stats = [
+export const OurArchivements = [
   {
     icon: <Users className="h-6 w-6 sm:h-7 sm:w-7" />,
     number: "500+",

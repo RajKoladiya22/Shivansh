@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { CheckCircle, Send } from "lucide-react";
 import type { InputChangeEvent } from "src/_components/sections/types/contact.type";
 import { contactInfo } from "public/data/Contact";
-import { stats } from "public/data/countState";
+import { OurArchivements } from "public/data/Reason";
 
 export const ContactHeroSection = () => {
   const [formData, setFormData] = useState({
@@ -270,7 +270,7 @@ export const ContactHeroSection = () => {
                     Our Achievements
                   </h3>
                   <div className="grid gap-4 sm:gap-6 lg:grid-cols-1">
-                    {stats.map((stat, index) => (
+                    {OurArchivements.map((stat, index) => (
                       <div
                         key={index}
                         className="group border-b border-gray-300 py-4 text-center last:border-b-0 sm:py-6"

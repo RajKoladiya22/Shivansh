@@ -1,5 +1,4 @@
 # Shivansh
-
 /src
 ├── app
 │   ├── layout.tsx              # Root layout
