@@ -115,7 +115,7 @@ export const PrivacyPolicy = () => {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [showScrollTop]);
+  }, [sections]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

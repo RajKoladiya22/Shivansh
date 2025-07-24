@@ -123,7 +123,7 @@ export const TermsOfService = () => {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [showScrollTop]);
+  }, [sections]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -492,7 +492,7 @@ export const TermsOfService = () => {
                 <div className="prose prose-gray max-w-none">
                   <div className="rounded-lg border border-[#C50202] bg-[#FFCCD6] p-6">
                     <p className="mb-3 text-sm leading-relaxed text-gray-700">
-                      <strong>IMPORTANT:</strong> Our services are provided "as
+                      <strong>IMPORTANT:</strong> {`Our services are provided "as`}
                       {`is" without warranties of any kind. We shall not be liable
                       for any indirect, incidental, special, or consequential
                       damages arising from your use of our services.`}

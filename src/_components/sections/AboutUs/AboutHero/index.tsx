@@ -20,7 +20,7 @@ export const AboutUsHero = () => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [teamFacts.length]);
+  }, [teamFacts]);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white">
