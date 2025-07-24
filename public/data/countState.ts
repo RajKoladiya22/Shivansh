@@ -1,5 +1,6 @@
-import type { StatItem } from "src/_components/sections/Home/Why/content";
+
 import { FaCertificate, FaChartLine, FaHandshake, FaUsers, FaWrench, FaYoutube } from "react-icons/fa";
+import type { StatItem } from "src/_components/sections/types/startItem.type";
 
 export const stats: StatItem[] = [
   {
