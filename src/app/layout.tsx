@@ -60,14 +60,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://yourdomain.com'), // Replace with your actual domain
+  metadataBase: new URL('https://shivanshinfosys.in'), // Replace with your actual domain
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://yourdomain.com',
+    url: 'https://shivanshinfosys.in',
     title: 'Shivansh Infosys - Trusted Tally Solutions Partner',
     description: 'Empowering businesses with trusted Tally solutions. Tally Certified 3-Star Partner serving 3000+ customers across India.',
     siteName: 'Shivansh Infosys',
@@ -116,7 +116,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#your-brand-color" />
-        <link rel="manifest" href="/manifest.json" />
+        {/* <link rel="manifest" href="/manifest.json" /> */}
       </head>
       <body cz-shortcut-listen="true">
         <Header />

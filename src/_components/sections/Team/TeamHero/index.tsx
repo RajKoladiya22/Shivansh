@@ -18,6 +18,7 @@ import {
   Phone,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Testimonial {
   id: number;
@@ -703,12 +704,12 @@ export const TeamSection = () => {
               passion for innovation and excellence.`}
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <button className="rounded-xl bg-white px-8 py-3 font-semibold text-gray-900 transition-all transition-colors duration-300 hover:-translate-y-1 hover:bg-gray-100">
+              <Link href='/career' className="rounded-xl bg-white px-8 py-3 font-semibold text-gray-900 transition-all transition-colors duration-300 hover:-translate-y-1 hover:bg-gray-100">
                 View Open Positions
-              </button>
-              <button className="rounded-xl border-2 border-white px-8 py-3 font-semibold text-white transition-all transition-colors duration-300 hover:-translate-y-1 hover:bg-white/10">
+              </Link>
+              <Link href='/career' className="rounded-xl border-2 border-white px-8 py-3 font-semibold text-white transition-all transition-colors duration-300 hover:-translate-y-1 hover:bg-white/10">
                 Learn About Our Culture
-              </button>
+              </Link>
             </div>
           </div>
         </div>

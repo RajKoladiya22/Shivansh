@@ -45,6 +45,7 @@ import { X } from "lucide-react";
 import { SectionHeader } from "src/_components/ui";
 import { Partnerlogos } from "public/data/partnersLogo";
 import { ImageSlider } from "src/_components/molecules";
+import Link from "next/link";
 
 // Section Header Component
 // const SectionHeader = ({ heading, headingText, headingClassName, headingTextClassName }) => (
@@ -84,19 +85,20 @@ const AboutUsLeftContent = () => (
       </div>
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-        <button
+        <Link href={"/contact"}
           className="flex-1 rounded-full bg-white px-6 py-3 text-center font-bold text-red-700 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
           aria-label="Get a quote from Shivansh Infosys"
         >
           GET A QUOTE
-        </button>
+        </Link>
 
-        <button
+        <Link href={"/about"}
+          passHref
           className="flex-1 rounded-full border-2 border-white bg-transparent px-6 py-3 text-center font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
           aria-label="Learn more about Shivansh Infosys"
         >
           OUR STORY
-        </button>
+        </Link>
       </div>
 
       {/* Stats Section */}
@@ -137,7 +139,7 @@ const AboutUsRightContent = () => {
   };
 
   return (
-    <div className="relative min-h-[390px] bg-gradient-to-br from-red-100 to-red-100 sm:min-h-[400px] lg:min-h-[500px]">
+    <div className="relative min-h-[390px] bg-gradient-to-br from-red-100 to-red-100 sm:min-h-[450px] md:min-h-[500px] lg:min-h-[500px]">
       <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
         <div className="relative w-full max-w-md">
           <div
@@ -173,7 +175,7 @@ const AboutUsRightContent = () => {
           </div>
 
           {/* Floating Tally Logo */}
-          <div className="absolute right-4 -bottom-8 z-10 rounded-full bg-white p-3 shadow-xl sm:right-8 md:right-12 lg:-right-10 lg:bottom-16">
+          <div className="absolute -right-4 -bottom-4 sn:-bottom-2  z-10 rounded-full bg-white p-3 shadow-xl sm:right-8 md:right-12 lg:-right-10 lg:bottom-16">
             <div className="h-16 w-16 rounded-xl border-2 border-dashed bg-gray-200" />
             <Image
               src="/images/industry_logo/tally.avif"

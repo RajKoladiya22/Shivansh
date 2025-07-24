@@ -147,7 +147,7 @@ export const AboutUsHero = () => {
 
               <button
                 className="flex transform cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-(--primery-color) bg-white px-6 py-3 font-bold tracking-wide text-(--primery-color) shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-(--primery-color) hover:text-white hover:shadow-lg"
-                onClick={() => window.open("tel:+91-9999999999", "_self")}
+                onClick={() => window.open("tel:+918141703007", "_self")}
               >
                 Our Story
                 <svg

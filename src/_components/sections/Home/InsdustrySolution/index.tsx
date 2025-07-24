@@ -79,6 +79,7 @@ import {
   UsersIcon,
   CalculatorIcon,
 } from "lucide-react";
+import Link from "next/link";
 export interface IndustryItem {
   id: string;
   title: string;
@@ -186,9 +187,9 @@ export const WiseSolutionsIndustry = () => {
                 business requirements.
               </p>
             </div>
-            <button className="transform rounded-lg bg-white px-8 py-3 font-bold whitespace-nowrap text-gray-900 shadow-lg transition-all hover:-translate-y-1 hover:bg-gray-100">
-              Request Custom Solution
-            </button>
+            <Link href={"tel:+918141703007"} className="transform rounded-lg bg-white px-8 py-3 font-bold whitespace-nowrap text-gray-900 shadow-lg transition-all hover:-translate-y-1 hover:bg-gray-100">
+              Call for Custom Solution
+            </Link>
           </div>
         </motion.div>
       </div>

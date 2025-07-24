@@ -90,8 +90,8 @@ export const OurSection: React.FC = () => {
 
             <div className="relative z-10 mt-auto">
               <a
-                href="tel:+1234567890"
-                className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-semibold text-gray-900 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+                  href="tel:+918141703007"
+                className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-semibold text-gray-900 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-600"
               >
                 <Phone className="mr-2 h-5 w-5 " /> Call Now
               </a>

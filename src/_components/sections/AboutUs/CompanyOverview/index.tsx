@@ -11,6 +11,7 @@ import {
   Globe,
 } from "lucide-react";
 import { SectionHeader } from "src/_components/ui";
+import Link from "next/link";
 
 export const CompanyOverview = () => {
   const sections = [
@@ -215,12 +216,12 @@ export const CompanyOverview = () => {
                 financial operations.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <button className="transform rounded-xl bg-gradient-to-r from-red-600 to-red-900 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:from-red-700 hover:to-red-700 hover:shadow-xl">
+                <Link href={'/contact'} className="transform rounded-xl bg-gradient-to-r from-red-600 to-red-900 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:from-red-700 hover:to-red-700 hover:shadow-xl">
                   Get Started Today
-                </button>
-                <button className="rounded-xl border-2 border-red-300 px-8 py-4 font-semibold text-gray-700 transition-all duration-300 hover:border-red-600 hover:bg-(--primery-color) hover:text-white hover:-translate-y-1">
+                </Link>
+                <Link href={'/contact'} className="rounded-xl border-2 border-red-300 px-8 py-4 font-semibold text-gray-700 transition-all duration-300 hover:border-red-600 hover:bg-(--primery-color) hover:text-white hover:-translate-y-1">
                   Schedule a Consultation
-                </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -155,6 +155,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
 
 export const TheFounder = () => {
   const [years, setYears] = useState(0);
@@ -308,9 +309,9 @@ export const TheFounder = () => {
                 </div>
               </div>
               
-              <button className="mt-6 px-8 py-3 bg-(--primery-color) text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <Link href={"/about"} className="mt-6 px-8 py-3 bg-(--primery-color) text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                 Read Full Story
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>
