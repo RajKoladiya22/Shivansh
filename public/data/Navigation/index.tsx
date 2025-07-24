@@ -13,7 +13,7 @@ export const ProductServices = [
   { label: "Tally Software", href: "/tally" },
   { label: "Mobile Apps for Tally", href: "/mobile" },
   { label: "Tally Customized", href: "/tally-customized" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Privacy Policy", href: "/privacy" },
   { label: "App Privacy Policy", href: "/app-privacy-policy" },
   { label: "Partner App Privacy Policy", href: "/partner-app-privacy" },
 ];

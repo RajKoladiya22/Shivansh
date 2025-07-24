@@ -226,7 +226,7 @@ export const PrivacyPolicy = () => {
                     Privacy Policy Overview
                   </h2>
                   <p className="mb-4 leading-relaxed text-gray-700">
-                    At Webashlar Software Solutions Pvt. Ltd., we are committed
+                    At Shivansh Infosys Pvt. Ltd., we are committed
                     to protecting your privacy and ensuring the security of your
                     personal information. This Privacy Policy explains how we
                     collect, use, disclose, and safeguard your information when
