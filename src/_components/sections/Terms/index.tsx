@@ -101,7 +101,7 @@ export const TermsOfService = () => {
         id: section.id,
         element: document.getElementById(section.id),
         offset:
-          (document.getElementById(section.id)?.offsetTop || 0) - headerOffset,
+          (document.getElementById(section.id)?.offsetTop ?? 0) - headerOffset,
       }));
 
       const currentSection = sectionElements.find((section, index) => {
@@ -123,7 +123,7 @@ export const TermsOfService = () => {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [showScrollTop]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -231,11 +231,11 @@ export const TermsOfService = () => {
                     Welcome to Our Terms of Service
                   </h2>
                   <p className="leading-relaxed text-gray-700">
-                    These Terms of Service ("Terms") govern your access to and
+                    {`These Terms of Service ("Terms") govern your access to and
                     use of our services, including our website, software, and
                     any other services provided by Shivansh Infosys Pvt. Ltd.
                     ("Company", "we", "us", or "our"). By accessing or using our
-                    services, you agree to be bound by these Terms.
+                    services, you agree to be bound by these Terms.`}
                   </p>
                 </div>
               </div>
@@ -274,9 +274,9 @@ export const TermsOfService = () => {
                 </h2>
                 <div className="prose prose-gray max-w-none">
                   <p className="mb-4 leading-relaxed text-gray-700">
-                    We provide software development services, web applications,
+                    {`We provide software development services, web applications,
                     mobile applications, and related technology solutions. Our
-                    services may include but are not limited to:
+                    services may include but are not limited to:`}
                   </p>
                   <div className="mb-4 rounded-lg bg-[#FCF2F2] p-4">
                     <ul className="list-inside list-disc space-y-2 text-gray-700">
@@ -292,8 +292,8 @@ export const TermsOfService = () => {
                     </ul>
                   </div>
                   <p className="leading-relaxed text-gray-700">
-                    We reserve the right to modify, suspend, or discontinue any
-                    aspect of our services at any time without prior notice.
+                    {`We reserve the right to modify, suspend, or discontinue any
+                    aspect of our services at any time without prior notice.`}
                   </p>
                 </div>
               </section>
@@ -493,14 +493,14 @@ export const TermsOfService = () => {
                   <div className="rounded-lg border border-[#C50202] bg-[#FFCCD6] p-6">
                     <p className="mb-3 text-sm leading-relaxed text-gray-700">
                       <strong>IMPORTANT:</strong> Our services are provided "as
-                      is" without warranties of any kind. We shall not be liable
+                      {`is" without warranties of any kind. We shall not be liable
                       for any indirect, incidental, special, or consequential
-                      damages arising from your use of our services.
+                      damages arising from your use of our services.`}
                     </p>
                     <p className="text-sm leading-relaxed text-gray-700">
-                      Our total liability for any claims related to our services
+                      {`Our total liability for any claims related to our services
                       shall not exceed the amount paid by you for our services
-                      in the 12 months preceding the claim.
+                      in the 12 months preceding the claim.`}
                     </p>
                   </div>
                 </div>
@@ -534,10 +534,10 @@ export const TermsOfService = () => {
                 </h2>
                 <div className="prose prose-gray max-w-none">
                   <p className="mb-4 leading-relaxed text-gray-700">
-                    We reserve the right to modify these Terms at any time. We
+                    {`We reserve the right to modify these Terms at any time. We
                     will notify you of significant changes by posting the
                     updated Terms on our website and updating the "Last updated"
-                    date.
+                    date.`}
                   </p>
                   <div className="rounded-lg bg-[#EEF6FF] p-4">
                     <p className="text-sm leading-relaxed text-gray-700">

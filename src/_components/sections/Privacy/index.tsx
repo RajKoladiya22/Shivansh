@@ -93,7 +93,7 @@ export const PrivacyPolicy = () => {
         id: section.id,
         element: document.getElementById(section.id),
         offset:
-          (document.getElementById(section.id)?.offsetTop || 0) - headerOffset,
+          (document.getElementById(section.id)?.offsetTop ?? 0) - headerOffset,
       }));
 
       const currentSection = sectionElements.find((section, index) => {
@@ -115,7 +115,7 @@ export const PrivacyPolicy = () => {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [showScrollTop]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -631,10 +631,10 @@ export const PrivacyPolicy = () => {
                       How to Exercise Your Rights
                     </h4>
                     <p className="text-sm text-gray-700">
-                      To exercise any of these rights, please contact us using
+                      {`To exercise any of these rights, please contact us using
                       the information provided in the "Contact Us" section. We
                       will respond to your request within 30 days and may
-                      require verification of your identity.
+                      require verification of your identity.`}
                     </p>
                   </div>
                 </div>
