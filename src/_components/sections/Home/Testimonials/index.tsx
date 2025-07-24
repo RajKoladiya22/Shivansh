@@ -4,22 +4,11 @@ import { SectionHeader } from "src/_components/ui";
 import { testimonials } from "public/data/testimonials";
 import { ReusableSlider } from "src/_components/molecules";
 import { TestimonialCard } from "src/_components/molecules";
-
-export interface Testimonial {
-  id: number;
-  quote: string;
-  name: string;
-  title: string;
-  avatar: string;    // URL or path to avatar image
-  document: string;  // URL or path to attached document/image
-  rating: number;    // e.g. 1–5 stars
-}
-
-
+import type { Testimonial } from "src/_components/sections/types/testimonial.type";
 
 export const CustomerTestimonials = () => {
   return (
-    <div className="py-20 bg-gradient-to-b from-red-50 to-red">
+    <div className="to-red bg-gradient-to-b from-red-50 py-20">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="py-4">
@@ -30,10 +19,10 @@ export const CustomerTestimonials = () => {
         </div>
 
         {/* Testimonial Section */}
-        <div className="rounded-3xl bg-gradient-to-t from-red-100 to-red-40 p-6 lg:p-12">
+        <div className="to-red-40 rounded-3xl bg-gradient-to-t from-red-100 p-6 lg:p-12">
           {/* <SectionHeader heading="WHAT OUR CUSTOMERS SAY" /> */}
 
-          {/* Testimonial Cards Container */} 
+          {/* Testimonial Cards Container */}
 
           <ReusableSlider
             items={testimonials}
@@ -54,9 +43,6 @@ export const CustomerTestimonials = () => {
             gap="1.5rem"
             className="py-8"
           />
-
-
-
         </div>
       </div>
     </div>

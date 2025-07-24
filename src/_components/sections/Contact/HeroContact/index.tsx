@@ -1,45 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  CheckCircle,
-  Send,
-  Users,
-  Award,
-  Clock,
-  Globe,
-  MessageCircle,
-} from "lucide-react";
-
-type InputChangeEvent =
-  | React.ChangeEvent<HTMLInputElement>
-  | React.ChangeEvent<HTMLTextAreaElement>
-  | React.ChangeEvent<HTMLSelectElement>;
-
-export const contactInfo = [
-  {
-    icon: <Phone className="h-5 w-5 sm:h-6 sm:w-6" />,
-    title: "Phone",
-    details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
-  },
-  {
-    icon: <Mail className="h-5 w-5 sm:h-6 sm:w-6" />,
-    title: "Email",
-    details: ["hello@company.com", "support@company.com"],
-  },
-  {
-    icon: <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />,
-    title: "WhatsApp",
-    details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
-  },
-  {
-    icon: <MapPin className="h-5 w-5 sm:h-6 sm:w-6" />,
-    title: "Office",
-    details: ["123 Business Street", "Suite 100, City, State 12345"],
-  },
-];
+import { CheckCircle, Send } from "lucide-react";
+import type { InputChangeEvent } from "src/_components/sections/types/contact.type";
+import { contactInfo } from "public/data/Contact";
+import { stats } from "public/data/countState";
 
 export const ContactHeroSection = () => {
   const [formData, setFormData] = useState({
@@ -87,29 +51,6 @@ export const ContactHeroSection = () => {
     }, 3000);
   };
 
-    const stats = [
-    {
-      icon: <Users className="h-6 w-6 sm:h-7 sm:w-7" />,
-      number: "500+",
-      label: "Happy Clients",
-    },
-    {
-      icon: <Award className="h-6 w-6 sm:h-7 sm:w-7" />,
-      number: "15+",
-      label: "Awards Won",
-    },
-    {
-      icon: <Clock className="h-6 w-6 sm:h-7 sm:w-7" />,
-      number: "10+",
-      label: "Years Experience",
-    },
-    {
-      icon: <Globe className="h-6 w-6 sm:h-7 sm:w-7" />,
-      number: "50+",
-      label: "Countries",
-    },
-  ];
-
   return (
     <div className="relative min-h-screen overflow-hidden pt-3 sm:pt-10">
       {/* Hero Section + Form */}
@@ -154,7 +95,6 @@ export const ContactHeroSection = () => {
 
           {/* Main Grid Container */}
           <div className="mx-auto grid gap-8 py-16 lg:grid-cols-2">
-
             {/* Left Side - Contact Form */}
             <div className="hover:shadow-3xl transform rounded-2xl border border-red-100 bg-white p-6 shadow-2xl transition-all duration-500 sm:rounded-3xl sm:p-8">
               {isSubmitted ? (
@@ -319,9 +259,6 @@ export const ContactHeroSection = () => {
                   </button>
                 </div>
               )}
-
-
-              
             </div>
 
             {/* Right Side - Stats and Contact Info */}

@@ -1,10 +1,5 @@
-
-import React, { useState, useLayoutEffect, useRef } from 'react';
-
-interface TestimonialQuoteProps {
-  text: string;
-  lines?: number;
-}
+import React, { useState, useLayoutEffect, useRef } from "react";
+import type { TestimonialQuoteProps } from "../../types/card.type";
 
 export function TestimonialQuote({ text, lines = 4 }: TestimonialQuoteProps) {
   const ref = useRef<HTMLParagraphElement>(null);
@@ -19,22 +14,21 @@ export function TestimonialQuote({ text, lines = 4 }: TestimonialQuoteProps) {
   }, [text]);
 
   return (
-    <div className='mb-6'>
+    <div className="mb-6">
       <p
         ref={ref}
         className={`flex-1 text-lg font-medium text-gray-800 ${
-          !expanded ? `line-clamp-${lines}` : 'line-clamp-none'
+          !expanded ? `line-clamp-${lines}` : "line-clamp-none"
         }`}
       >
         {`"${text}"`}
-        
       </p>
       {isTruncated && (
         <button
           className="text-sm font-semibold text-blue-600"
           onClick={() => setExpanded((prev) => !prev)}
         >
-          {expanded ? 'Read Less' : 'Read More'}
+          {expanded ? "Read Less" : "Read More"}
         </button>
       )}
     </div>

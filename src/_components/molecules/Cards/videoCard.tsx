@@ -1,15 +1,7 @@
 import React from "react";
 import { Play } from "lucide-react";
 import Image from "next/image";
-
-interface YouTubeVideo {
-  id: string;
-  title: string;
-  thumbnail: string;
-  duration: string;
-  description: string;
-  videoId: string;
-}
+import type { YouTubeVideo } from "src/_components/sections/types/youtube.type";
 
 interface VideoCardProps {
   video: YouTubeVideo;
@@ -26,7 +18,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
     <div
       key={video.id}
       onClick={() => onPlay(video)}
-      className={`border-2 border-red-100 group cursor-pointer overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none ${className}`}
+      className={`group cursor-pointer overflow-hidden rounded-xl border-2 border-red-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none ${className}`}
       role="button"
       tabIndex={0}
       aria-label={`Play video: ${video.title}`}
@@ -62,9 +54,9 @@ export const VideoCard: React.FC<VideoCardProps> = ({
         <div className="bg-opacity-30 group-hover:bg-opacity-50 absolute inset-0 flex items-center justify-center">
           <div className="relative">
             {/* Ripple */}
-            <span className="absolute inset-0 inline-flex animate-ping rounded-full bg-red-600 opacity-75 bg-opacity-3"></span>
+            <span className="bg-opacity-3 absolute inset-0 inline-flex animate-ping rounded-full bg-red-600 opacity-75"></span>
             {/* Button */}
-            <div className="relative  flex h-10 w-10 items-center justify-center rounded-full bg-(--primery-color) text-white transition-all duration-300 group-hover:scale-110">
+            <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-(--primery-color) text-white transition-all duration-300 group-hover:scale-110">
               <Play className="ml-1 h-4 w-4" />
             </div>
           </div>
@@ -89,4 +81,4 @@ export const VideoCard: React.FC<VideoCardProps> = ({
   );
 };
 
-export default VideoCard;
+// export default VideoCard;

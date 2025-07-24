@@ -1,144 +1,11 @@
-// "use client";
-// import React from "react";
-// import { IndustryCard } from "src/_components/molecules";
-// import { SectionHeader } from "src/_components/ui";
-
-// export const WiseSolutionsIndustry = () => {
-//   const industries = [
-//     {
-//       id: "manufacturers",
-//       title: "Manufacturers",
-//       description:
-//         "Short description of team expertise and commitment to service. discounts to customers. With AIOD, merchants can easily create & manage offers.",
-//     },
-//     {
-//       id: "distributors",
-//       title: "Distributors",
-//       description:
-//         "Short description of team expertise and commitment to service. discounts to customers. With AIOD, merchants can easily create & manage offers.",
-//     },
-//     {
-//       id: "retailers",
-//       title: "Retailers",
-//       description:
-//         "Short description of team expertise and commitment to service. discounts to customers. With AIOD, merchants can easily create & manage offers.",
-//     },
-//     {
-//       id: "service-providers",
-//       title: "Service Providers",
-//       description:
-//         "Short description of team expertise and commitment to service. discounts to customers. With AIOD, merchants can easily create & manage offers.",
-//     },
-//     {
-//       id: "service",
-//       title: "Service",
-//       description:
-//         "Short description of team expertise and commitment to service. discounts to customers. With AIOD, merchants can easily create & manage offers.",
-//     },
-//     {
-//       id: "ca-tax",
-//       title: "CA & Tax Consultants",
-//       description:
-//         "Short description of team expertise and commitment to service. discounts to customers. With AIOD, merchants can easily create & manage offers.",
-//     },
-//   ];
-
-//   return (
-//     <div className="py-3 sm:py-6 md:py-6 lg:py-10 ">
-//       <div className="mx-auto max-w-7xl">
-//         {/* Header */}
-//         <div className="mb-16 text-center">
-//           <SectionHeader
-//           heading="INDUSTRY"
-//           headingText="Solutions Show how you help"
-//           showDescription={false} />
-//         </div>
-
-//         {/* Industries Grid */}
-//         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-//           {industries.map((industry) => (
-//             <IndustryCard key={industry.id} industry={industry} />
-//           ))}
-//         </div>
-
-//         {/* Optional: Add some spacing at the bottom */}
-//         <div className="mt-16"></div>
-//       </div>
-//     </div>
-//   );
-// };
-
 "use client";
-import React, { type ReactNode } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import {
-  FactoryIcon,
-  TruckIcon,
-  ShoppingCartIcon,
-  WrenchIcon,
-  UsersIcon,
-  CalculatorIcon,
-} from "lucide-react";
 import Link from "next/link";
-export interface IndustryItem {
-  id: string;
-  title: string;
-  description: string;
-  icon: ReactNode;
-  color: string; // e.g., "from-red-600 to-red-700"
-}
-export const WiseSolutionsIndustry = () => {
-  const industries: IndustryItem[] = [
-    {
-      id: "manufacturers",
-      title: "Manufacturers",
-      description:
-        "Streamline production processes with our specialized Tally solutions for manufacturing efficiency and inventory management.",
-      icon: <FactoryIcon className="h-8 w-8 text-white" />,
-      color: "from-red-600 to-red-700",
-    },
-    {
-      id: "distributors",
-      title: "Distributors",
-      description:
-        "Optimize your supply chain with distribution-focused tools for order tracking, logistics management, and route optimization.",
-      icon: <TruckIcon className="h-8 w-8 text-white" />,
-      color: "from-red-600 to-red-700",
-    },
-    {
-      id: "retailers",
-      title: "Retailers",
-      description:
-        "Transform retail operations with point-of-sale integration, inventory tracking, and customer relationship management tools.",
-      icon: <ShoppingCartIcon className="h-8 w-8 text-white" />,
-      color: "from-red-600 to-red-700",
-    },
-    {
-      id: "service-providers",
-      title: "Service Providers",
-      description:
-        "Manage service contracts, scheduling, and billing with our specialized solutions for service-based businesses.",
-      icon: <WrenchIcon className="h-8 w-8 text-white" />,
-      color: "from-red-600 to-red-700",
-    },
-    {
-      id: "enterprises",
-      title: "Enterprises",
-      description:
-        "Comprehensive ERP solutions for large organizations with multi-location management and consolidated reporting.",
-      icon: <UsersIcon className="h-8 w-8 text-white" />,
-      color: "from-red-600 to-red-700",
-    },
-    {
-      id: "ca-tax",
-      title: "CA & Tax Consultants",
-      description:
-        "Specialized tools for accounting professionals with GST compliance, tax filing, and client management features.",
-      icon: <CalculatorIcon className="h-8 w-8 text-white" />,
-      color: "from-red-600 to-red-700",
-    },
-  ];
+import { IndustryCard } from "src/_components/molecules";
+import { industries } from "public/data/Solutions";
 
+export const WiseSolutionsIndustry = () => {
   return (
     <section className="py-16 sm:py-20 md:py-24">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -187,82 +54,15 @@ export const WiseSolutionsIndustry = () => {
                 business requirements.
               </p>
             </div>
-            <Link href={"tel:+918141703007"} className="transform rounded-lg bg-white px-8 py-3 font-bold whitespace-nowrap text-gray-900 shadow-lg transition-all hover:-translate-y-1 hover:bg-gray-100">
+            <Link
+              href={"tel:+918141703007"}
+              className="transform rounded-lg bg-white px-8 py-3 font-bold whitespace-nowrap text-gray-900 shadow-lg transition-all hover:-translate-y-1 hover:bg-gray-100"
+            >
               Call for Custom Solution
             </Link>
           </div>
         </motion.div>
       </div>
     </section>
-  );
-};
-
-interface IndustryCardProps {
-  industry: IndustryItem;
-  index: number;
-}
-
-const IndustryCard: React.FC<IndustryCardProps> = ({
-  industry,
-  index,
-}: {
-  industry: IndustryItem;
-  index: number;
-}) => {
-  const dots: number[] = Array.from({ length: 3 }, (_, i) => i);
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group h-full"
-    >
-      <div className="border border-red-100 flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 group-hover:shadow-xl">
-        {/* Icon with gradient background */}
-        <div className={`bg-gradient-to-r ${industry.color} p-6`}>
-          <div className="flex items-start justify-between">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-black/20 backdrop-blur-sm">
-              {industry.icon}
-            </div>
-            <div className="text-4xl font-bold text-white/20">{`0${index + 1}`}</div>
-          </div>
-        </div>
- 
-        {/* Content */}
-        <div className="flex flex-1 flex-col p-6">
-          <h3 className="mb-3 text-xl font-bold text-gray-900">
-            {industry.title}
-          </h3>
-          <p className="mb-6 flex-1 text-gray-600">{industry.description}</p>
-
-          <div className="mt-auto flex items-center justify-between">
-            <button className="flex items-center text-sm font-medium text-red-600 group-hover:underline hover:text-red-700">
-              Explore Solutions
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-
-            <div className="flex space-x-1">
-              {dots.map((_, i) => (
-                <div key={i} className="h-2 w-2 rounded-full bg-gray-300"></div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
   );
 };

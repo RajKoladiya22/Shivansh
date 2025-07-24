@@ -1,13 +1,6 @@
 import React from "react";
 import { Phone, Users, Award, Brain, Zap, Shield } from "lucide-react";
-// import { SectionHeader } from "src/_components/ui";
-
-interface StatCardProps {
-  icon: React.ReactNode;
-  number: string;
-  label: string;
-  color: string;
-}
+import type { StatCardProps } from "src/_components/sections/types/startItem.type";
 
 const StatCard: React.FC<StatCardProps> = ({ icon, number, label, color }) => (
   <div className="group rounded-2xl border border-red-100 bg-white p-8 text-center shadow-lg transition-shadow duration-300 hover:shadow-xl">
@@ -90,10 +83,10 @@ export const OurSection: React.FC = () => {
 
             <div className="relative z-10 mt-auto">
               <a
-                  href="tel:+918141703007"
+                href="tel:+918141703007"
                 className="inline-flex items-center rounded-lg bg-white px-6 py-3 font-semibold text-gray-900 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-600"
               >
-                <Phone className="mr-2 h-5 w-5 " /> Call Now
+                <Phone className="mr-2 h-5 w-5" /> Call Now
               </a>
             </div>
 
@@ -103,7 +96,7 @@ export const OurSection: React.FC = () => {
         </div>
 
         {/* Certifications */}
-        <div className="rounded-2xl bg-white p-8 shadow-lg mt-10">
+        <div className="mt-10 rounded-2xl bg-white p-8 shadow-lg">
           <div className="mb-8 text-center">
             <h3 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
               Our Certifications

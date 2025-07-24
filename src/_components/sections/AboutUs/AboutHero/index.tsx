@@ -1,18 +1,13 @@
 "use client";
 import Image from "next/image";
+import { teamFacts } from "public/data/Team";
 import React, { useState, useEffect } from "react";
 
 export const AboutUsHero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
 
-  const teamFacts = [
-    "50+ Projects Delivered",
-    "7 Creative Minds",
-    "5 Years of Innovation",
-    "100% Client Satisfaction",
-    "24/7 Support Available",
-  ];
+
 
   useEffect(() => {
     setIsVisible(true);
@@ -59,7 +54,8 @@ export const AboutUsHero = () => {
       <div className="relative z-10 px-4 pt-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left Content */}
-          <div className={`container mx-auto transform space-y-8 px-4 text-center transition-all duration-1000 sm:px-6 lg:px-8 lg:text-left ${
+          <div
+            className={`container mx-auto transform space-y-8 px-4 text-center transition-all duration-1000 sm:px-6 lg:px-8 lg:text-left ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
@@ -257,7 +253,8 @@ export const AboutUsHero = () => {
           </div>
 
           {/* Right Side - Team Photo */}
-          <div className={`relative transform transition-all delay-300 duration-1000 py-9 ${
+          <div
+            className={`relative transform py-9 transition-all delay-300 duration-1000 ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"

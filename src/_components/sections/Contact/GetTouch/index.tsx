@@ -1,33 +1,7 @@
 "use client";
+import { reasons } from "public/data/Reason";
 import React from "react";
-import { Award, TrendingUp, MessageSquare, Headphones } from "lucide-react";
 
-export const reasons = [
-  {
-    icon: <MessageSquare className="h-8 w-8" />,
-    title: "Get Expert Consultation",
-    description:
-      "Connect with our specialists for personalized solutions tailored to your business needs.",
-  },
-  {
-    icon: <Headphones className="h-8 w-8" />,
-    title: "24/7 Customer Support",
-    description:
-      "Need help? Our dedicated support team is here to assist you around the clock.",
-  },
-  {
-    icon: <TrendingUp className="h-8 w-8" />,
-    title: "Scale Your Business",
-    description:
-      "Discuss growth strategies and learn how we can help you reach your next milestone.",
-  },
-  {
-    icon: <Award className="h-8 w-8" />,
-    title: "Partnership Opportunities",
-    description:
-      "Explore collaboration possibilities and join our network of successful partners.",
-  },
-];
 
 export function Gettouch() {
   return (

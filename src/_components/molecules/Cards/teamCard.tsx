@@ -1,19 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-// TeamCard Component matching the exact design
-export type TeamCardProps = {
-  name: string;
-  role: string;
-  rating: number;
-  reviews: number;
-  description: string;
-  imgSrc: string;
-  imagePosition?: "left" | "right";
-  compact?: boolean;
-  style?: React.CSSProperties;
-};
+import type { TeamCardProps } from "../types/card.type";
 
 export const TeamCard: React.FC<TeamCardProps> = ({
   name,

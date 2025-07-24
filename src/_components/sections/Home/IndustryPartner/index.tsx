@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-// import {ImageSlider} from "../../molecules";
-import { ImageSlider } from "../../../molecules";
-import { Partnerlogos } from "../../../../../public/data/partnersLogo";
 import { SectionHeader } from "src/_components/ui";
+import { Partnerlogos } from "public/data/partnersLogo";
+import { ImageSlider } from "src/_components/molecules";
 
 export const IndustryPartnerSlider: React.FC = () => {
   return (

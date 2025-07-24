@@ -11,25 +11,9 @@ import {
 } from "src/_components/molecules";
 import { useMediaQuery } from "react-responsive";
 import { XIcon } from "lucide-react";
+import type { Comment, YouTubeVideo } from "src/_components/sections/types/youtube.type";
 
-interface Comment {
-  id: string;
-  author: string;
-  authorProfileImageUrl: string;
-  textDisplay: string;
-  likeCount: number;
-  publishedAt: string; // ISO date string
-}
 
-interface YouTubeVideo {
-  id: string;
-  title: string;
-  thumbnail: string;
-  duration: string;
-  description: string;
-  videoId: string;
-  comments?: Comment[];
-}
 const transformCommentsForSlider = (comments: Comment[]) => {
   return comments.map((comment) => ({
     id: parseInt(comment.id.replace(/\D/g, "")) || Math.random() * 1000, // Extract numbers or use random

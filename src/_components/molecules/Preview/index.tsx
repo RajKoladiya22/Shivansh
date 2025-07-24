@@ -1,47 +1,33 @@
 "use client";
-import React, { useEffect, type ReactNode } from 'react';
-import { X } from 'lucide-react';
+import React, { useEffect } from "react";
+import { X } from "lucide-react";
+import type { PreviewModalProps } from "../types/preview.type";
 
-export interface PreviewModalProps {
-  /** Whether the modal is shown */
-  isOpen: boolean;
-  /** Callback to close the modal */
-  onClose: () => void;
-  /** Content to render inside the modal */
-  children: ReactNode;
-  /** Optional wrapper classes for the outer container */
-  className?: string;
-  /** Optional classes for the backdrop */
-  backgroundClassName?: string;
-  /** Optional classes for the modal content wrapper */
-  contentClassName?: string;
-}
-
-export const PreviewModal: React.FC<PreviewModalProps> = ({ 
-  isOpen, 
-  onClose, 
-  children, 
+export const PreviewModal: React.FC<PreviewModalProps> = ({
+  isOpen,
+  onClose,
+  children,
   className = "",
   backgroundClassName = "bg-black bg-opacity-90",
-  contentClassName = "relative w-full max-w-4xl overflow-hidden rounded-xl shadow-2xl"
+  contentClassName = "relative w-full max-w-4xl overflow-hidden rounded-xl shadow-2xl",
 }) => {
   // Handle ESC key press
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) {
+      if (event.key === "Escape" && isOpen) {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener("keydown", handleEscape);
       // Prevent body scroll when modal is open
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose]);
 
@@ -52,19 +38,15 @@ export const PreviewModal: React.FC<PreviewModalProps> = ({
       className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${backgroundClassName} ${className}`}
       onClick={onClose}
     >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="cursor-pointer absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black bg-opacity-50 text-white transition-all duration-200 hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-          aria-label="Close preview"
-        >
-          <X className="h-5 w-5" />
-        </button>
-      <div
-        className={contentClassName}
-        onClick={(e) => e.stopPropagation()}
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="bg-opacity-50 hover:bg-opacity-80 focus:ring-opacity-50 absolute top-4 right-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black text-white transition-all duration-200 focus:ring-2 focus:ring-white focus:outline-none"
+        aria-label="Close preview"
       >
-
+        <X className="h-5 w-5" />
+      </button>
+      <div className={contentClassName} onClick={(e) => e.stopPropagation()}>
         {/* Content */}
         {children}
       </div>
@@ -97,7 +79,7 @@ export const PreviewModal: React.FC<PreviewModalProps> = ({
 //   return (
 //     <div className="p-8">
 //       <h1 className="text-2xl font-bold mb-6">PreviewModal Component Demo</h1>
-      
+
 //       {/* Trigger Button */}
 //       <button
 //         onClick={openVideo}

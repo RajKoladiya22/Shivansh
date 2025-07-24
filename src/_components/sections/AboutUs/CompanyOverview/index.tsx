@@ -1,58 +1,11 @@
 "use client";
 import React from "react";
-import {
-  Target,
-  Eye,
-  BookOpen,
-  Clock,
-  Award,
-  Users,
-  Lightbulb,
-  Globe,
-} from "lucide-react";
+import { Award, Users, Lightbulb, Globe } from "lucide-react";
 import { SectionHeader } from "src/_components/ui";
 import Link from "next/link";
+import { AboutUs } from "public/data/CompanyOverview";
 
 export const CompanyOverview = () => {
-  const sections = [
-    {
-      id: "introduction",
-      title: "Introduction",
-      icon: <BookOpen className="h-8 w-8 text-yellow-300" />,
-      content: `We are a leading financial technology company dedicated to revolutionizing the way Indian enterprises manage their financial operations. With over 15 years of industry expertise, we provide cutting-edge accounting solutions that seamlessly integrate with modern business workflows. Our comprehensive platform combines advanced technology with deep financial knowledge to deliver unparalleled clarity and control over your financial journey.`,
-      highlights: [
-        "15+ Years Experience",
-        "Fortune 500 Trusted",
-        "99% Client Satisfaction",
-      ],
-      gradient: "from-red-500 via-red-600 to-red-700",
-    },
-    {
-      id: "history",
-      title: "Our History",
-      icon: <Clock className="h-8 w-8 text-yellow-300" />,
-      content: `Founded in 2009, our journey began with a simple yet powerful vision: to democratize financial management for businesses of all sizes across India. Starting as a small team of passionate financial experts and technology innovators, we have grown into a trusted partner for over 600 companies nationwide. Our evolution has been marked by continuous innovation, strategic partnerships, and an unwavering commitment to our clients' success.`,
-      highlights: ["Founded 2009", "600+ Companies", "Nationwide Presence"],
-      gradient: "from-red-700 via-red-600 to-red-400",
-    },
-    {
-      id: "vision",
-      title: "Vision",
-      icon: <Eye className="h-8 w-8 text-yellow-300" />,
-      content: `To pioneer a future where every Indian enterprise, big or small, navigates its financial journey with absolute clarity and confidence. We envision a vibrant ecosystem of seamlessly integrated accounting solutions, where cutting-edge technology and human expertise converge to transform complexity into simplicity, empowering businesses nationwide to achieve their fullest potential.`,
-      highlights: ["Future-Ready", "Technology-Driven", "Empowerment Focus"],
-      gradient: "from-red-400 via-red-600 to-red-700",
-    },
-    {
-      id: "mission",
-      title: "Mission",
-      icon: <Target className="h-8 w-8 text-yellow-300" />,
-      content: `Our mission is to empower businesses with intelligent financial solutions that drive growth, ensure compliance, and provide actionable insights. We are committed to delivering exceptional service through innovative technology, expert guidance, and personalized support. We strive to be the catalyst that transforms financial complexity into competitive advantage for every client we serve.`,
-      highlights: ["Growth-Focused", "Compliance-Ready", "Expert Guidance"],
-      gradient: "from-red-500 via-red-600 to-red-700",
-    },
-  ];
-
   return (
     <div className="bg-gradient-to-b from-red-50 to-white py-12 md:py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -67,7 +20,7 @@ export const CompanyOverview = () => {
 
         {/* Sections */}
         <div className="space-y-20">
-          {sections.map((section, index) => (
+          {AboutUs.map((section, index) => (
             <div key={section.id} className="group">
               <div
                 className={`grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16 ${
@@ -216,10 +169,16 @@ export const CompanyOverview = () => {
                 financial operations.
               </p>
               <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                <Link href={'/contact'} className="transform rounded-xl bg-gradient-to-r from-red-600 to-red-900 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:from-red-700 hover:to-red-700 hover:shadow-xl">
+                <Link
+                  href={"/contact"}
+                  className="transform rounded-xl bg-gradient-to-r from-red-600 to-red-900 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:from-red-700 hover:to-red-700 hover:shadow-xl"
+                >
                   Get Started Today
                 </Link>
-                <Link href={'/contact'} className="rounded-xl border-2 border-red-300 px-8 py-4 font-semibold text-gray-700 transition-all duration-300 hover:border-red-600 hover:bg-(--primery-color) hover:text-white hover:-translate-y-1">
+                <Link
+                  href={"/contact"}
+                  className="rounded-xl border-2 border-red-300 px-8 py-4 font-semibold text-gray-700 transition-all duration-300 hover:-translate-y-1 hover:border-red-600 hover:bg-(--primery-color) hover:text-white"
+                >
                   Schedule a Consultation
                 </Link>
               </div>
@@ -231,4 +190,4 @@ export const CompanyOverview = () => {
   );
 };
 
-export default CompanyOverview;
+// export default CompanyOverview;

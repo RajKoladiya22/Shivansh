@@ -1,51 +1,69 @@
 "use client";
+import Link from "next/link";
 import React from "react";
-// import { Button } from "src/_components/molecules";
 
-export const AboutUsLeftContent = () => {
-  return (
-    <>
-      {/* Left Content */}
-      <div className="order-2 p-6 text-white sm:p-8 md:p-10 lg:order-1 lg:p-12 xl:p-16">
-        <div className="max-w-2xl">
-          <h3 className="mb-4 text-2xl font-[600] tracking-[2px] sm:mb-6 sm:text-3xl md:mb-8 md:text-3xl">
-            SHIVANSH INFOSYS
-          </h3>
+export const AboutUsLeftContent = () => (
+  <div className="bg-gradient-to-br from-[#C50202] via-red-500 to-[#C50202] p-6 text-white sm:p-8 md:p-10 lg:p-12 xl:p-16">
+    <div className="mx-auto max-w-2xl">
+      <div className="to-[#C50202]-50 mb-4 inline-block rounded-full bg-gradient-to-r from-red-100 px-3 py-1 text-xs font-bold text-gray-900 sm:mb-6">
+        TALLY 3 STAR CERTIFIED PARTNER
+      </div>
 
-          <div className="mb-6 inline-block rounded-md bg-white px-3 py-2 text-xs font-semibold text-red-600 sm:mb-8 sm:px-4 sm:text-sm">
-            (TALLY 3 STAR CERTIFIED PARTNER)
-          </div>
+      <h3 className="mb-4 text-2xl font-bold sm:mb-6 sm:text-3xl md:text-4xl">
+        SHIVANSH INFOSYS
+      </h3>
 
-          <div className="t space-y-4 text-sm leading-relaxed sm:space-y-6 sm:text-base md:text-lg">
-            <p>
-              I would like to say something about our company SHIVANSH INFOSYS.
-              We have started our company in April-2007 with a vision of serving
-              the best to our client.
-            </p>
+      <div className="space-y-4 text-sm leading-relaxed sm:space-y-5 sm:text-base">
+        <p className="rounded-xl bg-red-800/30 p-4 backdrop-blur-sm">
+          Founded in April 2007, Shivansh Infosys began with a vision to deliver
+          exceptional service to our clients. Our commitment to excellence has
+          driven our growth and success in the industry.
+        </p>
 
-            <p>
-              And we are happy with our efforts. Now we are working with 1500
-              end user and 450 companies. And we are thanks to all our client
-              because his support is our growth.
-            </p>
-          </div>
+        <p className="rounded-xl bg-red-800/30 p-4 backdrop-blur-sm">
+          {`Today, we're proud to serve over 1500 end users and 450 companies across India. 
+          Our clients' trust and support have been instrumental in our journey, and we're grateful for the opportunity to contribute to their success.`}
+        </p>
+      </div>
 
-          <button
-            className="mt-6 transform rounded-full bg-white px-6 py-3 text-sm font-semibold text-red-600 shadow-lg transition-colors duration-300 hover:-translate-y-1 hover:bg-gray-100 hover:shadow-xl sm:mt-8 sm:px-8 sm:py-4 sm:text-base md:mt-10 md:px-10 md:text-lg"
-            aria-label="Get a quote from Shivansh Infosys"
-          >
-            GET A QUOTE
-          </button>
+      <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+        <Link
+          href={"/contact"}
+          className="flex-1 rounded-full bg-white px-6 py-3 text-center font-bold text-red-700 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          aria-label="Get a quote from Shivansh Infosys"
+        >
+          GET A QUOTE
+        </Link>
 
-          {/* <Button
-            href="/contact"
-            padding="px-[20px] py-[10px] sm:px-[16px] sm:py-[8px]"
-            className=" bg-white text-red-600 tracking-[2px] md:tracking-tight lg:tracking-[0px]"
-          >
-            GET A QUOTE
-          </Button> */}
+        <Link
+          href={"/about"}
+          passHref
+          className="flex-1 rounded-full border-2 border-white bg-transparent px-6 py-3 text-center font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          aria-label="Learn more about Shivansh Infosys"
+        >
+          OUR STORY
+        </Link>
+      </div>
+
+      {/* Stats Section */}
+      <div className="mt-10 grid grid-cols-2 gap-4">
+        <div className="rounded-lg bg-red-900/40 p-3 text-center">
+          <div className="text-2xl font-bold">13+</div>
+          <div className="text-xs opacity-80">Years Experience</div>
+        </div>
+        <div className="rounded-lg bg-red-900/40 p-3 text-center">
+          <div className="text-2xl font-bold">1500+</div>
+          <div className="text-xs opacity-80">End Users</div>
+        </div>
+        <div className="rounded-lg bg-red-900/40 p-3 text-center">
+          <div className="text-2xl font-bold">450+</div>
+          <div className="text-xs opacity-80">Companies</div>
+        </div>
+        <div className="rounded-lg bg-red-900/40 p-3 text-center">
+          <div className="text-2xl font-bold">24/7</div>
+          <div className="text-xs opacity-80">Support</div>
         </div>
       </div>
-    </>
-  );
-};
+    </div>
+  </div>
+);

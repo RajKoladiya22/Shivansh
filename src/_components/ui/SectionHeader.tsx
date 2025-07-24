@@ -1,45 +1,45 @@
-import React from 'react';
-import type { JSX } from 'react';
+import React from "react";
+import type { JSX } from "react";
 
 interface SectionHeaderProps {
   // Main heading content
   heading?: string;
   headingText?: string;
   headingDescription?: string;
-  
+
   // Optional subheading
   subheading?: string;
-  
+
   // Styling and layout options
-  alignment?: 'left' | 'center' | 'right';
+  alignment?: "left" | "center" | "right";
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  
+
   // Colors and styling
   headingColor?: string;
   headingTextColor?: string;
   descriptionColor?: string;
   backgroundColor?: string;
-  
+
   // Spacing and layout
-  spacing?: 'compact' | 'normal' | 'loose';
+  spacing?: "compact" | "normal" | "loose";
   maxWidth?: string;
-  
+
   // Conditional rendering
   showHeading?: boolean;
   showHeadingText?: boolean;
   showDescription?: boolean;
   showDivider?: boolean;
-  
+
   // Custom classes
   containerClassName?: string;
   headingClassName?: string;
   headingTextClassName?: string;
   descriptionClassName?: string;
-  
+
   // Animation and effects
   animate?: boolean;
   animationDelay?: number;
-  
+
   // Custom components or elements
   customIcon?: React.ReactNode;
   customElement?: React.ReactNode;
@@ -50,22 +50,22 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   headingText,
   headingDescription,
   subheading,
-  alignment = 'center',
+  alignment = "center",
   headingLevel = 2,
-  headingColor = 'text-red-600',
-  headingTextColor = 'text-gray-900',
-  descriptionColor = 'text-gray-600',
+  headingColor = "text-red-600",
+  headingTextColor = "text-gray-900",
+  descriptionColor = "text-gray-600",
   backgroundColor,
-  spacing = 'normal',
-  maxWidth = 'max-w-4xl',
+  spacing = "normal",
+  maxWidth = "max-w-4xl",
   showHeading = true,
   showHeadingText = true,
   showDescription = true,
   showDivider = false,
-  containerClassName = '',
-  headingClassName = '',
-  headingTextClassName = '',
-  descriptionClassName = '',
+  containerClassName = "",
+  headingClassName = "",
+  headingTextClassName = "",
+  descriptionClassName = "",
   animate = false,
   animationDelay = 0,
   customIcon,
@@ -73,26 +73,26 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   // Dynamic heading tag based on headingLevel
   const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
-  
+
   // Alignment classes
   const alignmentClasses = {
-    left: 'text-left',
-    center: 'text-center',
-    right: 'text-right',
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
   };
-  
+
   // Spacing classes
   const spacingClasses = {
-    compact: 'space-y-2',
-    normal: 'space-y-4',
-    loose: 'space-y-6',
+    compact: "space-y-2",
+    normal: "space-y-4",
+    loose: "space-y-6",
   };
-  
+
   // Animation classes
-  const animationClasses = animate 
-    ? 'opacity-0 translate-y-4 transition-all duration-700 ease-out animate-fade-in' 
-    : '';
-  
+  const animationClasses = animate
+    ? "opacity-0 translate-y-4 transition-all duration-700 ease-out animate-fade-in"
+    : "";
+
   // Container classes
   const containerClasses = `
     w-full mx-auto px-4 sm:px-6 lg:px-8 md:mb-14 lg:mb-16
@@ -102,74 +102,59 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     ${animationClasses}
     ${containerClassName}
   `.trim();
-  
+
   // Conditional styles
   const containerStyle = {
     backgroundColor,
     animationDelay: animate ? `${animationDelay}ms` : undefined,
   };
-  
+
   return (
     <div className={containerClasses} style={containerStyle}>
       {/* Custom Icon */}
       {customIcon && (
-        <div className="flex justify-center mb-4">
-          {customIcon}
-        </div>
+        <div className="mb-4 flex justify-center">{customIcon}</div>
       )}
-      
+
       {/* Heading (Small text above main heading) */}
       {showHeading && heading && (
-        <div className={`
-          text-sm font-semibold tracking-wide uppercase
-          ${headingColor}
-          ${headingClassName}
-        `.trim()}>
+        <div
+          className={`text-sm font-semibold tracking-wide uppercase ${headingColor} ${headingClassName} `.trim()}
+        >
           {heading}
         </div>
       )}
-      
+
       {/* Main Heading Text */}
       {showHeadingText && headingText && (
-        <HeadingTag className={`
-          text-3xl sm:text-4xl lg:text-[36px] font-bold tracking-tight
-          ${headingTextColor}
-          ${headingTextClassName}
-        `.trim()}>
+        <HeadingTag
+          className={`text-3xl font-bold tracking-tight sm:text-4xl lg:text-[36px] ${headingTextColor} ${headingTextClassName} `.trim()}
+        >
           {headingText}
         </HeadingTag>
       )}
-      
+
       {/* Subheading */}
       {subheading && (
-        <h3 className="text-xl sm:text-2xl font-medium text-gray-700">
+        <h3 className="text-xl font-medium text-gray-700 sm:text-2xl">
           {subheading}
         </h3>
       )}
-      
+
       {/* Divider */}
-      {showDivider && (
-        <div className="w-20 h-1 bg-red-600 mx-auto"></div>
-      )}
-      
+      {showDivider && <div className="mx-auto h-1 w-20 bg-red-600"></div>}
+
       {/* Description */}
       {showDescription && headingDescription && (
-        <p className={`
-          text-lg sm:text-xl leading-relaxed
-          ${descriptionColor}
-          ${descriptionClassName}
-        `.trim()}>
+        <p
+          className={`text-lg leading-relaxed sm:text-xl ${descriptionColor} ${descriptionClassName} `.trim()}
+        >
           {headingDescription}
         </p>
       )}
-      
+
       {/* Custom Element */}
-      {customElement && (
-        <div className="mt-4">
-          {customElement}
-        </div>
-      )}
+      {customElement && <div className="mt-4">{customElement}</div>}
     </div>
   );
 };
-

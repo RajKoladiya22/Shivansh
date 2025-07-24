@@ -1,14 +1,13 @@
 "use client";
 
 import React from "react";
-// import {ImageSlider} from "../../molecules";
 import { ImageSlider } from "../../../molecules";
 import { SectionHeader } from "src/_components/ui";
 import { Clintelogos } from "public/data/clinteLogo";
 
 export const ClinteSlider: React.FC = () => {
   return (
-    <section className="py-8 md:py-12 lg:py-1 ">
+    <section className="py-8 md:py-12 lg:py-5 ">
       {/* Section Header */}
       <div className="text-center">
         <SectionHeader
