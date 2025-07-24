@@ -392,52 +392,50 @@ type InputChangeEvent =
   | React.ChangeEvent<HTMLSelectElement>;
 
 export const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    reason: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      reason: "",
-      subject: "",
-      message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-  
-    const handleInputChange = (e: InputChangeEvent) => {
-      const { name, value } = e.target;
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    };
-  
-    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      setIsSubmitting(true);
-  
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-  
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-  
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          reason: "",
-          subject: "",
-          message: "",
-        });
-      }, 3000);
-    };
+  const handleInputChange = (e: InputChangeEvent) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        reason: "",
+        subject: "",
+        message: "",
+      });
+    }, 3000);
+  };
 
   // const [formData, setFormData] = useState({
   //   name: "",
@@ -447,9 +445,9 @@ export const ContactForm = () => {
   //   message: "",
   // });
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  // const [errors, setErrors] = useState<Record<string, string>>({});
   // const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  // const [isSuccess, setIsSuccess] = useState(false);
 
   // const validate = () => {
   //   const newErrors: Record<string, string> = {};
@@ -483,18 +481,18 @@ export const ContactForm = () => {
   //   return Object.keys(newErrors).length === 0;
   // };
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
-  };
+  // const handleChange = (
+  //   e: React.ChangeEvent<
+  //     HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  //   >,
+  // ) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
+  //   // Clear error when user starts typing
+  //   if (errors[name]) {
+  //     setErrors((prev) => ({ ...prev, [name]: "" }));
+  //   }
+  // };
 
   // const handleSubmit = async (e: React.FormEvent) => {
   //   e.preventDefault();
@@ -535,21 +533,21 @@ export const ContactForm = () => {
   //   }
   // };
 
-  const helpOptions = [
-    { value: "", label: "Select a service..." },
-    { value: "web-development", label: "Web Development" },
-    { value: "mobile-app", label: "Mobile App Development" },
-    { value: "ui-ux-design", label: "UI/UX Design" },
-    { value: "digital-marketing", label: "Digital Marketing" },
-    { value: "e-commerce", label: "E-commerce Solutions" },
-    { value: "consulting", label: "Technology Consulting" },
-    { value: "other", label: "Other Services" },
-  ];
+  // const helpOptions = [
+  //   { value: "", label: "Select a service..." },
+  //   { value: "web-development", label: "Web Development" },
+  //   { value: "mobile-app", label: "Mobile App Development" },
+  //   { value: "ui-ux-design", label: "UI/UX Design" },
+  //   { value: "digital-marketing", label: "Digital Marketing" },
+  //   { value: "e-commerce", label: "E-commerce Solutions" },
+  //   { value: "consulting", label: "Technology Consulting" },
+  //   { value: "other", label: "Other Services" },
+  // ];
 
   return (
     <div className="px-4 py-12 sm:px-6 lg:px-8" id="contact">
       {/* Success Message */}
-      {isSuccess && (
+      {/* {isSuccess && (
         <div className="fixed top-4 right-4 z-50 transform transition-all duration-300 ease-in-out">
           <div className="flex items-center rounded-lg bg-green-500 p-4 text-white shadow-lg">
             <svg
@@ -573,7 +571,7 @@ export const ContactForm = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       <div className="mx-auto max-w-6xl">
         {/* Header Section */}
@@ -602,11 +600,6 @@ export const ContactForm = () => {
 
             {/* Form Body */}
             <div className="px-6 py-8 sm:px-8">
-             
-
-
-
-
               {isSubmitted ? (
                 <div className="py-8 text-center sm:py-12">
                   <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-red-50 text-red-700 sm:mb-6 sm:h-20 sm:w-20">
@@ -769,8 +762,6 @@ export const ContactForm = () => {
                   </button>
                 </div>
               )}
-
-
             </div>
           </div>
 

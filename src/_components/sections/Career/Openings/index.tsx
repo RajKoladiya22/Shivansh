@@ -215,7 +215,7 @@ export const CareerComponent = () => {
                 </h2>
                 
                 <p className="text-gray-600 mb-6">
-                  Discover exciting career opportunities and grow with us. We're always looking for talented individuals to join our dynamic team.
+                  {`Discover exciting career opportunities and grow with us. We're always looking for talented individuals to join our dynamic team.`}
                 </p>
                 
                 <div className="text-center">
@@ -354,10 +354,10 @@ export const CareerComponent = () => {
                   required
                 >
                   <option value="">Select your highest qualification</option>
-                  <option value="bachelor">Bachelor's Degree</option>
-                  <option value="master">Master's Degree</option>
-                  <option value="phd">PhD</option>
+                  <option value="bachelor">{`Bachelor's Degree`}</option>
+                  <option value="master">{`Master's Degree`}</option>
                   <option value="diploma">Diploma</option>
+                  <option value="phd">PhD</option>
                   <option value="certificate">Certificate</option>
                 </select>
                 <input
