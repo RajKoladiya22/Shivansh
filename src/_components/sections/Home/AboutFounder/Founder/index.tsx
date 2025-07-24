@@ -25,7 +25,8 @@ export const TheFounder = () => {
   }, [isInView]);
 
   return (
-    <div className="py-16 sm:py-20 md:pb-24">
+    // py-16 sm:py-20 md:pb-24
+    <div className="py-12 sm:py-16 md:py-20 lg:py-15">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         {/* Header Section */}
         <div className="mb-12 text-center sm:mb-16">

@@ -7,7 +7,8 @@ import { industries } from "public/data/Solutions";
 
 export const WiseSolutionsIndustry = () => {
   return (
-    <section className="py-16 sm:py-20 md:py-24">
+    // py-16 sm:py-20 md:py-24
+    <section className="py-12 sm:py-16 md:py-20 lg:py-15">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

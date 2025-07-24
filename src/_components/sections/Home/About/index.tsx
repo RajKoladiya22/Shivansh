@@ -9,12 +9,14 @@ import { AboutUsLeftContent, AboutUsRightContent } from "./content";
 // Main About Us Section Component
 export const AboutUsSection = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-red-50 py-12 sm:py-16 md:py-24 lg:py-28">
+    
+    <section className="bg-gradient-to-b from-white to-red-50 py-12 sm:py-16 md:py-20 lg:py-15"> 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             heading="ABOUT US"
             headingText="We Are Standing With 10+ Years Of Experience"
+            headingTextClassName="pb-10"
           />
 
           <div className="overflow-hidden rounded-2xl shadow-2xl sm:rounded-3xl">
@@ -25,27 +27,16 @@ export const AboutUsSection = () => {
           </div>
 
           {/* Trusted Partners */}
-          <div className="mt-16 text-center">
-            <h3 className="mb-6 text-xl font-bold text-(--primery-color)">
+          <div className="pt-30 md:pt-50 lg:pt-30 text-center">
+            {/* <h3 className="mb-6 text-xl font- text-(--primery-color)">
               We Also Work With
-            </h3>
+            </h3> */}
+             <SectionHeader
+            heading="We Also Work With"
+            headingClassName="pb-5"
+            // headingText="We Are Standing With 10+ Years Of Experience"
+          />
 
-            {/* <div className="flex flex-wrap justify-center gap-6">
-              {Partnerlogos.map((p, i) => (
-                <>
-                
-                <div key={i} className="border-2 border-dashed rounded-xl w-20 h-20  hover:opacity-100 transition-opacity" >
-                  <Image
-                    src={p.src}
-                    alt={p.alt}
-                    width={80}
-                    height={80}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                </>
-              ))}
-            </div> */}
           </div>
         </div>
       </div>

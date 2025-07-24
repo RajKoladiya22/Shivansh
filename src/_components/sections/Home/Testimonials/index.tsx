@@ -8,10 +8,11 @@ import type { Testimonial } from "src/_components/sections/types/testimonial.typ
 
 export const CustomerTestimonials = () => {
   return (
-    <div className="to-red bg-gradient-to-b from-red-50 py-20">
+    // py-20
+    <div className="to-red bg-gradient-to-b from-red-50 py-12 sm:py-16 md:py-20 lg:py-15">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="py-4">
+        <div className="">
           <SectionHeader
             heading="CUSTOMER TESTIMONIALS"
             headingText="The Talk of The Shivansh Infosys"

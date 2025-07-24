@@ -51,7 +51,8 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="px-4 py-12 sm:px-6 lg:px-8" id="contact">
+    // py-12
+    <div className="px-4  sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-15" id="contact">
       {/* Success Message */}
       {/* {isSuccess && (
         <div className="fixed top-4 right-4 z-50 transform transition-all duration-300 ease-in-out">

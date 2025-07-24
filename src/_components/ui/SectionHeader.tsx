@@ -95,7 +95,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   // Container classes
   const containerClasses = `
-    w-full mx-auto px-4 sm:px-6 lg:px-8 md:mb-14 lg:mb-16
+    w-full mx-auto px-4 sm:px-6 lg:px-8
     ${maxWidth}
     ${alignmentClasses[alignment]}
     ${spacingClasses[spacing]}

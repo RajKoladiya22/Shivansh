@@ -7,7 +7,8 @@ import { Clintelogos } from "public/data/clinteLogo";
 
 export const ClinteSlider: React.FC = () => {
   return (
-    <section className="py-8 md:py-12 lg:py-5 ">
+    // py-8 md:py-12 lg:py-5
+    <section className="py-12 sm:py-16 md:py-20 lg:py-15">
       {/* Section Header */}
       <div className="text-center">
         <SectionHeader
