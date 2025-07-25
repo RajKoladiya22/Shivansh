@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Generate static routes
   const staticRoutes = STATIC_ROUTES.map((route) => ({
     url: `${baseUrl}${route.path}`,
-    lastModified: route.lastModified || new Date(),
+    lastModified: route.lastModified ?? new Date(),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }))
