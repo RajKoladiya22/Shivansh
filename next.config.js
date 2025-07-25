@@ -12,7 +12,7 @@ const config = {
   ],
   images: {
     remotePatterns: [
-        {
+      {
         protocol: 'https',
         hostname: 'img.youtube.com',
         port: '',
@@ -31,6 +31,29 @@ const config = {
         pathname: '/**',
       },
     ],
+  },
+  // Optional: Configure headers for better SEO
+  async headers() {
+    return [
+      {
+        source: '/robots.txt',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, s-maxage=3600',
+          },
+        ],
+      },
+      {
+        source: '/sitemap.xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, s-maxage=3600',
+          },
+        ],
+      },
+    ];
   },
 };
 
