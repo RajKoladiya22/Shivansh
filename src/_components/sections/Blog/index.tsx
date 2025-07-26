@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { BlogCard } from "./BlogCard";
 import { BlogHero } from "./BlogHero";
-import { CategoriesWidget, ContactWidget, RecentPostsWidget, SearchWidget, TopLikedWidget } from "./Sidebar";
+import { CategoriesWidget, ContactWidget, RecentPostsWidget,  TopLikedWidget } from "./Sidebar";
 
 export interface Blog {
   id: number;
