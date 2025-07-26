@@ -227,7 +227,7 @@ export const Footer: React.FC = () => {
                 Privacy Policy
               </Link>
               <Link
-                href="/sitemap"
+                href="/sitemap.xml"
                 className="text-sm text-gray-500 transition-colors hover:text-gray-300"
               >
                 Sitemap

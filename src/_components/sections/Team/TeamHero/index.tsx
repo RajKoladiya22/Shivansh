@@ -424,7 +424,7 @@ export const TeamSection = () => {
                 View Open Positions
               </Link>
               <Link
-                href="/career"
+                href="/gallery"
                 className="rounded-xl border-2 border-white px-8 py-3 font-semibold text-white transition-all transition-colors duration-300 hover:-translate-y-1 hover:bg-white/10"
               >
                 Learn About Our Culture
