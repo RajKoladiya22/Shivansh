@@ -51,7 +51,7 @@ export const AboutUsHero = () => {
         />
       </div>
 
-      <div className="relative z-10 px-4 pt-15 sm:pt-19 sm:px-6 lg:px-8">
+      <div className="relative z-10 px-4 pt-22 sm:pt-19 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left Content */}
           <div
