@@ -1,4 +1,4 @@
-import { Heart, Share2, MessageCircle, Eye, Calendar, User, Tag, Search, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Heart, Calendar, Search, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 
 export interface Blog {
@@ -158,7 +158,7 @@ export const ContactWidget = () => {
         </div>
         <div className="flex items-center gap-3">
           <Mail className="w-5 h-5" />
-          <span className="text-sm">info@example.com</span>
+          <span className="text-sm">info@shivanshinfosys.com</span>
         </div>
         <div className="flex items-center gap-3">
           <MapPin className="w-5 h-5" />

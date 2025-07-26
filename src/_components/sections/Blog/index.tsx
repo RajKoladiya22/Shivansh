@@ -258,7 +258,7 @@ export default function TheBlogPage() {
     ));
   };
 
-  const handleShare = (blog : Record<string, any>) => {
+  const handleShare = (blog : Blog) => {
     if (navigator.share) {
       navigator.share({
         title: blog.title,
@@ -272,9 +272,9 @@ export default function TheBlogPage() {
     }
   };
 
-  const handleSearch = (term:string) => {
-    console.log('Searching for:', term);
-  };
+//   const handleSearch = (term:string) => {
+//     console.log('Searching for:', term);
+//   };
 
   return (
     <div className="min-h-screen bg-[#EEF6FF]">
