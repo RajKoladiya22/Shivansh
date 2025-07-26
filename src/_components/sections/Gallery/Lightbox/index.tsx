@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { categoryColors, categoryIcons, categoryLabels, type GalleryItem } from "..";
 import { ChevronLeft, ChevronRight, Download, Share, X } from "lucide-react";
+import Image from "next/image";
 
 // Lightbox Component
 export function Lightbox({
@@ -148,7 +149,9 @@ export function Lightbox({
                 ></div>
               </div>
             )}
-            <img
+            <Image
+            width={100}
+            height={100}
               src={currentItem.image}
               alt={currentItem.title}
               className={`h-64 w-full object-cover transition-opacity duration-300 sm:h-96 lg:h-[600px] ${

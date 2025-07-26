@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { categoryColors, categoryIcons, categoryLabels, type GalleryItem } from "..";
 import { ZoomIn } from "lucide-react";
+import Image from "next/image";
 
 // Gallery Item Component
 export const GalleryItemComponent = React.memo(
@@ -30,7 +31,9 @@ export const GalleryItemComponent = React.memo(
             ></div>
           </div>
         )}
-        <img
+        <Image
+        width={100}
+        height={100}
           src={item.image}
           alt={item.title}
           className={`w-full object-cover transition-all duration-700 group-hover:scale-110 ${className.includes("h-") ? "" : "h-64"} ${

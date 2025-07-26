@@ -258,19 +258,19 @@ export default function TheBlogPage() {
     ));
   };
 
-  const handleShare = (blog : Blog) => {
-    if (navigator.share) {
-      navigator.share({
-        title: blog.title,
-        text: blog.excerpt,
-        url: window.location.href
-      });
-    } else {
-      // Fallback to clipboard
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
-    }
-  };
+  // const handleShare = (blog : Blog) => {
+  //   if (navigator.share) {
+  //     navigator.share({
+  //       title: blog.title,
+  //       text: blog.excerpt,
+  //       url: window.location.href
+  //     });
+  //   } else {
+  //     // Fallback to clipboard
+  //     navigator.clipboard.writeText(window.location.href);
+  //     alert('Link copied to clipboard!');
+  //   }
+  // };
 
 //   const handleSearch = (term:string) => {
 //     console.log('Searching for:', term);
@@ -299,7 +299,7 @@ export default function TheBlogPage() {
                   key={blog.id}
                   blog={blog}
                   onLike={handleLike}
-                  onShare={handleShare}
+                  // onShare={handleShare}
                 />
               ))}
             </div>

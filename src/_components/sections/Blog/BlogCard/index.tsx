@@ -20,7 +20,7 @@ export interface Category {
 interface BlogCardProps {
   blog: Blog;
   onLike: (id: number) => void;
-  onShare: (blog: Blog) => void;
+  onShare?: (blog: Blog) => void;
 }
 
 export const BlogCard = ({ blog, onLike, onShare }: BlogCardProps) => {
@@ -76,7 +76,7 @@ export const BlogCard = ({ blog, onLike, onShare }: BlogCardProps) => {
           </div>
           
           <button
-            onClick={() => onShare(blog)}
+            // onClick={() => onShare(blog)}
             className="flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-[#FCF2F2] hover:text-[#C50202] transition-all text-sm"
           >
             <Share2 className="w-4 h-4" />
