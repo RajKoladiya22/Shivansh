@@ -104,6 +104,39 @@ export const CategoriesWidget: React.FC<CategoriesWidgetProps> = ({
     </div>
   );
 };
+export const HrCategoriesWidget: React.FC<CategoriesWidgetProps> = ({
+  categories,
+  selectedCategory,
+  onCategorySelect,
+}) => {
+  return (
+    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-3 mb-4">
+      {/* <h3 className="text-lg font-bold text-gray-900 mb-4">Categories</h3> */}
+      <div className="space-y-2">
+        {categories.map((category) => (
+          <button
+            key={category.name}
+            onClick={() => onCategorySelect(category.name)}
+            className={`p-2 m-0 rounded-lg text-left transition-all ${
+              selectedCategory === category.name
+                ? 'bg-[#C50202] text-white'
+                : 'bg-gray-50 text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]'
+            }`}
+          >
+            <span className="font-medium pr-2">{category.name}</span>
+            <span className={`text-sm px-2 py-1 rounded-full ${
+              selectedCategory === category.name 
+                ? 'bg-white text-[#C50202]' 
+                : 'bg-gray-200 text-gray-600'
+            }`}>
+              {category.count}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export const TopLikedWidget: React.FC<TopLikedWidgetProps> = ({
   topLikedBlogs,

@@ -54,14 +54,12 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
   const [recentPosts, setRecentPosts] = useState<Blog[]>([]);
 
   useEffect(() => {
-          //Recent posts (top 4 newest by date)
-      setRecentPosts(
-        [...blogPosts]
-          .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-          )
-          .slice(0, 4),
-      );
+    //Recent posts (top 4 newest by date)
+    setRecentPosts(
+      [...blogPosts]
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .slice(0, 4),
+    );
 
     // Find the blog post by ID
     const foundBlog = blogPosts.find(
@@ -80,8 +78,6 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
         foundBlog.relatedPosts.includes(post.id),
       );
       setRelatedBlogs(related);
-
-
     }
   }, [params.id]);
 
@@ -230,7 +226,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
               <span>Share</span>
             </button>
 
-            <button
+            {/* <button
               onClick={handleBookmark}
               className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
                 isBookmarked
@@ -242,7 +238,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
                 className={`h-4 w-4 ${isBookmarked ? "fill-current" : ""}`}
               />
               <span>Save</span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
@@ -286,7 +282,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
                 </div>
 
                 {/* Tags */}
-                <div className="mt-12 border-t border-gray-200 pt-8">
+                {/* <div className="mt-12 border-t border-gray-200 pt-8">
                   <h3 className="mb-4 text-sm font-semibold tracking-wide text-gray-900 uppercase">
                     Tags
                   </h3>
@@ -300,6 +296,45 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
                       </span>
                     ))}
                   </div>
+                </div> */}
+
+                {/* Action Buttons */}
+                <div className="mt-12 border-t border-gray-200 pt-8 flex items-center gap-3">
+                  <button
+                    onClick={handleLike}
+                    className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                      blog.isLiked
+                        ? "bg-[#C50202] text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]"
+                    }`}
+                  >
+                    <Heart
+                      className={`h-4 w-4 ${blog.isLiked ? "fill-current" : ""}`}
+                    />
+                    <span>{blog.likes}</span>
+                  </button>
+
+                  <button
+                    onClick={handleShare}
+                    className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-[#FCF2F2] hover:text-[#C50202]"
+                  >
+                    <Share2 className="h-4 w-4" />
+                    <span>Share</span>
+                  </button>
+
+                  {/* <button
+              onClick={handleBookmark}
+              className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                isBookmarked
+                  ? "bg-[#C50202] text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]"
+              }`}
+            >
+              <Bookmark
+                className={`h-4 w-4 ${isBookmarked ? "fill-current" : ""}`}
+              />
+              <span>Save</span>
+            </button> */}
                 </div>
               </div>
             </article>
@@ -326,7 +361,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
           <div className="lg:col-span-1">
             <div className="sticky top-20 space-y-6">
               {/* Table of Contents (if needed) */}
-              <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+              {/* <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
                 <h3 className="mb-4 flex items-center gap-2 font-semibold text-gray-900">
                   <MessageCircle className="h-4 w-4 text-[#C50202]" />
                   Quick Actions
@@ -354,7 +389,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
                     {isBookmarked ? "Remove bookmark" : "Bookmark"}
                   </button>
                 </div>
-              </div>
+              </div> */}
 
               <ContactWidget />
 

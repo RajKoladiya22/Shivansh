@@ -5,10 +5,12 @@ import { BlogHero } from "./BlogHero";
 import {
   CategoriesWidget,
   ContactWidget,
+  HrCategoriesWidget,
   RecentPostsWidget,
   TopLikedWidget,
 } from "./Sidebar";
 import { blogPosts } from "public/data/Blog";
+import { SocialShareModal } from "./SocialShare";
 
 interface Author {
   name: string;
@@ -38,10 +40,14 @@ export interface Category {
 
 // Main Blog Page Component
 export default function TheBlogPage() {
-    const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [selectedBlogForShare, setSelectedBlogForShare] = useState<Blog | null>(
+    null,
+  );
 
-    useEffect(() => {
+  useEffect(() => {
     setBlogs(blogPosts);
   }, []);
 
@@ -92,8 +98,6 @@ export default function TheBlogPage() {
     );
   };
 
-
-
   // const handleShare = (blog : Blog) => {
   //   if (navigator.share) {
   //     navigator.share({
@@ -108,15 +112,29 @@ export default function TheBlogPage() {
   //   }
   // };
 
-  //   const handleSearch = (term:string) => {
-  //     console.log('Searching for:', term);
-  //   };
+  // const handleSearch = (term:string) => {
+  //   console.log('Searching for:', term);
+  // };
 
+  const handleShare = (blog: Blog) => {
+    setSelectedBlogForShare(blog);
+    setShareModalOpen(true);
+  };
+
+    const handleCloseShareModal = () => {
+    setShareModalOpen(false);
+    setSelectedBlogForShare(null);
+  };
   return (
     <div className="min-h-screen bg-[#EEF6FF]">
       <BlogHero />
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <HrCategoriesWidget
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategorySelect={setSelectedCategory}
+        />
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           {/* Main Content */}
           <div className="lg:col-span-3">
@@ -138,7 +156,7 @@ export default function TheBlogPage() {
                   key={blog.id}
                   blog={blog}
                   onLike={handleLike}
-                  // onShare={handleShare}
+                  onShare={handleShare}
                 />
               ))}
             </div>
@@ -164,6 +182,15 @@ export default function TheBlogPage() {
           </div>
         </div>
       </div>
+      {/* Social Share Modal */}
+      {selectedBlogForShare && (
+        <SocialShareModal
+          blog={selectedBlogForShare}
+          isOpen={shareModalOpen}
+          onClose={handleCloseShareModal}
+          currentUrl={`${window.location.origin}/blog/${selectedBlogForShare.id}`}
+        />
+      )}
     </div>
   );
 }
