@@ -1,685 +1,451 @@
-// "use client";
-// import React, { useState, useEffect } from "react";
-// import { Heart, Share2, MessageCircle, Eye, Calendar, User, Tag, ArrowLeft, Clock, Bookmark, ChevronUp, Facebook, Twitter, Linkedin, Copy, MessageSquare } from "lucide-react";
-
-// export interface Blog {
-//   id: number;
-//   title: string;
-//   excerpt: string;
-//   category: string;
-//   author: string;
-//   date: string;
-//   likes: number;
-//   views: number;
-//   isLiked: boolean;
-// }
-
-// export interface Category {
-//   name: string;
-//   count: number;
-// }
-
-// export interface BlogData {
-//   [key: number]: Blog;
-// }
-
-// interface ShareModalProps {
-//   isOpen: boolean;
-//   onClose: () => void;
-//   blog: Blog;
-// }
-
-// interface Heading {
-//   level: number;
-//   text: string;
-//   id: string;
-// }
-
-// interface TableOfContentsProps {
-//   content: string;
-// }
-
-// interface RelatedPostsProps {
-//   relatedPostIds: number[];
-//   blogData: BlogData;
-// }
-
-
-
-
-
-// // Mock blog data - in real app, this would come from an API
-// const blogData = {
-//   1: {
-//     id: 1,
-//     title: "Complete Guide to GST Filing for Small Businesses in 2024",
-//     excerpt: "Learn the step-by-step process of GST filing, important deadlines, and common mistakes to avoid. This comprehensive guide covers everything you need to know.",
-//     content: `
-// # Complete Guide to GST Filing for Small Businesses in 2024
-
-// ## Introduction
-
-// The Goods and Services Tax (GST) system has revolutionized the way businesses handle taxation in India. For small businesses, understanding the GST filing process is crucial for compliance and avoiding penalties. This comprehensive guide will walk you through everything you need to know about GST filing in 2024.
-
-// ## What is GST Filing?
-
-// GST filing is the process of submitting your tax returns to the government, declaring your sales, purchases, and the tax collected and paid during a specific period. All registered businesses must file GST returns regularly to maintain compliance.
-
-// ## Types of GST Returns
-
-// ### GSTR-1: Outward Supplies
-// - **Purpose**: Details of all outward supplies of goods or services
-// - **Due Date**: 11th of the following month
-// - **Frequency**: Monthly for regular taxpayers, Quarterly for small taxpayers
-
-// ### GSTR-3B: Summary Return
-// - **Purpose**: Summary of outward supplies, input tax credit, and tax payment
-// - **Due Date**: 20th of the following month
-// - **Frequency**: Monthly
-
-// ### GSTR-9: Annual Return
-// - **Purpose**: Consolidated annual return
-// - **Due Date**: 31st December of the following financial year
-// - **Frequency**: Annually
-
-// ## Step-by-Step GST Filing Process
-
-// ### Step 1: Gather Required Documents
-// Before you begin filing, ensure you have:
-// - Sales invoices and bills of supply
-// - Purchase invoices and debit/credit notes
-// - Bank statements and payment receipts
-// - Previous GST return acknowledgments
-
-// ### Step 2: Login to GST Portal
-// 1. Visit the official GST portal (www.gst.gov.in)
-// 2. Enter your GSTIN and password
-// 3. Complete the OTP verification
-
-// ### Step 3: Navigate to Returns Dashboard
-// - Click on "Services" → "Returns" → "Returns Dashboard"
-// - Select the return period you want to file
-
-// ### Step 4: Fill Return Details
-// - **GSTR-1**: Enter details of all outward supplies
-// - **GSTR-3B**: Provide summary information and calculate tax liability
-// - Verify all entries carefully before submission
-
-// ### Step 5: Pay Tax Dues
-// - Calculate your tax liability
-// - Make payment through the GST portal
-// - Keep payment confirmation for records
-
-// ### Step 6: Submit Return
-// - Review all entered information
-// - Click "Submit" and download the acknowledgment
-// - File the acknowledgment safely for future reference
-
-// ## Important Deadlines for 2024
-
-// | Return Type | Due Date | Late Fee (if applicable) |
-// |-------------|----------|-------------------------|
-// | GSTR-1 | 11th of next month | ₹50 per day |
-// | GSTR-3B | 20th of next month | ₹50 per day |
-// | GSTR-9 | 31st December 2024 | ₹100 per day |
-
-// ## Common Mistakes to Avoid
-
-// ### 1. Incorrect GSTIN Details
-// Always double-check the GSTIN of your suppliers and customers. Incorrect GSTIN can lead to input tax credit rejection.
-
-// ### 2. Mismatched Invoice Details
-// Ensure that invoice numbers, dates, and amounts match exactly with your accounting records.
-
-// ### 3. Late Filing
-// File your returns on time to avoid late fees and interest charges. Set up reminders to never miss a deadline.
-
-// ### 4. Incorrect Tax Calculation
-// Use the GST calculator or consult with a tax professional to ensure accurate tax calculations.
-
-// ## Benefits of Timely GST Filing
-
-// - **Avoid Penalties**: Timely filing helps you avoid late fees and interest charges
-// - **Input Tax Credit**: Claim legitimate input tax credits to reduce your tax burden
-// - **Business Credibility**: Maintain good standing with tax authorities
-// - **Smooth Operations**: Avoid disruptions in your business operations
-
-// ## Tools and Software for GST Filing
-
-// ### Government Tools
-// - GST Portal: Official portal for all GST-related activities
-// - Mobile App: GST Mobile app for basic filing operations
-
-// ### Third-Party Software
-// - Tally Prime: Comprehensive accounting with GST features
-// - ClearTax: Online GST filing platform
-// - Zoho Books: Cloud-based accounting with GST compliance
-
-// ## Tips for Small Businesses
-
-// 1. **Maintain Proper Records**: Keep all invoices and documents organized
-// 2. **Regular Reconciliation**: Match your books with GST portal data monthly
-// 3. **Professional Help**: Consider hiring a CA or tax consultant for complex cases
-// 4. **Stay Updated**: Keep track of GST law changes and notifications
-// 5. **Use Technology**: Leverage accounting software for accurate and efficient filing
-
-// ## Conclusion
-
-// GST filing doesn't have to be complicated. With proper preparation, understanding of the process, and timely action, small businesses can easily comply with GST requirements. Remember to maintain accurate records, file on time, and seek professional help when needed.
-
-// Stay compliant, stay successful!
-//     `,
-//     category: "GST",
-//     author: "Priya Sharma",
-//     authorBio: "Priya is a Chartered Accountant with over 8 years of experience in taxation and compliance. She specializes in GST and helps small businesses navigate complex tax regulations.",
-//     authorImage: "PS",
-//     date: "July 20, 2024",
-//     readTime: "12 min read",
-//     likes: 142,
-//     views: 1205,
-//     comments: 28,
-//     isLiked: false,
-//     isBookmarked: false,
-//     tags: ["GST", "Small Business", "Tax Filing", "Compliance", "2024"],
-//     relatedPosts: [2, 5, 3]
-//   },
-//   2: {
-//     id: 2,
-//     title: "Tally Prime: Advanced Features You Should Know About",
-//     excerpt: "Discover the powerful features of Tally Prime that can streamline your accounting processes and improve business efficiency.",
-//     content: `
-// # Tally Prime: Advanced Features You Should Know About
-
-// ## Introduction
-
-// Tally Prime has revolutionized business accounting with its intuitive interface and powerful features. Beyond basic bookkeeping, Tally Prime offers advanced capabilities that can significantly enhance your business operations and decision-making processes.
-
-// ## Advanced Inventory Management
-
-// ### Multi-Location Inventory
-// Track inventory across multiple locations, warehouses, and godowns with real-time updates and transfers.
-
-// ### Batch and Serial Number Tracking
-// Maintain detailed records of products with batch numbers and serial numbers for better traceability.
-
-// ## Advanced Reporting Features
-
-// ### Customizable Reports
-// Create custom reports tailored to your business needs with drag-and-drop functionality.
-
-// ### Real-time MIS Reports
-// Generate Management Information System reports for better business insights and decision making.
-
-// ## Conclusion
-
-// Tally Prime's advanced features can transform how you manage your business finances and operations.
-//     `,
-//     category: "Tally",
-//     author: "Rajesh Kumar",
-//     authorBio: "Rajesh is a Tally expert and business consultant with 10+ years of experience helping businesses optimize their accounting processes.",
-//     authorImage: "RK",
-//     date: "July 18, 2024",
-//     readTime: "8 min read",
-//     likes: 98,
-//     views: 856,
-//     comments: 15,
-//     isLiked: true,
-//     isBookmarked: true,
-//     tags: ["Tally", "Accounting", "Software", "Business"],
-//     relatedPosts: [1, 4, 6]
-//   }
-// };
-
-// const ShareModal: React.FC<ShareModalProps> = ({
-//   isOpen,
-//   onClose,
-//   blog,
-// }) => {
-//   const [copied, setCopied] = useState(false);
-  
-//   if (!isOpen) return null;
-
-//   const shareUrl = `${window.location.origin}/blog/${blog.id}`;
-//   const shareText = `Check out this article: ${blog.title}`;
-
-//   const handleCopyLink = () => {
-//     navigator.clipboard.writeText(shareUrl);
-//     setCopied(true);
-//     setTimeout(() => setCopied(false), 2000);
-//   };
-
-//   const shareOptions = [
-//     {
-//       name: 'Facebook',
-//       icon: Facebook,
-//       url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-//       color: 'bg-blue-600'
-//     },
-//     {
-//       name: 'Twitter',
-//       icon: Twitter,
-//       url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
-//       color: 'bg-sky-500'
-//     },
-//     {
-//       name: 'LinkedIn',
-//       icon: Linkedin,
-//       url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-//       color: 'bg-blue-700'
-//     },
-//     {
-//       name: 'WhatsApp',
-//       icon: MessageSquare,
-//       url: `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`,
-//       color: 'bg-green-500'
-//     }
-//   ];
-
-//   return (
-//     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-//       <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
-//         <div className="flex items-center justify-between mb-6">
-//           <h3 className="text-xl font-bold text-gray-900">Share Article</h3>
-//           <button
-//             onClick={onClose}
-//             className="text-gray-400 hover:text-gray-600 transition-colors"
-//           >
-//             ✕
-//           </button>
-//         </div>
-        
-//         <div className="grid grid-cols-2 gap-3 mb-6">
-//           {shareOptions.map((option) => (
-//             <a
-//               key={option.name}
-//               href={option.url}
-//               target="_blank"
-//               rel="noopener noreferrer"
-//               className={`${option.color} text-white p-3 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity`}
-//             >
-//               <option.icon className="w-5 h-5" />
-//               <span className="text-sm font-medium">{option.name}</span>
-//             </a>
-//           ))}
-//         </div>
-        
-//         <div className="border-t pt-4">
-//           <label className="block text-sm font-medium text-gray-700 mb-2">Copy Link</label>
-//           <div className="flex gap-2">
-//             <input
-//               type="text"
-//               value={shareUrl}
-//               readOnly
-//               className="flex-1 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-sm"
-//             />
-//             <button
-//               onClick={handleCopyLink}
-//               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-//                 copied 
-//                   ? 'bg-green-500 text-white' 
-//                   : 'bg-[#C50202] text-white hover:bg-[#C5020280]'
-//               }`}
-//             >
-//               {copied ? 'Copied!' : <Copy className="w-4 h-4" />}
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
-//   const [headings, setHeadings] = useState<Heading[]>([]);
-
-//  useEffect(() => {
-//     // Extract headings from content
-//     const headingRegex = /^(#{1,6})\s+(.+)$/gm;
-//     const extractedHeadings = [];
-//     let match;
-
-//     while ((match = headingRegex.exec(content)) !== null) {
-//       const level = match[1]?.length;
-//       const text = match[2];
-//       const id = text?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      
-//       extractedHeadings.push({
-//         level,
-//         text,
-//         id
-//       });
-//     }
-
-//     setHeadings(extractedHeadings);
-//   }, [content]);
-
-//   return (
-//     <div className="bg-[#FCF2F2] rounded-xl p-6 mb-8">
-//       <h3 className="text-lg font-bold text-gray-900 mb-4">Table of Contents</h3>
-//       <nav className="space-y-2">
-//         {headings.map((heading, index) => (
-//           <a
-//             key={index}
-//             href={`#${heading.id}`}
-//             className={`block text-sm hover:text-[#C50202] transition-colors ${
-//               heading.level === 1 ? 'font-semibold text-gray-900' :
-//               heading.level === 2 ? 'font-medium text-gray-800 ml-4' :
-//               'text-gray-600 ml-8'
-//             }`}
-//           >
-//             {heading.text}
-//           </a>
-//         ))}
-//       </nav>
-//     </div>
-//   );
-// };
-
-// const RelatedPosts: React.FC<RelatedPostsProps> = ({
-//   relatedPostIds,
-//   blogData,
-// }) => {
-//   const relatedPosts = relatedPostIds.map(id => blogData[id]).filter(Boolean);
-
-//   return (
-//     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
-//       <h3 className="text-xl font-bold text-gray-900 mb-6">Related Articles</h3>
-//       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-//         {relatedPosts.map((post) => (
-//           <div key={post?.id} className="group cursor-pointer">
-//             <div className="aspect-video bg-gradient-to-br from-[#EEF6FF] to-[#FCF2F2] rounded-lg p-4 flex items-center justify-center mb-3 group-hover:shadow-md transition-shadow">
-//               <div className="w-12 h-12 bg-[#C50202] rounded-full flex items-center justify-center">
-//                 <Tag className="w-6 h-6 text-white" />
-//               </div>
-//             </div>
-//             <h4 className="font-semibold text-gray-900 line-clamp-2 mb-2 group-hover:text-[#C50202] transition-colors">
-//               {post?.title}
-//             </h4>
-//             <div className="flex items-center gap-2 text-sm text-gray-500">
-//               <Calendar className="w-4 h-4" />
-//               <span>{post?.date}</span>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// const ScrollToTop = () => {
-//   const [isVisible, setIsVisible] = useState(false);
-
-//   useEffect(() => {
-//     const toggleVisibility = () => {
-//       if (window.pageYOffset > 300) {
-//         setIsVisible(true);
-//       } else {
-//         setIsVisible(false);
-//       }
-//     };
-
-//     window.addEventListener('scroll', toggleVisibility);
-//     return () => window.removeEventListener('scroll', toggleVisibility);
-//   }, []);
-
-//   const scrollToTop = () => {
-//     window.scrollTo({
-//       top: 0,
-//       behavior: 'smooth'
-//     });
-//   };
-
-//   return (
-//     <button
-//       className={`fixed bottom-8 right-8 p-3 bg-[#C50202] text-white rounded-full shadow-lg hover:bg-[#C5020280] transition-all z-40 ${
-//         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
-//       }`}
-//       onClick={scrollToTop}
-//     >
-//       <ChevronUp className="w-6 h-6" />
-//     </button>
-//   );
-// };
-
-// // Main Blog Detail Component
-// export default function BlogDetailPage({ params }) {
-//   // In a real app, you'd get the ID from params and fetch data
-//   const blogId = params?.id || 1; // Default to 1 for demo
-//   const blog = blogData[blogId];
-  
-//   const [shareModalOpen, setShareModalOpen] = useState(false);
-//   const [isLiked, setIsLiked] = useState(blog?.isLiked || false);
-//   const [isBookmarked, setIsBookmarked] = useState(blog?.isBookmarked || false);
-//   const [likes, setLikes] = useState(blog?.likes || 0);
-
-//   if (!blog) {
-//     return (
-//       <div className="min-h-screen bg-[#EEF6FF] flex items-center justify-center">
-//         <div className="text-center">
-//           <h1 className="text-2xl font-bold text-gray-900 mb-4">Blog not found</h1>
-//           <button
-//             onClick={() => window.history.back()}
-//             className="bg-[#C50202] text-white px-6 py-3 rounded-lg hover:bg-[#C5020280] transition-all"
-//           >
-//             Go Back
-//           </button>
-//         </div>
-//       </div>
-//     );
-//   }
-
-//   const handleLike = () => {
-//     setIsLiked(!isLiked);
-//     setLikes(isLiked ? likes - 1 : likes + 1);
-//   };
-
-//   const handleBookmark = () => {
-//     setIsBookmarked(!isBookmarked);
-//   };
-
-//   const formatContent = (content) => {
-//     return content
-//       .split('\n')
-//       .map((line, index) => {
-//         if (line.startsWith('# ')) {
-//           const text = line.substring(2);
-//           const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-//           return <h1 key={index} id={id} className="text-3xl font-bold text-gray-900 mb-6 mt-8">{text}</h1>;
-//         } else if (line.startsWith('## ')) {
-//           const text = line.substring(3);
-//           const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-//           return <h2 key={index} id={id} className="text-2xl font-bold text-gray-900 mb-4 mt-8">{text}</h2>;
-//         } else if (line.startsWith('### ')) {
-//           const text = line.substring(4);
-//           const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-//           return <h3 key={index} id={id} className="text-xl font-bold text-gray-900 mb-3 mt-6">{text}</h3>;
-//         } else if (line.startsWith('| ')) {
-//           // Simple table handling - you might want to enhance this
-//           return <div key={index} className="font-mono text-sm bg-gray-50 p-2 rounded mb-2">{line}</div>;
-//         } else if (line.startsWith('- ')) {
-//           return <li key={index} className="text-gray-700 leading-relaxed mb-1">{line.substring(2)}</li>;
-//         } else if (line.trim() === '') {
-//           return <br key={index} />;
-//         } else if (line.startsWith('**') && line.endsWith('**')) {
-//           return <p key={index} className="font-bold text-gray-900 mb-3">{line.slice(2, -2)}</p>;
-//         } else {
-//           return <p key={index} className="text-gray-700 leading-relaxed mb-4">{line}</p>;
-//         }
-//       });
-//   };
-
-//   return (
-//     <div className="min-h-screen bg-[#EEF6FF]">
-//       {/* Header */}
-//       <div className="bg-white shadow-sm">
-//         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-//           <button
-//             onClick={() => window.history.back()}
-//             className="flex items-center gap-2 text-[#C50202] hover:text-[#C5020280] transition-colors"
-//           >
-//             <ArrowLeft className="w-5 h-5" />
-//             <span className="font-medium">Back to Blog</span>
-//           </button>
-//         </div>
-//       </div>
-
-//       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-//         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-//           {/* Main Content */}
-//           <div className="lg:col-span-3">
-//             <article className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-//               {/* Article Header */}
-//               <div className="p-6 md:p-8 border-b border-gray-100">
-//                 <div className="flex flex-wrap items-center gap-2 mb-4">
-//                   <span className="px-3 py-1 bg-[#C5020233] text-[#C50202] rounded-full text-sm font-medium">
-//                     {blog.category}
-//                   </span>
-//                   {blog.tags.map((tag, index) => (
-//                     <span key={index} className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
-//                       #{tag}
-//                     </span>
-//                   ))}
-//                 </div>
-
-//                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-//                   {blog.title}
-//                 </h1>
-
-//                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-//                   {blog.excerpt}
-//                 </p>
-
-//                 {/* Meta Information */}
-//                 <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 mb-6">
-//                   <div className="flex items-center gap-2">
-//                     <div className="w-8 h-8 bg-[#C50202] text-white rounded-full flex items-center justify-center font-semibold">
-//                       {blog.authorImage}
-//                     </div>
-//                     <span>{blog.author}</span>
-//                   </div>
-//                   <div className="flex items-center gap-1">
-//                     <Calendar className="w-4 h-4" />
-//                     <span>{blog.date}</span>
-//                   </div>
-//                   <div className="flex items-center gap-1">
-//                     <Clock className="w-4 h-4" />
-//                     <span>{blog.readTime}</span>
-//                   </div>
-//                   <div className="flex items-center gap-1">
-//                     <Eye className="w-4 h-4" />
-//                     <span>{blog.views} views</span>
-//                   </div>
-//                 </div>
-
-//                 {/* Action Buttons */}
-//                 <div className="flex items-center gap-4">
-//                   <button
-//                     onClick={handleLike}
-//                     className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-//                       isLiked 
-//                         ? 'bg-[#C50202] text-white' 
-//                         : 'bg-gray-100 text-gray-600 hover:bg-[#FCF2F2] hover:text-[#C50202]'
-//                     }`}
-//                   >
-//                     <Heart className={`w-5 h-5 ${isLiked ? 'fill-current' : ''}`} />
-//                     <span>{likes}</span>
-//                   </button>
-
-//                   <button
-//                     onClick={() => setShareModalOpen(true)}
-//                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-[#FCF2F2] hover:text-[#C50202] transition-all"
-//                   >
-//                     <Share2 className="w-5 h-5" />
-//                     <span>Share</span>
-//                   </button>
-
-//                   <button
-//                     onClick={handleBookmark}
-//                     className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-//                       isBookmarked 
-//                         ? 'bg-[#ffc700] text-white' 
-//                         : 'bg-gray-100 text-gray-600 hover:bg-[#FCF2F2] hover:text-[#C50202]'
-//                     }`}
-//                   >
-//                     <Bookmark className={`w-5 h-5 ${isBookmarked ? 'fill-current' : ''}`} />
-//                     <span>{isBookmarked ? 'Saved' : 'Save'}</span>
-//                   </button>
-
-//                   <div className="flex items-center gap-1 text-gray-500">
-//                     <MessageCircle className="w-5 h-5" />
-//                     <span>{blog.comments} comments</span>
-//                   </div>
-//                 </div>
-//               </div>
-
-//               {/* Article Content */}
-//               <div className="p-6 md:p-8">
-//                 <div className="prose prose-lg max-w-none">
-//                   {formatContent(blog.content)}
-//                 </div>
-//               </div>
-
-//               {/* Author Bio */}
-//               <div className="p-6 md:p-8 bg-gray-50 border-t border-gray-100">
-//                 <div className="flex items-start gap-4">
-//                   <div className="w-16 h-16 bg-[#C50202] text-white rounded-full flex items-center justify-center font-bold text-xl">
-//                     {blog.authorImage}
-//                   </div>
-//                   <div className="flex-1">
-//                     <h3 className="text-lg font-bold text-gray-900 mb-2">About {blog.author}</h3>
-//                     <p className="text-gray-600 leading-relaxed">{blog.authorBio}</p>
-//                   </div>
-//                 </div>
-//               </div>
-//             </article>
-
-//             {/* Related Posts */}
-//             <div className="mt-8">
-//               <RelatedPosts relatedPostIds={blog.relatedPosts} />
-//             </div>
-//           </div>
-
-//           {/* Sidebar */}
-//           <div className="lg:col-span-1">
-//             <div className="sticky top-8 space-y-6">
-//               <TableOfContents content={blog.content} />
-              
-//               {/* Quick Stats */}
-//               <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-//                 <h3 className="text-lg font-bold text-gray-900 mb-4">Article Stats</h3>
-//                 <div className="space-y-3">
-//                   <div className="flex items-center justify-between">
-//                     <span className="text-gray-600">Views</span>
-//                     <span className="font-semibold text-gray-900">{blog.views}</span>
-//                   </div>
-//                   <div className="flex items-center justify-between">
-//                     <span className="text-gray-600">Likes</span>
-//                     <span className="font-semibold text-gray-900">{likes}</span>
-//                   </div>
-//                   <div className="flex items-center justify-between">
-//                     <span className="text-gray-600">Comments</span>
-//                     <span className="font-semibold text-gray-900">{blog.comments}</span>
-//                   </div>
-//                   <div className="flex items-center justify-between">
-//                     <span className="text-gray-600">Reading Time</span>
-//                     <span className="font-semibold text-gray-900">{blog.readTime}</span>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Share Modal */}
-//       <ShareModal 
-//         isOpen={shareModalOpen} 
-//         onClose={() => setShareModalOpen(false)} 
-//         blog={blog} 
-//       />
-
-//       {/* Scroll to Top */}
-//       <ScrollToTop />
-//     </div>
-//   );
-// }
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import {
+  Calendar,
+  Eye,
+  Heart,
+  Share2,
+  Tag,
+  User,
+  ArrowLeft,
+  Clock,
+  MessageCircle,
+  Bookmark,
+  ChevronRight,
+  ExternalLink,
+} from "lucide-react";
+import { blogPosts } from "public/data/Blog";
+import { ContactWidget, RecentPostsWidget } from "../Sidebar";
+
+interface Author {
+  name: string;
+  bio: string;
+  image: string;
+}
+
+interface Blog {
+  id: number | string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  tags: string[];
+  author: Author;
+  date: string;
+  likes: number;
+  views: number;
+  isLiked: boolean;
+  relatedPosts: Array<number | string>;
+}
+
+interface BlogDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
+  const router = useRouter();
+  const [blog, setBlog] = useState<Blog | null>(null);
+  const [relatedBlogs, setRelatedBlogs] = useState<Blog[]>([]);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [readingTime, setReadingTime] = useState(0);
+  const [recentPosts, setRecentPosts] = useState<Blog[]>([]);
+
+  useEffect(() => {
+          //Recent posts (top 4 newest by date)
+      setRecentPosts(
+        [...blogPosts]
+          .sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+          )
+          .slice(0, 4),
+      );
+
+    // Find the blog post by ID
+    const foundBlog = blogPosts.find(
+      (post) => post.id.toString() === params.id,
+    );
+
+    if (foundBlog) {
+      setBlog(foundBlog);
+
+      // Calculate reading time (average 200 words per minute)
+      const wordCount = foundBlog.content.split(" ").length;
+      setReadingTime(Math.ceil(wordCount / 200));
+
+      // Get related posts
+      const related = blogPosts.filter((post) =>
+        foundBlog.relatedPosts.includes(post.id),
+      );
+      setRelatedBlogs(related);
+
+
+    }
+  }, [params.id]);
+
+  const handleLike = () => {
+    if (!blog) return;
+
+    setBlog({
+      ...blog,
+      isLiked: !blog.isLiked,
+      likes: blog.isLiked ? blog.likes - 1 : blog.likes + 1,
+    });
+  };
+
+  const handleShare = async () => {
+    if (!blog) return;
+
+    const shareData = {
+      title: blog.title,
+      text: blog.excerpt,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.log("Error sharing:", err);
+      }
+    } else {
+      // Fallback to clipboard
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Link copied to clipboard!");
+      } catch (err) {
+        console.log("Error copying to clipboard:", err);
+      }
+    }
+  };
+
+  const handleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+  };
+
+  const handleBackToBlogs = () => {
+    router.push("/blog");
+  };
+
+  const handleRelatedPostClick = (postId: number | string) => {
+    router.push(`/blog/${postId}`);
+  };
+
+  if (!blog) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#EEF6FF]">
+        <div className="text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-[#C50202]">
+            <Tag className="h-8 w-8 text-white" />
+          </div>
+          <h2 className="mb-2 text-xl font-semibold text-gray-900">
+            Loading...
+          </h2>
+          <p className="text-gray-600">
+            Please wait while we load the article.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#EEF6FF] pt-14 md:pt-20">
+      {/* Header */}
+      <div className="border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
+          <button
+            onClick={handleBackToBlogs}
+            className="group mb-6 inline-flex items-center gap-2 text-[#C50202] transition-colors hover:text-[#A50202]"
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+            <span className="font-medium">Back to Blog</span>
+          </button>
+
+          {/* Breadcrumb */}
+          <nav className="mb-6 flex items-center gap-2 text-sm text-gray-500">
+            <span>Blog</span>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-[#C50202]">{blog.category}</span>
+            <ChevronRight className="h-4 w-4" />
+            <span className="truncate font-medium text-gray-900">
+              {blog.title}
+            </span>
+          </nav>
+
+          {/* Category Badge */}
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#FCF2F2] px-3 py-1 text-sm font-medium text-[#C50202]">
+            <Tag className="h-3 w-3" />
+            {blog.category}
+          </div>
+
+          {/* Title */}
+          <h1 className="mb-6 text-3xl leading-tight font-bold text-gray-900 md:text-4xl">
+            {blog.title}
+          </h1>
+
+          {/* Meta Information */}
+          <div className="mb-6 flex flex-wrap items-center gap-6 text-sm text-gray-600">
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4" />
+              <span>{blog.author.name}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
+              <span>{blog.date}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4" />
+              <span>{readingTime} min read</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Eye className="h-4 w-4" />
+              <span>{blog.views.toLocaleString()} views</span>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleLike}
+              className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                blog.isLiked
+                  ? "bg-[#C50202] text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]"
+              }`}
+            >
+              <Heart
+                className={`h-4 w-4 ${blog.isLiked ? "fill-current" : ""}`}
+              />
+              <span>{blog.likes}</span>
+            </button>
+
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-[#FCF2F2] hover:text-[#C50202]"
+            >
+              <Share2 className="h-4 w-4" />
+              <span>Share</span>
+            </button>
+
+            <button
+              onClick={handleBookmark}
+              className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                isBookmarked
+                  ? "bg-[#C50202] text-white"
+                  : "bg-gray-100 text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]"
+              }`}
+            >
+              <Bookmark
+                className={`h-4 w-4 ${isBookmarked ? "fill-current" : ""}`}
+              />
+              <span>Save</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+          {/* Article Content */}
+          <div className="lg:col-span-3">
+            <article className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+              {/* Featured Image Placeholder */}
+              <div className="flex aspect-video items-center justify-center border-b border-gray-100 bg-gradient-to-br from-[#EEF6FF] to-[#FCF2F2] p-8">
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#C50202]">
+                    <Tag className="h-10 w-10 text-white" />
+                  </div>
+                  <span className="text-lg font-semibold text-[#C50202]">
+                    {blog.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Article Body */}
+              <div className="p-8">
+                {/* Excerpt */}
+                <div className="mb-8 rounded-r-lg border-l-4 border-[#C50202] bg-[#FCF2F2] p-6">
+                  <p className="text-lg leading-relaxed font-medium text-gray-700">
+                    {blog.excerpt}
+                  </p>
+                </div>
+
+                {/* Content */}
+                <div className="prose prose-lg max-w-none">
+                  <div className="space-y-6 leading-relaxed text-gray-700">
+                    {blog.content.split("\n").map((paragraph, index) => (
+                      <p key={index} className="text-base leading-7">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div className="mt-12 border-t border-gray-200 pt-8">
+                  <h3 className="mb-4 text-sm font-semibold tracking-wide text-gray-900 uppercase">
+                    Tags
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {blog.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="cursor-pointer rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700 transition-colors hover:bg-[#FCF2F2] hover:text-[#C50202]"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            {/* Author Bio */}
+            <div className="mt-8 rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+              <div className="flex items-start gap-4">
+                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#C50202] to-[#A50202]">
+                  <User className="h-8 w-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="mb-2 text-lg font-semibold text-gray-900">
+                    About {blog.author.name}
+                  </h3>
+                  <p className="leading-relaxed text-gray-600">
+                    {blog.author.bio}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-20 space-y-6">
+              {/* Table of Contents (if needed) */}
+              <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                <h3 className="mb-4 flex items-center gap-2 font-semibold text-gray-900">
+                  <MessageCircle className="h-4 w-4 text-[#C50202]" />
+                  Quick Actions
+                </h3>
+                <div className="space-y-3">
+                  <button
+                    onClick={handleLike}
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-[#FCF2F2] hover:text-[#C50202]"
+                  >
+                    <Heart className="h-4 w-4" />
+                    {blog.isLiked ? "Unlike" : "Like"} this article
+                  </button>
+                  <button
+                    onClick={handleShare}
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-[#FCF2F2] hover:text-[#C50202]"
+                  >
+                    <Share2 className="h-4 w-4" />
+                    Share article
+                  </button>
+                  <button
+                    onClick={handleBookmark}
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors hover:bg-[#FCF2F2] hover:text-[#C50202]"
+                  >
+                    <Bookmark className="h-4 w-4" />
+                    {isBookmarked ? "Remove bookmark" : "Bookmark"}
+                  </button>
+                </div>
+              </div>
+
+              <ContactWidget />
+
+              <RecentPostsWidget recentPosts={recentPosts} />
+
+              {/* Article Stats */}
+              <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                <h3 className="mb-4 font-semibold text-gray-900">
+                  Article Stats
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600">Views</span>
+                    <span className="font-medium">
+                      {blog.views.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600">Likes</span>
+                    <span className="font-medium">{blog.likes}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600">Reading Time</span>
+                    <span className="font-medium">{readingTime} min</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Related Posts */}
+        {relatedBlogs.length > 0 && (
+          <div className="mt-16">
+            <h2 className="mb-8 text-2xl font-bold text-gray-900">
+              Related Articles
+            </h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {relatedBlogs.map((relatedBlog) => (
+                <article
+                  key={relatedBlog.id}
+                  className="cursor-pointer overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-lg"
+                  onClick={() => handleRelatedPostClick(relatedBlog.id)}
+                >
+                  <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-[#EEF6FF] to-[#FCF2F2] p-4">
+                    <div className="text-center">
+                      <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#C50202]">
+                        <Tag className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-sm font-semibold text-[#C50202]">
+                        {relatedBlog.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="mb-3 flex items-center gap-3 text-xs text-gray-500">
+                      <span>{relatedBlog.date}</span>
+                      <span>•</span>
+                      <span>{relatedBlog.author.name}</span>
+                    </div>
+
+                    <h3 className="mb-2 line-clamp-2 text-lg leading-tight font-semibold text-gray-900 transition-colors hover:text-[#C50202]">
+                      {relatedBlog.title}
+                    </h3>
+
+                    <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-gray-600">
+                      {relatedBlog.excerpt}
+                    </p>
+
+                    <div className="flex items-center justify-between border-t border-gray-100 pt-3">
+                      <div className="flex items-center gap-3 text-xs text-gray-500">
+                        <span className="flex items-center gap-1">
+                          <Heart className="h-3 w-3" />
+                          {relatedBlog.likes}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Eye className="h-3 w-3" />
+                          {relatedBlog.views}
+                        </span>
+                      </div>
+
+                      <ExternalLink className="h-4 w-4 text-[#C50202]" />
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

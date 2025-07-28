@@ -1,16 +1,25 @@
 import { Heart, Calendar, Search, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 
+interface Author {
+  name: string;
+  bio: string;
+  image: string; // URL to author's profile picture
+}
+
 export interface Blog {
-  id: number;
+  id: number | string;
   title: string;
   excerpt: string;
+  content: string;
   category: string;
-  author: string;
+  tags: string[];
+  author: Author;
   date: string;
   likes: number;
   views: number;
   isLiked: boolean;
+  relatedPosts: Array<number | string>;
 }
 
 export interface Category {
