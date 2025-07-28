@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { blogPosts } from "public/data/Blog";
 import { ContactWidget, RecentPostsWidget } from "../Sidebar";
+import Head from "next/head";
 
 interface Author {
   name: string;
@@ -44,6 +45,102 @@ interface BlogDetailPageProps {
     id: string;
   };
 }
+
+interface BlogDetailSEOProps {
+  blog : Blog
+}
+
+const BlogDetailSEO = ({ blog } :BlogDetailSEOProps) => {
+  const siteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://yoursite.com';
+  const blogUrl = `${siteUrl}/blog/${blog.id}`;
+  const imageUrl = `${siteUrl}/api/og-image/${blog.id}` || `${siteUrl}/default-blog-image.jpg`;
+
+  return (
+    <Head>
+      {/* Primary Meta Tags */}
+      <title>{blog.title} | Your Blog Name</title>
+      <meta name="title" content={`${blog.title} | Your Blog Name`} />
+      <meta name="description" content={blog.excerpt} />
+      <meta name="keywords" content={`${blog.category}, accounting, finance, tax, GST, Tally`} />
+      <meta name="author" content={blog.author.name} />
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={blogUrl} />
+
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={blog.title} />
+      <meta property="og:description" content={blog.excerpt} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content={blogUrl} />
+      <meta property="og:site_name" content="Your Blog Name" />
+      <meta property="article:author" content={blog.author.name} />
+      <meta property="article:published_time" content={new Date(blog.date).toISOString()} />
+      <meta property="article:section" content={blog.category} />
+      <meta property="article:tag" content={blog.category} />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={blog.title} />
+      <meta name="twitter:description" content={blog.excerpt} />
+      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:site" content="@yourtwitterhandle" />
+      <meta name="twitter:creator" content="@yourtwitterhandle" />
+
+      {/* Additional Meta Tags */}
+      <meta name="theme-color" content="#C50202" />
+      <meta name="msapplication-TileColor" content="#C50202" />
+      
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": blog.title,
+            "description": blog.excerpt,
+            "image": imageUrl,
+            "author": {
+              "@type": "Person",
+              "name": blog.author
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Your Blog Name",
+              "logo": {
+                "@type": "ImageObject",
+                "url": `${siteUrl}/logo.png`
+              }
+            },
+            "datePublished": new Date(blog.date).toISOString(),
+            "dateModified": new Date(blog.date).toISOString(),
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": blogUrl
+            },
+            "articleSection": blog.category,
+            "keywords": [blog.category, "accounting", "finance", "tax"],
+            "wordCount": blog.content ? blog.content.split(' ').length : 500,
+            "interactionStatistic": [
+              {
+                "@type": "InteractionCounter",
+                "interactionType": "https://schema.org/LikeAction",
+                "userInteractionCount": blog.likes
+              },
+              {
+                "@type": "InteractionCounter", 
+                "interactionType": "https://schema.org/ViewAction",
+                "userInteractionCount": blog.views
+              }
+            ]
+          })
+        }}
+      />
+    </Head>
+  );
+};
 
 export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
   const router = useRouter();
@@ -117,9 +214,9 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
     }
   };
 
-  const handleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
-  };
+  // const handleBookmark = () => {
+  //   setIsBookmarked(!isBookmarked);
+  // };
 
   const handleBackToBlogs = () => {
     router.push("/blog");
@@ -148,6 +245,8 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
   }
 
   return (
+    <>
+    <BlogDetailSEO blog={blog} />
     <div className="min-h-screen bg-[#EEF6FF] pt-14 md:pt-20">
       {/* Header */}
       <div className="border-b border-gray-200 bg-white">
@@ -482,5 +581,6 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
         )}
       </div>
     </div>
+        </>
   );
 }

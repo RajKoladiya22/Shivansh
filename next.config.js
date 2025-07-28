@@ -11,6 +11,11 @@ const config = {
     '*.192.168.29.130',
   ],
   images: {
+    domains: ['https://shivansh-three.vercel.app', 'https://shivanshinfosys.in', 'localhost'],
+    formats: ['image/webp', 'image/avif'],
+
+
+
     remotePatterns: [
       {
         protocol: 'https',
@@ -53,8 +58,39 @@ const config = {
           },
         ],
       },
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
+      {
+        source: '/api/og-image/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, s-maxage=86400, stale-while-revalidate=604800',
+          },
+        ],
+      },
     ];
   },
+
+    // Enable compression
+  compress: true,
 };
+
+
 
 export default config;

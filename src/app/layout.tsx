@@ -14,7 +14,11 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Shivansh Infosys - Trusted Tally Solutions Partner | 3000+ Customers Served",
+
+    title: {
+    default: 'Shivansh Infosys',
+    template: 'Trusted Tally Solutions Partner | 3000+ Customers Served',
+  },
   description: "Empowering businesses with trusted Tally solutions. Tally Certified 3-Star Partner serving 3000+ customers across India. Quick response, expert support for all your Tally needs.",
   keywords: ["Tally solutions", "Tally certified partner", "Tally support", "business accounting software", "Tally implementation", "Tally training"],
   authors: [{ name: "Shivansh Infosys" }],

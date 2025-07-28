@@ -38,11 +38,11 @@ interface SocialShareModalProps {
   currentUrl?: string;
 }
 
-export const SocialShareModal = ({ 
-  blog, 
-  isOpen, 
-  onClose, 
-  currentUrl = window.location.href 
+export const SocialShareModal = ({
+  blog,
+  isOpen,
+  onClose,
+  currentUrl = window.location.href,
 }: SocialShareModalProps) => {
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied">("idle");
 
@@ -51,15 +51,15 @@ export const SocialShareModal = ({
   const shareUrl = currentUrl;
   const shareTitle = blog.title;
   const shareText = blog.excerpt;
-  const hashtags = blog.tags.join(',').replace(/\s+/g, '');
+  const hashtags = blog.tags.join(",").replace(/\s+/g, "");
 
   // Social media share URLs
   const shareLinks = {
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareTitle + ' - ' + shareText)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareTitle + " - " + shareText)}`,
     twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}&hashtags=${encodeURIComponent(hashtags)}`,
-    whatsapp: `https://wa.me/?text=${encodeURIComponent(shareTitle + '\n\n' + shareText + '\n\n' + shareUrl)}`,
+    whatsapp: `https://wa.me/?text=${encodeURIComponent(shareTitle + "\n\n" + shareText + "\n\n" + shareUrl)}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-    telegram: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`,
+    instagram: `https://instagram.com/${encodeURIComponent(shareUrl)}`,
   };
 
   const handleCopyLink = async () => {
@@ -68,13 +68,17 @@ export const SocialShareModal = ({
       setCopyStatus("copied");
       setTimeout(() => setCopyStatus("idle"), 2000);
     } catch (err) {
-      console.error('Failed to copy link:', err);
+      console.error("Failed to copy link:", err);
     }
   };
 
   const handleSocialShare = (platform: keyof typeof shareLinks) => {
     const url = shareLinks[platform];
-    window.open(url, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+    window.open(
+      url,
+      "_blank",
+      "width=600,height=400,scrollbars=yes,resizable=yes",
+    );
   };
 
   const handleNativeShare = async () => {
@@ -86,44 +90,44 @@ export const SocialShareModal = ({
           url: shareUrl,
         });
       } catch (err) {
-        console.error('Error sharing:', err);
+        console.error("Error sharing:", err);
       }
     }
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+    <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black p-4">
+      <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-white shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-            <Share2 className="w-5 h-5 text-[#C50202]" />
+        <div className="flex items-center justify-between border-b border-gray-200 p-6">
+          <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+            <Share2 className="h-5 w-5 text-[#C50202]" />
             Share Article
           </h3>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="rounded-full p-1 transition-colors hover:bg-gray-100"
           >
-            <X className="w-5 h-5 text-gray-500" />
+            <X className="h-5 w-5 text-gray-500" />
           </button>
         </div>
 
         {/* Article Preview */}
-        <div className="p-6 border-b border-gray-100">
-          <div className="bg-gradient-to-r from-[#EEF6FF] to-[#FCF2F2] rounded-lg p-4 border border-gray-100">
+        <div className="border-b border-gray-100 p-6">
+          <div className="rounded-lg border border-gray-100 bg-gradient-to-r from-[#EEF6FF] to-[#FCF2F2] p-4">
             <div className="flex items-start gap-3">
-              <div className="w-12 h-12 bg-[#C50202] rounded-lg flex items-center justify-center flex-shrink-0">
-                <ExternalLink className="w-6 h-6 text-white" />
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-[#C50202]">
+                <ExternalLink className="h-6 w-6 text-white" />
               </div>
-              <div className="flex-1 min-w-0">
-                <h4 className="font-semibold text-gray-900 text-sm line-clamp-2 mb-1">
+              <div className="min-w-0 flex-1">
+                <h4 className="mb-1 line-clamp-2 text-sm font-semibold text-gray-900">
                   {blog.title}
                 </h4>
-                <p className="text-gray-600 text-xs line-clamp-2 mb-2">
+                <p className="mb-2 line-clamp-2 text-xs text-gray-600">
                   {blog.excerpt}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-gray-500">
-                  <span className="bg-[#C50202] text-white px-2 py-1 rounded-full">
+                  <span className="rounded-full bg-[#C50202] px-2 py-1 text-white">
                     {blog.category}
                   </span>
                   <span>by {blog.author.name}</span>
@@ -135,60 +139,62 @@ export const SocialShareModal = ({
 
         {/* Social Media Options */}
         <div className="p-6">
-          <h4 className="text-sm font-medium text-gray-900 mb-4">Share on social media</h4>
-          <div className="grid grid-cols-2 gap-3 mb-6">
+          <h4 className="mb-4 text-sm font-medium text-gray-900">
+            Share on social media
+          </h4>
+          <div className="mb-6 grid grid-cols-2 gap-3">
             {/* Facebook */}
             <button
-              onClick={() => handleSocialShare('facebook')}
-              className="flex items-center gap-3 p-3 bg-[#1877F2] hover:bg-[#166FE5] text-white rounded-lg transition-colors"
+              onClick={() => handleSocialShare("facebook")}
+              className="flex items-center gap-3 rounded-lg bg-[#1877F2] p-3 text-white transition-colors hover:bg-[#166FE5]"
             >
-              <Facebook className="w-5 h-5 fill-current" />
+              <Facebook className="h-5 w-5 fill-current" />
               <span className="font-medium">Facebook</span>
             </button>
 
             {/* Twitter */}
             <button
-              onClick={() => handleSocialShare('twitter')}
-              className="flex items-center gap-3 p-3 bg-[#1DA1F2] hover:bg-[#1A91DA] text-white rounded-lg transition-colors"
+              onClick={() => handleSocialShare("twitter")}
+              className="flex items-center gap-3 rounded-lg bg-[#1DA1F2] p-3 text-white transition-colors hover:bg-[#1A91DA]"
             >
-              <Twitter className="w-5 h-5 fill-current" />
+              <Twitter className="h-5 w-5 fill-current" />
               <span className="font-medium">Twitter</span>
             </button>
 
             {/* WhatsApp */}
             <button
-              onClick={() => handleSocialShare('whatsapp')}
-              className="flex items-center gap-3 p-3 bg-[#25D366] hover:bg-[#22C55E] text-white rounded-lg transition-colors"
+              onClick={() => handleSocialShare("whatsapp")}
+              className="flex items-center gap-3 rounded-lg bg-[#25D366] p-3 text-white transition-colors hover:bg-[#22C55E]"
             >
-              <MessageCircle className="w-5 h-5" />
+              <MessageCircle className="h-5 w-5" />
               <span className="font-medium">WhatsApp</span>
             </button>
 
             {/* LinkedIn */}
             <button
-              onClick={() => handleSocialShare('linkedin')}
-              className="flex items-center gap-3 p-3 bg-[#0A66C2] hover:bg-[#095BB0] text-white rounded-lg transition-colors"
+              onClick={() => handleSocialShare("linkedin")}
+              className="flex items-center gap-3 rounded-lg bg-[#0A66C2] p-3 text-white transition-colors hover:bg-[#095BB0]"
             >
-              <ExternalLink className="w-5 h-5" />
+              <ExternalLink className="h-5 w-5" />
               <span className="font-medium">LinkedIn</span>
             </button>
 
-            {/* Telegram */}
+            {/* instagram */}
             <button
-              onClick={() => handleSocialShare('telegram')}
-              className="flex items-center gap-3 p-3 bg-[#0088CC] hover:bg-[#0077B5] text-white rounded-lg transition-colors"
+              onClick={() => handleSocialShare("instagram")}
+              className="flex items-center gap-3 rounded-lg bg-gradient-to-tr from-[#feda75] via-[#fa7e1e] to-[#d62976] p-3 text-white transition-colors hover:opacity-90"
             >
-              <MessageCircle className="w-5 h-5" />
-              <span className="font-medium">Telegram</span>
+              <Instagram className="h-5 w-5" />
+              <span className="font-medium">Instagram</span>
             </button>
 
             {/* Native Share (if available) */}
             {typeof navigator.share === "function" && (
               <button
                 onClick={handleNativeShare}
-                className="flex items-center gap-3 p-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors"
+                className="flex items-center gap-3 rounded-lg bg-gray-600 p-3 text-white transition-colors hover:bg-gray-700"
               >
-                <Share2 className="w-5 h-5" />
+                <Share2 className="h-5 w-5" />
                 <span className="font-medium">More</span>
               </button>
             )}
@@ -196,31 +202,31 @@ export const SocialShareModal = ({
 
           {/* Copy Link */}
           <div className="border-t border-gray-200 pt-4">
-            <h4 className="text-sm font-medium text-gray-900 mb-3">Or copy link</h4>
+            <h4 className="mb-3 text-sm font-medium text-gray-900">
+              Or copy link
+            </h4>
             <div className="flex items-center gap-2">
-              <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">
+              <div className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
                 <input
                   type="text"
                   value={shareUrl}
                   readOnly
-                  className="w-full bg-transparent text-sm text-gray-700 truncate focus:outline-none"
+                  className="w-full truncate bg-transparent text-sm text-gray-700 focus:outline-none"
                 />
               </div>
               <button
                 onClick={handleCopyLink}
-                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
                   copyStatus === "copied"
                     ? "bg-green-500 text-white"
-                    : "bg-[#C50202] hover:bg-[#A50202] text-white"
+                    : "bg-[#C50202] text-white hover:bg-[#A50202]"
                 }`}
               >
                 {copyStatus === "copied" ? (
-                  <span className="flex items-center gap-1">
-                    ✓ Copied
-                  </span>
+                  <span className="flex items-center gap-1">✓ Copied</span>
                 ) : (
                   <span className="flex items-center gap-1">
-                    <Copy className="w-4 h-4" />
+                    <Copy className="h-4 w-4" />
                     Copy
                   </span>
                 )}
@@ -240,10 +246,10 @@ interface SocialShareButtonProps {
   showText?: boolean;
 }
 
-export const SocialShareButton = ({ 
-  blog, 
-  className = "", 
-  showText = true 
+export const SocialShareButton = ({
+  blog,
+  className = "",
+  showText = true,
 }: SocialShareButtonProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -251,9 +257,9 @@ export const SocialShareButton = ({
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className={`flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202] transition-all text-sm font-medium ${className}`}
+        className={`flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-[#FCF2F2] hover:text-[#C50202] ${className}`}
       >
-        <Share2 className="w-4 h-4" />
+        <Share2 className="h-4 w-4" />
         {showText && <span>Share</span>}
       </button>
 
