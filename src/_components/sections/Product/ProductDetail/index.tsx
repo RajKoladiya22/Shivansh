@@ -150,7 +150,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <Image
                 width={100}
                 height={100}
-                src={productImages[selectedImageIndex] ?? ''}
+                src={productImages[selectedImageIndex] ?? ""}
                 alt={product.title}
                 className="h-full w-full object-cover"
               />
@@ -437,7 +437,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     {product.review.averageRating}
                   </div>
                   <div className="mb-2 flex justify-center">
-                    {[...Array(5)].map((_, i) => (
+                    {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
                         className={`h-6 w-6 ${
@@ -468,7 +468,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
             </h2>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProducts.map((relatedProduct) => (
-                <Link href={`${relatedProduct.id}`}>
+                <Link href={`${relatedProduct.id}`} key={relatedProduct.id}>
                   <div
                     key={relatedProduct.id}
                     className="cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-shadow hover:shadow-md"
