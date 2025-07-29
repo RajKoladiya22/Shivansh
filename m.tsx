@@ -306,3 +306,80 @@
 //                   </p>
 //                 </div>
 //               </form>
+
+// <div className={`lg:w-80 ${showFilters ? "block" : "hidden lg:block"}`}>
+//   <div className="sticky top-4 rounded-lg bg-white p-6 shadow-md">
+//     <div className="mb-4 flex items-center justify-between">
+//       <h3 className="text-lg font-semibold">Filters</h3>
+//       <button
+//         onClick={clearFilters}
+//         className="text-sm text-[#C50202] hover:underline"
+//       >
+//         Clear All
+//       </button>
+//     </div>
+
+//     {/* Category Filter */}
+//     <div className="mb-6">
+//       <label className="mb-2 block text-sm font-medium text-gray-700">
+//         Category
+//       </label>
+//       <select
+//         value={selectedCategory}
+//         onChange={(e) => setSelectedCategory(e.target.value)}
+//         className="w-full rounded-lg border border-gray-300 p-2 focus:border-transparent focus:ring-2 focus:ring-[#C50202]"
+//       >
+//         {categories.map((category) => (
+//           <option key={category} value={category}>
+//             {category}
+//           </option>
+//         ))}
+//       </select>
+//     </div>
+
+//     {/* Industry Filter */}
+//     <div className="mb-6">
+//       <label className="mb-2 block text-sm font-medium text-gray-700">
+//         Industry
+//       </label>
+//       <select
+//         value={selectedIndustry}
+//         onChange={(e) => setSelectedIndustry(e.target.value)}
+//         className="w-full rounded-lg border border-gray-300 p-2 focus:border-transparent focus:ring-2 focus:ring-[#C50202]"
+//       >
+//         {industries.map((industry) => (
+//           <option key={industry} value={industry}>
+//             {industry}
+//           </option>
+//         ))}
+//       </select>
+//     </div>
+
+//     {/* Price Range Filter */}
+//     <div className="mb-6">
+//       <label className="mb-2 block text-sm font-medium text-gray-700">
+//         Price Range (₹)
+//       </label>
+//       <div className="flex gap-2">
+//         <input
+//           type="number"
+//           placeholder="Min"
+//           value={priceRange.min}
+//           onChange={(e) =>
+//             setPriceRange({ ...priceRange, min: e.target.value })
+//           }
+//           className="w-full rounded-lg border border-gray-300 p-2 focus:border-transparent focus:ring-2 focus:ring-[#C50202]"
+//         />
+//         <input
+//           type="number"
+//           placeholder="Max"
+//           value={priceRange.max}
+//           onChange={(e) =>
+//             setPriceRange({ ...priceRange, max: e.target.value })
+//           }
+//           className="w-full rounded-lg border border-gray-300 p-2 focus:border-transparent focus:ring-2 focus:ring-[#C50202]"
+//         />
+//       </div>
+//     </div>
+//   </div>
+// </div>;

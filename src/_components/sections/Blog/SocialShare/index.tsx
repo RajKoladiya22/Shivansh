@@ -51,7 +51,7 @@ export const SocialShareModal = ({
   const shareUrl = currentUrl;
   const shareTitle = blog.title;
   const shareText = blog.excerpt;
-  const hashtags = blog.tags.join(",").replace(/\s+/g, "");
+  const hashtags = blog.tags?.join(",").replace(/\s+/g, "");
 
   // Social media share URLs
   const shareLinks = {
@@ -130,7 +130,7 @@ export const SocialShareModal = ({
                   <span className="rounded-full bg-[#C50202] px-2 py-1 text-white">
                     {blog.category}
                   </span>
-                  <span>by {blog.author.name}</span>
+                  <span>by {blog.author?.name}</span>
                 </div>
               </div>
             </div>

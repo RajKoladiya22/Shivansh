@@ -121,10 +121,11 @@ export default function TheBlogPage() {
     setShareModalOpen(true);
   };
 
-    const handleCloseShareModal = () => {
+  const handleCloseShareModal = () => {
     setShareModalOpen(false);
     setSelectedBlogForShare(null);
   };
+
   return (
     <div className="min-h-screen bg-[#EEF6FF]">
       <BlogHero />

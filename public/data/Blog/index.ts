@@ -226,7 +226,7 @@ export const blogPosts = [
 - Exporting reports to Excel automatically.`,
         category: "TDL",
         tags: ["TDL Scripts", "Productivity", "Code Samples"],
-                author: {
+        author: {
             name: "Priya Singh",
             bio: "Priya Singh is a business advisor helping SMEs choose the right software stack.",
             image: "https://example.com/images/authors/rahul-jain.jpg"
@@ -249,7 +249,7 @@ export const blogPosts = [
 - GST updates and compliance integration.`,
         category: "Accounting Software",
         tags: ["Cloud Accounting", "Tally Prime", "Zoho Books", "QuickBooks"],
-                        author: {
+        author: {
             name: "Neha Patel",
             bio: "Neha Patel is a business advisor helping SMEs choose the right software stack.",
             image: "https://example.com/images/authors/rahul-jain.jpg"
@@ -276,7 +276,7 @@ export const blogPosts = [
         category: "Tax",
         tags: ["Freelancers", "Income Tax", "Advance Tax", "Tax Planning"],
 
-                                author: {
+        author: {
             name: "Rita Kapoor",
             bio: "Rita Kapoor is a business advisor helping SMEs choose the right software stack.",
             image: "https://example.com/images/authors/rahul-jain.jpg"

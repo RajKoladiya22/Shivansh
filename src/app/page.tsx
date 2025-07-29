@@ -12,6 +12,7 @@ import {
   StatisticsSection,
   ContactForm,
   CustomerTestimonials,
+  ProductShowcaseSection,
 } from "../_components/sections/Home";
 
 // JSON-LD structured data
@@ -64,6 +65,7 @@ export default async function Home() {
         <Hero />
         <AboutUsSection />
         <StatisticsSection />
+        <ProductShowcaseSection />
         <AboutTheFounder />
         <CustomerTestimonials />
         <WiseSolutionsIndustry />
