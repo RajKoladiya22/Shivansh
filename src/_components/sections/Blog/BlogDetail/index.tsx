@@ -585,7 +585,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
               blog={selectedBlogForShare}
               isOpen={shareModalOpen}
               onClose={handleCloseShareModal}
-              currentUrl={`${window.location}`}
+              currentUrl={typeof window !== 'undefined' ? window.location.href : ''}
             />
           )}
         </div>

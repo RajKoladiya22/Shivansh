@@ -326,7 +326,7 @@ export const TheProductPage = () => {
                 {!hasMore && displayedProducts.length > 0 && (
                   <div className="py-8 text-center">
                     <p className="text-gray-500">
-                      You've reached the end of the product list.
+                     {` You've reached the end of the product list.`}
                     </p>
                     <p className="mt-2 text-sm text-gray-400">
                       Total: {filteredProducts.length} products loaded

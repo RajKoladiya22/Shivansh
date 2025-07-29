@@ -10,7 +10,6 @@ import {
   Check,
   Shield,
   Truck,
-  RefreshCw,
   Phone,
   Mail,
   MessageCircle,
@@ -20,6 +19,7 @@ import {
 import { ProductsList } from "public/data/Product";
 import type { Product } from "..";
 import Link from "next/link";
+import Image from "next/image";
 
 type TabId = "features" | "benefits" | "specifications" | "reviews";
 
@@ -86,16 +86,16 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
   }
 
   const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: product.title,
-        text: product.description,
-        url: window.location.href,
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Product link copied to clipboard!");
-    }
+    // if (navigator.share) {
+    //   navigator.share({
+    //     title: product.title,
+    //     text: product.description,
+    //     url: window.location.href,
+    //   });
+    // } else {
+    //   navigator.clipboard.writeText(window.location.href);
+    //   alert("Product link copied to clipboard!");
+    // }
   };
 
   const handleEnquiry = () => {
@@ -147,8 +147,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <div className="space-y-4">
             {/* Main Image */}
             <div className="relative aspect-square overflow-hidden rounded-lg bg-white shadow-sm">
-              <img
-                src={productImages[selectedImageIndex]}
+              <Image
+                width={100}
+                height={100}
+                src={productImages[selectedImageIndex] ?? ''}
                 alt={product.title}
                 className="h-full w-full object-cover"
               />
@@ -202,7 +204,9 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                       : "border-gray-200"
                   }`}
                 >
-                  <img
+                  <Image
+                    width={100}
+                    height={100}
                     src={image}
                     alt={`${product.title} ${index + 1}`}
                     className="h-full w-full object-cover"
@@ -233,7 +237,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <div className="mb-4 flex items-center gap-4">
                 <div className="flex items-center gap-1">
                   <div className="flex">
-                    {[...Array(5)].map((_, i) => (
+                    {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
                         className={`h-5 w-5 ${
@@ -469,7 +473,9 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     key={relatedProduct.id}
                     className="cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-shadow hover:shadow-md"
                   >
-                    <img
+                    <Image
+                      width={100}
+                      height={100}
                       src={relatedProduct.image}
                       alt={relatedProduct.title}
                       className="h-48 w-full object-cover"

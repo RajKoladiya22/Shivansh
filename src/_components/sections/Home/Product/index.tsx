@@ -119,7 +119,7 @@ export const ProductShowcaseSection = () => {
           {/* Slide Indicators */}
           {totalSlides > 1 && (
             <div className="mt-8 flex justify-center space-x-2">
-              {[...Array(totalSlides)].map((_, index) => (
+              {Array.from({ length: totalSlides }, (_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
