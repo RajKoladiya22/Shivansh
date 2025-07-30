@@ -10,7 +10,7 @@ import {
   VideoIframe,
 } from "src/_components/molecules";
 import { useMediaQuery } from "react-responsive";
-import { XIcon } from "lucide-react";
+import { X } from "lucide-react";
 import type { Comment, YouTubeVideo } from "src/_components/sections/types/youtube.type";
 
 
@@ -87,7 +87,7 @@ export const YouTubeVideosRightContent = () => {
         isOpen={!!selectedVideo}
         onClose={closeVideo}
         contentClassName="relative w-full max-w-7xl mx-auto h-[calc(100vh-2rem)] sm:h-[90vh] overflow-hidden rounded-none sm:rounded-xl shadow-2xl bg-white"
-        backgroundClassName="bg-black/90 backdrop-blur-sm p-2 sm:p-4"
+        backgroundClassName="bg-black/75 inset-0 p-2 sm:p-4"
       >
         {selectedVideo && (
           <div className="flex h-full w-full flex-col lg:flex-row">
@@ -100,10 +100,10 @@ export const YouTubeVideosRightContent = () => {
                 </h2>
                 <button
                   onClick={closeVideo}
-                  className="flex-shrink-0 rounded-full p-1 transition-colors hover:bg-gray-700"
+                  className="absolute top-4 right-4 flex-shrink-0 rounded-full p-1 transition-colors hover:bg-gray-700"
                   aria-label="Close video"
                 >
-                  <XIcon className="h-5 w-5" />
+                  <X className="h-5 w-5" />
                 </button>
               </div>
 
@@ -158,17 +158,17 @@ export const YouTubeVideosRightContent = () => {
             </div>
 
             {/* Comments Section */}
-            <div className="flex h-[40vh] w-full flex-col border-t border-gray-200 bg-white lg:h-full lg:w-80 lg:border-t-0 lg:border-l xl:w-96">
+            <div className="flex h-[40vh] w-full flex-col  bg-white lg:h-full lg:w-80 lg:border-t-0 lg:border-l xl:w-96">
               {/* Comments Header */}
-              <div className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3">
-                <h3 className="text-base font-medium text-gray-900">
+              {/* <div className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-3"> */}
+                {/* <h3 className="text-base font-medium text-gray-900">
                   Comments{" "}
                   <span className="text-gray-500">({commentItems.length})</span>
-                </h3>
+                </h3> */}
                 {/* <button className="p-1 rounded hover:bg-gray-100">
             <RefreshCwIcon className="h-5 w-5 text-gray-500" />
           </button> */}
-              </div>
+              {/* </div> */}
 
               {/* Comments Content */}
               <div className="relative flex-1 overflow-hidden">
@@ -183,7 +183,7 @@ export const YouTubeVideosRightContent = () => {
                       pauseOnHover={true}
                       showFadeEffect={false}
                       // fadeWidth="50px"
-                      backgroundColor="white"
+                      backgroundColor="black"
                       spacing="md"
                       verticalHeight="100%"
                       className="h-full px-3 py-2"

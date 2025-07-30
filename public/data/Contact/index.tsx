@@ -20,21 +20,21 @@ export const contactInfo = [
   {
     icon: <Phone className="h-5 w-5 sm:h-6 sm:w-6" />,
     title: "Phone",
-    details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+    details: ["+91 8141703007", "+91 8141703007"],
   },
   {
     icon: <Mail className="h-5 w-5 sm:h-6 sm:w-6" />,
     title: "Email",
-    details: ["hello@company.com", "support@company.com"],
+    details: ["hello@shivanshinfosys.com", "support@shivanshinfosys.com"],
   },
   {
     icon: <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />,
     title: "WhatsApp",
-    details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+    details: ["+91 8141703007", "+91 8141703007"],
   },
   {
     icon: <MapPin className="h-5 w-5 sm:h-6 sm:w-6" />,
     title: "Office",
-    details: ["123 Business Street", "Suite 100, City, State 12345"],
+    details: ["214,215 Soham Arcad", "Adajan, Surat, Gujarat 395009"],
   },
 ];

@@ -43,7 +43,7 @@ interface Blog {
 
 interface BlogDetailPageProps {
   params: {
-    id: string ;
+    id: string;
   };
 }
 
@@ -585,7 +585,9 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
               blog={selectedBlogForShare}
               isOpen={shareModalOpen}
               onClose={handleCloseShareModal}
-              currentUrl={typeof window !== 'undefined' ? window.location.href : ''}
+              currentUrl={
+                typeof window !== "undefined" ? window.location.href : ""
+              }
             />
           )}
         </div>

@@ -213,7 +213,7 @@ export const TheProductPage = () => {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setSortBy("all")}
-                className={`rounded-lg px-4 py-2 font-medium transition-colors ${
+                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${
                   sortBy === "all"
                     ? "bg-[#C50202] text-white"
                     : "bg-white text-gray-700 hover:bg-[#FCF2F2]"
@@ -223,7 +223,7 @@ export const TheProductPage = () => {
               </button>
               <button
                 onClick={() => setSortBy("top")}
-                className={`rounded-lg px-4 py-2 font-medium transition-colors ${
+                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${
                   sortBy === "top"
                     ? "bg-[#C50202] text-white"
                     : "bg-white text-gray-700 hover:bg-[#FCF2F2]"
@@ -233,7 +233,7 @@ export const TheProductPage = () => {
               </button>
               <button
                 onClick={() => setSortBy("latest")}
-                className={`rounded-lg px-4 py-2 font-medium transition-colors ${
+                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${
                   sortBy === "latest"
                     ? "bg-[#C50202] text-white"
                     : "bg-white text-gray-700 hover:bg-[#FCF2F2]"
@@ -255,7 +255,7 @@ export const TheProductPage = () => {
                 onClick={() =>
                   setViewMode(viewMode === "grid" ? "list" : "grid")
                 }
-                className="flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-gray-700 transition-colors hover:bg-[#FCF2F2]"
+                className="cursor-pointer flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-gray-700 transition-colors hover:bg-[#FCF2F2]"
               >
                 {viewMode === "grid" ? (
                   <List className="h-4 w-4" />

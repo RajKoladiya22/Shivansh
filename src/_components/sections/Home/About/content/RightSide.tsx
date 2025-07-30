@@ -75,16 +75,16 @@ export const AboutUsRightContent = () => {
       {/* Image Preview Modal */}
       {showImagePreview && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm transition-opacity duration-300"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4  transition-opacity duration-300"
           onClick={closePreview}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-4xl overflow-auto"
+            className="max-h-[90vh] w-full max-w-4xl overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={closePreview}
-              className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black"
+              className="cursor-pointer absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black"
               aria-label="Close preview"
             >
               <X size={32} />

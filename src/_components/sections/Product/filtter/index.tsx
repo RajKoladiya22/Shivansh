@@ -33,7 +33,7 @@ export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
           <h3 className="text-lg font-semibold text-gray-800">Filters</h3>
           <button
             onClick={clearFilters}
-            className="text-[#C50202] text-sm hover:underline font-medium transition-colors"
+            className="cursor-pointer text-[#C50202] text-sm hover:underline font-medium transition-colors"
           >
             Clear All
           </button>
@@ -47,7 +47,7 @@ export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C50202] focus:border-transparent transition-all duration-200 bg-white"
+            className="cursor-pointer w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C50202] focus:border-transparent transition-all duration-200 bg-white"
           >
             {categories.map(category => (
               <option key={category} value={category}>{category}</option>
@@ -63,7 +63,7 @@ export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
           <select
             value={selectedIndustry}
             onChange={(e) => setSelectedIndustry(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C50202] focus:border-transparent transition-all duration-200 bg-white"
+            className="cursor-pointer w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C50202] focus:border-transparent transition-all duration-200 bg-white"
           >
             {industries.map(industry => (
               <option key={industry} value={industry}>{industry}</option>
@@ -109,25 +109,25 @@ export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
           <div className="grid grid-cols-2 gap-2">
             <button
               onClick={() => setPriceRange({ min: '', max: '5000' })}
-              className="p-2 text-xs border border-gray-300 rounded-lg hover:bg-[#FCF2F2] hover:border-[#C50202] transition-colors"
+              className="p-2 cursor-pointer text-xs border border-gray-300 rounded-lg hover:bg-[#FCF2F2] hover:border-[#C50202] transition-colors"
             >
               Under ₹5K
             </button>
             <button
               onClick={() => setPriceRange({ min: '5000', max: '25000' })}
-              className="p-2 text-xs border border-gray-300 rounded-lg hover:bg-[#FCF2F2] hover:border-[#C50202] transition-colors"
+              className="p-2 cursor-pointer text-xs border border-gray-300 rounded-lg hover:bg-[#FCF2F2] hover:border-[#C50202] transition-colors"
             >
               ₹5K - ₹25K
             </button>
             <button
               onClick={() => setPriceRange({ min: '25000', max: '50000' })}
-              className="p-2 text-xs border border-gray-300 rounded-lg hover:bg-[#FCF2F2] hover:border-[#C50202] transition-colors"
+              className="p-2 cursor-pointer text-xs border border-gray-300 rounded-lg hover:bg-[#FCF2F2] hover:border-[#C50202] transition-colors"
             >
               ₹25K - ₹50K
             </button>
             <button
               onClick={() => setPriceRange({ min: '50000', max: '' })}
-              className="p-2 text-xs border border-gray-300 rounded-lg hover:bg-[#FCF2F2] hover:border-[#C50202] transition-colors"
+              className="p-2 cursor-pointer text-xs border border-gray-300 rounded-lg hover:bg-[#FCF2F2] hover:border-[#C50202] transition-colors"
             >
               Above ₹50K
             </button>
@@ -137,13 +137,13 @@ export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
         {/* Active Filters Display */}
         <div className="border-t pt-4">
           <h4 className="text-sm font-medium text-gray-700 mb-2">Active Filters</h4>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 ">
             {selectedCategory !== 'All' && (
               <span className="inline-flex items-center px-2 py-1 bg-[#FFCCD6] text-[#C50202] text-xs rounded-full">
                 {selectedCategory}
                 <button
                   onClick={() => setSelectedCategory('All')}
-                  className="ml-1 hover:text-[#C50202] font-bold"
+                  className="cursor-pointer ml-1 hover:text-[#C50202] font-bold"
                 >
                   ×
                 </button>
@@ -154,7 +154,7 @@ export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
                 {selectedIndustry}
                 <button
                   onClick={() => setSelectedIndustry('All')}
-                  className="ml-1 hover:text-[#C50202] font-bold"
+                  className="cursor-pointer ml-1 hover:text-[#C50202] font-bold"
                 >
                   ×
                 </button>
@@ -165,7 +165,7 @@ export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
                 ₹{priceRange.min || '0'} - ₹{priceRange.max || '∞'}
                 <button
                   onClick={() => setPriceRange({ min: '', max: '' })}
-                  className="ml-1 hover:text-[#C50202] font-bold"
+                  className="cursor-pointer ml-1 hover:text-[#C50202] font-bold"
                 >
                   ×
                 </button>

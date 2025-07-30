@@ -11,13 +11,13 @@ export const VideoModal: React.FC<VideoModalProps> = ({ videoId, onClose }) => {
   if (!videoId) return null;
 
   return (
-    <div className="bg-opacity-75 fixed inset-0 z-50 flex items-center justify-center bg-black p-4">
-      <div className="relative max-h-[80vh] w-full max-w-4xl rounded-lg bg-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4">
+      <div className=" max-h-[80vh] w-full max-w-4xl rounded-lg bg-white">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 rounded-full bg-white p-2 hover:bg-gray-100"
+          className="cursor-pointer absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 hover:bg-gray-500"
         >
-          <X className="h-6 w-6" />
+          <X className="h-6 w-6 text-white" />
         </button>
         <div className="aspect-video">
           <iframe

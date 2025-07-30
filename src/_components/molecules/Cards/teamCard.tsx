@@ -25,7 +25,7 @@ export const TeamCard: React.FC<TeamCardProps> = ({
 
   return (
     <div
-      className="absolute"
+      className="absolute cursor-pointer"
       style={{
         // width: "320px",
         // height: "150px",

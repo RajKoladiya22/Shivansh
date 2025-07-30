@@ -8,7 +8,7 @@ export const PreviewModal: React.FC<PreviewModalProps> = ({
   onClose,
   children,
   className = "",
-  backgroundClassName = "bg-black bg-opacity-90",
+  backgroundClassName = "bg-black bg-opacity-9",
   contentClassName = "relative w-full max-w-4xl overflow-hidden rounded-xl shadow-2xl",
 }) => {
   // Handle ESC key press

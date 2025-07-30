@@ -11,18 +11,14 @@ import { SectionHeader } from "src/_components/ui";
 import Link from "next/link";
 import { ProductCard } from "src/_components/molecules/Cards/productsCard";
 import { ProductsList } from "public/data/Product";
+import { VideoModal } from "../../Product/VideoModal";
 
 const topProducts = ProductsList.filter((product) => product.isTopProduct);
 
 export const ProductShowcaseSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
-
-  const handleVideoPlay = (videoId: string) => {
-    setSelectedVideoId(videoId);
-    // You can implement video modal or redirect logic here
-    console.log("Playing video:", videoId);
-  };
+  // const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
+  const [currentVideo, setCurrentVideo] = useState<string | null>(null);
 
   const handleProductClick = (productId: string) => {
     // Navigate to product page
@@ -69,6 +65,10 @@ export const ProductShowcaseSection = () => {
   const getCurrentSlideProducts = () => {
     const startIndex = currentSlide * itemsPerSlide;
     return topProducts.slice(startIndex, startIndex + itemsPerSlide);
+  };
+
+  const handleVideoPlay = (videoId: string) => {
+    setCurrentVideo(videoId);
   };
 
   const totalSlides = Math.ceil(topProducts.length / itemsPerSlide);
@@ -165,6 +165,11 @@ export const ProductShowcaseSection = () => {
           </div>
         </div>
       </div>
+      {/* Video Modal */}
+      <VideoModal
+        videoId={currentVideo}
+        onClose={() => setCurrentVideo(null)}
+      />
     </section>
   );
 };

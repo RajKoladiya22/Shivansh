@@ -101,7 +101,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4"
             onClick={() => setShowFullScreen(false)}
           >
             <motion.div
