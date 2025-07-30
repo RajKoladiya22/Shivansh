@@ -612,31 +612,6 @@ export async function generateMetadata({
   };
 }
 
-// Helper function to get related posts
-function getRelatedPosts(
-  currentPostId: string,
-  category: string,
-  limit = 3
-) {
-  // Pre-fetch tags of the current post
-  const currentPost = blogPosts.find((p) => p.id.toString() === currentPostId);
-  const currentTags = currentPost?.tags ?? [];
-
-  return blogPosts
-    .filter((post) => {
-      const idStr = post.id.toString();
-
-      // 1. Exclude current post
-      if (idStr === currentPostId) return false;
-
-      // 2. Must share category or at least one tag
-      const shareCategory = post.category === category;
-      const shareTag = post.tags.some((tag) => currentTags.includes(tag));
-
-      return shareCategory || shareTag;
-    })
-    .slice(0, limit);
-}
 
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
@@ -719,34 +694,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       
       <TheBlogDetailPage params={{ id }} />
       
-      {/* Related Posts Section */}
-      <section className="mt-16">
-        <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {getRelatedPosts(blog.id.toString(), blog.category).map(post => (
-            <article key={post.id.toString()} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-              <a href={`/blog/${post.id.toString()}`} className="block">
-                <h3 className="font-semibold text-lg mb-2">{post.title}</h3>
-                <p className="text-gray-600 text-sm">{post.excerpt.slice(0, 100)}...</p>
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
-      
-      {/* Engagement Section */}
-      <div className="mt-12 p-6 bg-gray-50 rounded-lg text-center">
-        <h3 className="text-xl font-semibold mb-3">Found this helpful?</h3>
-        <p className="mb-4">Share your thoughts or ask questions</p>
-        <div className="flex justify-center gap-4">
-          <button className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition">
-            Leave a Comment
-          </button>
-          <button className="bg-red-600 text-white px-5 py-2 rounded hover:bg-red-700 transition">
-            Share Article
-          </button>
-        </div>
-      </div>
     </>
   );
 }
