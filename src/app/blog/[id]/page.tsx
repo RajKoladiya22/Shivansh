@@ -8,9 +8,15 @@ interface BlogDetailPageProps {
 }
 
 import { blogPosts } from "public/data/Blog";
+import type { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const blog = blogPosts.find((post) => post.id.toString() === params.id);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const blog = blogPosts.find((post) => post.id.toString() === id);
 
   if (!blog) return {};
 
@@ -49,12 +55,17 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const resolvedParams = await params;
+// export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
+//   const resolvedParams = await params;
 
-  return (
-    <>
-      <TheBlogDetailPage params={resolvedParams} />
-    </>
-  );
+//   return (
+//     <>
+//       <TheBlogDetailPage params={resolvedParams} />
+//     </>
+//   );
+// }
+
+export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
+  const { id } = await params;
+  return <TheBlogDetailPage params={{ id }} />;
 }
