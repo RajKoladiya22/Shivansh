@@ -353,81 +353,81 @@
 
 
 
-import { ImageResponse } from 'next/og';
-import { NextRequest, NextResponse } from 'next/server';
+// import { ImageResponse } from 'next/og';
+// import { NextRequest, NextResponse } from 'next/server';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
+// export async function GET(request: NextRequest) {
+//   const { searchParams } = new URL(request.url);
 
-  // Quick sanity-check: return plain text to ensure route is hit
-  if (searchParams.get('debug') === 'true') {
-    return new NextResponse('OG route is working', {
-      status: 200,
-      headers: { 'Content-Type': 'text/plain' }
-    });
-  }
+//   // Quick sanity-check: return plain text to ensure route is hit
+//   if (searchParams.get('debug') === 'true') {
+//     return new NextResponse('OG route is working', {
+//       status: 200,
+//       headers: { 'Content-Type': 'text/plain' }
+//     });
+//   }
 
-  try {
-    const title = searchParams.get('title') ?? 'Professional Tax & Accounting Solutions';
-    const category = searchParams.get('category') ?? 'Tax Advisory';
-    const author = searchParams.get('author') ?? 'Shivansh Infosys';
-    const date = searchParams.get('date') ?? new Date().toLocaleDateString('en-IN', {
-      year: 'numeric', month: 'long', day: 'numeric'
-    });
+//   try {
+//     const title = searchParams.get('title') ?? 'Professional Tax & Accounting Solutions';
+//     const category = searchParams.get('category') ?? 'Tax Advisory';
+//     const author = searchParams.get('author') ?? 'Shivansh Infosys';
+//     const date = searchParams.get('date') ?? new Date().toLocaleDateString('en-IN', {
+//       year: 'numeric', month: 'long', day: 'numeric'
+//     });
 
-    // Truncate title at a word boundary
-    const truncatedTitle = title.length > 60
-      ? title.substring(0, 60).split(' ').slice(0, -1).join(' ') + '...'
-      : title;
+//     // Truncate title at a word boundary
+//     const truncatedTitle = title.length > 60
+//       ? title.substring(0, 60).split(' ').slice(0, -1).join(' ') + '...'
+//       : title;
 
-    // Sanitize inputs
-    const cleanCategory = category.replace(/[<>]/g, '').trim();
-    const cleanAuthor   = author.replace(/[<>]/g, '').trim();
-    const cleanDate     = date.replace(/[<>]/g, '').trim();
+//     // Sanitize inputs
+//     const cleanCategory = category.replace(/[<>]/g, '').trim();
+//     const cleanAuthor   = author.replace(/[<>]/g, '').trim();
+//     const cleanDate     = date.replace(/[<>]/g, '').trim();
 
-    const image = new ImageResponse(
-      (
-        <div style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#EEF6FF',
-          fontFamily: 'system-ui, sans-serif',
-        }}>
-          <h1 style={{ fontSize: 48, fontWeight: 'bold', marginBottom: 16 }}>
-            {truncatedTitle}
-          </h1>
-          <p style={{ fontSize: 24, color: '#4b5563' }}>
-            {cleanCategory} • {cleanAuthor} • {cleanDate}
-          </p>
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-        emoji: 'twemoji',
-      }
-    );
+//     const image = new ImageResponse(
+//       (
+//         <div style={{
+//           width: '100%',
+//           height: '100%',
+//           display: 'flex',
+//           flexDirection: 'column',
+//           alignItems: 'center',
+//           justifyContent: 'center',
+//           backgroundColor: '#EEF6FF',
+//           fontFamily: 'system-ui, sans-serif',
+//         }}>
+//           <h1 style={{ fontSize: 48, fontWeight: 'bold', marginBottom: 16 }}>
+//             {truncatedTitle}
+//           </h1>
+//           <p style={{ fontSize: 24, color: '#4b5563' }}>
+//             {cleanCategory} • {cleanAuthor} • {cleanDate}
+//           </p>
+//         </div>
+//       ),
+//       {
+//         width: 1200,
+//         height: 630,
+//         emoji: 'twemoji',
+//       }
+//     );
 
-    // Set headers
-    image.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
-    image.headers.set('Content-Type', 'image/png');
-    image.headers.set('X-Content-Type-Options', 'nosniff');
+//     // Set headers
+//     image.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+//     image.headers.set('Content-Type', 'image/png');
+//     image.headers.set('X-Content-Type-Options', 'nosniff');
 
-    return image;
+//     return image;
 
-  } catch (error) {
-    console.error('OG generation error:', error);
+//   } catch (error) {
+//     console.error('OG generation error:', error);
 
-    // In development, return error text so you can see what went wrong
-    return new NextResponse(
-      `Error generating OG image: ${error instanceof Error ? error.message : String(error)}`,
-      { status: 500, headers: { 'Content-Type': 'text/plain' } }
-    );
-  }
-}
+//     // In development, return error text so you can see what went wrong
+//     return new NextResponse(
+//       `Error generating OG image: ${error instanceof Error ? error.message : String(error)}`,
+//       { status: 500, headers: { 'Content-Type': 'text/plain' } }
+//     );
+//   }
+// }
