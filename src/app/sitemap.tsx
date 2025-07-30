@@ -11,11 +11,12 @@
 // }
 
 // src/app/sitemap.ts
-import type { MetadataRoute } from 'next'
-import { getBaseUrl, STATIC_ROUTES } from 'src/lib/routes'
+import type { MetadataRoute } from "next";
+import { blogPosts } from "public/data/Blog";
+import { getBaseUrl, STATIC_ROUTES } from "src/lib/routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = getBaseUrl()
+  const baseUrl = getBaseUrl();
 
   // Generate static routes
   const staticRoutes = STATIC_ROUTES.map((route) => ({
@@ -23,31 +24,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: route.lastModified ?? new Date(),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
-  }))
+  }));
 
-  // Future: Add dynamic routes here
-  // Example for when you add dynamic content:
-  /*
-  const getDynamicRoutes = async () => {
-    try {
-      // Replace with your actual data fetching
-      const dynamicContent = await fetchDynamicContent()
-      
-      return dynamicContent.map((item: any) => ({
-        url: `${baseUrl}/dynamic/${item.slug}`,
-        lastModified: new Date(item.updatedAt),
-        changeFrequency: 'monthly' as const,
-        priority: 0.5,
-      }))
-    } catch (error) {
-      console.error('Error fetching dynamic routes:', error)
-      return []
-    }
-  }
-  
-  const dynamicRoutes = await getDynamicRoutes()
-  return [...staticRoutes, ...dynamicRoutes]
-  */
+  const blogRoutes = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.id}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
 
-  return staticRoutes
+
+
+  return [...staticRoutes, ...blogRoutes];
 }

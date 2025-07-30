@@ -55,53 +55,94 @@ const BlogDetailSEO = ({ blog }: BlogDetailSEOProps) => {
   const siteUrl =
     typeof window !== "undefined"
       ? window.location.origin
-      : "https://yoursite.com";
+      : "https://shivansh-three.vercel.app";
   const blogUrl = `${siteUrl}/blog/${blog.id}`;
-  const imageUrl =
-    `${siteUrl}/api/og-image/${blog.id}` || `${siteUrl}/default-blog-image.jpg`;
+  
+  // Dynamic OG Image URL - this will generate a card-style image
+  const ogImageUrl = `${siteUrl}/api/og?title=${encodeURIComponent(blog.title)}&category=${encodeURIComponent(blog.category)}&author=${encodeURIComponent(blog.author.name)}&date=${encodeURIComponent(blog.date)}`;
+  
+  // Fallback image
+  const fallbackImage = `${siteUrl}/images/blog-default-og.png`;
+  
+  // Clean excerpt for meta description (remove extra spaces, limit length)
+  const metaDescription = blog.excerpt.length > 155 
+    ? blog.excerpt.substring(0, 155).trim() + "..."
+    : blog.excerpt;
+
+  // Generate keywords from tags and category
+  const keywords = [
+    blog.category.toLowerCase(),
+    ...blog.tags.map(tag => tag.toLowerCase()),
+    "accounting",
+    "finance",
+    "tax",
+    "GST",
+    "business",
+    "compliance"
+  ].join(", ");
+
+  // Calculate reading time
+  const wordCount = blog.content ? blog.content.split(" ").length : 500;
+  const readingTime = Math.ceil(wordCount / 200);
+
+  // Format date for structured data
+  const publishedDate = new Date(blog.date).toISOString();
+  const modifiedDate = publishedDate; // Use same date or track actual modifications
 
   return (
     <Head>
       {/* Primary Meta Tags */}
-      <title>{blog.title} | Your Blog Name</title>
-      <meta name="title" content={`${blog.title} | Your Blog Name`} />
-      <meta name="description" content={blog.excerpt} />
-      <meta
-        name="keywords"
-        content={`${blog.category}, accounting, finance, tax, GST, Tally`}
-      />
+      <title>{blog.title} | Shivansh Infosys</title>
+      <meta name="title" content={`${blog.title} | Shivansh Infosys`} />
+      <meta name="description" content={metaDescription} />
+      <meta name="keywords" content={keywords} />
       <meta name="author" content={blog.author.name} />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <link rel="canonical" href={blogUrl} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="article" />
       <meta property="og:title" content={blog.title} />
-      <meta property="og:description" content={blog.excerpt} />
-      <meta property="og:image" content={imageUrl} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:image" content={ogImageUrl} />
+      <meta property="og:image:alt" content={`${blog.title} - ${blog.category} article`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:url" content={blogUrl} />
-      <meta property="og:site_name" content="Your Blog Name" />
+      <meta property="og:site_name" content={blog.title} />
+      <meta property="og:locale" content="en_US" />
       <meta property="article:author" content={blog.author.name} />
-      <meta
-        property="article:published_time"
-        content={new Date(blog.date).toISOString()}
-      />
+      <meta property="article:published_time" content={publishedDate} />
+      <meta property="article:modified_time" content={modifiedDate} />
       <meta property="article:section" content={blog.category} />
-      <meta property="article:tag" content={blog.category} />
+      {blog.tags.map((tag, index) => (
+        <meta key={index} property="article:tag" content={tag} />
+      ))}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={blog.title} />
-      <meta name="twitter:description" content={blog.excerpt} />
-      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={ogImageUrl} />
+      <meta name="twitter:image:alt" content={`${blog.title} - ${blog.category} article`} />
       <meta name="twitter:site" content="@yourtwitterhandle" />
       <meta name="twitter:creator" content="@yourtwitterhandle" />
 
-      {/* Additional Meta Tags */}
+      {/* Additional SEO Meta Tags */}
       <meta name="theme-color" content="#C50202" />
       <meta name="msapplication-TileColor" content="#C50202" />
+      <meta name="application-name" content="Your Blog Name" />
+      <meta name="apple-mobile-web-app-title" content="Your Blog Name" />
+      
+      {/* Article specific meta */}
+      <meta name="article:reading_time" content={`${readingTime}`} />
+      <meta name="article:word_count" content={`${wordCount}`} />
+
+      {/* Preconnect for performance */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
       {/* JSON-LD Structured Data */}
       <script
@@ -111,42 +152,132 @@ const BlogDetailSEO = ({ blog }: BlogDetailSEOProps) => {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             headline: blog.title,
-            description: blog.excerpt,
-            image: imageUrl,
-            author: {
-              "@type": "Person",
-              name: blog.author,
+            description: metaDescription,
+            image: {
+              "@type": "ImageObject",
+              url: ogImageUrl,
+              width: 1200,
+              height: 630,
+              alt: `${blog.title} - ${blog.category} article`
             },
             publisher: {
               "@type": "Organization",
-              name: "Your Blog Name",
+              name: `${blog.title}`,
+              description: `${blog.content}`,
               logo: {
                 "@type": "ImageObject",
                 url: `${siteUrl}/logo.png`,
+                width: 180,
+                height: 60
               },
+              url: siteUrl,
+              sameAs: [
+                "https://twitter.com/yourtwitterhandle",
+                "https://linkedin.com/company/yourcompany",
+                "https://facebook.com/yourpage"
+              ]
             },
-            datePublished: new Date(blog.date).toISOString(),
-            dateModified: new Date(blog.date).toISOString(),
+            datePublished: publishedDate,
+            dateModified: modifiedDate,
             mainEntityOfPage: {
               "@type": "WebPage",
               "@id": blogUrl,
+              url: blogUrl,
+              name: blog.title,
+              description: metaDescription
             },
             articleSection: blog.category,
-            keywords: [blog.category, "accounting", "finance", "tax"],
-            wordCount: blog.content ? blog.content.split(" ").length : 500,
+            keywords: blog.tags,
+            wordCount: wordCount,
+            timeRequired: `PT${readingTime}M`,
+            inLanguage: "en-US",
+            isAccessibleForFree: true,
             interactionStatistic: [
               {
                 "@type": "InteractionCounter",
                 interactionType: "https://schema.org/LikeAction",
-                userInteractionCount: blog.likes,
+                userInteractionCount: blog.likes
               },
               {
                 "@type": "InteractionCounter",
                 interactionType: "https://schema.org/ViewAction",
-                userInteractionCount: blog.views,
-              },
+                userInteractionCount: blog.views
+              }
             ],
-          }),
+            about: {
+              "@type": "Thing",
+              name: blog.category,
+              description: `Articles and insights about ${blog.category.toLowerCase()}`
+            },
+            mentions: blog.tags.map(tag => ({
+              "@type": "Thing",
+              name: tag
+            }))
+          })
+        }}
+      />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: siteUrl
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Blog",
+                item: `${siteUrl}/blog`
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: blog.category,
+                item: `${siteUrl}/blog/category/${blog.category.toLowerCase()}`
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: blog.title,
+                item: blogUrl
+              }
+            ]
+          })
+        }}
+      />
+
+      {/* Website Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: `${blog.title}`,
+            description: `${blog.excerpt}`,
+            url: siteUrl,
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: `${siteUrl}/search?q={search_term_string}`
+              },
+              "query-input": "required name=search_term_string"
+            },
+            sameAs: [
+              "https://twitter.com/yourtwitterhandle",
+              "https://linkedin.com/company/yourcompany",
+              "https://facebook.com/yourpage"
+            ]
+          })
         }}
       />
     </Head>

@@ -1,3 +1,5 @@
+
+
 // src/lib/routes.ts
 export interface RouteConfig {
   path: string
@@ -9,13 +11,15 @@ export interface RouteConfig {
 export const STATIC_ROUTES: RouteConfig[] = [
   {
     path: '/',
-    changeFrequency: 'daily',
-    priority: 1.0,
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 1,
   },
   {
     path: '/about',
-    changeFrequency: 'monthly',
-    priority: 0.6,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
   },
   {
     path: '/team',
@@ -29,21 +33,30 @@ export const STATIC_ROUTES: RouteConfig[] = [
   },
   {
     path: '/contact',
-    changeFrequency: 'monthly',
-    priority: 0.8,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  },
+  {
+    path: '/blog',
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 0.9,
   },
 ]
+
+
 
 export function getBaseUrl(): string {
   if (process.env.NEXT_PUBLIC_SITE_URL) {
     return process.env.NEXT_PUBLIC_SITE_URL
   }
-  
+
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`
   }
-  
-  return process.env.NODE_ENV === 'production' 
+
+  return process.env.NODE_ENV === 'production'
     ? 'https://shivansh-three.vercel.app'
     : 'http://localhost:3000'
 }
