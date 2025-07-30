@@ -190,7 +190,7 @@ export const Footer: React.FC = () => {
                 and Tally tips.
               </p>
             </div>
-            <div className="flex w-full md:w-auto">
+            {/* <div className="flex w-full md:w-auto">
               <input
                 type="email"
                 placeholder="Your WhatsApp Number"
@@ -199,6 +199,30 @@ export const Footer: React.FC = () => {
               <button className="rounded-r-lg bg-red-600 px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-red-700">
                 Subscribe
               </button>
+            </div> */}
+            <div className="flex w-full md:w-auto">
+              {/* <input
+                type="tel"
+                placeholder="Your WhatsApp Number"
+                className="w-full rounded-l-lg bg-gray-700 px-4 py-3 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-600 focus:outline-none md:w-64"
+              /> */}
+              <Link
+                href="https://whatsapp.com/channel/0029Vb5y41dLNSaBHDTIi82B"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center rounded-lg bg-red-600 px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-red-700"
+              >
+                <FaWhatsapp size={24} className="pr-1"/> 
+                Subscribe
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="ml-2 h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
