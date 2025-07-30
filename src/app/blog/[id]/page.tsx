@@ -517,9 +517,17 @@ import { blogPosts } from "public/data/Blog";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BASE_URL } from "src/config/constants";
+
+// interface BlogDetailPageProps {
+//   params: { id: string };
+// }
+
 interface BlogDetailPageProps {
-  params: { id: string };
+  params: Promise<{
+    id: string;
+  }>;
 }
+
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -631,7 +639,8 @@ function getRelatedPosts(
 
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const blog = blogPosts.find((post) => post.id.toString() === params.id);
+  const { id } = await params;
+  const blog = blogPosts.find((post) => post.id.toString() === id);
 
   if (!blog) notFound();
 
@@ -707,7 +716,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
       
-      <TheBlogDetailPage params={{ id: params.id }} />
+      <TheBlogDetailPage params={{ id }} />
       
       {/* Related Posts Section */}
       <section className="mt-16">
