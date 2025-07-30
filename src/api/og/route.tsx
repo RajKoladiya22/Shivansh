@@ -302,9 +302,12 @@ export async function GET(request: NextRequest) {
     
     return response;
 
-  } catch (e: any) {
+  } catch (e: unknown) {
+  if (e instanceof Error) {
     console.error('OG Image generation error:', e.message);
-    
+  } else {
+    console.error('OG Image error (unexpected):', e);
+  }
     // Return a fallback error image instead of text response
     return new ImageResponse(
       (
