@@ -65,7 +65,7 @@ export const FloatingContactButton = () => {
 
   return (
     <div
-      className={`floating-contact-menu fixed right-6 bottom-6 z-50 transition-all duration-300 ease-in-out ${
+      className={`cursor-pointer floating-contact-menu fixed right-6 bottom-6 z-50 transition-all duration-300 ease-in-out ${
         isVisible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-16 opacity-0"
@@ -116,8 +116,9 @@ export const FloatingContactButton = () => {
 
       {/* Main Toggle Button */}
       <button
+        aria-label="contact button"
         onClick={toggleMenu}
-        className={`group relative flex h-16 w-16 transform items-center justify-center rounded-full bg-gradient-to-r from-[#C50202] to-[#E50202] text-white shadow-xl transition-all duration-300 hover:scale-105 hover:from-[#A50202] hover:to-[#C50202] hover:shadow-2xl sm:h-18 sm:w-18 ${
+        className={`cursor-pointer group relative flex h-16 w-16 transform items-center justify-center rounded-full bg-gradient-to-r from-[#C50202] to-[#E50202] text-white shadow-xl transition-all duration-300 hover:scale-105 hover:from-[#A50202] hover:to-[#C50202] hover:shadow-2xl sm:h-18 sm:w-18 ${
           isOpen ? "rotate-45" : "rotate-0"
         }`}
       >
@@ -144,7 +145,7 @@ export const FloatingContactButton = () => {
       </button>
 
       {/* Mobile-only label */}
-      <div
+      {/* <div
         className={`absolute -top-12 left-1/2 -translate-x-1/2 transform transition-all duration-300 sm:hidden ${
           !isOpen ? "opacity-100" : "opacity-0"
         }`}
@@ -152,7 +153,7 @@ export const FloatingContactButton = () => {
         <div className="rounded-lg bg-gray-800 px-3 py-1 text-xs whitespace-nowrap text-white">
           Contact Us
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
