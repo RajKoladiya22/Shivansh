@@ -22,6 +22,12 @@ export const STATIC_ROUTES: RouteConfig[] = [
     priority: 0.8,
   },
   {
+    path: '/blog',
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 0.9,
+  },
+  {
     path: '/team',
     changeFrequency: 'monthly',
     priority: 0.7,
@@ -36,13 +42,7 @@ export const STATIC_ROUTES: RouteConfig[] = [
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
-  },
-  {
-    path: '/blog',
-    lastModified: new Date(),
-    changeFrequency: 'daily' as const,
-    priority: 0.9,
-  },
+  }
 ]
 
 

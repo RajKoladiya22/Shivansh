@@ -14,7 +14,11 @@ const config = {
     domains: ['https://shivansh-three.vercel.app', 'https://shivanshinfosys.in', 'localhost'],
     formats: ['image/webp', 'image/avif'],
 
-
+    deviceSizes: [640, 768, 1024, 1280, 1600],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 year
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 
     remotePatterns: [
       {
@@ -76,18 +80,27 @@ const config = {
         ],
       },
       {
-        source: '/api/og-image/:path*',
+        source: '/api/og(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=86400, stale-while-revalidate=604800',
-          },
-        ],
+            value: 'public, max-age=86400, s-maxage=31536000, stale-while-revalidate'
+          }
+        ]
+      },
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
       },
     ];
   },
 
-    // Enable compression
+  // Enable compression
   compress: true,
 };
 
