@@ -47,242 +47,242 @@ interface BlogDetailPageProps {
   };
 }
 
-interface BlogDetailSEOProps {
-  blog: Blog;
-}
+// interface BlogDetailSEOProps {
+//   blog: Blog;
+// }
 
-const BlogDetailSEO = ({ blog }: BlogDetailSEOProps) => {
-  const siteUrl =
-    typeof window !== "undefined"
-      ? window.location.origin
-      : "https://shivansh-three.vercel.app";
-  const blogUrl = `${siteUrl}/blog/${blog.id}`;
+// const BlogDetailSEO = ({ blog }: BlogDetailSEOProps) => {
+//   const siteUrl =
+//     typeof window !== "undefined"
+//       ? window.location.origin
+//       : "https://shivansh-three.vercel.app";
+//   const blogUrl = `${siteUrl}/blog/${blog.id}`;
   
-  // Dynamic OG Image URL - this will generate a card-style image
-  const ogImageUrl = `${siteUrl}/api/og?title=${encodeURIComponent(blog.title)}&category=${encodeURIComponent(blog.category)}&author=${encodeURIComponent(blog.author.name)}&date=${encodeURIComponent(blog.date)}`;
+//   // Dynamic OG Image URL - this will generate a card-style image
+//   const ogImageUrl = `${siteUrl}/api/og?title=${encodeURIComponent(blog.title)}&category=${encodeURIComponent(blog.category)}&author=${encodeURIComponent(blog.author.name)}&date=${encodeURIComponent(blog.date)}`;
   
-  // Fallback image
-  const fallbackImage = `${siteUrl}/images/blog-default-og.png`;
+//   // Fallback image
+//   const fallbackImage = `${siteUrl}/images/blog-default-og.png`;
   
-  // Clean excerpt for meta description (remove extra spaces, limit length)
-  const metaDescription = blog.excerpt.length > 155 
-    ? blog.excerpt.substring(0, 155).trim() + "..."
-    : blog.excerpt;
+//   // Clean excerpt for meta description (remove extra spaces, limit length)
+//   const metaDescription = blog.excerpt.length > 155 
+//     ? blog.excerpt.substring(0, 155).trim() + "..."
+//     : blog.excerpt;
 
-  // Generate keywords from tags and category
-  const keywords = [
-    blog.category.toLowerCase(),
-    ...blog.tags.map(tag => tag.toLowerCase()),
-    "accounting",
-    "finance",
-    "tax",
-    "GST",
-    "business",
-    "compliance"
-  ].join(", ");
+//   // Generate keywords from tags and category
+//   const keywords = [
+//     blog.category.toLowerCase(),
+//     ...blog.tags.map(tag => tag.toLowerCase()),
+//     "accounting",
+//     "finance",
+//     "tax",
+//     "GST",
+//     "business",
+//     "compliance"
+//   ].join(", ");
 
-  // Calculate reading time
-  const wordCount = blog.content ? blog.content.split(" ").length : 500;
-  const readingTime = Math.ceil(wordCount / 200);
+//   // Calculate reading time
+//   const wordCount = blog.content ? blog.content.split(" ").length : 500;
+//   const readingTime = Math.ceil(wordCount / 200);
 
-  // Format date for structured data
-  const publishedDate = new Date(blog.date).toISOString();
-  const modifiedDate = publishedDate; // Use same date or track actual modifications
+//   // Format date for structured data
+//   const publishedDate = new Date(blog.date).toISOString();
+//   const modifiedDate = publishedDate; // Use same date or track actual modifications
 
-  return (
-    <Head>
-      {/* Primary Meta Tags */}
-      <title>{blog.title} | Shivansh Infosys</title>
-      <meta name="title" content={`${blog.title} | Shivansh Infosys`} />
-      <meta name="description" content={metaDescription} />
-      <meta name="keywords" content={keywords} />
-      <meta name="author" content={blog.author.name} />
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <link rel="canonical" href={blogUrl} />
+//   return (
+//     <Head>
+//       {/* Primary Meta Tags */}
+//       <title>{blog.title} | Shivansh Infosys</title>
+//       <meta name="title" content={`${blog.title} | Shivansh Infosys`} />
+//       <meta name="description" content={metaDescription} />
+//       <meta name="keywords" content={keywords} />
+//       <meta name="author" content={blog.author.name} />
+//       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+//       <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+//       <link rel="canonical" href={blogUrl} />
 
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="article" />
-      <meta property="og:title" content={blog.title} />
-      <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={ogImageUrl} />
-      <meta property="og:image:alt" content={`${blog.title} - ${blog.category} article`} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:url" content={blogUrl} />
-      <meta property="og:site_name" content={blog.title} />
-      <meta property="og:locale" content="en_US" />
-      <meta property="article:author" content={blog.author.name} />
-      <meta property="article:published_time" content={publishedDate} />
-      <meta property="article:modified_time" content={modifiedDate} />
-      <meta property="article:section" content={blog.category} />
-      {blog.tags.map((tag, index) => (
-        <meta key={index} property="article:tag" content={tag} />
-      ))}
+//       {/* Open Graph / Facebook */}
+//       <meta property="og:type" content="article" />
+//       <meta property="og:title" content={blog.title} />
+//       <meta property="og:description" content={metaDescription} />
+//       <meta property="og:image" content={ogImageUrl} />
+//       <meta property="og:image:alt" content={`${blog.title} - ${blog.category} article`} />
+//       <meta property="og:image:width" content="1200" />
+//       <meta property="og:image:height" content="630" />
+//       <meta property="og:image:type" content="image/png" />
+//       <meta property="og:url" content={blogUrl} />
+//       <meta property="og:site_name" content={blog.title} />
+//       <meta property="og:locale" content="en_US" />
+//       <meta property="article:author" content={blog.author.name} />
+//       <meta property="article:published_time" content={publishedDate} />
+//       <meta property="article:modified_time" content={modifiedDate} />
+//       <meta property="article:section" content={blog.category} />
+//       {blog.tags.map((tag, index) => (
+//         <meta key={index} property="article:tag" content={tag} />
+//       ))}
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={blog.title} />
-      <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={ogImageUrl} />
-      <meta name="twitter:image:alt" content={`${blog.title} - ${blog.category} article`} />
-      <meta name="twitter:site" content="@yourtwitterhandle" />
-      <meta name="twitter:creator" content="@yourtwitterhandle" />
+//       {/* Twitter */}
+//       <meta name="twitter:card" content="summary_large_image" />
+//       <meta name="twitter:title" content={blog.title} />
+//       <meta name="twitter:description" content={metaDescription} />
+//       <meta name="twitter:image" content={ogImageUrl} />
+//       <meta name="twitter:image:alt" content={`${blog.title} - ${blog.category} article`} />
+//       <meta name="twitter:site" content="@yourtwitterhandle" />
+//       <meta name="twitter:creator" content="@yourtwitterhandle" />
 
-      {/* Additional SEO Meta Tags */}
-      <meta name="theme-color" content="#C50202" />
-      <meta name="msapplication-TileColor" content="#C50202" />
-      <meta name="application-name" content="Your Blog Name" />
-      <meta name="apple-mobile-web-app-title" content="Your Blog Name" />
+//       {/* Additional SEO Meta Tags */}
+//       <meta name="theme-color" content="#C50202" />
+//       <meta name="msapplication-TileColor" content="#C50202" />
+//       <meta name="application-name" content="Your Blog Name" />
+//       <meta name="apple-mobile-web-app-title" content="Your Blog Name" />
       
-      {/* Article specific meta */}
-      <meta name="article:reading_time" content={`${readingTime}`} />
-      <meta name="article:word_count" content={`${wordCount}`} />
+//       {/* Article specific meta */}
+//       <meta name="article:reading_time" content={`${readingTime}`} />
+//       <meta name="article:word_count" content={`${wordCount}`} />
 
-      {/* Preconnect for performance */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+//       {/* Preconnect for performance */}
+//       <link rel="preconnect" href="https://fonts.googleapis.com" />
+//       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: blog.title,
-            description: metaDescription,
-            image: {
-              "@type": "ImageObject",
-              url: ogImageUrl,
-              width: 1200,
-              height: 630,
-              alt: `${blog.title} - ${blog.category} article`
-            },
-            publisher: {
-              "@type": "Organization",
-              name: `${blog.title}`,
-              description: `${blog.content}`,
-              logo: {
-                "@type": "ImageObject",
-                url: `${siteUrl}/logo.png`,
-                width: 180,
-                height: 60
-              },
-              url: siteUrl,
-              sameAs: [
-                "https://twitter.com/yourtwitterhandle",
-                "https://linkedin.com/company/yourcompany",
-                "https://facebook.com/yourpage"
-              ]
-            },
-            datePublished: publishedDate,
-            dateModified: modifiedDate,
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": blogUrl,
-              url: blogUrl,
-              name: blog.title,
-              description: metaDescription
-            },
-            articleSection: blog.category,
-            keywords: blog.tags,
-            wordCount: wordCount,
-            timeRequired: `PT${readingTime}M`,
-            inLanguage: "en-US",
-            isAccessibleForFree: true,
-            interactionStatistic: [
-              {
-                "@type": "InteractionCounter",
-                interactionType: "https://schema.org/LikeAction",
-                userInteractionCount: blog.likes
-              },
-              {
-                "@type": "InteractionCounter",
-                interactionType: "https://schema.org/ViewAction",
-                userInteractionCount: blog.views
-              }
-            ],
-            about: {
-              "@type": "Thing",
-              name: blog.category,
-              description: `Articles and insights about ${blog.category.toLowerCase()}`
-            },
-            mentions: blog.tags.map(tag => ({
-              "@type": "Thing",
-              name: tag
-            }))
-          })
-        }}
-      />
+//       {/* JSON-LD Structured Data */}
+//       <script
+//         type="application/ld+json"
+//         dangerouslySetInnerHTML={{
+//           __html: JSON.stringify({
+//             "@context": "https://schema.org",
+//             "@type": "BlogPosting",
+//             headline: blog.title,
+//             description: metaDescription,
+//             image: {
+//               "@type": "ImageObject",
+//               url: ogImageUrl,
+//               width: 1200,
+//               height: 630,
+//               alt: `${blog.title} - ${blog.category} article`
+//             },
+//             publisher: {
+//               "@type": "Organization",
+//               name: `${blog.title}`,
+//               description: `${blog.content}`,
+//               logo: {
+//                 "@type": "ImageObject",
+//                 url: `${siteUrl}/logo.png`,
+//                 width: 180,
+//                 height: 60
+//               },
+//               url: siteUrl,
+//               sameAs: [
+//                 "https://twitter.com/yourtwitterhandle",
+//                 "https://linkedin.com/company/yourcompany",
+//                 "https://facebook.com/yourpage"
+//               ]
+//             },
+//             datePublished: publishedDate,
+//             dateModified: modifiedDate,
+//             mainEntityOfPage: {
+//               "@type": "WebPage",
+//               "@id": blogUrl,
+//               url: blogUrl,
+//               name: blog.title,
+//               description: metaDescription
+//             },
+//             articleSection: blog.category,
+//             keywords: blog.tags,
+//             wordCount: wordCount,
+//             timeRequired: `PT${readingTime}M`,
+//             inLanguage: "en-US",
+//             isAccessibleForFree: true,
+//             interactionStatistic: [
+//               {
+//                 "@type": "InteractionCounter",
+//                 interactionType: "https://schema.org/LikeAction",
+//                 userInteractionCount: blog.likes
+//               },
+//               {
+//                 "@type": "InteractionCounter",
+//                 interactionType: "https://schema.org/ViewAction",
+//                 userInteractionCount: blog.views
+//               }
+//             ],
+//             about: {
+//               "@type": "Thing",
+//               name: blog.category,
+//               description: `Articles and insights about ${blog.category.toLowerCase()}`
+//             },
+//             mentions: blog.tags.map(tag => ({
+//               "@type": "Thing",
+//               name: tag
+//             }))
+//           })
+//         }}
+//       />
 
-      {/* Breadcrumb Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: siteUrl
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Blog",
-                item: `${siteUrl}/blog`
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: blog.category,
-                item: `${siteUrl}/blog/category/${blog.category.toLowerCase()}`
-              },
-              {
-                "@type": "ListItem",
-                position: 4,
-                name: blog.title,
-                item: blogUrl
-              }
-            ]
-          })
-        }}
-      />
+//       {/* Breadcrumb Schema */}
+//       <script
+//         type="application/ld+json"
+//         dangerouslySetInnerHTML={{
+//           __html: JSON.stringify({
+//             "@context": "https://schema.org",
+//             "@type": "BreadcrumbList",
+//             itemListElement: [
+//               {
+//                 "@type": "ListItem",
+//                 position: 1,
+//                 name: "Home",
+//                 item: siteUrl
+//               },
+//               {
+//                 "@type": "ListItem",
+//                 position: 2,
+//                 name: "Blog",
+//                 item: `${siteUrl}/blog`
+//               },
+//               {
+//                 "@type": "ListItem",
+//                 position: 3,
+//                 name: blog.category,
+//                 item: `${siteUrl}/blog/category/${blog.category.toLowerCase()}`
+//               },
+//               {
+//                 "@type": "ListItem",
+//                 position: 4,
+//                 name: blog.title,
+//                 item: blogUrl
+//               }
+//             ]
+//           })
+//         }}
+//       />
 
-      {/* Website Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            name: `${blog.title}`,
-            description: `${blog.excerpt}`,
-            url: siteUrl,
-            potentialAction: {
-              "@type": "SearchAction",
-              target: {
-                "@type": "EntryPoint",
-                urlTemplate: `${siteUrl}/search?q={search_term_string}`
-              },
-              "query-input": "required name=search_term_string"
-            },
-            sameAs: [
-              "https://twitter.com/yourtwitterhandle",
-              "https://linkedin.com/company/yourcompany",
-              "https://facebook.com/yourpage"
-            ]
-          })
-        }}
-      />
-    </Head>
-  );
-};
+//       {/* Website Schema */}
+//       <script
+//         type="application/ld+json"
+//         dangerouslySetInnerHTML={{
+//           __html: JSON.stringify({
+//             "@context": "https://schema.org",
+//             "@type": "WebSite",
+//             name: `${blog.title}`,
+//             description: `${blog.excerpt}`,
+//             url: siteUrl,
+//             potentialAction: {
+//               "@type": "SearchAction",
+//               target: {
+//                 "@type": "EntryPoint",
+//                 urlTemplate: `${siteUrl}/search?q={search_term_string}`
+//               },
+//               "query-input": "required name=search_term_string"
+//             },
+//             sameAs: [
+//               "https://twitter.com/yourtwitterhandle",
+//               "https://linkedin.com/company/yourcompany",
+//               "https://facebook.com/yourpage"
+//             ]
+//           })
+//         }}
+//       />
+//     </Head>
+//   );
+// };
 
 export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
   const router = useRouter();
@@ -376,7 +376,6 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
 
   return (
     <>
-      <BlogDetailSEO blog={blog} />
       <div className="min-h-screen bg-[#EEF6FF] pt-14 md:pt-20">
         {/* Header */}
         <div className="border-b border-gray-200 bg-white">
