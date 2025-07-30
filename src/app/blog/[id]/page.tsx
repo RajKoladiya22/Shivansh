@@ -538,9 +538,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const blog = blogPosts.find((post) => post.id.toString() === params.id);
+  const { id } = await params;
+  const blog = blogPosts.find((post) => post.id.toString() === id);
 
   if (!blog) {
     return {
