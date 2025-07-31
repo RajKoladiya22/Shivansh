@@ -37,12 +37,30 @@ export async function generateMetadata(): Promise<Metadata> {
       url: `${BASE_URL}/blog`,
       type: "website",
       siteName: SITE_NAME,
-      images: [
+      // images: [
+      //   {
+      //     url: `${BASE_URL}/images/blog/blog-og.jpg`,
+      //     width: 1200,
+      //     height: 630,
+      //     alt: "Shivansh Infosys Blog - Expert Accounting Insights",
+      //   },
+      // ],
+            images: [
         {
-          url: `${BASE_URL}/images/blog/blog-og.jpg`,
-          width: 1200,
-          height: 630,
-          alt: "Shivansh Infosys Blog - Expert Accounting Insights",
+          // Using your actual logo with correct dimensions
+          url: "/images/logo/logo.png",
+          width: 1373,
+          height: 234,
+          alt: `${SITE_NAME} - Professional Tally Solutions Partner`,
+          type: "image/png",
+        },
+        {
+          // Fallback: Use same image but with optimized alt text for different contexts
+          url: "/images/logo/logo.png",
+          width: 1373,
+          height: 234,
+          alt: `${SITE_NAME} Logo - Tally Certified Partner in Gujarat`,
+          type: "image/png",
         },
       ],
     },
