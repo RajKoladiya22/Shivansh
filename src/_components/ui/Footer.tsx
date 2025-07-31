@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
             <div className="mb-6">
               <div className="flex items-center">
                 <Image
-                  src="/images/logo/logo-si.svg"
+                  src="/images/logo/Logo-name.svg"
                   alt="Company Logo"
                   width={40}
                   height={40}
