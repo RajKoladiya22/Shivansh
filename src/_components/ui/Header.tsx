@@ -135,13 +135,13 @@ export function Header() {
           <div className="hidden items-center xl:flex">
             <div className="flex items-center space-x-4 border-l border-gray-200 pl-6">
               <div className="flex flex-col">
-                <span className="flex items-center text-xs font-medium tracking-wide text-gray-600 uppercase">
+                <span className="flex items-center text-xs font-medium tracking-wide text-(--primery-color) uppercase">
                   <Phone size={14} className="mr-1" aria-hidden="true" />
                   Call Us
                   <ArrowRight
                     size={16}
                     strokeWidth={1.5}
-                    className="ml-1 transform transition-all duration-200 ease-in-out"
+                    className="ml-1 rotate-315 transform transition-all duration-200 ease-in-out"
                     aria-hidden="true"
                   />
                 </span>
