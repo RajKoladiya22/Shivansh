@@ -82,7 +82,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     openGraph: {
       title: `${product.title} - ${priceInfo}`,
       description: `${product.description} Professional grade ${product.category.toLowerCase()} for ${product.industry.toLowerCase()}. Rated ${product.review.averageRating}⭐ by ${product.review.reviewCount} customers.`,
-      url: `${BASE_URL}/products/${product.id}`,
+      url: `${BASE_URL}/product/${product.id}`,
       type: "website",
       locale: "en_IN",
       siteName: SITE_NAME,
@@ -110,7 +110,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       creator: "@shivanshinfosys",
     },
     alternates: {
-      canonical: `${BASE_URL}/products/${product.id}`,
+      canonical: `${BASE_URL}/product/${product.id}`,
     },
     robots: {
       index: true,
@@ -158,7 +158,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const productStructuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": `${BASE_URL}/products/${product.id}`,
+    "@id": `${BASE_URL}/product/${product.id}`,
     name: product.title,
     description: product.description,
     image: [
@@ -181,10 +181,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     mpn: `${product.category.toUpperCase()}-${product.id}`,
     sku: `SKU-${product.id.toString().padStart(6, '0')}`,
     gtin: `${Date.now()}${product.id}`.substring(0, 13), // Mock GTIN
-    url: `${BASE_URL}/products/${product.id}`,
+    url: `${BASE_URL}/product/${product.id}`,
     offers: {
       "@type": "Offer",
-      url: `${BASE_URL}/products/${product.id}`,
+      url: `${BASE_URL}/product/${product.id}`,
       priceCurrency: "INR",
       price: product.salePrice,
       priceValidUntil: "2025-12-31",
@@ -215,7 +215,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     isRelatedTo: relatedProducts.map(rp => ({
       "@type": "Product",
       name: rp.title,
-      url: `${BASE_URL}/products/${rp.id}`
+      url: `${BASE_URL}/product/${rp.id}`
     })),
     dateCreated: product.createdAt,
     ...(product.videoId && {
@@ -245,19 +245,19 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         "@type": "ListItem",
         position: 2,
         name: "Products",
-        item: `${BASE_URL}/products`
+        item: `${BASE_URL}/product`
       },
       {
         "@type": "ListItem",
         position: 3,
         name: product.category,
-        item: `${BASE_URL}/products?category=${product.category.toLowerCase()}`
+        item: `${BASE_URL}/product?category=${product.category.toLowerCase()}`
       },
       {
         "@type": "ListItem",
         position: 4,
         name: product.title,
-        item: `${BASE_URL}/products/${product.id}`
+        item: `${BASE_URL}/product/${product.id}`
       }
     ]
   };
