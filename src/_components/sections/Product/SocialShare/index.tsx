@@ -67,7 +67,7 @@ export const ProductSocialShareModal = ({
     const url = shareLinks[platform];
     if (platform === 'instagram') {
       // For Instagram, copy link and show instruction
-      handleCopyLink();
+      void handleCopyLink();
       alert('Link copied! You can now paste it in your Instagram story or post.');
       return;
     }
