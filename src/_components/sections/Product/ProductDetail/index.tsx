@@ -20,6 +20,7 @@ import { ProductsList } from "public/data/Product";
 import type { Product } from "..";
 import Link from "next/link";
 import Image from "next/image";
+import { ProductSocialShareButton } from "../SocialShare";
 
 type TabId = "features" | "benefits" | "specifications" | "reviews" | "faq";
 
@@ -75,9 +76,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 }) => {
   const router = useRouter();
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
-  const [quantity, setQuantity] = useState<number>(1);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<TabId>("features");
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -121,25 +120,14 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
     );
   }
 
-  const handleShare = () => {
-    // if (navigator.share) {
-    //   navigator.share({
-    //     title: product.title,
-    //     text: product.description,
-    //     url: window.location.href,
-    //   });
-    // } else {
-    //   navigator.clipboard.writeText(window.location.href);
-    //   alert("Product link copied to clipboard!");
-    // }
-  };
+
   const handleBackToBlogs = () => {
     router.push("/product");
   };
 
   const handleEnquiry = () => {
     // Handle enquiry submission
-    console.log("Enquiry for product:", product.id, "Quantity:", quantity);
+    console.log("Enquiry for product:", product.id, "Quantity:");
   };
 
   const toggleFaq = (index: number) => {
@@ -162,23 +150,17 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
             <div className="flex items-center gap-4">
               {/* <button
-                onClick={() => setIsFavorite(!isFavorite)}
-                className={`rounded-full p-2 transition-colors ${
-                  isFavorite
-                    ? "bg-red-50 text-red-500"
-                    : "text-gray-400 hover:text-red-500"
-                }`}
-              >
-                <Heart
-                  className={`h-5 w-5 ${isFavorite ? "fill-current" : ""}`}
-                />
-              </button> */}
-              <button
-                onClick={handleShare}
+                onClick={() => handleShare(product)}
                 className="cursor-pointer rounded-full p-2 text-gray-400 transition-colors hover:text-[#A50202]"
               >
                 <Share2 className="h-5 w-5" />
-              </button>
+              </button> */}
+
+              <ProductSocialShareButton
+                product={product}
+                variant="minimal"
+                showText={false}
+              />
             </div>
           </div>
         </div>
@@ -668,6 +650,8 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
           </div>
         </div>
       )}
+
+
     </div>
   );
 };
