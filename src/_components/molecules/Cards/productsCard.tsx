@@ -127,6 +127,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             product={product}
             variant="minimal"
             showText={false}
+            ProID={product.id}
           />
           {/* </div> */}
         </div>

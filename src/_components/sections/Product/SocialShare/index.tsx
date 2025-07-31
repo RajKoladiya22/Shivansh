@@ -16,13 +16,14 @@ import {
   IndianRupee,
 } from "lucide-react";
 import type { Product } from "src/_components/sections/Product";
-
+import { BASE_URL } from "src/config/constants";
 
 interface ProductSocialShareModalProps {
   product: Product;
   isOpen: boolean;
   onClose: () => void;
   currentUrl?: string;
+  ProID?: string | number;
 }
 
 export const ProductSocialShareModal = ({
@@ -30,24 +31,40 @@ export const ProductSocialShareModal = ({
   isOpen,
   onClose,
   currentUrl = typeof window !== "undefined" ? window.location.href : "",
+  ProID,
 }: ProductSocialShareModalProps) => {
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied">("idle");
 
   if (!isOpen) return null;
 
-  const shareUrl = currentUrl;
-  const discountPercentage = Math.round(((product.actualPrice - product.salePrice) / product.actualPrice) * 100);
+  let shareUrl : string;
+  if(ProID){
+      shareUrl = `${BASE_URL}/product/${ProID}`;
+  }else
+  {
+    shareUrl = currentUrl;
+  }
+  const discountPercentage = Math.round(
+    ((product.actualPrice - product.salePrice) / product.actualPrice) * 100,
+  );
   const hasDiscount = product.salePrice < product.actualPrice;
-  
+
   // Enhanced share content for products
-  const shareTitle = `${product.title} - ${hasDiscount ? `${discountPercentage}% OFF` : 'Best Price'}`;
-  const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ''}\n⭐ ${product.review.averageRating}/5 (${product.review.reviewCount} reviews)\n🏷️ ${product.category} | ${product.industry}`;
-  const hashtags = [...product.tags, product.category.toLowerCase(), 'deals', 'shopping'].join(',').replace(/\s+/g, '');
+  const shareTitle = `${product.title} - ${hasDiscount ? `${discountPercentage}% OFF` : "Best Price"}`;
+  const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ""}\n⭐ ${product.review.averageRating}/5 (${product.review.reviewCount} reviews)\n🏷️ ${product.category} | ${product.industry}`;
+  const hashtags = [
+    ...product.tags,
+    product.category.toLowerCase(),
+    "deals",
+    "shopping",
+  ]
+    .join(",")
+    .replace(/\s+/g, "");
 
   // Social media share URLs with product-specific content
   const shareLinks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareTitle + "\n\n" + shareText)}`,
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`${shareTitle}\n\n${product.description.substring(0, 100)}...\n\n💰 ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (${discountPercentage}% OFF!)` : ''}\n⭐ ${product.review.averageRating}/5`)}&hashtags=${encodeURIComponent(hashtags)}`,
+    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`${shareTitle}\n\n${product.description.substring(0, 100)}...\n\n💰 ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (${discountPercentage}% OFF!)` : ""}\n⭐ ${product.review.averageRating}/5`)}&hashtags=${encodeURIComponent(hashtags)}`,
     whatsapp: `https://wa.me/?text=${encodeURIComponent(`🛍️ *${shareTitle}*\n\n${shareText}\n\n${shareUrl}\n\nCheck it out!`)}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareTitle)}&summary=${encodeURIComponent(shareText)}`,
     instagram: `https://instagram.com/`, // Instagram doesn't support direct sharing with URL
@@ -65,10 +82,12 @@ export const ProductSocialShareModal = ({
 
   const handleSocialShare = (platform: keyof typeof shareLinks) => {
     const url = shareLinks[platform];
-    if (platform === 'instagram') {
+    if (platform === "instagram") {
       // For Instagram, copy link and show instruction
       void handleCopyLink();
-      alert('Link copied! You can now paste it in your Instagram story or post.');
+      alert(
+        "Link copied! You can now paste it in your Instagram story or post.",
+      );
       return;
     }
     window.open(
@@ -93,7 +112,7 @@ export const ProductSocialShareModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex overflow-hidden bg-opacity-50 z-50 items-center justify-center bg-black/75 p-4">
+    <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-black/75 p-4">
       <div className="max-h-[90vh] w-full max-w-md overflow-auto rounded-2xl bg-white shadow-2xl">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 p-6">
@@ -120,7 +139,7 @@ export const ProductSocialShareModal = ({
                   className="h-16 w-16 rounded-lg object-cover"
                 />
                 {hasDiscount && (
-                  <div className="absolute -right-2 -top-2 rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
+                  <div className="absolute -top-2 -right-2 rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
                     -{discountPercentage}%
                   </div>
                 )}
@@ -146,12 +165,13 @@ export const ProductSocialShareModal = ({
                   <div className="flex items-center gap-1">
                     <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                     <span className="text-xs text-gray-600">
-                      {product.review.averageRating} ({product.review.reviewCount})
+                      {product.review.averageRating} (
+                      {product.review.reviewCount})
                     </span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Tag className="h-3 w-3 text-[#C50202]" />
-                    <span className="text-xs text-[#C50202] font-medium">
+                    <span className="text-xs font-medium text-[#C50202]">
                       {product.category}
                     </span>
                   </div>
@@ -171,7 +191,7 @@ export const ProductSocialShareModal = ({
             {/* Facebook */}
             <button
               onClick={() => handleSocialShare("facebook")}
-              className="flex items-center gap-3 rounded-lg bg-[#1877F2] p-3 text-white transition-all hover:bg-[#166FE5] hover:scale-105"
+              className="flex items-center gap-3 rounded-lg bg-[#1877F2] p-3 text-white transition-all hover:scale-105 hover:bg-[#166FE5]"
             >
               <Facebook className="h-5 w-5 fill-current" />
               <span className="font-medium">Facebook</span>
@@ -180,7 +200,7 @@ export const ProductSocialShareModal = ({
             {/* Twitter */}
             <button
               onClick={() => handleSocialShare("twitter")}
-              className="flex items-center gap-3 rounded-lg bg-[#1DA1F2] p-3 text-white transition-all hover:bg-[#1A91DA] hover:scale-105"
+              className="flex items-center gap-3 rounded-lg bg-[#1DA1F2] p-3 text-white transition-all hover:scale-105 hover:bg-[#1A91DA]"
             >
               <Twitter className="h-5 w-5 fill-current" />
               <span className="font-medium">Twitter</span>
@@ -189,7 +209,7 @@ export const ProductSocialShareModal = ({
             {/* WhatsApp */}
             <button
               onClick={() => handleSocialShare("whatsapp")}
-              className="flex items-center gap-3 rounded-lg bg-[#25D366] p-3 text-white transition-all hover:bg-[#22C55E] hover:scale-105"
+              className="flex items-center gap-3 rounded-lg bg-[#25D366] p-3 text-white transition-all hover:scale-105 hover:bg-[#22C55E]"
             >
               <MessageCircle className="h-5 w-5" />
               <span className="font-medium">WhatsApp</span>
@@ -198,7 +218,7 @@ export const ProductSocialShareModal = ({
             {/* LinkedIn */}
             <button
               onClick={() => handleSocialShare("linkedin")}
-              className="flex items-center gap-3 rounded-lg bg-[#0A66C2] p-3 text-white transition-all hover:bg-[#095BB0] hover:scale-105"
+              className="flex items-center gap-3 rounded-lg bg-[#0A66C2] p-3 text-white transition-all hover:scale-105 hover:bg-[#095BB0]"
             >
               <ExternalLink className="h-5 w-5" />
               <span className="font-medium">LinkedIn</span>
@@ -207,31 +227,34 @@ export const ProductSocialShareModal = ({
             {/* Instagram */}
             <button
               onClick={() => handleSocialShare("instagram")}
-              className="flex items-center gap-3 rounded-lg bg-gradient-to-tr from-[#feda75] via-[#fa7e1e] to-[#d62976] p-3 text-white transition-all hover:opacity-90 hover:scale-105"
+              className="flex items-center gap-3 rounded-lg bg-gradient-to-tr from-[#feda75] via-[#fa7e1e] to-[#d62976] p-3 text-white transition-all hover:scale-105 hover:opacity-90"
             >
               <Instagram className="h-5 w-5" />
               <span className="font-medium">Instagram</span>
             </button>
 
             {/* Native Share (if available) */}
-            {typeof navigator !== 'undefined' && typeof navigator.share === "function" && (
-              <button
-                onClick={handleNativeShare}
-                className="flex items-center gap-3 rounded-lg bg-gray-600 p-3 text-white transition-all hover:bg-gray-700 hover:scale-105"
-              >
-                <Share2 className="h-5 w-5" />
-                <span className="font-medium">More</span>
-              </button>
-            )}
+            {typeof navigator !== "undefined" &&
+              typeof navigator.share === "function" && (
+                <button
+                  onClick={handleNativeShare}
+                  className="flex items-center gap-3 rounded-lg bg-gray-600 p-3 text-white transition-all hover:scale-105 hover:bg-gray-700"
+                >
+                  <Share2 className="h-5 w-5" />
+                  <span className="font-medium">More</span>
+                </button>
+              )}
           </div>
 
           {/* Special Offers Highlight */}
           {hasDiscount && (
-            <div className="mb-4 rounded-lg bg-gradient-to-r from-red-50 to-orange-50 p-3 border border-red-200">
+            <div className="mb-4 rounded-lg border border-red-200 bg-gradient-to-r from-red-50 to-orange-50 p-3">
               <div className="flex items-center gap-2 text-sm">
                 <Tag className="h-4 w-4 text-red-600" />
                 <span className="font-medium text-red-800">
-                  Limited Time: Save ₹{(product.actualPrice - product.salePrice).toLocaleString()} ({discountPercentage}% OFF)
+                  Limited Time: Save ₹
+                  {(product.actualPrice - product.salePrice).toLocaleString()} (
+                  {discountPercentage}% OFF)
                 </span>
               </div>
             </div>
@@ -255,8 +278,8 @@ export const ProductSocialShareModal = ({
                 onClick={handleCopyLink}
                 className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
                   copyStatus === "copied"
-                    ? "bg-green-500 text-white scale-105"
-                    : "bg-[#C50202] text-white hover:bg-[#A50202] hover:scale-105"
+                    ? "scale-105 bg-green-500 text-white"
+                    : "bg-[#C50202] text-white hover:scale-105 hover:bg-[#A50202]"
                 }`}
               >
                 {copyStatus === "copied" ? (
@@ -284,24 +307,29 @@ interface ProductSocialShareButtonProps {
   product: Product;
   className?: string;
   showText?: boolean;
-  variant?: 'default' | 'minimal' | 'prominent';
+  variant?: "default" | "minimal" | "prominent";
+  ProID?: string | number;
 }
 
 export const ProductSocialShareButton = ({
   product,
   className = "",
   showText = true,
-  variant = 'default'
+  variant = "default",
+  ProID,
 }: ProductSocialShareButtonProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-// console.log(isModalOpen);
+  // console.log(isModalOpen);
 
   const baseClasses = "flex items-center gap-2 transition-all";
-  
+
   const variantClasses = {
-    default: "rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]",
-    minimal: "cursor-pointer rounded-full p-2 text-gray-400 hover:text-[#A50202]",
-    prominent: "rounded-lg bg-[#C50202] px-6 py-3 text-white font-semibold hover:bg-[#A50202] hover:scale-105 shadow-lg"
+    default:
+      "rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]",
+    minimal:
+      "cursor-pointer rounded-full p-2 text-gray-400 hover:text-[#A50202]",
+    prominent:
+      "rounded-lg bg-[#C50202] px-6 py-3 text-white font-semibold hover:bg-[#A50202] hover:scale-105 shadow-lg",
   };
 
   return (
@@ -311,8 +339,8 @@ export const ProductSocialShareButton = ({
         className={`${baseClasses} ${variantClasses[variant]} ${className}`}
         title="Share this product"
       >
-        <Share2 className={variant === 'prominent' ? "h-5 w-5" : "h-4 w-4"} />
-        {showText && variant !== 'minimal' && <span>Share</span>}
+        <Share2 className={variant === "prominent" ? "h-5 w-5" : "h-4 w-4"} />
+        {showText && variant !== "minimal" && <span>Share</span>}
       </button>
 
       <ProductSocialShareModal
@@ -320,6 +348,7 @@ export const ProductSocialShareButton = ({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         currentUrl={typeof window !== "undefined" ? window.location.href : ""}
+        ProID={ProID}
       />
     </>
   );
@@ -328,7 +357,8 @@ export const ProductSocialShareButton = ({
 // Usage Example Component
 export const ProductShareExample = ({ product }: { product: Product }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
-  const [selectedProductForShare, setSelectedProductForShare] = useState<Product | null>(null);
+  const [selectedProductForShare, setSelectedProductForShare] =
+    useState<Product | null>(null);
 
   const handleShare = () => {
     setSelectedProductForShare(product);
@@ -351,16 +381,16 @@ export const ProductShareExample = ({ product }: { product: Product }) => {
       </button>
 
       {/* Method 2: Using the ProductSocialShareButton component */}
-      <ProductSocialShareButton 
-        product={product} 
-        variant="minimal" 
+      <ProductSocialShareButton
+        product={product}
+        variant="minimal"
         showText={false}
       />
 
       {/* Method 3: Prominent share button */}
-      <ProductSocialShareButton 
-        product={product} 
-        variant="prominent" 
+      <ProductSocialShareButton
+        product={product}
+        variant="prominent"
         showText={true}
       />
 
