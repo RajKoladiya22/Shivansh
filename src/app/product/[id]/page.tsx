@@ -37,7 +37,7 @@ interface ProductDetailPageProps {
 // Helper function to get product by ID
 async function getProduct(id: string): Promise<Product | null> {
   const product = ProductsList.find(p => p.id.toString() === id);
-  return product || null;
+  return product ?? null;
 }
 
 // Helper function to get related products
