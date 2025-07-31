@@ -106,14 +106,14 @@ export function Lightbox({
   if (!isOpen || !currentItem) return null;
 
   return (
-    <div className="bg-opacity-90 fixed inset-0 z-50 flex items-center justify-center bg-[white]- backdrop-blur-sm">
+    <div className="bg-opacity-90 fixed inset-0 z-50 flex items-center justify-center bg-black/75 ">
       {/* Close button */}
       <button
         onClick={onClose}
-        className="bg-opacity-20 hover:bg-opacity-30  absolute top-4 right-4 z-10 rounded-full  p-3 text-white backdrop-blur-sm transition-all"
+        className="cursor-pointer bg-black text-white hover:bg-black/50  absolute top-4 right-4 z-10 rounded-full  p-3 backdrop-blur-sm transition-all"
         aria-label="Close lightbox"
       >
-        <X className="h-6 w-6" />
+        <X className="h-5 w-5" />
       </button>
 
       {/* Navigation buttons */}

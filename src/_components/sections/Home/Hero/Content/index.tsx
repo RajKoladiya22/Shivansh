@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { btn_color } from "src/config/constants";
 
 export const HeroContent = () => {
   const [statsVisible, setStatsVisible] = useState(false);
@@ -67,7 +68,7 @@ export const HeroContent = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 pt-2">
               <button
-                className="flex transform items-center justify-center gap-2 rounded-lg bg-(--primery-color) from-blue-600 to-indigo-700 px-6 py-3 font-bold tracking-wide text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+                className={`${btn_color} flex transform items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold tracking-wide shadow-lg`}
                 onClick={() => window.open("https://bitly.cx/rNEH4", "_blank")}
               >
                 <svg
@@ -82,8 +83,8 @@ export const HeroContent = () => {
               </button>
 
               <button
-                className="flex transform items-center justify-center gap-2 rounded-lg border-2 border-(--primery-color) bg-white px-6 py-3 font-bold tracking-wide text-(--primery-color) shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-(--primery-color) hover:text-white hover:shadow-lg cursor-pointer"
-                onClick={() => window.open("tel:+91-9999999999", "_self")}
+                className="flex transform items-center justify-center gap-2 rounded-lg border-2 border-(--primery-color) bg-white px-6 py-3 font-bold tracking-wide text-(--primery-color) shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C50202] hover:text-white hover:shadow-lg cursor-pointer"
+                onClick={() => window.open("tel:+91 8141703007", "_self")}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +100,7 @@ export const HeroContent = () => {
           </div>
 
           {/* Stats Column */}
-          <div className=" pt-6 sm:pt-8 transform transition-all duration-100 hover:scale-[1.01]">
+          <div className=" pt-6 sm:pt-8">
             <div className="text-xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200"></div>
             
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">

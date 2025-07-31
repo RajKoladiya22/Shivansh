@@ -184,7 +184,7 @@ export const CareerComponent = () => {
 
       {/* Application Modal */}
       {selectedJob && (
-        <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black p-4">
+        <div className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4">
           <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white">
             <div className="border-b border-gray-200 p-6">
               <div className="flex items-center justify-between">

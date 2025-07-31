@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { CheckCircle, Send } from "lucide-react";
 import type { InputChangeEvent } from "src/_components/sections/types/contact.type";
 import { contactInfo } from "public/data/Contact";
+import { btn_color } from "src/config/constants";
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -253,7 +254,7 @@ export const ContactForm = () => {
                     type="button"
                     disabled={isSubmitting}
                     onClick={handleSubmit}
-                    className="cursor-pointer flex w-full transform items-center justify-center space-x-2 rounded-lg bg-red-700 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-red-800 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:py-4 sm:text-base"
+                    className={`${btn_color} flex w-full transform items-center justify-center space-x-2 rounded-lg  px-6 py-3 text-sm font-semibold disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:py-4 sm:text-base`}
                   >
                     {isSubmitting ? (
                       <>

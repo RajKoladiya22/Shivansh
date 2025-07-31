@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 import { navItems, ProductServices } from "public/data/Navigation";
 import { SocialMedia } from "public/data/Contact";
+import { btn_color } from "src/config/constants";
+import Image from "next/image";
 
 export const Footer: React.FC = () => {
   const pathname = usePathname();
@@ -21,15 +23,23 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="mb-6">
               <div className="flex items-center">
-                <div className="mr-3 h-10 w-10 rounded-lg bg-gradient-to-r from-red-600 to-red-700"></div>
-                <h2 className="text-2xl font-bold">
-                  <span className="text-red-500">SHIVANSH</span>{" "}
-                  <span className="text-gray-100">INFOSYS</span>
+                <Image
+                  src="/images/logo/logo-si.svg"
+                  alt="Company Logo"
+                  width={40}
+                  height={40}
+                  className="h-13 w-13"
+                />
+              <div className="">
+                  <h2 className="text-2xl font-bold m-0">
+                  <span className="text-[#C50202]">SHIVANSH</span>{" "}
+                  <span className="text-white">INFOSYS</span>
                 </h2>
-              </div>
-              <p className="mt-3 text-sm font-medium text-gray-400">
-                Quick Response - Quick Support
+              <p className="mt- text-sm font-medium text-gray-400 flex flex-wrap">
+                <span>Quick Response</span> - <span>Quick Support</span>
               </p>
+              </div>
+              </div>
             </div>
 
             <p className="mb-6 text-sm leading-relaxed text-gray-400">
@@ -210,9 +220,9 @@ export const Footer: React.FC = () => {
                 href="https://whatsapp.com/channel/0029Vb5y41dLNSaBHDTIi82B"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center rounded-lg bg-red-600 px-6 py-3 font-medium text-white transition-colors duration-300 hover:bg-red-700"
+                className={`${btn_color} flex items-center rounded-lg px-6 py-3 font-medium`}
               >
-                <FaWhatsapp size={24} className="pr-1"/> 
+                <FaWhatsapp size={24} className="pr-1" />
                 Subscribe
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

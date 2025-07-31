@@ -12,6 +12,7 @@ import Link from "next/link";
 import { ProductCard } from "src/_components/molecules/Cards/productsCard";
 import { ProductsList } from "public/data/Product";
 import { VideoModal } from "../../Product/VideoModal";
+import { btn_color } from "src/config/constants";
 
 const topProducts = ProductsList.filter((product) => product.isTopProduct);
 
@@ -74,7 +75,7 @@ export const ProductShowcaseSection = () => {
   const totalSlides = Math.ceil(topProducts.length / itemsPerSlide);
 
   return (
-    <section className="bg-gray-50 py-12 lg:py-16">
+    <section className="bg-gradient-to-b from-white via-red-50 to-white py-12 lg:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-15">
         {/* Section Header */}
         <div className="mb-12 text-center">
@@ -136,7 +137,7 @@ export const ProductShowcaseSection = () => {
         <div className="mt-12 text-center">
           <Link
             href={"/product"}
-            className="inline-flex items-center gap-2 rounded-lg bg-[#C50202] px-8 py-3 text-lg font-medium text-white transition-colors duration-300 hover:bg-[#C5020280]"
+            className={`${btn_color} inline-flex items-center gap-2 rounded-lg px-8 py-3 text-lg font-medium`}
           >
             View All Products
             <ArrowRight className="h-5 w-5" />

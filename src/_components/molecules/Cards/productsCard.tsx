@@ -1,5 +1,7 @@
 import { Play } from "lucide-react";
 import Link from "next/link";
+import { ProductSocialShareButton } from "src/_components/sections/Product/SocialShare";
+import { btn_color } from "src/config/constants";
 
 // Define a Review type for clarity
 export interface Review {
@@ -51,7 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         />
         <button
           onClick={() => onVideoPlay(product.videoId)}
-          className="bg-opacity-50 absolute inset-0 flex items-center justify-center bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100 cursor-pointer"
+          className="bg-opacity-50 absolute inset-0 flex cursor-pointer items-center justify-center bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         >
           <div className="bg-opacity-30 group-hover:bg-opacity-50 absolute inset-0 flex items-center justify-center">
             <div className="relative">
@@ -112,9 +114,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Enquiry button - always at bottom */}
-        <button className="cursor-pointer mt-auto w-full transform rounded-lg bg-[#C50202] px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A00303] hover:shadow-[0_6px_12px_rgba(197,2,2,0.25)] focus:ring-2 focus:ring-[#C50202] focus:outline-none md:py-2 md:text-base">
+        {/* <button className="mt-auto w-full transform cursor-pointer rounded-lg bg-[#C50202] px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A00303] hover:shadow-[0_6px_12px_rgba(197,2,2,0.25)] focus:ring-2 focus:ring-[#C50202] focus:outline-none md:py-2 md:text-base">
           Enquiry Now
-        </button>
+        </button> */}
+
+        <div className="mt-auto flex items-center gap-2">
+          <button className={`${btn_color} mt-auto w-full transform rounded-lg  px-4 py-2.5 text-sm font-medium md:py-2 md:text-base`}>
+            Enquiry Now
+          </button>
+          {/* <div className="bg-[#C50202] p-1 rounded-lg"> */}
+            <ProductSocialShareButton
+            product={product}
+            variant="minimal"
+            showText={false}
+          />
+          {/* </div> */}
+        </div>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ videoId, onClose }) => {
       <div className=" max-h-[80vh] w-full max-w-4xl rounded-lg bg-white">
         <button
           onClick={onClose}
-          className="cursor-pointer absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 hover:bg-gray-500"
+          className="bg-black text-white hover:bg-black/50  absolute top-4 right-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-200"
         >
           <X className="h-6 w-6 text-white" />
         </button>

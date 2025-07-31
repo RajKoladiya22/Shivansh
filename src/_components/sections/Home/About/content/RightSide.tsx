@@ -84,10 +84,10 @@ export const AboutUsRightContent = () => {
           >
             <button
               onClick={closePreview}
-              className="cursor-pointer absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black"
+              className="bg-black text-white hover:bg-black/50  absolute top-4 right-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-200"
               aria-label="Close preview"
             >
-              <X size={32} />
+              <X className="h-5 w-5" />
             </button>
 
             <div className="overflow-hidden rounded-xl bg-white shadow-2xl">

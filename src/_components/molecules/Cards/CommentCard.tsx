@@ -41,6 +41,8 @@ export const CommentCard: React.FC<CommentCardProps> = ({
   const textSize = compact ? "text-sm" : "text-base";
   const authorSize = compact ? "text-sm" : "text-base";
 
+  
+
   return (
     <div
       className={`flex space-x-3 border border-red-100 ${compact ? "p-3" : "p-4"} ${className}`}
@@ -66,7 +68,7 @@ export const CommentCard: React.FC<CommentCardProps> = ({
           />
         ) : null}
         <div
-          className={`${avatarSize} items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 font-medium text-white ${
+          className={`${avatarSize} items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-purple-600 font-medium text-white ${
             comment.authorProfileImageUrl &&
             comment.authorProfileImageUrl !==
               "https://yt3.ggpht.com/abcd1234/..."

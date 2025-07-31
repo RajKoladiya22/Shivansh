@@ -5,14 +5,11 @@ import {
   Phone,
   Mail,
   MapPin,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 
 interface Author {
   name: string;
@@ -228,12 +225,12 @@ export const RecentPostsWidget: React.FC<RecentPostsWidgetProps> = ({
 
 export const ContactWidget = () => {
   return (
-    <div className="rounded-xl bg-gradient-to-br from-[#C50202] to-[#C5020280] p-6 text-white">
+    <div className="rounded-xl bg-gradient-to-br from-[#C50202] to-[#C5020299] p-6 text-white">
       <h3 className="mb-4 text-lg font-bold">Contact Us</h3>
       <div className="space-y-3">
         <div className="flex items-center gap-3">
           <Phone className="h-5 w-5" />
-          <span className="text-sm">+91 98765 43210</span>
+          <span className="text-sm">+91 8141703007</span>
         </div>
         <div className="flex items-center gap-3">
           <Mail className="h-5 w-5" />
@@ -241,21 +238,21 @@ export const ContactWidget = () => {
         </div>
         <div className="flex items-center gap-3">
           <MapPin className="h-5 w-5" />
-          <span className="text-sm">Mumbai, India</span>
+          <span className="text-sm">Gujarat, India</span>
         </div>
       </div>
       <div className="mt-6 flex gap-3">
-        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white transition-all">
-          <Facebook className="h-4 w-4" />
+        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-green-500 transition-all">
+          <FaWhatsapp className="h-4 w-4" />
         </button>
-        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white transition-all">
-          <Twitter className="h-4 w-4" />
+        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-blue-500 transition-all">
+          <FaFacebook className="h-4 w-4" />
         </button>
-        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white transition-all">
-          <Linkedin className="h-4 w-4" />
+        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-red-700 transition-all">
+          <FaYoutube className="h-4 w-4" />
         </button>
-        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white transition-all">
-          <Instagram className="h-4 w-4" />
+        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-red-600 transition-all">
+          <FaInstagram className="h-4 w-4" />
         </button>
       </div>
     </div>

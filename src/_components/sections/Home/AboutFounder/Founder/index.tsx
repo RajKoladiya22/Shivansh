@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import { btn_color } from "src/config/constants";
 
 export const TheFounder = () => {
   const [years, setYears] = useState(0);
@@ -99,7 +100,7 @@ export const TheFounder = () => {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute top-4 left-4 z-30 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-4 rounded-full shadow-lg flex items-center gap-3"
+              className="absolute top-2 sm:top-4 left-2 sm:left-4 z-30 bg-gradient-to-r from-red-600 to-red-700 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full shadow-lg flex items-center gap-3"
             >
               <div className="text-3xl md:text-4xl font-bold">{years}+</div>
               <div className="text-sm font-medium max-w-[100px]">
@@ -113,7 +114,7 @@ export const TheFounder = () => {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute bottom-4 right-4 z-30 bg-white px-5 py-3 rounded-full shadow-md"
+              className="absolute bottom-4 right-4 z-30 bg-white px-5 py-2 rounded-full shadow-md"
             >
               <div className="text-red-600 font-bold tracking-wider text-sm sm:text-base">
                 SINCE 2007
@@ -157,7 +158,7 @@ export const TheFounder = () => {
                 </div>
               </div>
               
-              <Link href={"/about"} className="mt-6 px-8 py-3 bg-(--primery-color) text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <Link href={"/about"} className={`${btn_color} mt-6 px-8 py-3 font-medium rounded-lg shadow-lg`}>
                 Read Full Story
               </Link>
             </div>

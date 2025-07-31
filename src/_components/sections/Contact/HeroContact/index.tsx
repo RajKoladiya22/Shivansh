@@ -94,7 +94,7 @@ export const ContactHeroSection = () => {
           </div>
 
           {/* Main Grid Container */}
-          <div className="mx-auto grid gap-8 py-16 lg:grid-cols-2">
+          <div className="grid gap-8 py-16 lg:grid-cols-2 xl:px-8 2xl:px-50">
             {/* Left Side - Contact Form */}
             <div className="hover:shadow-3xl transform rounded-2xl border border-red-100 bg-white p-6 shadow-2xl transition-all duration-500 sm:rounded-3xl sm:p-8">
               {isSubmitted ? (

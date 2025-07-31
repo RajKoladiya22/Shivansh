@@ -7,6 +7,7 @@ import { Button } from "../molecules/Buttons/Button";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { navItems } from "public/data/Navigation";
+import { btn_color } from "src/config/constants";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -37,14 +38,32 @@ export function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="block">
-              <Image
+              {/* <Image
                 width={200}
                 height={200}
                 src="/images/logo/logo.png"
                 alt="Shivansh Infosys"
                 className="h-8 w-auto transition-transform duration-300 hover:scale-105"
                 // priority
-              />
+              /> */}
+              <div className="flex items-center">
+                <Image
+                  src="/images/logo/logo-si.svg"
+                  alt="Company Logo"
+                  width={40}
+                  height={40}
+                  className="h-13 w-13"
+                />
+                <div className="">
+                  <h2 className="m-0 text-2xl font-bold">
+                    <span className="text-[#C50202]">SHIVANSH</span>{" "}
+                    <span className="text-black">INFOSYS</span>
+                  </h2>
+                  <p className="mt- flex flex-wrap text-sm font-medium text-gray-400">
+                    <span>Quick Response</span> - <span>Quick Support</span>
+                  </p>
+                </div>
+              </div>
             </Link>
           </div>
 
@@ -96,7 +115,7 @@ export function Header() {
           <div className="hidden items-center md:flex">
             <Button
               href="/contact"
-              className="transform rounded-lg bg-(--primery-color) px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-lg focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none"
+              className={`${btn_color} transform rounded-lg px-6 py-2.5 text-sm font-semibold shadow-md`}
             >
               Get in Touch
             </Button>

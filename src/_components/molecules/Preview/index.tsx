@@ -41,10 +41,10 @@ export const PreviewModal: React.FC<PreviewModalProps> = ({
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="bg-opacity-50 hover:bg-opacity-80 focus:ring-opacity-50 absolute top-4 right-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black text-white transition-all duration-200 focus:ring-2 focus:ring-white focus:outline-none"
+        className="bg-black text-white hover:bg-black/50  absolute top-4 right-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-all duration-200"
         aria-label="Close preview"
       >
-        <X className="h-5 w-5" />
+        <X className="h-5 w-5" /> 
       </button>
       <div className={contentClassName} onClick={(e) => e.stopPropagation()}>
         {/* Content */}

@@ -25,7 +25,7 @@ export const contactInfo = [
   {
     icon: <Mail className="h-5 w-5 sm:h-6 sm:w-6" />,
     title: "Email",
-    details: ["hello@shivanshinfosys.com", "support@shivanshinfosys.com"],
+    details: ["info@shivanshinfosys.com", "info@shivanshinfosys.com"],
   },
   {
     icon: <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />,
