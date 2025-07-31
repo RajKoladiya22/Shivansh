@@ -1,6 +1,6 @@
 // layout.tsx
 import "src/styles/globals.css";
-import type {  Metadata, Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
 import "../styles/globals.css";
 import { TRPCReactProvider } from "src/trpc/react";
@@ -70,26 +70,26 @@ export async function generateMetadata(): Promise<Metadata> {
         "max-snippet": -1,
       },
     },
-    // icons: {
-    //   icon: "/favicon.ico",
-    //   apple: "/images/logo/logo.png",
-    // },
-        icons: {
-      // Your main favicon.ico (512x512) - works for most cases
-      icon: [
-        { url: "/favicon.ico", sizes: "any" }, // This covers all sizes
-        { url: "/favicon.ico", sizes: "16x16", type: "image/x-icon" },
-        { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
-        { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
-        { url: "/favicon.ico", sizes: "512x512", type: "image/x-icon" },
-      ],
-      // Apple devices will use your favicon.ico
-      apple: [
-        { url: "/favicon.ico", sizes: "180x180" }, // iOS will resize automatically
-      ],
-      // For modern browsers that prefer PNG
-      shortcut: "/favicon.ico",
+    icons: {
+      icon: "/favicon.ico",
+      apple: "/images/logo/logo.png",
     },
+    //     icons: {
+    //   // Your main favicon.ico (512x512) - works for most cases
+    //   icon: [
+    //     { url: "/favicon.ico", sizes: "any" }, // This covers all sizes
+    //     { url: "/favicon.ico", sizes: "16x16", type: "image/x-icon" },
+    //     { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+    //     { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+    //     { url: "/favicon.ico", sizes: "512x512", type: "image/x-icon" },
+    //   ],
+    //   // Apple devices will use your favicon.ico
+    //   apple: [
+    //     { url: "/favicon.ico", sizes: "180x180" }, // iOS will resize automatically
+    //   ],
+    //   // For modern browsers that prefer PNG
+    //   shortcut: "/favicon.ico",
+    // },
     verification: {
       google: "your-google-verification-code",
     },
@@ -98,7 +98,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "msapplication-TileColor": "#C50202",
       "msapplication-TileImage": "/favicon.ico",
       "application-name": SITE_NAME,
-            "apple-mobile-web-app-title": SITE_NAME,
+      "apple-mobile-web-app-title": SITE_NAME,
       "apple-mobile-web-app-capable": "yes",
       "apple-mobile-web-app-status-bar-style": "default",
       "mobile-web-app-capable": "yes",
@@ -109,7 +109,7 @@ export async function generateMetadata(): Promise<Metadata> {
       target: "all",
       "format-detection": "telephone=yes",
       "geo.region": "IN-GJ",
-      "geo.placename": "Surat",
+      "geo.placename": "Ahmedabad",
     },
   };
 }
@@ -146,7 +146,7 @@ export default function RootLayout({
         <TRPCReactProvider>{children}</TRPCReactProvider>
         <Footer />
         <FloatingContactButton />
-        
+
         {/* Global Structured Data */}
         <script
           type="application/ld+json"
@@ -200,9 +200,6 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-
 
 // // layout.tsx
 
@@ -321,5 +318,3 @@ export default function RootLayout({
 //     </html>
 //   );
 // }
-
-
