@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Headphones,
   FileText,
@@ -45,12 +45,12 @@ export const stats = [
   },
 ];
 export const TheServicesPage = () => {
-  const [activeService, setActiveService] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
+//   const [activeService, setActiveService] = useState(null);
+//   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+//   useEffect(() => {
+//     setIsVisible(true);
+//   }, []);
 
   const services = [
     {
@@ -365,8 +365,8 @@ export const TheServicesPage = () => {
                 Why Choose Our Services?
               </h2>
               <p className="mb-8 text-lg text-gray-600">
-                With over a decade of experience, we've helped thousands of
-                businesses streamline their operations and achieve their goals.
+               {`With over a decade of experience, we've helped thousands of
+                businesses streamline their operations and achieve their goals.`}
               </p>
 
               <div className="space-y-6">
