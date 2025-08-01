@@ -1,6 +1,8 @@
-import React from "react";
-import { Phone, Users, Award, Brain, Zap, Shield } from "lucide-react";
+"use client";
+import React, { useState } from "react";
+import { Phone, Users, Award, Brain, Zap, Shield, X } from "lucide-react";
 import type { StatCardProps } from "src/_components/sections/types/startItem.type";
+import Image from "next/image";
 
 const StatCard: React.FC<StatCardProps> = ({ icon, number, label, color }) => (
   <div className="group rounded-2xl border border-red-100 bg-white p-8 text-center shadow-lg transition-shadow duration-300 hover:shadow-xl">
@@ -21,8 +23,21 @@ const CertificationBadge: React.FC<{ title: string; subtitle: string }> = ({
   subtitle,
 }) => (
   <div className="flex flex-col items-center rounded-xl bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-lg">
-    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-500">
-      <Award className="h-8 w-8 text-white" />
+    <div className="bg-gray-300 mb-4 flex h-16 w-16 items-center justify-center rounded-lg">
+      {/* <Award className="h-8 w-8 text-white" /> */}
+      <Image
+        src="/images/industry_logo/tally.avif"
+        alt="Tally Logo"
+        width={64}
+        height={64}
+        className="inset-0 object-contain"
+        // style={{
+        //   margin: "auto",
+        //   top: "60%",
+        //   left: "50%",
+        //   transform: "translate(-50%, -40%)",
+        // }}
+      />
     </div>
     <h4 className="text-center font-bold text-gray-900">{title}</h4>
     <p className="text-center text-sm text-gray-600">{subtitle}</p>
@@ -34,9 +49,21 @@ export const OurSection: React.FC = () => {
   //     window.location.href = 'tel:+1234567890'; // Replace with your actual phone number
   //   };
 
+  const [showImagePreview, setShowImagePreview] = useState(false);
+
+  const handleImageClick = () => {
+    setShowImagePreview(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closePreview = () => {
+    setShowImagePreview(false);
+    document.body.style.overflow = "auto";
+  };
+
   return (
     <section
-      className="bg-gradient-to-b from-white to-red-50 py-16 md:py-24"
+      className="bg-gradient-to-b from-white via-red-50 to-white py-16 md:py-24"
       aria-labelledby="about-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -46,25 +73,25 @@ export const OurSection: React.FC = () => {
               icon={<Users />}
               number="600+"
               label="Companies Trust Us"
-              color="bg-red-500"
+              color="bg-red-200"
             />
             <StatCard
               icon={<Shield />}
               number="280+"
               label="Success Stories"
-              color="bg-red-500"
+              color="bg-red-200"
             />
             <StatCard
               icon={<Brain />}
               number="15+"
               label="Years of Experience"
-              color="bg-red-500"
+              color="bg-red-200"
             />
             <StatCard
               icon={<Zap />}
               number="99+"
               label="Client Satisfaction"
-              color="bg-red-500"
+              color="bg-red-200"
             />
           </div>
 
@@ -112,15 +139,22 @@ export const OurSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-6 md:grid-cols-2">
+          <div
+            className="mx-auto grid max-w-2xl cursor-pointer grid-cols-1 gap-6 transition-all duration-300 hover:scale-105 md:grid-cols-1"
+            onClick={handleImageClick}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === "Enter" && handleImageClick()}
+            aria-label="View Tally Certificate"
+          >
             <CertificationBadge
-              title="ISO 9001:2015"
-              subtitle="Quality Management"
+              title="Tally"
+              subtitle="3 Star Certified Partner"
             />
-            <CertificationBadge
+            {/* <CertificationBadge
               title="ISO 27001:2022"
               subtitle="Information Security"
-            />
+            /> */}
           </div>
         </div>
 
@@ -131,6 +165,43 @@ export const OurSection: React.FC = () => {
           </p>
         </div>
       </div>
+
+      {showImagePreview && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 transition-opacity duration-300"
+          onClick={closePreview}
+        >
+          <div
+            className="max-h-[90vh] w-full max-w-4xl overflow-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closePreview}
+              className="absolute top-4 right-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black text-white transition-all duration-200 hover:bg-black/50"
+              aria-label="Close preview"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <div className="overflow-hidden rounded-xl bg-white shadow-2xl">
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src="/images/certificate/tally.png"
+                  alt="Tally 3 Star Sales & Implementation Partner Certificate for Shivansh Infosys - Full Size"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="border-t border-gray-200 bg-gray-50 p-4">
+                <p className="text-center font-medium text-gray-800">
+                  Tally 3 Star Certified Partner - Shivansh Infosys
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -174,7 +174,7 @@ export const AboutUsHero = () => {
               }`}
             >
               <div className="grid max-w-2xl grid-cols-1 gap-8 sm:grid-cols-3">
-                <div className="group">
+                <div className="group ">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-red-100 to-red-200 transition-transform group-hover:scale-110">
                     <svg
                       className="h-8 w-8 text-red-600"
@@ -290,7 +290,7 @@ export const AboutUsHero = () => {
               <div className="absolute -top-6 -right-6 rotate-6 transform rounded-2xl bg-white p-4 shadow-lg transition-transform duration-300 hover:rotate-0">
                 <div className="flex items-center space-x-2">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-red-500 to-red-600">
-                    <span className="text-sm font-bold text-white">7</span>
+                    <span className="text-sm font-bold text-white">12</span>
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-gray-800">
@@ -328,7 +328,7 @@ export const AboutUsHero = () => {
               </div>
 
               {/* Tech Stack Icons */}
-              <div className="absolute top-1/2 -left-12 hidden -translate-y-1/2 transform flex-col space-y-4 lg:flex">
+              {/* <div className="absolute top-1/2 -left-12 hidden -translate-y-1/2 transform flex-col space-y-4 lg:flex">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg transition-transform hover:scale-110">
                   <span className="text-2xl">⚛️</span>
                 </div>
@@ -338,7 +338,7 @@ export const AboutUsHero = () => {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg transition-transform hover:scale-110">
                   <span className="text-2xl">🎨</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

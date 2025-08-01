@@ -4,6 +4,7 @@ import { X, Upload, Users, Calendar, Briefcase } from "lucide-react";
 import type { JobOpening } from "src/_components/sections/types/career.type";
 import type { InputChangeEvent } from "src/_components/sections/types/contact.type";
 import { jobOpenings } from "public/data/Career";
+import Link from "next/link";
 
 export const CareerComponent = () => {
   const [selectedJob, setSelectedJob] = useState<JobOpening | null>(null);
@@ -178,6 +179,32 @@ export const CareerComponent = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="mx-auto my-15 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-xl bg-gradient-to-r from-gray-900 to-black p-6 text-center text-white sm:rounded-2xl sm:p-8 md:p-12">
+          <h3 className="mb-3 text-xl font-bold sm:mb-4 sm:text-2xl md:text-3xl lg:text-4xl">
+            Ready to Transform Your Career?
+          </h3>
+          <p className="mx-auto mb-6 max-w-2xl text-base opacity-90 sm:mb-8 sm:text-lg md:text-xl">
+            {`Get started with our professional services today and experience the difference.`}
+          </p>
+          <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+            <Link
+              href="tel:+918141703007"
+              className="rounded-lg bg-white px-6 py-2.5 text-sm font-semibold text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-100 sm:rounded-xl sm:px-8 sm:py-3 sm:text-base"
+            >
+              Call Now: +91 8141703007
+            </Link>
+            <Link
+              href="/gallery"
+              className="rounded-lg border-2 border-white px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 sm:rounded-xl sm:px-8 sm:py-3 sm:text-base"
+            >
+              Know Our Culture?
+            </Link>
           </div>
         </div>
       </div>
