@@ -1,6 +1,7 @@
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "Product", href: "/product" },
+  { label: "Service", href: "/service" },
   { label: "About", href: "/about" },
   { label: "Team", href: "/team" },
   { label: "Blog", href: "/blog" },
@@ -10,10 +11,11 @@ export const navItems = [
 ];
 
 export const ProductServices = [
-  { label: "Tally Software", href: "/tally" },
-  { label: "Mobile Apps for Tally", href: "/mobile" },
-  { label: "Tally Customized", href: "/tally-customized" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "App Privacy Policy", href: "/app-privacy-policy" },
-  { label: "Partner App Privacy Policy", href: "/partner-app-privacy" },
+  { label: "Customer Support", href: "/support" },
+  { label: "E-Invoice Setup", href: "/e-invoice" },
+  { label: "E-Way Bill Setup", href: "/e-waybill" },
+  { label: "Security Setup", href: "/Security-setup" },
+  { label: "Tally Implementation", href: "/tally" },
+  { label: "Data Entry Training", href: "/data-entry" },
+  { label: "Products", href: "/product" },
 ];
