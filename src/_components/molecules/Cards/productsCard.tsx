@@ -36,11 +36,13 @@ export interface ProductCardProps {
 
   /** Callback when the play button is clicked */
   onVideoPlay: (videoId: string) => void;
+  onInquiryClick: (product: Product) => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   product,
   onVideoPlay,
+  onInquiryClick
 }) => {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg">
@@ -119,8 +121,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </button> */}
 
         <div className="mt-auto flex items-center gap-2">
-          <button className={`${btn_color} mt-auto w-full transform rounded-lg  px-4 py-2.5 text-sm font-medium md:py-2 md:text-base`}>
-            Enquiry Now
+          <button onClick={() => onInquiryClick(product)} className={`${btn_color} mt-auto w-full transform rounded-lg  px-4 py-2.5 text-sm font-medium md:py-2 md:text-base`}>
+            Inquiry Now
           </button>
           {/* <div className="bg-[#C50202] p-1 rounded-lg"> */}
             <ProductSocialShareButton

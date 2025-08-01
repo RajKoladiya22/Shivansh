@@ -7,6 +7,7 @@ import { ProductCard } from "src/_components/molecules/Cards/productsCard";
 import { categories, industries, ProductsList } from "public/data/Product";
 import { VideoModal } from "./VideoModal";
 import { LoadingSpinner } from "./loader";
+import { ProductInquiryPopup, type InquiryFormData } from "./ProductInquiry";
 
 // Define a Review type for clarity
 export interface Review {
@@ -61,6 +62,8 @@ export const TheProductPage = () => {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasMore, setHasMore] = useState<boolean>(true);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
   const observerRef = useRef<HTMLDivElement | null>(null);
   const productsPerPage = 9;
@@ -187,6 +190,22 @@ export const TheProductPage = () => {
     setSortBy("all");
   };
 
+  // Fixed: Proper inquiry handling
+  const handleInquiryClick = (product:Product) => {
+    setSelectedProduct(product);
+    setIsInquiryOpen(true);
+  };
+
+  const handleInquiryClose = () => {
+    setIsInquiryOpen(false);
+    setSelectedProduct(null);
+  };
+
+  const handleInquirySubmit = (data : InquiryFormData) => {
+    console.log('Inquiry submitted:', data);
+    // Here you would typically send the data to your backend API
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-t from-white via-red-50 to-white">
       <div className="container mx-auto px-4 py-8">
@@ -306,11 +325,14 @@ export const TheProductPage = () => {
                   }`}
                 >
                   {displayedProducts.map((product) => (
+                    <>
                     <ProductCard
                       key={product.id}
                       product={product}
                       onVideoPlay={handleVideoPlay}
+                      onInquiryClick={handleInquiryClick}
                     />
+            </>
                   ))}
                 </div>
 
@@ -348,6 +370,15 @@ export const TheProductPage = () => {
         videoId={currentVideo}
         onClose={() => setCurrentVideo(null)}
       />
+
+            {/* Fixed: Single Product Inquiry Popup */}
+      <ProductInquiryPopup
+        product={selectedProduct}
+        isOpen={isInquiryOpen}
+        onClose={handleInquiryClose}
+        onSubmit={handleInquirySubmit}
+      />
+            
     </div>
   );
 };
