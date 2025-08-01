@@ -272,7 +272,7 @@ export default function GalleryPage() {
                       item={filteredItems[0]}
                       index={0}
                       onClick={() => openLightbox(filteredItems[0]!, 0)}
-                      className="h-80 sm:h-96 lg:h-[500px]"
+                      className="h-80 sm:h-96 lg:h-[510px]"
                     />
                   ) : null}
                 </div>
@@ -286,7 +286,7 @@ export default function GalleryPage() {
                         item={item}
                         index={index + 1}
                         onClick={() => openLightbox(item, index + 1)}
-                        className="h-36 sm:h-44 lg:h-60"
+                        className="h-55 sm:h-85 lg:h-60"
                       />
                     ))}
                   </div>
@@ -323,12 +323,14 @@ export default function GalleryPage() {
                 Be part of a team that celebrates success, embraces fun, and
                 creates memorable experiences together.
               </p>
-              <Link href={'/career'}
-                className="bg-white text-gray-700 transform rounded-xl px-6 py-2 font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-8 sm:py-3"
+              <Link href={'/career'}> 
+              <button 
+                className="cursor-pointer bg-white text-gray-700 transform rounded-xl px-6 py-2 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:px-8 sm:py-3"
               
               >
-                Join Our Team
-              </Link>
+               Join Our Team
+              </button>
+               </Link>
             </div>
           </div>
         </div>

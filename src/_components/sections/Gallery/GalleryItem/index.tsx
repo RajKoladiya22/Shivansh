@@ -46,9 +46,9 @@ export const GalleryItemComponent = React.memo(
 
         {/* Category Badge */}
         {item.category !== "all" && (
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-2 left-2 opacity-90">
             <div
-              className={`${categoryColors[item.category]} flex items-center gap-2 rounded-full px-3 py-2 font-medium text-white shadow-lg`}
+              className={`${categoryColors[item.category]} flex items-center gap-2 rounded-full px-2 py-1 font-medium text-white shadow-lg`}
             >
               {React.createElement(categoryIcons[item.category], {
                 className: "w-4 h-4",
@@ -59,14 +59,14 @@ export const GalleryItemComponent = React.memo(
         )}
 
         <div className="absolute right-4 bottom-4 left-4 text-white">
-          <div className="mb-2 text-sm font-medium opacity-80">{item.date}</div>
-          <h3 className="mb-2 text-xl leading-tight font-bold">{item.title}</h3>
-          <p className="mb-3 text-sm leading-relaxed opacity-90">
+          <div className=" text-sm font-medium opacity-50">{item.date}</div>
+          <h3 className="text-xl leading-tight font-bold text-white/70">{item.title}</h3>
+          {/* <p className="mb-3 text-sm leading-relaxed opacity-90">
             {item.description.length > 120
               ? `${item.description.substring(0, 120)}...`
               : item.description}
-          </p>
-          <div className="flex flex-wrap gap-2">
+          </p> */}
+          {/* <div className="flex flex-wrap gap-2">
             {item.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
@@ -75,7 +75,7 @@ export const GalleryItemComponent = React.memo(
                 {tag}
               </span>
             ))}
-          </div>
+          </div> */}
         </div>
 
         <div className="absolute top-4 right-4 opacity-0 transition-opacity group-hover:opacity-100">

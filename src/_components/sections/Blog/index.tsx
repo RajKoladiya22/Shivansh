@@ -127,58 +127,60 @@ export default function TheBlogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#EEF6FF]">
+    <div className="min-h-screen">
       <BlogHero />
 
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <HrCategoriesWidget
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategorySelect={setSelectedCategory}
-        />
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            <div className="mb-8">
-              <h2 className="mb-2 text-2xl font-bold text-gray-900">
-                {selectedCategory === "All"
-                  ? "Latest Articles"
-                  : `${selectedCategory} Articles`}
-              </h2>
-              <p className="text-gray-600">
-                {filteredBlogs.length} article
-                {filteredBlogs.length !== 1 ? "s" : ""} found
-              </p>
+      <HrCategoriesWidget
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategorySelect={setSelectedCategory}
+      />
+      <div className="bg-gradient-to-t from-white via-red-50 to-white">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+            {/* Main Content */}
+            <div className="lg:col-span-3">
+              <div className="mb-8">
+                <h2 className="mb-2 text-2xl font-bold text-gray-900">
+                  {selectedCategory === "All"
+                    ? "Latest Articles"
+                    : `${selectedCategory} Articles`}
+                </h2>
+                <p className="text-gray-600">
+                  {filteredBlogs.length} article
+                  {filteredBlogs.length !== 1 ? "s" : ""} found
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {filteredBlogs.map((blog) => (
+                  <BlogCard
+                    key={blog.id}
+                    blog={blog}
+                    onLike={handleLike}
+                    onShare={handleShare}
+                  />
+                ))}
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {filteredBlogs.map((blog) => (
-                <BlogCard
-                  key={blog.id}
-                  blog={blog}
-                  onLike={handleLike}
-                  onShare={handleShare}
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="space-y-6">
+                {/* <SearchWidget onSearch={handleSearch} /> */}
+                <RecentPostsWidget recentPosts={recentPosts} />
+
+                <TopLikedWidget topLikedBlogs={topLikedBlogs} />
+              </div>
+              <div className="sticky top-22 space-y-6 pt-6">
+                <CategoriesWidget
+                  categories={categories}
+                  selectedCategory={selectedCategory}
+                  onCategorySelect={setSelectedCategory}
                 />
-              ))}
-            </div>
-          </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="space-y-6">
-              {/* <SearchWidget onSearch={handleSearch} /> */}
-              <RecentPostsWidget recentPosts={recentPosts} />
-
-              <TopLikedWidget topLikedBlogs={topLikedBlogs} />
-            </div>
-            <div className="sticky top-22 space-y-6 pt-6">
-              <CategoriesWidget
-                categories={categories}
-                selectedCategory={selectedCategory}
-                onCategorySelect={setSelectedCategory}
-              />
-
-              <ContactWidget />
+                <ContactWidget />
+              </div>
             </div>
           </div>
         </div>

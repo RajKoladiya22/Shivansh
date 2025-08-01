@@ -122,28 +122,28 @@ export const HrCategoriesWidget: React.FC<CategoriesWidgetProps> = ({
   onCategorySelect,
 }) => {
   return (
-    <div className="mb-4 rounded-xl border border-gray-100 bg-white p-3 shadow-sm">
+    <div className="mb-4 p-3">
       {/* <h3 className="text-lg font-bold text-gray-900 mb-4">Categories</h3> */}
-      <div className="space-y-2">
+      <div className="flex flex-wrap justify-center gap-3">
         {categories.map((category) => (
           <button
             key={category.name}
             onClick={() => onCategorySelect(category.name)}
-            className={`m-0 rounded-lg p-2 text-left transition-all ${
+            className={`flex transform items-center gap-2 rounded-full px-4 py-2 font-medium transition-all duration-300 hover:scale-105 ${
               selectedCategory === category.name
                 ? "bg-[#C50202] text-white"
-                : "bg-gray-50 text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]"
+                : "border border-gray-200 bg-white text-gray-700 hover:bg-gray-100 hover:text-[#C50202]"
             }`}
           >
-            <span className="pr-2 font-medium">{category.name}</span>
+            <span className="pr-1 font-medium">{category.name}</span>
             <span
-              className={`rounded-full px-2 py-1 text-sm ${
+              className={`rounded-full py-1 text-sm ${
                 selectedCategory === category.name
-                  ? "bg-white text-[#C50202]"
-                  : "bg-gray-200 text-gray-600"
+                  ? "bg-whit text-white text-[#C50202]"
+                  : " text-gray-600"
               }`}
             >
-              {category.count}
+              {`(${category.count})`}
             </span>
           </button>
         ))}
@@ -258,3 +258,33 @@ export const ContactWidget = () => {
     </div>
   );
 };
+
+
+  //  <div className="mb-4 rounded-xl border border-gray-100 bg-white p-3 shadow-sm">
+  //     {/* <h3 className="text-lg font-bold text-gray-900 mb-4">Categories</h3> */}
+  //     <div className="space-y-2">
+  //       {categories.map((category) => (
+  //         <button
+  //           key={category.name}
+  //           onClick={() => onCategorySelect(category.name)}
+  //           className={`m-0 rounded-lg p-2 text-left transition-all ${
+  //             selectedCategory === category.name
+  //               ? "bg-[#C50202] text-white"
+  //               : "bg-gray-50 text-gray-700 hover:bg-[#FCF2F2] hover:text-[#C50202]"
+  //           }`}
+  //         >
+  //           <span className="pr-2 font-medium">{category.name}</span>
+  //           <span
+  //             className={`rounded-full px-2 py-1 text-sm ${
+  //               selectedCategory === category.name
+  //                 ? "bg-white text-[#C50202]"
+  //                 : "bg-gray-200 text-gray-600"
+  //             }`}
+  //           >
+  //             {category.count}
+  //           </span>
+  //         </button>
+  //       ))}
+  //     </div>
+  //   </div>
+

@@ -172,7 +172,7 @@ export function Lightbox({
               </div>
             </div> */}
             {currentItem.category !== "all" && (
-              <div className="absolute top-4 left-4">
+              <div className="absolute top-4 left-4 opacity-80">
                 <div
                   className={`${categoryColors[currentItem.category]} flex items-center gap-2 rounded-full px-3 py-2 font-medium text-white shadow-lg`}
                 >
@@ -222,7 +222,7 @@ export function Lightbox({
             </div>
 
             {/* Action buttons */}
-            <div className="flex gap-3 border-t pt-6">
+            {/* <div className="flex gap-3 border-t pt-6">
               <button
                 onClick={handleShare}
                 className="flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2 text-white transition-colors hover:opacity-90 focus:ring-2 focus:ring-offset-2 focus:outline-none"
@@ -238,7 +238,7 @@ export function Lightbox({
                 <Download className="h-4 w-4" />
                 Download
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

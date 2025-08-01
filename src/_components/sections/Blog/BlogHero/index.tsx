@@ -24,7 +24,7 @@ export const BlogHero = () => {
         </div>
 
         {/* Main Heading */}
-        <div className="mb-16 text-center">
+        <div className="text-center">
 
           <h1 className="text-4xl leading-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
             Stay Ahead With{" "}
