@@ -24,16 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
         {
           // Using your actual logo with correct dimensions
           url: "/images/logo/logo.png",
-          width: 1002,
-          height: 171,
+          width: 600,
+          height: 100,
           alt: `${SITE_NAME} - Professional Tally Solutions Partner`,
           type: "image/png",
         },
         {
           // Fallback: Use same image but with optimized alt text for different contexts
           url: "/images/logo/logo.png",
-          width: 1002,
-          height: 171,
+          width: 600,
+          height: 100,
           alt: `${SITE_NAME} Logo - Tally Certified Partner in Gujarat`,
           type: "image/png",
         },
