@@ -13,6 +13,8 @@ import { ProductCard } from "src/_components/molecules/Cards/productsCard";
 import { ProductsList } from "public/data/Product";
 import { VideoModal } from "../../Product/VideoModal";
 import { btn_color } from "src/config/constants";
+import type { Product } from "../../Product";
+import type { InquiryFormData } from "../../Product/ProductInquiry";
 
 const topProducts = ProductsList.filter((product) => product.isTopProduct);
 
@@ -20,6 +22,9 @@ export const ProductShowcaseSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   // const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [currentVideo, setCurrentVideo] = useState<string | null>(null);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+    const [isInquiryOpen, setIsInquiryOpen] = useState(false);
+  
 
   const handleProductClick = (productId: string) => {
     // Navigate to product page
@@ -74,6 +79,22 @@ export const ProductShowcaseSection = () => {
 
   const totalSlides = Math.ceil(topProducts.length / itemsPerSlide);
 
+    // Fixed: Proper inquiry handling
+    const handleInquiryClick = (product: Product) => {
+      setSelectedProduct(product);
+      setIsInquiryOpen(true);
+    };
+  
+    const handleInquiryClose = () => {
+      setIsInquiryOpen(false);
+      setSelectedProduct(null);
+    };
+  
+    const handleInquirySubmit = (data: InquiryFormData) => {
+      console.log("Inquiry submitted:", data);
+      // Here you would typically send the data to your backend API
+    };
+
   return (
     <section className="bg-gradient-to-b from-white via-red-50 to-white py-12 lg:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-15">
@@ -112,7 +133,7 @@ export const ProductShowcaseSection = () => {
                 key={product.id}
                 product={product}
                 onVideoPlay={handleVideoPlay}
-                // onProductClick={handleProductClick}
+                onInquiryClick={handleInquiryClick}
               />
             ))}
           </div>
