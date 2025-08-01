@@ -808,8 +808,8 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
                 Get Product Information
               </h3>
               <p className="mb-6 text-gray-600">
-                Fill out the form below and we'll get back to you within 24
-                hours.
+                {`Fill out the form below and we'll get back to you within 24
+                hours.`}
               </p>
 
               {/* Status Messages */}
@@ -822,7 +822,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
                         Inquiry Submitted Successfully!
                       </h4>
                       <p className="text-sm">
-                        We'll contact you within 24 hours.
+                        {`We'll contact you within 24 hours.`}
                       </p>
                     </div>
                   </div>
