@@ -62,7 +62,7 @@ export const TheProductPage = () => {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasMore, setHasMore] = useState<boolean>(true);
-    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
   const observerRef = useRef<HTMLDivElement | null>(null);
@@ -191,7 +191,7 @@ export const TheProductPage = () => {
   };
 
   // Fixed: Proper inquiry handling
-  const handleInquiryClick = (product:Product) => {
+  const handleInquiryClick = (product: Product) => {
     setSelectedProduct(product);
     setIsInquiryOpen(true);
   };
@@ -201,8 +201,8 @@ export const TheProductPage = () => {
     setSelectedProduct(null);
   };
 
-  const handleInquirySubmit = (data : InquiryFormData) => {
-    console.log('Inquiry submitted:', data);
+  const handleInquirySubmit = (data: InquiryFormData) => {
+    console.log("Inquiry submitted:", data);
     // Here you would typically send the data to your backend API
   };
 
@@ -274,7 +274,7 @@ export const TheProductPage = () => {
                 onClick={() =>
                   setViewMode(viewMode === "grid" ? "list" : "grid")
                 }
-                className="cursor-pointer flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-gray-700 transition-colors hover:bg-[#FCF2F2]"
+                className="flex cursor-pointer items-center gap-2 rounded-lg bg-white px-4 py-2 text-gray-700 transition-colors hover:bg-[#FCF2F2]"
               >
                 {viewMode === "grid" ? (
                   <List className="h-4 w-4" />
@@ -326,13 +326,13 @@ export const TheProductPage = () => {
                 >
                   {displayedProducts.map((product) => (
                     <>
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      onVideoPlay={handleVideoPlay}
-                      onInquiryClick={handleInquiryClick}
-                    />
-            </>
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        onVideoPlay={handleVideoPlay}
+                        onInquiryClick={handleInquiryClick}
+                      />
+                    </>
                   ))}
                 </div>
 
@@ -348,7 +348,7 @@ export const TheProductPage = () => {
                 {!hasMore && displayedProducts.length > 0 && (
                   <div className="py-8 text-center">
                     <p className="text-gray-500">
-                     {` You've reached the end of the product list.`}
+                      {` You've reached the end of the product list.`}
                     </p>
                     <p className="mt-2 text-sm text-gray-400">
                       Total: {filteredProducts.length} products loaded
@@ -371,14 +371,13 @@ export const TheProductPage = () => {
         onClose={() => setCurrentVideo(null)}
       />
 
-            {/* Fixed: Single Product Inquiry Popup */}
+      {/* Fixed: Single Product Inquiry Popup */}
       <ProductInquiryPopup
         product={selectedProduct}
         isOpen={isInquiryOpen}
         onClose={handleInquiryClose}
         onSubmit={handleInquirySubmit}
       />
-            
     </div>
   );
 };

@@ -713,15 +713,15 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
 
       {/* Modal */}
       <div className="flex min-h-full items-center justify-center p-4">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black text-white transition-all duration-200 hover:bg-black/50"
+          aria-label="Close preview"
+        >
+          <X className="h-5 w-5" />
+        </button>
         <div className="relative w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white shadow-2xl transition-all">
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-colors hover:bg-gray-200"
-          >
-            ×
-          </button>
-
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left Side - Product Info */}
             <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8">
@@ -788,15 +788,15 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-center">
                     <span className="mr-3">📞</span>
-                    <span>+91-1234567890</span>
+                    <span>+91 8141703007</span>
                   </div>
                   <div className="flex items-center">
                     <span className="mr-3">✉️</span>
-                    <span>products@company.com</span>
+                    <span>info@shivanshinfosys.com</span>
                   </div>
                   <div className="flex items-center">
                     <span className="mr-3">🕒</span>
-                    <span>Mon-Sat: 9:00 AM - 7:00 PM</span>
+                    <span>Mon-Sat: 9:00 AM - 6:00 PM</span>
                   </div>
                 </div>
               </div>

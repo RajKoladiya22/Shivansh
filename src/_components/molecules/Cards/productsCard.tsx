@@ -33,17 +33,16 @@ export interface Product {
 export interface ProductCardProps {
   /** The product to display */
   product: Product;
-
   /** Callback when the play button is clicked */
   onVideoPlay: (videoId: string) => void;
   onInquiryClick: (product: Product) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({
+export const ProductCard = ({
   product,
   onVideoPlay,
-  onInquiryClick
-}) => {
+  onInquiryClick,
+}: ProductCardProps) => {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg">
       {/* Image and badges container */}

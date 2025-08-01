@@ -22,6 +22,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ProductSocialShareButton } from "../SocialShare";
 import { VideoModal } from "../VideoModal";
+import { ProductInquiryPopup, type InquiryFormData } from "../ProductInquiry";
 
 type TabId = "features" | "benefits" | "specifications" | "reviews" | "faq";
 
@@ -78,10 +79,13 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
   const router = useRouter();
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
-    const [currentVideo, setCurrentVideo] = useState<string | null>(null);
+  const [currentVideo, setCurrentVideo] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabId>("features");
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
   useEffect(() => {
     const prod = ProductsList.find((p) => p.id.toString() === params.id);
@@ -122,7 +126,6 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
     );
   }
 
-
   const handleBackToBlogs = () => {
     router.push("/product");
   };
@@ -136,8 +139,22 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
-    const handleVideoPlay = (videoId: string) => {
+  const handleVideoPlay = (videoId: string) => {
     setCurrentVideo(videoId);
+  };
+
+  const handleInquiryClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsInquiryOpen(true);
+  };
+
+  const handleInquiryClose = () => {
+    setIsInquiryOpen(false);
+    setSelectedProduct(null);
+  };
+
+  const handleInquirySubmit = (data: InquiryFormData) => {
+    console.log("Inquiry submitted:", data);
   };
 
   return (
@@ -334,7 +351,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               {/* Action Buttons */}
               <div className="space-y-3">
                 <button
-                  onClick={handleEnquiry}
+                  onClick={()=>handleInquiryClick(product)}
                   className="flex w-full transform cursor-pointer items-center justify-center space-x-2 rounded-lg bg-red-700 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-red-800 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-base"
                 >
                   Send Enquiry
@@ -656,12 +673,18 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
           </div>
         </div>
       )} */}
-          {/* Video Modal */}
-          <VideoModal
-            videoId={currentVideo}
-            onClose={() => setCurrentVideo(null)}
-          />
+      {/* Video Modal */}
+      <VideoModal
+        videoId={currentVideo}
+        onClose={() => setCurrentVideo(null)}
+      />
 
+      <ProductInquiryPopup
+        product={selectedProduct}
+        isOpen={isInquiryOpen}
+        onClose={handleInquiryClose}
+        onSubmit={handleInquirySubmit}
+      />
     </div>
   );
 };
