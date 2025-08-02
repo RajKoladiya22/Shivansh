@@ -23,8 +23,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductsList } from "public/data/Product";
-import type { Product } from "src/_components/sections/Product";
 import { TheProductDetailPage } from "src/_components/sections/Product/ProductDetail";
+import type { Product } from "src/_components/sections/types/product.type";
 import { BASE_URL, SITE_NAME } from "src/config/constants";
 // import { ProductsList, type Product } from "src/data/Product"; // Adjust import path
 
@@ -218,13 +218,13 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       url: `${BASE_URL}/product/${rp.id}`
     })),
     dateCreated: product.createdAt,
-    ...(product.videoId && {
+    ...(product.introVideoId && {
       video: {
         "@type": "VideoObject",
         name: `${product.title} - Product Demo`,
         description: `Watch ${product.title} in action`,
         thumbnailUrl: product.image,
-        embedUrl: `https://www.youtube.com/embed/${product.videoId}`,
+        embedUrl: `https://www.youtube.com/embed/${product.introVideoId}`,
         uploadDate: product.createdAt
       }
     })

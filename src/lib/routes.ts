@@ -38,6 +38,21 @@ export const STATIC_ROUTES: RouteConfig[] = [
     priority: 0.9,
   },
   {
+    path: '/service',
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  },
+  {
+    path: '/career',
+    changeFrequency: 'weekly',
+    priority: 0.4,
+  },
+  {
+    path: '/gallery',
+    changeFrequency: 'weekly',
+    priority: 0.4,
+  },
+  {
     path: '/contact',
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
