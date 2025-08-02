@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Phone, MessageCircle, X, Headphones } from "lucide-react";
+import { Phone, X, Headphones } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 // Floating Contact Button Component
 export const FloatingContactButton = () => {
@@ -86,7 +87,8 @@ export const FloatingContactButton = () => {
             className="animate-bounce-in flex h-12 w-12 transform items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all duration-200 hover:scale-110 hover:bg-[#20BA5A] hover:shadow-xl sm:h-14 sm:w-14"
             style={{ animationDelay: "0.1s" }}
           >
-            <MessageCircle className="h-6 w-6 sm:h-7 sm:w-7" />
+            {/* <MessageCircle  /> */}
+            <FaWhatsapp className="h-6 w-6 sm:h-7 sm:w-7"/>
           </button>
 
           {/* Tooltip */}

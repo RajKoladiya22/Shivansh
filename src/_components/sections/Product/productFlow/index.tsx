@@ -230,9 +230,12 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
         <div className="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
-              <Link href={'tel:+91 81417 03007'} className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-purple-600">
-                <Play className="hidden sm:block h-5 w-5 text-white" />
-                <Phone className="block sm:hidden h-5 w-5 text-white" />
+              <Link
+                href={"tel:+91 81417 03007"}
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-purple-600"
+              >
+                <Play className="hidden h-5 w-5 text-white sm:block" />
+                <Phone className="block h-5 w-5 text-white sm:hidden" />
               </Link>
               <div>
                 <h1 className="text-[10px] font-bold text-gray-900 sm:text-xl">
@@ -251,7 +254,11 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
                   : "bg-red-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
-              {isAutoPlay ? <Pause className="h-4 sm:h-6"/> : <Play className="h-4 sm:h-6"/>}
+              {isAutoPlay ? (
+                <Pause className="h-4 sm:h-6" />
+              ) : (
+                <Play className="h-4 sm:h-6" />
+              )}
             </button>
           </div>
 
@@ -526,7 +533,7 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
             </div>
 
             <div className="mt-8 flex items-center justify-center gap-2">
-              {[...Array(5)].map((_, i) => (
+              {[...Array(5).keys()].map((i:number) => (
                 <Star
                   key={i}
                   className="h-5 w-5 fill-yellow-400 text-yellow-400"
@@ -540,7 +547,7 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
           <div className="mx-auto my-15 mb-35 max-w-7xl sm:mb-0">
             <div className="rounded-xl bg-gradient-to-r from-gray-900 to-black p-6 text-center text-white sm:rounded-2xl sm:p-8 md:p-12">
               <h3 className="mb-3 text-xl font-bold sm:mb-4 sm:text-2xl md:text-3xl lg:text-4xl">
-                Ready to Start? Let's Talk!
+                {`Ready to Start? Let's Talk!`}
               </h3>
               <p className="mx-auto mb-6 max-w-2xl text-base opacity-90 sm:mb-8 sm:text-lg md:text-xl">
                 {`Get your free consultation call today and see how we can help your business grow`}
