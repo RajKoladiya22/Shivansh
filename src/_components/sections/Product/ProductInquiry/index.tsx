@@ -20,6 +20,7 @@ import type { ProductInquiryPopupProps } from "../../types/product.type";
 import { CallChat } from "../ProductDetail";
 import Image from "next/image";
 import { getYouTubeThumbnail } from "src/_components/molecules/Thumbnail";
+import Link from "next/link";
 
 export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
   product,
@@ -42,7 +43,6 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
   });
 
   console.log(onSubmit);
-  
 
   // Reset form when modal opens with new product
   useEffect(() => {
@@ -153,7 +153,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
                   <Image
                     width={100}
                     height={100}
-                    src={getYouTubeThumbnail(product.detailedVideoId)} 
+                    src={getYouTubeThumbnail(product.detailedVideoId)}
                     // src={product.image}
                     alt={product.title}
                     className="h-full w-full object-cover"
@@ -233,7 +233,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
               </div>
             </div>
           </div>
-          <div className="py-4">
+          <div className="py-4 px-4 sm:px-0">
             <CallChat />
           </div>
           {/* Form Section */}
@@ -442,47 +442,36 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
                 </div>
               </form>
 
-              {/* Contact Info */}
-              <div className="mt-12 rounded-2xl bg-gray-50 p-6">
-                <h4 className="mb-4 text-center text-lg font-semibold text-gray-900">
-                  Need Immediate Assistance?
-                </h4>
-                <div className="grid gap-4 sm:grid-cols-3">
-                  <div className="flex items-center justify-center gap-3 rounded-xl bg-white p-4 text-center">
-                    <Phone className="h-5 w-5 text-blue-600" />
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">
-                        Call Us
-                      </div>
-                      <div className="text-sm text-gray-600">
-                        +91 8141703007
-                      </div>
-                    </div>
-                  </div>
+              {/* Call To Action */}
 
-                  <div className="flex items-center justify-center gap-3 rounded-xl bg-white p-4 text-center">
-                    <Mail className="h-5 w-5 text-green-600" />
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">
-                        Email Us
-                      </div>
-                      <div className="text-sm text-gray-600">
-                        info@shivanshinfosys.com
-                      </div>
-                    </div>
+              <div className="mx-auto my-15 mb-25 max-w-7xl sm:mb-0">
+                <div className="rounded-xl bg-gradient-to-r from-gray-900 to-black p-6 text-center text-white sm:rounded-2xl sm:p-8 md:p-12">
+                  <h3 className="mb-3 text-xl font-bold sm:mb-4 sm:text-2xl md:text-3xl lg:text-4xl">
+                    Need Immediate Assistance?
+                  </h3>
+                  <p className="mx-auto mb-6 max-w-2xl text-base opacity-90 sm:mb-8 sm:text-lg md:text-lg">
+                    {`Get your free consultation call today and see how we can help your business grow`}
+                  </p>
+                  <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+                    <Link
+                      href="tel:+918141703007"
+                      className="rounded-lg bg-white px-6 py-2.5 text-sm font-semibold text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-100 sm:rounded-xl sm:px-8 sm:py-3 sm:text-base"
+                    >
+                      Call Now
+                    </Link>
+                    <Link
+                      href="/gallery"
+                      className="rounded-lg border-2 border-white px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 sm:rounded-xl sm:px-8 sm:py-3 sm:text-base"
+                    >
+                      Email Us
+                    </Link>
                   </div>
-
-                  <div className="flex items-center justify-center gap-3 rounded-xl bg-white p-4 text-center">
-                    <Clock className="h-5 w-5 text-purple-600" />
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">
-                        Business Hours
-                      </div>
-                      <div className="text-sm text-gray-600">
-                        Mon-Sat: 10AM-6PM
-                      </div>
-                    </div>
-                  </div>
+                  {/* <p className="mt-2 text-xs text-gray-500">
+                No commitment • Free consultation • Expert guidance
+              </p> */}
+                  <p className="mt-2 text-xs text-gray-500">
+                    Business Hours • Mon-Sat: 10AM-6PM
+                  </p>
                 </div>
               </div>
             </div>

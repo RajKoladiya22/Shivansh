@@ -1,6 +1,7 @@
 import type { IndustryCardProps, IndustryItem } from "src/_components/sections/types/Industry.type";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { PRODUCT } from "public/data/Navigation";
 
 export const IndustryCard: React.FC<IndustryCardProps> = ({
   industry,
@@ -37,7 +38,7 @@ export const IndustryCard: React.FC<IndustryCardProps> = ({
           <p className="mb-6 flex-1 text-gray-600">{industry.description}</p>
 
           <div className="mt-auto flex items-center justify-between">
-            <Link href={'/product'} className="cursor-pointer flex items-center text-sm font-medium text-red-600 group-hover:underline hover:text-red-700">
+            <Link href={PRODUCT} className="cursor-pointer flex items-center text-sm font-medium text-red-600 group-hover:underline hover:text-red-700">
               Explore Solutions
               <svg
                 xmlns="http://www.w3.org/2000/svg"

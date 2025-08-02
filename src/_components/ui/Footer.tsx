@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
-import { navItems, ProductServices } from "public/data/Navigation";
+import { navItems, PRIVACY, ProductServices, SITEMAP, TERM } from "public/data/Navigation";
 import { SocialMedia } from "public/data/Contact";
 import { btn_color } from "src/config/constants";
 import Image from "next/image";
@@ -249,19 +249,19 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-6">
               <Link
-                href="/terms"
+                href={TERM}
                 className="text-sm text-gray-500 transition-colors hover:text-gray-300"
               >
                 Terms of Service
               </Link>
               <Link
-                href="/privacy"
+                href={PRIVACY}
                 className="text-sm text-gray-500 transition-colors hover:text-gray-300"
               >
                 Privacy Policy
               </Link>
               <Link
-                href="/sitemap.xml"
+                href={SITEMAP}
                 className="text-sm text-gray-500 transition-colors hover:text-gray-300"
               >
                 Sitemap

@@ -18,6 +18,7 @@ export interface ProductSpec {
 // Main product interface
 export interface Product {
   id: number;
+  stepsID: number;
   title: string;
   description: string;
   actualPrice: number;

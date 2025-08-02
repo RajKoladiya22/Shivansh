@@ -5,6 +5,7 @@ import type { ProductCardProps } from "src/_components/sections/types/product.ty
 import { btn_color } from "src/config/constants";
 import { getYouTubeThumbnail } from "../Thumbnail";
 import Image from "next/image";
+import { PRODUCT } from "public/data/Navigation";
 
 export const ProductCard = ({
   product,
@@ -52,7 +53,7 @@ export const ProductCard = ({
 
       {/* Content area */}
       <div className="flex flex-1 flex-col p-4">
-        <Link href={`/product/${product.id}`}>
+        <Link href={`${PRODUCT}/${product.id}`}>
           <h3 className="mb-2 line-clamp-2 text-base font-semibold hover:text-red-700 md:text-lg">
             {product.title}
           </h3>

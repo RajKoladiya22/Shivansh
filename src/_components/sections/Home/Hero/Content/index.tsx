@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { SERVICE } from "public/data/Navigation";
 import { useState, useEffect } from "react";
 import { btn_color } from "src/config/constants";
 
@@ -85,7 +86,7 @@ export const HeroContent = () => {
                 Watch on YouTube
               </button>
 
-              <Link href={"/service"}>
+              <Link href={SERVICE}>
                 <button
                   className="w-full flex transform cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-(--primery-color) bg-white px-6 py-3 font-bold tracking-wide text-(--primery-color) shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C50202] hover:text-white hover:shadow-lg"
                   // onClick={() => window.open("tel:+91 8141703007", "_self")}

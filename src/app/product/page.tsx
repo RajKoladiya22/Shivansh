@@ -11,6 +11,7 @@
 // }
 
 
+
 // app/products/page.tsx
 import type { Metadata } from "next";
 import { TheProductPage } from "src/_components/sections/Product";

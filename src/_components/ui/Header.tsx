@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "../molecules/Buttons/Button";
 import Image from "next/image";
 import { ArrowRight, Phone } from "lucide-react";
-import { navItems } from "public/data/Navigation";
+import { CONTACT, HOME, navItems } from "public/data/Navigation";
 import { btn_color } from "src/config/constants";
 
 export function Header() {
@@ -71,8 +71,8 @@ export function Header() {
           {/* Logo Section */}
           <div className="min-w-0 flex-shrink-0">
             <Link
-              href="/"
-              className="group flex items-center space-x-2 rounded-lg px-1 sm:space-x-3"
+              href={HOME}
+              className="group flex items-center space-x-2 rounded-lg px-1 sm:space-x-3 "
               aria-label="Shivansh Infosys - Go to homepage"
             >
               {/* Logo Image */}
@@ -159,7 +159,7 @@ export function Header() {
           {/* CTA Button - Desktop */}
           <div className="hidden items-center lg:flex">
             <Button
-              href="/contact"
+              href={CONTACT}
               className={`${btn_color} rounded-lg px-4 py-2.5 text-sm font-semibold shadow-md lg:px-6`}
               aria-label="Contact us - Get in touch"
             >

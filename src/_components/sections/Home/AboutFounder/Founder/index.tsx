@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { btn_color } from "src/config/constants";
+import { ABOUT } from "public/data/Navigation";
 
 export const TheFounder = () => {
   const [years, setYears] = useState(0);
@@ -158,7 +159,7 @@ export const TheFounder = () => {
                 </div>
               </div>
               
-              <Link href={"/about"} className={`${btn_color} mt-6 px-8 py-3 font-medium rounded-lg shadow-lg`}>
+              <Link href={ABOUT} className={`${btn_color} mt-6 px-8 py-3 font-medium rounded-lg shadow-lg`}>
                 Read Full Story
               </Link>
             </div>

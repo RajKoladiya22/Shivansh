@@ -6,6 +6,7 @@ import { GalleryItemComponent } from "./GalleryItem";
 import { Lightbox } from "./Lightbox";
 import GalleryHero from "./GalleryHero";
 import Link from "next/link";
+import { CAREER } from "public/data/Navigation";
 
 export type CategoryKey =
   | "all"
@@ -323,7 +324,7 @@ export default function GalleryPage() {
                 Be part of a team that celebrates success, embraces fun, and
                 creates memorable experiences together.
               </p>
-              <Link href={'/career'}> 
+              <Link href={CAREER}> 
               <button 
                 className="cursor-pointer bg-white text-gray-700 transform rounded-xl px-6 py-2 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:px-8 sm:py-3"
               

@@ -26,6 +26,8 @@ import type {
 } from "../../types/product.type";
 import { FaWhatsapp } from "react-icons/fa";
 import { getYouTubeThumbnail } from "src/_components/molecules/Thumbnail";
+import { PurchaseFlowPopup } from "../productFlow";
+import { btn_color } from "src/config/constants";
 
 const tabs: { id: TabId; label: string }[] = [
   { id: "features", label: "Features" },
@@ -71,11 +73,11 @@ const faqs = [
 export const CallChat = () => {
   return (
     <div className="grid grid-cols-2 gap-2">
-      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-400 py-2 text-sm text-white transition-colors hover:bg-green-700">
+      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700">
         <Phone className="h-4 w-4" />
         Call
       </button>
-      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-400 py-2 text-sm text-white transition-colors hover:bg-green-700">
+      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700">
         <FaWhatsapp className="h-4 w-4" />
         Chat
       </button>
@@ -99,6 +101,9 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
+
+  const [isPurchaseFlowOpen, setIsPurchaseFlowOpen] = useState(false);
+  const [stepId, setStepId] = useState<number | null>(null);
 
   useEffect(() => {
     const prod = ProductsList.find((p) => p.id.toString() === params.id);
@@ -170,6 +175,12 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
     console.log("Inquiry submitted:", data);
   };
 
+  const HowToUse = (id: number) => {
+    setIsPurchaseFlowOpen(true);
+    setStepId(id);
+    console.log("stepId", stepId);
+  };
+
   return (
     <div className="min-h-screen pt-20">
       {/* Navigation Bar */}
@@ -236,9 +247,11 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <Image
                 width={100}
                 height={100}
-                  src={getYouTubeThumbnail(selectedVideoType === "intro"
-                      ? product.introVideoId
-                      : product.detailedVideoId)} 
+                src={getYouTubeThumbnail(
+                  selectedVideoType === "intro"
+                    ? product.introVideoId
+                    : product.detailedVideoId,
+                )}
                 // src={productImages[selectedImageIndex] ?? ""}
                 alt={product.title}
                 className="h-full w-full object-cover"
@@ -255,7 +268,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 }
                 className="group absolute inset-0 flex items-center justify-center bg-black/0 transition-colors hover:bg-black/20"
               >
-                <div className="bg-opacity-30 absolute inset-0 flex cursor-pointer items-center justify-center opacity transition-opacity group-hover:opacity-100">
+                <div className="bg-opacity-30 opacity absolute inset-0 flex cursor-pointer items-center justify-center transition-opacity group-hover:opacity-100">
                   <div className="relative">
                     {/* Ripple */}
                     <span className="bg-opacity-3 absolute inset-0 inline-flex animate-ping rounded-full bg-red-600 opacity-75"></span>
@@ -303,6 +316,31 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               </div>
             </div>
 
+            <button
+              onClick={() => HowToUse(product.stepsID)}
+              className="w-full group relative overflow-hidden rounded-lg bg-gradient-to-r from-[#C50202] to-[#A00000] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:from-[#A00000] hover:to-[#800000] hover:shadow-xl focus-visible:ring-2 focus-visible:ring-[#C50202] focus-visible:ring-offset-2 focus-visible:outline-none"
+            >
+              {/* Animated background on hover */}
+              <span className="absolute inset-0 bg-gradient-to-r from-[#FFCCD6] to-[#FCF2F2] opacity-0 transition-opacity duration-300 group-hover:opacity-10"></span>
+
+              {/* Button content with icon */}
+              <span className="relative flex items-center justify-center gap-2">
+                How To Buy?
+                <svg
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </span>
+            </button>
             {/* Thumbnail Images */}
             {/* <div className="flex gap-2 overflow-x-auto">
               {productImages.map((image, index) => (
@@ -415,7 +453,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <div className="space-y-3">
                 <button
                   onClick={() => handleInquiryClick(product)}
-                  className="flex w-full transform cursor-pointer items-center justify-center space-x-2 rounded-lg bg-red-700 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-red-800 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-base"
+                  className={`${btn_color} flex w-full items-center justify-center space-x-2 rounded-lg  px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-base`}
                 >
                   Send Enquiry
                 </button>
@@ -673,7 +711,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                       width={100}
                       height={100}
                       // src={relatedProduct.image}
-                      src={getYouTubeThumbnail(product.detailedVideoId)} 
+                      src={getYouTubeThumbnail(product.detailedVideoId)}
                       alt={relatedProduct.title}
                       className="h-48 w-full object-cover"
                     />
@@ -734,6 +772,13 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
         isOpen={isInquiryOpen}
         onClose={handleInquiryClose}
         onSubmit={handleInquirySubmit}
+      />
+
+      <PurchaseFlowPopup
+        isOpen={isPurchaseFlowOpen}
+        onClose={() => setIsPurchaseFlowOpen(false)}
+        productName={product.title}
+        stepId={stepId}
       />
     </div>
   );
