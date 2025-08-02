@@ -1,16 +1,71 @@
 "use client";
 import Link from "next/link";
 import { SERVICE } from "public/data/Navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
+import type { StatItemProps } from "src/_components/sections/types/home.type";
 import { btn_color } from "src/config/constants";
+
+const FEATURES = [
+  "Expert Tally Consultants",
+  "24/7 Customer Service",
+  "Custom Solutions",
+  "Training & Setup",
+] as const;
+
+// Memoized stats data
+const STATS = [
+  { value: "65k+", label: "YouTube Subscribers" },
+  { value: "13+", label: "Years Experience" },
+  { value: "1M+", label: "Happy Customers" },
+  { value: "50+", label: "Team Members" },
+] as const;
+
+const FeatureItem = memo(
+  ({ feature, index }: { feature: string; index: number }) => (
+    <div key={index} className="group flex items-center space-x-3">
+      <div className="h-3 w-3 flex-shrink-0 rounded-full bg-(--primery-color) group-hover:animate-pulse"></div>
+      <span className="font-medium text-gray-700 transition-colors group-hover:text-(--primery-color)">
+        {feature}
+      </span>
+    </div>
+  ),
+);
+
+const StatItem = memo(
+  ({
+    stat,
+    index,
+    isVisible,
+  }: StatItemProps) => (
+    <div
+      className={`rounded-xl from-blue-50 to-indigo-50 p-5 transition-all duration-700 ease-out ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      }`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <div className="mb-1 text-3xl font-bold text-(--primery-color) sm:text-3xl">
+        {stat.value}
+      </div>
+      <div className="text-sm text-gray-600">{stat.label}</div>
+    </div>
+  ),
+);
 
 export const HeroContent = () => {
   const [statsVisible, setStatsVisible] = useState(false);
 
+  // Optimize timer with useCallback
+  const showStats = useCallback(() => {
+    setStatsVisible(true);
+  }, []);
+
   useEffect(() => {
-    // Animation for stats counter
-    const timer = setTimeout(() => setStatsVisible(true), 300);
+    const timer = setTimeout(showStats, 300);
     return () => clearTimeout(timer);
+  }, [showStats]);
+
+  const handleYouTubeClick = useCallback(() => {
+    window.open("https://bitly.cx/rNEH4", "_blank", "noopener,noreferrer");
   }, []);
 
   return (
@@ -54,18 +109,8 @@ export const HeroContent = () => {
 
             {/* Feature Points */}
             <div className="grid grid-cols-1 gap-3 py-1 sm:grid-cols-2">
-              {[
-                "Expert Tally Consultants",
-                "24/7 Customer Service",
-                "Custom Solutions",
-                "Training & Setup",
-              ].map((feature, index) => (
-                <div key={index} className="group flex items-center space-x-3">
-                  <div className="h-3 w-3 flex-shrink-0 rounded-full bg-(--primery-color) group-hover:animate-pulse"></div>
-                  <span className="font-medium text-gray-700 transition-colors group-hover:text-(--primery-color)">
-                    {feature}
-                  </span>
-                </div>
+              {FEATURES.map((feature, index) => (
+                <FeatureItem key={feature} feature={feature} index={index} />
               ))}
             </div>
 
@@ -73,7 +118,7 @@ export const HeroContent = () => {
             <div className="flex flex-col space-y-4 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4">
               <button
                 className={`${btn_color} flex transform items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold tracking-wide shadow-lg`}
-                onClick={() => window.open("https://bitly.cx/rNEH4", "_blank")}
+                onClick={handleYouTubeClick}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +133,7 @@ export const HeroContent = () => {
 
               <Link href={SERVICE}>
                 <button
-                  className="w-full flex transform cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-(--primery-color) bg-white px-6 py-3 font-bold tracking-wide text-(--primery-color) shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C50202] hover:text-white hover:shadow-lg"
+                  className="flex w-full transform cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-(--primery-color) bg-white px-6 py-3 font-bold tracking-wide text-(--primery-color) shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C50202] hover:text-white hover:shadow-lg"
                   // onClick={() => window.open("tel:+91 8141703007", "_self")}
                 >
                   <svg
@@ -111,22 +156,13 @@ export const HeroContent = () => {
             <div className="mb-6 border-b border-gray-200 pb-2 text-xl font-bold text-gray-800"></div>
 
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {[
-                { value: "65k+", label: "YouTube Subscribers" },
-                { value: "13+", label: "Years Experience" },
-                { value: "1M+", label: "Happy Customers" },
-                { value: "50+", label: "Team Members" },
-              ].map((stat, index) => (
-                <div
-                  key={index}
-                  className={`rounded-xl from-blue-50 to-indigo-50 p-5 transition-all duration-700 ease-out ${statsVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  <div className="mb-1 text-3xl font-bold text-(--primery-color) sm:text-3xl">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
-                </div>
+              {STATS.map((stat, index) => (
+                <StatItem 
+                  key={stat.label} 
+                  stat={stat} 
+                  index={index} 
+                  isVisible={statsVisible}
+                />
               ))}
             </div>
 

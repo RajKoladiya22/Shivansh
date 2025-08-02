@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
   X,
-  Phone,
-  Mail,
   MessageSquare,
   User,
   Send,
   CheckCircle,
   AlertCircle,
-  Clock,
   Star,
   ArrowLeft,
   Shield,
@@ -233,7 +230,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
               </div>
             </div>
           </div>
-          <div className="py-4 px-4 sm:px-0">
+          <div className="px-4 py-4 sm:px-0">
             <CallChat />
           </div>
           {/* Form Section */}

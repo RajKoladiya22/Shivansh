@@ -71,15 +71,21 @@ const faqs = [
 ];
 
 export const CallChat = () => {
-  const encodedMessage = "Hi! I'm interested in your products. Could you please provide more information?"
+  const encodedMessage =
+    "Hi! I'm interested in your products. Could you please provide more information?";
   return (
     <div className="grid grid-cols-2 gap-2">
-    
-      <Link href={'tel:+91 81417 03007'} className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700">
+      <Link
+        href={"tel:+91 81417 03007"}
+        className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700"
+      >
         <Phone className="h-4 w-4" />
         Call
       </Link>
-      <Link href={`https://wa.me/+918141703007?text=${encodeURIComponent(encodedMessage)}`} className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700">
+      <Link
+        href={`https://wa.me/+918141703007?text=${encodeURIComponent(encodedMessage)}`}
+        className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700"
+      >
         <FaWhatsapp className="h-4 w-4" />
         Chat
       </Link>
@@ -106,6 +112,18 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
   const [isPurchaseFlowOpen, setIsPurchaseFlowOpen] = useState(false);
   const [stepId, setStepId] = useState<number | null>(null);
+
+  const [showAllReviews, setShowAllReviews] = useState(false);
+  const [visibleReviewsCount, setVisibleReviewsCount] = useState(5);
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
 
   useEffect(() => {
     const prod = ProductsList.find((p) => p.id.toString() === params.id);
@@ -320,7 +338,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
             <button
               onClick={() => HowToUse(product.stepsID)}
-              className="w-full group relative overflow-hidden rounded-lg bg-gradient-to-r from-[#C50202] to-[#A00000] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:from-[#A00000] hover:to-[#800000] hover:shadow-xl focus-visible:ring-2 focus-visible:ring-[#C50202] focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="group relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#C50202] to-[#A00000] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:from-[#A00000] hover:to-[#800000] hover:shadow-xl focus-visible:ring-2 focus-visible:ring-[#C50202] focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               {/* Animated background on hover */}
               <span className="absolute inset-0 bg-gradient-to-r from-[#FFCCD6] to-[#FCF2F2] opacity-0 transition-opacity duration-300 group-hover:opacity-10"></span>
@@ -455,7 +473,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <div className="space-y-3">
                 <button
                   onClick={() => handleInquiryClick(product)}
-                  className={`${btn_color} flex w-full items-center justify-center space-x-2 rounded-lg  px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-base`}
+                  className={`${btn_color} flex w-full items-center justify-center space-x-2 rounded-lg px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-base`}
                 >
                   Send Enquiry
                 </button>
@@ -658,10 +676,111 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   </div>
 
                   <div className="mt-8 text-center">
-                    <button className="rounded-lg bg-[#C50202] px-6 py-2 font-medium text-white transition-colors hover:bg-[#A00303]">
-                      View All Reviews
+                    <button
+                      onClick={() => {
+                        setShowAllReviews(!showAllReviews);
+                        if (!showAllReviews) {
+                          setVisibleReviewsCount(5); // Reset to 5 when showing all reviews
+                        }
+                      }}
+                      className="rounded-lg bg-[#C50202] px-6 py-2 font-medium text-white transition-colors hover:bg-[#A00303]"
+                    >
+                      {showAllReviews ? "Hide Reviews" : "View All Reviews"}
                     </button>
                   </div>
+
+                  {/* Individual Reviews List */}
+                  {showAllReviews && (
+                    <div className="mt-8 space-y-4">
+                      <h3 className="mb-4 text-xl font-semibold text-gray-900">
+                        Customer Reviews
+                      </h3>
+
+                      {product.review.allReviews
+                        .slice(0, visibleReviewsCount)
+                        .map((review, index) => (
+                          <div
+                            key={review.id}
+                            className="border-b border-gray-200 pb-4 last:border-b-0"
+                          >
+                            <div className="mb-2 flex items-start justify-between">
+                              <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-1">
+                                  <span className="font-medium text-gray-900">
+                                    {review.author}
+                                  </span>
+                                  {review.verified && (
+                                    <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                                      <Check className="mr-1 h-3 w-3" />
+                                      Verified
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                              <span className="text-sm text-gray-500">
+                                {formatDate(review.date)}
+                              </span>
+                            </div>
+
+                            <div className="mb-2 flex items-center gap-1">
+                              {Array.from({ length: 5 }, (_, i) => (
+                                <Star
+                                  key={i}
+                                  className={`h-4 w-4 ${
+                                    i < Math.floor(review.rating)
+                                      ? "fill-yellow-400 text-yellow-400"
+                                      : "text-gray-300"
+                                  }`}
+                                />
+                              ))}
+                              <span className="ml-1 text-sm text-gray-600">
+                                {review.rating}/5
+                              </span>
+                            </div>
+
+                            <p className="leading-relaxed text-gray-700">
+                              {review.comment}
+                            </p>
+                          </div>
+                        ))}
+
+                      {/* Load More Button */}
+                      {visibleReviewsCount <
+                        product.review.allReviews.length && (
+                        <div className="mt-6 text-center">
+                          <button
+                            onClick={() =>
+                              setVisibleReviewsCount((prev) => prev + 5)
+                            }
+                            className="rounded-lg border border-[#C50202] px-6 py-2 font-medium text-[#C50202] transition-colors hover:bg-[#C50202] hover:text-white"
+                          >
+                            Load More Reviews
+                            {/* (
+                            {Math.min(
+                              5,
+                              product.review.allReviews.length -
+                                visibleReviewsCount,
+                            )}{" "}
+                            more) */}
+                          </button>
+                        </div>
+                      )}
+
+                      {/* Show fewer reviews button when all are loaded */}
+                      {visibleReviewsCount >=
+                        product.review.allReviews.length &&
+                        product.review.allReviews.length > 5 && (
+                          <div className="mt-6 text-center">
+                            <button
+                              onClick={() => setVisibleReviewsCount(5)}
+                              className="rounded-lg border border-gray-300 px-6 py-2 font-medium text-gray-600 transition-colors hover:bg-gray-50"
+                            >
+                              Show Fewer Reviews
+                            </button>
+                          </div>
+                        )}
+                    </div>
+                  )}
                 </div>
               )}
 

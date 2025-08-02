@@ -1,14 +1,24 @@
-import type { Product } from "src/_components/sections/types/product.type";
-
+import type {
+  FlowGroup,
+  Product,
+} from "src/_components/sections/types/product.type";
+import {
+  MessageSquare,
+  Monitor,
+  CreditCard,
+  Download,
+  Heart,
+  Sparkles,
+} from "lucide-react";
 
 export const ProductsList: Product[] = [
   {
     id: 1,
-    title: "Professional Camera Equipment",
+    title: "TallyPrime Silver",
     description:
-      "High‑quality camera equipment for professional photography and videography needs.",
+      "Single user Edition For Single PC, GST Billing Inventory Management & Any Many More Facility Available in Tally",
     actualPrice: 25000,
-    salePrice: 20000,
+    salePrice: 22500,
     image:
       "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
@@ -36,22 +46,136 @@ export const ProductsList: Product[] = [
       { key: "Video", value: "4K at 30fps" },
       { key: "Connectivity", value: "Wi-Fi, Bluetooth" },
     ],
-    stepsID : 1,
-review:  {
+    stepsID: 1,
+    review: {
       averageRating: 4.8,
       reviewCount: 132,
       latestReviews: [
         {
+          id: 1,
           author: "Jane Doe",
           rating: 5,
           comment: "Amazing clarity and build quality!",
           date: "2025-07-01",
+          verified: true,
         },
         {
+          id: 2,
           author: "John Smith",
           rating: 4.5,
           comment: "Very reliable, great for low light.",
           date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
         },
       ],
     },
@@ -60,11 +184,11 @@ review:  {
   },
   {
     id: 2,
-    title: "Industrial Machinery Parts",
+    title: "TallyPrime Gold",
     description:
       "Durable machinery parts designed for heavy industrial applications and manufacturing.",
-    actualPrice: 50000,
-    salePrice: 45000,
+    actualPrice: 70000,
+    salePrice: 67500,
     image:
       "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
@@ -84,18 +208,149 @@ review:  {
       "High accuracy in assembly",
       "Low maintenance requirements",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.5, reviewCount: 89 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["industrial", "steel", "precision"],
     relatedProductIds: [6, 10],
   },
   {
     id: 3,
-    title: "Organic Food Products",
+    title: "TallyPrime Silver Renewal",
     description:
-      "Fresh organic food products sourced directly from certified organic farms.",
-    actualPrice: 1200,
-    salePrice: 1000,
+      "Benefits of Renewal Update New Release & Remote Access Facility & Also use Synchronization Facility.",
+    actualPrice: 4500,
+    salePrice: 5000,
     image:
       "https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
@@ -115,18 +370,149 @@ review:  { averageRating: 4.5, reviewCount: 89 },
       "Better taste",
       "Environmentally friendly farming",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.6, reviewCount: 154 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["organic", "fresh", "non-GMO"],
     relatedProductIds: [5, 8],
   },
   {
     id: 4,
-    title: "Advanced Medical Equipment",
+    title: "TallyPrime Single to Multi Upgrade",
     description:
-      "State-of-the-art medical devices tailored for modern healthcare facilities.",
-    actualPrice: 100000,
-    salePrice: 85000,
+      "Benefits of Renewal Update New Release & Remote Access Facility & Also use Synchronization Facility.",
+    actualPrice: 45000,
+    salePrice: 50000,
     image:
       "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
@@ -146,18 +532,149 @@ review:  { averageRating: 4.6, reviewCount: 154 },
       "Reduced manual errors",
       "24/7 patient monitoring",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.9, reviewCount: 47 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["medical", "diagnostic", "automated"],
     relatedProductIds: [7, 14],
   },
   {
     id: 5,
-    title: "Premium Textile Materials",
+    title: "TallyPrime Gold Renewal",
     description:
-      "Top‑grade textile materials for garment manufacturing and fashion apparel.",
-    actualPrice: 3000,
-    salePrice: 2500,
+      "Benefits of Renewal Update New Release & Remote Access Facility & Also use Synchronization Facility.",
+    actualPrice: 13500,
+    salePrice: 14500,
     image:
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
@@ -173,18 +690,149 @@ review:  { averageRating: 4.9, reviewCount: 47 },
       "Colorfast dyes",
     ],
     benefits: ["Long-lasting garments", "Comfortable wear", "Vibrant colors"],
-    stepsID : 1,
-review:  { averageRating: 4.3, reviewCount: 68 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["textile", "fabric", "fashion"],
     relatedProductIds: [3, 11],
   },
   {
     id: 6,
-    title: "Heavy‑Duty Construction Tools",
+    title: "TallyPrimeAuditor Renewal",
     description:
-      "Robust construction tools designed for professional builders and contractors.",
-    actualPrice: 15000,
-    salePrice: 12000,
+      "Benefits of Renewal Update New Release & Remote Access Facility & Also use Synchronization Facility.",
+    actualPrice: 45000,
+    salePrice: 47000,
     image:
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
@@ -200,8 +848,139 @@ review:  { averageRating: 4.3, reviewCount: 68 },
       "Faster drilling/cutting",
       "Long service intervals",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.2, reviewCount: 52 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["drill", "power tool", "construction"],
     relatedProductIds: [2, 10],
   },
@@ -232,8 +1011,139 @@ review:  { averageRating: 4.2, reviewCount: 52 },
       "Versatile sample prep",
       "Enhanced safety protocols",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.7, reviewCount: 39 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["lab", "analysis", "research"],
     relatedProductIds: [4, 14],
   },
@@ -263,8 +1173,139 @@ review:  { averageRating: 4.7, reviewCount: 39 },
       "Maintains product freshness",
       "Safe for food contact",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.5, reviewCount: 74 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["eco", "biodegradable", "packaging"],
     relatedProductIds: [3, 5],
   },
@@ -291,8 +1332,139 @@ review:  { averageRating: 4.5, reviewCount: 74 },
       "Touch controls",
     ],
     benefits: ["Immersive listening", "All‑day use", "Seamless device pairing"],
-    stepsID : 1,
-review:  { averageRating: 4.4, reviewCount: 210 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["headphones", "wireless", "noise-canceling"],
     relatedProductIds: [1, 12],
   },
@@ -323,8 +1495,139 @@ review:  { averageRating: 4.4, reviewCount: 210 },
       "Reduces repair costs",
       "User‑friendly interface",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.1, reviewCount: 88 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["OBD-II", "diagnostic", "scanner"],
     relatedProductIds: [6, 11],
   },
@@ -350,8 +1653,139 @@ review:  { averageRating: 4.1, reviewCount: 88 },
       "Height and tilt adjustment",
     ],
     benefits: ["Improves posture", "Enhances comfort", "Boosts productivity"],
-    stepsID : 1,
-review:  { averageRating: 4.6, reviewCount: 145 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["office", "ergonomic", "chair"],
     relatedProductIds: [5, 10],
   },
@@ -382,8 +1816,139 @@ review:  { averageRating: 4.6, reviewCount: 145 },
       "Ensures tax compliance",
       "Improves cash flow visibility",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.7, reviewCount: 197 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["accounting", "cloud", "SaaS"],
     relatedProductIds: [1, 13, 15],
   },
@@ -409,8 +1974,139 @@ review:  { averageRating: 4.7, reviewCount: 197 },
       "Versatile cooking options",
       "Durable performance",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.2, reviewCount: 102 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["kitchen", "appliances", "bundle"],
     relatedProductIds: [8, 14],
   },
@@ -436,8 +2132,139 @@ review:  { averageRating: 4.2, reviewCount: 102 },
       "Adjustable rake",
     ],
     benefits: ["Reduces back strain", "Efficient trimming", "Easy cleanup"],
-    stepsID : 1,
-review:  { averageRating: 4.5, reviewCount: 76 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["garden", "tools", "landscaping"],
     relatedProductIds: [6, 7],
   },
@@ -467,8 +2294,139 @@ review:  { averageRating: 4.5, reviewCount: 76 },
       "Improves comfort",
       "Reduces injury risk",
     ],
-    stepsID : 1,
-review:  { averageRating: 4.4, reviewCount: 128 },
+    stepsID: 1,
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+          verified: true,
+        },
+      ],
+      allReviews: [
+        {
+          id: 1,
+          author: "Jane Doe",
+          rating: 5,
+          comment:
+            "Amazing clarity and build quality! The 4K video recording is superb and the weather sealing has saved me in tough conditions.",
+          date: "2025-07-01",
+          verified: true,
+        },
+        {
+          id: 2,
+          author: "John Smith",
+          rating: 4.5,
+          comment:
+            "Very reliable, great for low light photography. The full-frame sensor makes a huge difference.",
+          date: "2025-06-28",
+          verified: true,
+        },
+        {
+          id: 3,
+          author: "Sarah Wilson",
+          rating: 5,
+          comment:
+            "Professional quality at its finest. Worth every penny for serious photographers.",
+          date: "2025-06-25",
+          verified: false,
+        },
+        {
+          id: 4,
+          author: "Mike Johnson",
+          rating: 4,
+          comment:
+            "Great camera, though the learning curve is steep for beginners. Build quality is excellent.",
+          date: "2025-06-20",
+          verified: true,
+        },
+        {
+          id: 5,
+          author: "Emily Chen",
+          rating: 5,
+          comment:
+            "Outstanding performance in all lighting conditions. The interchangeable lens system is fantastic.",
+          date: "2025-06-18",
+          verified: true,
+        },
+        {
+          id: 6,
+          author: "David Brown",
+          rating: 4,
+          comment:
+            "Good camera overall, battery life could be better but image quality is top-notch.",
+          date: "2025-06-15",
+          verified: false,
+        },
+        {
+          id: 7,
+          author: "Lisa Martinez",
+          rating: 5,
+          comment:
+            "Perfect for wedding photography. The weather sealing and durability are impressive.",
+          date: "2025-06-12",
+          verified: true,
+        },
+        {
+          id: 8,
+          author: "Tom Anderson",
+          rating: 4.5,
+          comment:
+            "Excellent build quality and image sharpness. Wi-Fi connectivity works flawlessly.",
+          date: "2025-06-10",
+          verified: true,
+        },
+        {
+          id: 9,
+          author: "Rachel Green",
+          rating: 5,
+          comment:
+            "This camera exceeded my expectations. The 4K video quality is cinema-grade.",
+          date: "2025-06-08",
+          verified: false,
+        },
+        {
+          id: 10,
+          author: "Kevin White",
+          rating: 4,
+          comment:
+            "Solid camera for professionals. Price is justified by the quality and features.",
+          date: "2025-06-05",
+          verified: true,
+        },
+        {
+          id: 11,
+          author: "Amanda Taylor",
+          rating: 5,
+          comment:
+            "Best investment for my photography business. Clients love the image quality.",
+          date: "2025-06-02",
+          verified: true,
+        },
+        {
+          id: 12,
+          author: "Jason Lee",
+          rating: 4.5,
+          comment:
+            "Fantastic camera with great low-light performance. Menu system could be more intuitive.",
+          date: "2025-05-30",
+          verified: false,
+        },
+      ],
+    },
     tags: ["sports", "fitness", "gear"],
     relatedProductIds: [9, 11],
   },
@@ -491,4 +2449,123 @@ export const industries = [
   "Healthcare",
   "Fashion",
   "Construction",
+];
+
+export const flowGroups: FlowGroup[] = [
+  {
+    id: 1,
+    steps: [
+      {
+        id: 1,
+        title: "Free Consultation",
+        shortTitle: "Consult",
+        description:
+          "Tell us your needs and we'll create a perfect solution plan",
+        icon: MessageSquare,
+        color: "from-blue-500 to-blue-600",
+        borderColor: "border-blue-200",
+        bgColor: "bg-blue-50",
+        duration: "30 min",
+        status: "Free",
+        details: [
+          "No-obligation consultation call",
+          "Business requirement analysis",
+          "Custom solution recommendations",
+          "Technology stack discussion",
+        ],
+      },
+      {
+        id: 2,
+        title: "Live Product Demo",
+        shortTitle: "Demo",
+        description:
+          "See the product working live on your system before you buy",
+        icon: Monitor,
+        color: "from-emerald-500 to-emerald-600",
+        borderColor: "border-emerald-200",
+        bgColor: "bg-emerald-50",
+        duration: "45-60 min",
+        status: "Interactive",
+        details: [
+          "Real-time demo on your system",
+          "Test all features thoroughly",
+          "Customization possibilities",
+          "Performance evaluation",
+        ],
+      },
+      {
+        id: 3,
+        title: "Secure Payment",
+        shortTitle: "Payment",
+        description:
+          "Multiple secure payment options with instant confirmation",
+        icon: CreditCard,
+        color: "from-purple-500 to-purple-600",
+        borderColor: "border-purple-200",
+        bgColor: "bg-purple-50",
+        duration: "5 min",
+        status: "Secure",
+        details: [
+          "Multiple payment gateways",
+          "Bank-grade security",
+          "Instant confirmation",
+          "Digital receipt & invoice",
+        ],
+      },
+      {
+        id: 4,
+        title: "Instant Delivery",
+        shortTitle: "Delivery",
+        description: "Get complete source code and documentation immediately",
+        icon: Download,
+        color: "from-orange-500 to-orange-600",
+        borderColor: "border-orange-200",
+        bgColor: "bg-orange-50",
+        duration: "Instant",
+        status: "Complete",
+        details: [
+          "Full source code package",
+          "Detailed documentation",
+          "Installation guidelines",
+          "Database & setup files",
+        ],
+      },
+      {
+        id: 5,
+        title: "30-Day Support",
+        shortTitle: "Support",
+        description: "Free technical support and assistance for one month",
+        icon: Heart,
+        color: "from-rose-500 to-rose-600",
+        borderColor: "border-rose-200",
+        bgColor: "bg-rose-50",
+        duration: "30 days",
+        status: "Included",
+        details: [
+          "Technical troubleshooting",
+          "Installation assistance",
+          "Bug fixes & patches",
+          "Training & guidance",
+        ],
+      },
+      {
+        id: 6,
+        title: "Lifetime Updates",
+        shortTitle: "Updates",
+        description: "Get all future updates and new features forever",
+        icon: Sparkles,
+        color: "from-indigo-500 to-indigo-600",
+        borderColor: "border-indigo-200",
+        bgColor: "bg-indigo-50",
+        duration: "Forever",
+        status: "Free",
+        details: [
+          "New feature releases",
+          "Security improvements",
+          "Performance optimizations",
+          "Technology upgrades",
+        ],
+      },
+    ],
+  },
 ];

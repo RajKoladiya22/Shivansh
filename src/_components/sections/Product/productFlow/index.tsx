@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from "react";
 import {
   X,
-  MessageSquare,
-  Monitor,
-  CreditCard,
   CheckCircle,
   Clock,
   Shield,
@@ -14,163 +11,16 @@ import {
   Play,
   ChevronRight,
   Star,
-  Download,
-  Heart,
-  Sparkles,
   Phone,
   ArrowRight,
   Pause,
 } from "lucide-react";
 import Link from "next/link";
-
-import type { ComponentType, SVGProps } from "react";
-
-/**
- * A card/listing model describing a "service offering"
- */
-export interface StepItem {
-  id: number;
-  title: string;
-  shortTitle: string;
-  description: string;
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
-  color: string;
-  borderColor: string;
-  bgColor: string;
-  duration: string;
-  status: string;
-  details: string[];
-}
-export interface FlowGroup {
-  id: number;
-  steps: StepItem[];
-}
-
-interface PurchaseFlowPopupProps {
-  isOpen: boolean;
-  onClose: () => void;
-  productName?: string;
-  stepId: number | null;
-}
-
-const flowGroups: FlowGroup[] = [
-  {
-    id: 1,
-    steps: [
-      {
-        id: 1,
-        title: "Free Consultation",
-        shortTitle: "Consult",
-        description:
-          "Tell us your needs and we'll create a perfect solution plan",
-        icon: MessageSquare,
-        color: "from-blue-500 to-blue-600",
-        borderColor: "border-blue-200",
-        bgColor: "bg-blue-50",
-        duration: "30 min",
-        status: "Free",
-        details: [
-          "No-obligation consultation call",
-          "Business requirement analysis",
-          "Custom solution recommendations",
-          "Technology stack discussion",
-        ],
-      },
-      {
-        id: 2,
-        title: "Live Product Demo",
-        shortTitle: "Demo",
-        description:
-          "See the product working live on your system before you buy",
-        icon: Monitor,
-        color: "from-emerald-500 to-emerald-600",
-        borderColor: "border-emerald-200",
-        bgColor: "bg-emerald-50",
-        duration: "45-60 min",
-        status: "Interactive",
-        details: [
-          "Real-time demo on your system",
-          "Test all features thoroughly",
-          "Customization possibilities",
-          "Performance evaluation",
-        ],
-      },
-      {
-        id: 3,
-        title: "Secure Payment",
-        shortTitle: "Payment",
-        description:
-          "Multiple secure payment options with instant confirmation",
-        icon: CreditCard,
-        color: "from-purple-500 to-purple-600",
-        borderColor: "border-purple-200",
-        bgColor: "bg-purple-50",
-        duration: "5 min",
-        status: "Secure",
-        details: [
-          "Multiple payment gateways",
-          "Bank-grade security",
-          "Instant confirmation",
-          "Digital receipt & invoice",
-        ],
-      },
-      {
-        id: 4,
-        title: "Instant Delivery",
-        shortTitle: "Delivery",
-        description: "Get complete source code and documentation immediately",
-        icon: Download,
-        color: "from-orange-500 to-orange-600",
-        borderColor: "border-orange-200",
-        bgColor: "bg-orange-50",
-        duration: "Instant",
-        status: "Complete",
-        details: [
-          "Full source code package",
-          "Detailed documentation",
-          "Installation guidelines",
-          "Database & setup files",
-        ],
-      },
-      {
-        id: 5,
-        title: "30-Day Support",
-        shortTitle: "Support",
-        description: "Free technical support and assistance for one month",
-        icon: Heart,
-        color: "from-rose-500 to-rose-600",
-        borderColor: "border-rose-200",
-        bgColor: "bg-rose-50",
-        duration: "30 days",
-        status: "Included",
-        details: [
-          "Technical troubleshooting",
-          "Installation assistance",
-          "Bug fixes & patches",
-          "Training & guidance",
-        ],
-      },
-      {
-        id: 6,
-        title: "Lifetime Updates",
-        shortTitle: "Updates",
-        description: "Get all future updates and new features forever",
-        icon: Sparkles,
-        color: "from-indigo-500 to-indigo-600",
-        borderColor: "border-indigo-200",
-        bgColor: "bg-indigo-50",
-        duration: "Forever",
-        status: "Free",
-        details: [
-          "New feature releases",
-          "Security improvements",
-          "Performance optimizations",
-          "Technology upgrades",
-        ],
-      },
-    ],
-  },
-];
+import type {
+  PurchaseFlowPopupProps,
+  StepItem,
+} from "../../types/product.type";
+import { flowGroups } from "public/data/Product";
 
 export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
   isOpen,
@@ -533,7 +383,7 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
             </div>
 
             <div className="mt-8 flex items-center justify-center gap-2">
-              {[...Array(5).keys()].map((i:number) => (
+              {[...Array(5).keys()].map((i: number) => (
                 <Star
                   key={i}
                   className="h-5 w-5 fill-yellow-400 text-yellow-400"

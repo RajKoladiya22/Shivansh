@@ -1,13 +1,20 @@
+import type { ComponentType, SVGProps } from "react";
+
+export interface ReviewItem {
+  id: number;
+  author: string;
+  rating: number;
+  comment: string;
+  date: string;
+  verified?: boolean;
+}
+
 // Define a Review type for clarity
 export interface Review {
   averageRating: number;
   reviewCount: number;
-    latestReviews?: {
-    author: string
-    rating: number
-    comment: string
-    date: string
-  }[]
+  latestReviews?: ReviewItem[];
+  allReviews: ReviewItem[]; // Add this for all reviews
 }
 
 export interface ProductSpec {
@@ -23,22 +30,21 @@ export interface Product {
   description: string;
   actualPrice: number;
   salePrice: number;
-  image: string; 
-  introVideoId: string; 
-  detailedVideoId: string; 
+  image: string;
+  introVideoId: string;
+  detailedVideoId: string;
   category: string;
   industry: string;
   isTopProduct: boolean;
   isLatest: boolean;
-  createdAt: string; 
-  features: string[]; 
-  benefits: string[]; 
+  createdAt: string;
+  features: string[];
+  benefits: string[];
   specs?: ProductSpec[];
-  review: Review; 
-  tags: string[]; 
-  relatedProductIds: number[]; 
+  review: Review;
+  tags: string[];
+  relatedProductIds: number[];
 }
-
 
 export interface PriceRange {
   min: string;
@@ -47,7 +53,6 @@ export interface PriceRange {
 
 export type SortBy = "all" | "top" | "latest" | "priceAsc" | "priceDesc" | "newest";
 export type ViewMode = "grid" | "list";
-
 
 export interface SidebarFiltersProps {
   showFilters: boolean;
@@ -61,7 +66,6 @@ export interface SidebarFiltersProps {
   categories: string[];
   industries: string[];
 }
-
 
 export type TabId = "features" | "benefits" | "specifications" | "reviews" | "faq";
 
@@ -82,7 +86,6 @@ export interface InquiryFormData {
   preferredContact: "email" | "phone" | "both";
   urgency: "low" | "medium" | "high";
 }
-
 
 export interface ProductInquiryPopupProps {
   product: Product | null;
@@ -108,7 +111,6 @@ export interface ProductSocialShareButtonProps {
   ProID?: string | number;
 }
 
-
 export interface VideoModalProps {
   videoId?: string | null;
   onClose: () => void;
@@ -118,4 +120,32 @@ export interface ProductCardProps {
   product: Product;
   onVideoPlay: (VideoId: string) => void;
   onInquiryClick: (product: Product) => void;
+}
+
+/**
+ * A card/listing model describing a "service offering"
+ */
+export interface StepItem {
+  id: number;
+  title: string;
+  shortTitle: string;
+  description: string;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  color: string;
+  borderColor: string;
+  bgColor: string;
+  duration: string;
+  status: string;
+  details: string[];
+}
+export interface FlowGroup {
+  id: number;
+  steps: StepItem[];
+}
+
+export interface PurchaseFlowPopupProps {
+  isOpen: boolean;
+  onClose: () => void;
+  productName?: string;
+  stepId: number | null;
 }
