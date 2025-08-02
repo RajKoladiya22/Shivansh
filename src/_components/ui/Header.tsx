@@ -288,6 +288,7 @@ const LOGO_ALT_TEXT = "Shivansh Infosys - Quick Response, Quick Support";
 const PhoneIcon = memo(() => (
   <Phone size={14} className="mr-1" aria-hidden="true" />
 ));
+PhoneIcon.displayName = 'PhoneIcon';
 
 const ArrowIcon = memo(() => (
   <ArrowRight
@@ -297,6 +298,7 @@ const ArrowIcon = memo(() => (
     aria-hidden="true"
   />
 ));
+ArrowIcon.displayName = 'ArrowIcon';
 
 // Memoized hamburger menu component
 const HamburgerIcon = memo(({ isOpen }: { isOpen: boolean }) => (
@@ -318,6 +320,7 @@ const HamburgerIcon = memo(({ isOpen }: { isOpen: boolean }) => (
     />
   </div>
 ));
+HamburgerIcon.displayName = 'HamburgerIcon';
 
 // Memoized navigation item component
 const NavItem = memo(({ 
@@ -346,6 +349,7 @@ const NavItem = memo(({
     />
   </Link>
 ));
+NavItem.displayName = 'NavItem';
 
 // Memoized logo component
 const Logo = memo(() => (
@@ -378,6 +382,7 @@ const Logo = memo(() => (
     </div>
   </Link>
 ));
+Logo.displayName = 'Logo';
 
 // Memoized contact info component
 const ContactInfo = memo(({ isMobile = false }: { isMobile?: boolean }) => {
@@ -408,6 +413,7 @@ const ContactInfo = memo(({ isMobile = false }: { isMobile?: boolean }) => {
     </div>
   );
 });
+ContactInfo.displayName = 'ContactInfo';
 
 export const Header = memo(() => {
   const [mobileOpen, setMobileOpen] = useState(false);

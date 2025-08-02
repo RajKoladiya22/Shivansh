@@ -261,38 +261,52 @@
 //   );
 // };
 
-
-
 "use client";
 import React, { memo, useMemo } from "react";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
-import { navItems, PRIVACY, ProductServices, SITEMAP, TERM } from "public/data/Navigation";
+import {
+  navItems,
+  PRIVACY,
+  ProductServices,
+  SITEMAP,
+  TERM,
+} from "public/data/Navigation";
 import { SocialMedia } from "public/data/Contact";
 import { btn_color } from "src/config/constants";
 import Image from "next/image";
 
 // Constants to prevent recreation
-const COMPANY_ADDRESS = "SHOP NO.105, AJIT PLAZA, M.G ROAD, OPP. BANK OF BARODA, VAPI, VALSAD, GUJARAT, 396191";
+const COMPANY_ADDRESS =
+  "SHOP NO.105, AJIT PLAZA, M.G ROAD, OPP. BANK OF BARODA, VAPI, VALSAD, GUJARAT, 396191";
 const PHONE_NUMBERS = [
   { number: "+918141703007", display: "+91 81417 03007" },
-  { number: "+919484843007", display: "+91 94848 43007" }
+  { number: "+919484843007", display: "+91 94848 43007" },
 ] as const;
 const EMAIL = "info@shivanshinfosys.in";
 const WHATSAPP_URL = "https://wa.me/918141703007";
-const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/0029Vb5y41dLNSaBHDTIi82B";
+const WHATSAPP_CHANNEL_URL =
+  "https://whatsapp.com/channel/0029Vb5y41dLNSaBHDTIi82B";
 
 // Memoized icon components for better performance
-const IconWrapper = memo(({ children, className = "" }: { 
-  children: React.ReactNode; 
-  className?: string;
-}) => (
-  <div className={`mt-1 mr-3 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-red-600 ${className}`}>
-    {children}
-  </div>
-));
+const IconWrapper = memo(
+  ({
+    children,
+    className = "",
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    <div
+      className={`mt-1 mr-3 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-red-600 ${className}`}
+    >
+      {children}
+    </div>
+  ),
+);
+IconWrapper.displayName = "IconWrapper";
 
 const SectionHeader = memo(({ title }: { title: string }) => (
   <h3 className="mb-6 flex items-center text-lg font-semibold text-white">
@@ -300,36 +314,40 @@ const SectionHeader = memo(({ title }: { title: string }) => (
     {title}
   </h3>
 ));
+SectionHeader.displayName = "SectionHeader";
 
 // Memoized navigation link component
-const NavLink = memo(({ 
-  item, 
-  isActive, 
-  className 
-}: { 
-  item: { href: string; label: string };
-  isActive: boolean;
-  className?: string;
-}) => (
-  <li>
-    <Link
-      href={item.href}
-      className={`group flex items-center text-sm text-gray-400 transition-all duration-300 hover:pl-2 hover:text-red-400 ${
-        isActive ? "font-medium text-red-400" : ""
-      } ${className || ""}`}
-    >
-      <span className="mr-3 h-1 w-1 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
-      {item.label}
-    </Link>
-  </li>
-));
+const NavLink = memo(
+  ({
+    item,
+    isActive,
+    className,
+  }: {
+    item: { href: string; label: string };
+    isActive: boolean;
+    className?: string;
+  }) => (
+    <li>
+      <Link
+        href={item.href}
+        className={`group flex items-center text-sm text-gray-400 transition-all duration-300 hover:pl-2 hover:text-red-400 ${
+          isActive ? "font-medium text-red-400" : ""
+        } ${className ?? ""}`}
+      >
+        <span className="mr-3 h-1 w-1 rounded-full bg-red-600 opacity-0 transition-opacity group-hover:opacity-100"></span>
+        {item.label}
+      </Link>
+    </li>
+  ),
+);
+NavLink.displayName = "NavLink";
 
 // Memoized social media component
 const SocialMediaLinks = memo(() => (
   <div className="flex space-x-3">
     {SocialMedia.map((social, index) => (
       <Link
-        key={social.href} // Using href as key is more stable than index
+        key={index} // Using href as key is more stable than index
         href={social.href}
         className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-all duration-300 hover:scale-110 hover:bg-red-600"
         aria-label="Follow us on social media"
@@ -341,6 +359,7 @@ const SocialMediaLinks = memo(() => (
     ))}
   </div>
 ));
+SocialMediaLinks.displayName = "SocialMediaLinks";
 
 // Memoized company logo component
 const CompanyLogo = memo(() => (
@@ -355,17 +374,18 @@ const CompanyLogo = memo(() => (
         loading="lazy"
       />
       <div className="">
-        <h2 className="text-2xl font-bold m-0">
+        <h2 className="m-0 text-2xl font-bold">
           <span className="text-[#C50202]">SHIVANSH</span>{" "}
           <span className="text-white">INFOSYS</span>
         </h2>
-        <p className="mt- text-sm font-medium text-gray-400 flex flex-wrap">
+        <p className="mt- flex flex-wrap text-sm font-medium text-gray-400">
           <span>Quick Response</span> - <span>Quick Support</span>
         </p>
       </div>
     </div>
   </div>
 ));
+CompanyLogo.displayName = "CompanyLogo";
 
 // Memoized contact info components
 const ContactAddress = memo(() => (
@@ -373,11 +393,10 @@ const ContactAddress = memo(() => (
     <IconWrapper>
       <MapPin className="h-3 w-3 text-white" />
     </IconWrapper>
-    <p className="text-sm leading-relaxed text-gray-400">
-      {COMPANY_ADDRESS}
-    </p>
+    <p className="text-sm leading-relaxed text-gray-400">{COMPANY_ADDRESS}</p>
   </div>
 ));
+ContactAddress.displayName = "ContactAddress";
 
 const PhoneNumbers = memo(() => (
   <div className="flex flex-col space-y-2">
@@ -393,7 +412,7 @@ const PhoneNumbers = memo(() => (
         <span>{phone.display}</span>
       </Link>
     ))}
-    
+
     <Link
       href={WHATSAPP_URL}
       className="flex items-center transition-colors hover:text-red-400"
@@ -407,6 +426,7 @@ const PhoneNumbers = memo(() => (
     </Link>
   </div>
 ));
+PhoneNumbers.displayName = "PhoneNumbers";
 
 const EmailContact = memo(() => (
   <div className="flex items-start">
@@ -421,6 +441,7 @@ const EmailContact = memo(() => (
     </Link>
   </div>
 ));
+EmailContact.displayName = "EmailContact";
 
 const BusinessHours = memo(() => (
   <div className="mt-6 flex items-start">
@@ -428,28 +449,23 @@ const BusinessHours = memo(() => (
       <span className="h-2 w-2 rounded-full bg-white"></span>
     </IconWrapper>
     <div>
-      <p className="text-sm font-medium text-gray-100">
-        Business Hours
-      </p>
-      <p className="text-sm text-gray-400">
-        Mon-Sat: 9:30 AM - 6:30 PM
-      </p>
+      <p className="text-sm font-medium text-gray-100">Business Hours</p>
+      <p className="text-sm text-gray-400">Mon-Sat: 9:30 AM - 6:30 PM</p>
       <p className="text-sm text-gray-400">Sunday: Closed</p>
     </div>
   </div>
 ));
+BusinessHours.displayName = "BusinessHours";
 
 // Memoized newsletter section
 const NewsletterSection = memo(() => (
   <div className="mt-16 rounded-xl bg-gradient-to-r from-gray-800 to-gray-900 p-6">
     <div className="flex flex-col items-center justify-between md:flex-row">
       <div className="mb-4 md:mb-0">
-        <h3 className="mb-2 text-lg font-semibold text-white">
-          Stay Updated
-        </h3>
+        <h3 className="mb-2 text-lg font-semibold text-white">Stay Updated</h3>
         <p className="max-w-md text-sm text-gray-400">
-          Subscribe to our WhatsApp Channel for the latest updates, offers,
-          and Tally tips.
+          Subscribe to our WhatsApp Channel for the latest updates, offers, and
+          Tally tips.
         </p>
       </div>
       <div className="flex w-full md:w-auto">
@@ -475,6 +491,7 @@ const NewsletterSection = memo(() => (
     </div>
   </div>
 ));
+NewsletterSection.displayName = "NewsletterSection";
 
 // Memoized copyright section
 const CopyrightSection = memo(({ currentYear }: { currentYear: number }) => (
@@ -509,10 +526,11 @@ const CopyrightSection = memo(({ currentYear }: { currentYear: number }) => (
     </div>
   </div>
 ));
+CopyrightSection.displayName = "CopyrightSection";
 
 export const Footer = memo(() => {
   const pathname = usePathname();
-  
+
   // Memoize current year calculation
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
@@ -581,4 +599,4 @@ export const Footer = memo(() => {
   );
 });
 
-Footer.displayName = 'Footer';
+Footer.displayName = "Footer";
