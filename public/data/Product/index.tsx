@@ -1,4 +1,5 @@
-import type { Product } from "src/_components/sections/Product";
+import type { Product } from "src/_components/sections/types/product.type";
+
 
 export const ProductsList: Product[] = [
   {
