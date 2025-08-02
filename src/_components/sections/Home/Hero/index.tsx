@@ -154,7 +154,7 @@ export const Hero = () => {
                 key={`card-${index}-${animationKey}`}
                 {...member}
                 imagePosition={
-                  cardPositions[index]?.imagePosition as "left" | "right"
+                  cardPositions[index]?.imagePosition as "left" ?? "right"
                 }
                 style={{
                   ...cardPositions[index],

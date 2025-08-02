@@ -30,6 +30,7 @@ const FeatureItem = memo(
     </div>
   ),
 );
+FeatureItem.displayName = "FeatureItem";
 
 const StatItem = memo(
   ({
@@ -50,6 +51,7 @@ const StatItem = memo(
     </div>
   ),
 );
+StatItem.displayName = "IconWrapper";
 
 export const HeroContent = () => {
   const [statsVisible, setStatsVisible] = useState(false);
