@@ -226,7 +226,7 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
   return (
     <div className="fixed inset-0 z-50 bg-gradient-to-br from-slate-50 to-white">
       {/* Header */}
-      <div className="sticky top-0 z-10 border-gray-200/50 bg-white/80 shadow-md backdrop-blur-md">
+      <div className="sticky top-0 z-10 border-gray-200/50 bg-white/80 shadow-lg backdrop-blur-md">
         <div className="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
@@ -238,12 +238,12 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
                 <Phone className="block h-5 w-5 text-white sm:hidden" />
               </Link>
               <div>
-                <h1 className="text-[10px] font-bold text-gray-900 sm:text-xl">
+                <h1 className="text-[11px] font-bold text-gray-900 sm:text-xl">
                   How to Buy {productName}
                 </h1>
-                <p className="text-xs text-gray-600 sm:text-sm">
+                {/* <p className="text-xs text-gray-600 sm:text-sm">
                   Simple 6-step process • No hidden fees • Call now
-                </p>
+                </p> */}
               </div>
             </div>
             <button

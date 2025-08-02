@@ -71,16 +71,18 @@ const faqs = [
 ];
 
 export const CallChat = () => {
+  const encodedMessage = "Hi! I'm interested in your products. Could you please provide more information?"
   return (
     <div className="grid grid-cols-2 gap-2">
-      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700">
+    
+      <Link href={'tel:+91 81417 03007'} className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700">
         <Phone className="h-4 w-4" />
         Call
-      </button>
-      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700">
+      </Link>
+      <Link href={`https://wa.me/+918141703007?text=${encodeURIComponent(encodedMessage)}`} className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-600 py-2 text-sm text-white transition-colors hover:bg-green-700">
         <FaWhatsapp className="h-4 w-4" />
         Chat
-      </button>
+      </Link>
     </div>
   );
 };
