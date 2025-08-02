@@ -13,11 +13,9 @@ import { ProductCard } from "src/_components/molecules/Cards/productsCard";
 import { ProductsList } from "public/data/Product";
 import { VideoModal } from "../../Product/VideoModal";
 import { btn_color } from "src/config/constants";
-import type { Product } from "../../Product";
-import {
-  ProductInquiryPopup,
-  type InquiryFormData,
-} from "../../Product/ProductInquiry";
+import type { InquiryFormData, Product } from "../../types/product.type";
+import { ProductInquiryPopup } from "../../Product/ProductInquiry";
+
 
 const topProducts = ProductsList.filter((product) => product.isTopProduct);
 
