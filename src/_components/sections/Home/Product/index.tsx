@@ -1,11 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
-  Play,
   ArrowRight,
-  Star,
 } from "lucide-react";
 import { SectionHeader } from "src/_components/ui";
 import Link from "next/link";
@@ -26,11 +24,11 @@ export const ProductShowcaseSection = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
 
-  const handleProductClick = (productId: string) => {
-    // Navigate to product page
-    console.log("Navigating to product:", productId);
-    // Example: router.push(`/products/${productId}`);
-  };
+  // const handleProductClick = (productId: string) => {
+  //   // Navigate to product page
+  //   console.log("Navigating to product:", productId);
+  //   // Example: router.push(`/products/${productId}`);
+  // };
 
   const nextSlide = () => {
     setCurrentSlide(
@@ -55,6 +53,11 @@ export const ProductShowcaseSection = () => {
     }
     return 4; // default
   };
+
+    useEffect(() => {
+    const intervalId = setInterval(nextSlide, 3000);
+    return () => clearInterval(intervalId);
+  }, [nextSlide]);
 
   const [itemsPerSlide, setItemsPerSlide] = useState(getItemsPerSlide());
 

@@ -3,24 +3,22 @@ import { useState } from "react";
 import {
   Share2,
   X,
-  Facebook,
-  Twitter,
-  Instagram,
-  MessageCircle,
   Copy,
-  Link,
   ExternalLink,
   ShoppingBag,
   Star,
   Tag,
   IndianRupee,
 } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { BASE_URL } from "src/config/constants";
 import type {
   Product,
   ProductSocialShareButtonProps,
   ProductSocialShareModalProps,
 } from "../../types/product.type";
+import Image from "next/image";
+import { getYouTubeThumbnail } from "src/_components/molecules/Thumbnail";
 
 export const ProductSocialShareModal = ({
   product,
@@ -128,8 +126,11 @@ export const ProductSocialShareModal = ({
           <div className="rounded-lg border border-gray-100 bg-gradient-to-r from-[#EEF6FF] to-[#FCF2F2] p-4">
             <div className="flex items-start gap-3">
               <div className="relative flex-shrink-0">
-                <img
-                  src={product.image}
+                <Image
+                  width={100}
+                  height={100}
+                  // src={product.image}
+                  src={getYouTubeThumbnail(product.detailedVideoId)}
                   alt={product.title}
                   className="h-16 w-16 rounded-lg object-cover"
                 />
@@ -188,7 +189,7 @@ export const ProductSocialShareModal = ({
               onClick={() => handleSocialShare("facebook")}
               className="flex items-center gap-3 rounded-lg bg-[#1877F2] p-3 text-white transition-all hover:scale-105 hover:bg-[#166FE5]"
             >
-              <Facebook className="h-5 w-5 fill-current" />
+              <FaFacebook className="h-5 w-5 fill-current" />
               <span className="font-medium">Facebook</span>
             </button>
 
@@ -197,7 +198,7 @@ export const ProductSocialShareModal = ({
               onClick={() => handleSocialShare("twitter")}
               className="flex items-center gap-3 rounded-lg bg-[#1DA1F2] p-3 text-white transition-all hover:scale-105 hover:bg-[#1A91DA]"
             >
-              <Twitter className="h-5 w-5 fill-current" />
+              <FaTwitter className="h-5 w-5 fill-current" />
               <span className="font-medium">Twitter</span>
             </button>
 
@@ -206,7 +207,7 @@ export const ProductSocialShareModal = ({
               onClick={() => handleSocialShare("whatsapp")}
               className="flex items-center gap-3 rounded-lg bg-[#25D366] p-3 text-white transition-all hover:scale-105 hover:bg-[#22C55E]"
             >
-              <MessageCircle className="h-5 w-5" />
+              <FaWhatsapp className="h-5 w-5" />
               <span className="font-medium">WhatsApp</span>
             </button>
 
@@ -224,7 +225,7 @@ export const ProductSocialShareModal = ({
               onClick={() => handleSocialShare("instagram")}
               className="flex items-center gap-3 rounded-lg bg-gradient-to-tr from-[#feda75] via-[#fa7e1e] to-[#d62976] p-3 text-white transition-all hover:scale-105 hover:opacity-90"
             >
-              <Instagram className="h-5 w-5" />
+              <FaInstagram className="h-5 w-5" />
               <span className="font-medium">Instagram</span>
             </button>
 

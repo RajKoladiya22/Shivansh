@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   ChevronUp,
   Menu,
@@ -15,68 +15,71 @@ export const TermsOfService = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const sections = [
-    {
-      id: "acceptance",
-      title: "Acceptance of Terms",
-      icon: <FileText className="h-4 w-4" />,
-    },
-    {
-      id: "services",
-      title: "Description of Services",
-      icon: <Users className="h-4 w-4" />,
-    },
-    {
-      id: "eligibility",
-      title: "Eligibility",
-      icon: <Shield className="h-4 w-4" />,
-    },
-    {
-      id: "account",
-      title: "User Accounts",
-      icon: <Users className="h-4 w-4" />,
-    },
-    {
-      id: "conduct",
-      title: "User Conduct",
-      icon: <AlertCircle className="h-4 w-4" />,
-    },
-    {
-      id: "privacy",
-      title: "Privacy Policy",
-      icon: <Shield className="h-4 w-4" />,
-    },
-    {
-      id: "intellectual",
-      title: "Intellectual Property",
-      icon: <FileText className="h-4 w-4" />,
-    },
-    {
-      id: "termination",
-      title: "Termination",
-      icon: <AlertCircle className="h-4 w-4" />,
-    },
-    {
-      id: "limitation",
-      title: "Limitation of Liability",
-      icon: <Shield className="h-4 w-4" />,
-    },
-    {
-      id: "governing",
-      title: "Governing Law",
-      icon: <FileText className="h-4 w-4" />,
-    },
-    {
-      id: "changes",
-      title: "Changes to Terms",
-      icon: <AlertCircle className="h-4 w-4" />,
-    },
-    {
-      id: "contact",
-      title: "Contact Information",
-      icon: <Users className="h-4 w-4" />,
-    },
-  ];
+  const sections = useMemo(
+    () => [
+      {
+        id: "acceptance",
+        title: "Acceptance of Terms",
+        icon: <FileText className="h-4 w-4" />,
+      },
+      {
+        id: "services",
+        title: "Description of Services",
+        icon: <Users className="h-4 w-4" />,
+      },
+      {
+        id: "eligibility",
+        title: "Eligibility",
+        icon: <Shield className="h-4 w-4" />,
+      },
+      {
+        id: "account",
+        title: "User Accounts",
+        icon: <Users className="h-4 w-4" />,
+      },
+      {
+        id: "conduct",
+        title: "User Conduct",
+        icon: <AlertCircle className="h-4 w-4" />,
+      },
+      {
+        id: "privacy",
+        title: "Privacy Policy",
+        icon: <Shield className="h-4 w-4" />,
+      },
+      {
+        id: "intellectual",
+        title: "Intellectual Property",
+        icon: <FileText className="h-4 w-4" />,
+      },
+      {
+        id: "termination",
+        title: "Termination",
+        icon: <AlertCircle className="h-4 w-4" />,
+      },
+      {
+        id: "limitation",
+        title: "Limitation of Liability",
+        icon: <Shield className="h-4 w-4" />,
+      },
+      {
+        id: "governing",
+        title: "Governing Law",
+        icon: <FileText className="h-4 w-4" />,
+      },
+      {
+        id: "changes",
+        title: "Changes to Terms",
+        icon: <AlertCircle className="h-4 w-4" />,
+      },
+      {
+        id: "contact",
+        title: "Contact Information",
+        icon: <Users className="h-4 w-4" />,
+      },
+    ],
+    [], // ← only run once
+  );
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -492,7 +495,8 @@ export const TermsOfService = () => {
                 <div className="prose prose-gray max-w-none">
                   <div className="rounded-lg border border-[#C50202] bg-[#FFCCD6] p-6">
                     <p className="mb-3 text-sm leading-relaxed text-gray-700">
-                      <strong>IMPORTANT:</strong> {`Our services are provided "as`}
+                      <strong>IMPORTANT:</strong>{" "}
+                      {`Our services are provided "as`}
                       {`is" without warranties of any kind. We shall not be liable
                       for any indirect, incidental, special, or consequential
                       damages arising from your use of our services.`}

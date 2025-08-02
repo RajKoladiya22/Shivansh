@@ -17,6 +17,9 @@ import {
 } from "lucide-react";
 import { btn_color } from "src/config/constants";
 import type { ProductInquiryPopupProps } from "../../types/product.type";
+import { CallChat } from "../ProductDetail";
+import Image from "next/image";
+import { getYouTubeThumbnail } from "src/_components/molecules/Thumbnail";
 
 export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
   product,
@@ -38,6 +41,9 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
     urgency: "medium",
   });
 
+  console.log(onSubmit);
+  
+
   // Reset form when modal opens with new product
   useEffect(() => {
     if (isOpen && product) {
@@ -47,7 +53,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
         message: `Hi, I'm interested in learning more about ${product.title}. Please provide more details about pricing, features, and implementation.`,
       }));
     }
-  }, [isOpen, product?.id]);
+  }, [isOpen, product]);
 
   // Handle escape key and body scroll
   useEffect(() => {
@@ -92,6 +98,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
         onClose();
       }, 2000);
     } catch (error) {
+      console.log(error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -143,8 +150,11 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
               {/* Product Image */}
               <div className="relative">
                 <div className="aspect-video overflow-hidden rounded-2xl bg-white shadow-lg">
-                  <img
-                    src={product.image}
+                  <Image
+                    width={100}
+                    height={100}
+                    src={getYouTubeThumbnail(product.detailedVideoId)} 
+                    // src={product.image}
                     alt={product.title}
                     className="h-full w-full object-cover"
                   />
@@ -223,7 +233,9 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
               </div>
             </div>
           </div>
-
+          <div className="py-4">
+            <CallChat />
+          </div>
           {/* Form Section */}
           <div className="px-4 py-8 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl">

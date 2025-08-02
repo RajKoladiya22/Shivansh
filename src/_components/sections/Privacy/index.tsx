@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Menu,
   X,
@@ -21,54 +21,61 @@ export const PrivacyPolicy = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const sections = [
-    {
-      id: "introduction",
-      title: "Introduction",
-      icon: <Shield className="h-4 w-4" />,
-    },
-    {
-      id: "information",
-      title: "Information We Collect",
-      icon: <Database className="h-4 w-4" />,
-    },
-    {
-      id: "usage",
-      title: "How We Use Information",
-      icon: <Eye className="h-4 w-4" />,
-    },
-    {
-      id: "sharing",
-      title: "Information Sharing",
-      icon: <Globe className="h-4 w-4" />,
-    },
-    {
-      id: "cookies",
-      title: "Cookies & Tracking",
-      icon: <Cookie className="h-4 w-4" />,
-    },
-    {
-      id: "security",
-      title: "Data Security",
-      icon: <Lock className="h-4 w-4" />,
-    },
-    {
-      id: "retention",
-      title: "Data Retention",
-      icon: <Database className="h-4 w-4" />,
-    },
-    {
-      id: "rights",
-      title: "Your Rights",
-      icon: <UserCheck className="h-4 w-4" />,
-    },
-    {
-      id: "children",
-      title: "Children's Privacy",
-      icon: <Shield className="h-4 w-4" />,
-    },
-    { id: "contact", title: "Contact Us", icon: <Mail className="h-4 w-4" /> },
-  ];
+  const sections = useMemo(
+    () => [
+      {
+        id: "introduction",
+        title: "Introduction",
+        icon: <Shield className="h-4 w-4" />,
+      },
+      {
+        id: "information",
+        title: "Information We Collect",
+        icon: <Database className="h-4 w-4" />,
+      },
+      {
+        id: "usage",
+        title: "How We Use Information",
+        icon: <Eye className="h-4 w-4" />,
+      },
+      {
+        id: "sharing",
+        title: "Information Sharing",
+        icon: <Globe className="h-4 w-4" />,
+      },
+      {
+        id: "cookies",
+        title: "Cookies & Tracking",
+        icon: <Cookie className="h-4 w-4" />,
+      },
+      {
+        id: "security",
+        title: "Data Security",
+        icon: <Lock className="h-4 w-4" />,
+      },
+      {
+        id: "retention",
+        title: "Data Retention",
+        icon: <Database className="h-4 w-4" />,
+      },
+      {
+        id: "rights",
+        title: "Your Rights",
+        icon: <UserCheck className="h-4 w-4" />,
+      },
+      {
+        id: "children",
+        title: "Children's Privacy",
+        icon: <Shield className="h-4 w-4" />,
+      },
+      {
+        id: "contact",
+        title: "Contact Us",
+        icon: <Mail className="h-4 w-4" />,
+      },
+    ],
+    [],
+  );
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -226,8 +233,8 @@ export const PrivacyPolicy = () => {
                     Privacy Policy Overview
                   </h2>
                   <p className="mb-4 leading-relaxed text-gray-700">
-                    At Shivansh Infosys Pvt. Ltd., we are committed
-                    to protecting your privacy and ensuring the security of your
+                    At Shivansh Infosys Pvt. Ltd., we are committed to
+                    protecting your privacy and ensuring the security of your
                     personal information. This Privacy Policy explains how we
                     collect, use, disclose, and safeguard your information when
                     you visit our website or use our services.

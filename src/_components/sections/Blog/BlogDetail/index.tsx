@@ -10,14 +10,11 @@ import {
   User,
   ArrowLeft,
   Clock,
-  MessageCircle,
-  Bookmark,
   ChevronRight,
   ExternalLink,
 } from "lucide-react";
 import { blogPosts } from "public/data/Blog";
 import { ContactWidget, RecentPostsWidget } from "../Sidebar";
-import Head from "next/head";
 import { SocialShareModal } from "../SocialShare";
 
 interface Author {

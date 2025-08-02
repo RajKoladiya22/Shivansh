@@ -866,10 +866,8 @@
 
 
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
-  Linkedin,
-  Twitter,
   Mail,
   Users,
   Award,
@@ -888,6 +886,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { TeamMember } from "src/_components/sections/types/team.type";
 import { teamMembers } from "public/data/Team";
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export const TeamSection = () => {
   // const [activeSlide, setActiveSlide] = useState(0);
@@ -916,23 +915,28 @@ export const TeamSection = () => {
     document.body.style.overflow = "unset";
   };
 
-  const nextTestimonial = () => {
+  const nextTestimonial = useCallback(() => {
     if (selectedMember) {
-      setActiveTestimonial(
-        (prev) => (prev + 1) % selectedMember.testimonials.length,
+      setActiveTestimonial((prev) =>
+        (prev + 1) % selectedMember.testimonials.length
       );
     }
-  };
+  }, [selectedMember]);
 
-  const prevTestimonial = () => {
+  const prevTestimonial = useCallback(() => {
     if (selectedMember) {
-      setActiveTestimonial(
-        (prev) =>
-          (prev - 1 + selectedMember.testimonials.length) %
-          selectedMember.testimonials.length,
+      setActiveTestimonial((prev) =>
+        (prev - 1 + selectedMember.testimonials.length) %
+          selectedMember.testimonials.length
       );
     }
-  };
+  }, [selectedMember]);
+
+  // Now you can safely reference them in an effect:
+  useEffect(() => {
+    const intervalId = setInterval(nextTestimonial, 2000);
+    return () => clearInterval(intervalId);
+  }, [nextTestimonial]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -1065,7 +1069,7 @@ export const TeamSection = () => {
                           className="rounded-lg bg-white/20 p-2 backdrop-blur-sm transition-colors hover:bg-white/30"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Linkedin className="h-5 w-5 text-white" />
+                          <FaLinkedin className="h-5 w-5 text-white" />
                         </a>
                       )}
                       {member.social.twitter && (
@@ -1074,7 +1078,7 @@ export const TeamSection = () => {
                           className="rounded-lg bg-white/20 p-2 backdrop-blur-sm transition-colors hover:bg-white/30"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Twitter className="h-5 w-5 text-white" />
+                          <FaTwitter className="h-5 w-5 text-white" />
                         </a>
                       )}
                       {member.social.email && (
@@ -1204,7 +1208,7 @@ export const TeamSection = () => {
                           className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Linkedin className="h-4 w-4 text-red-600" />
+                          <FaLinkedin className="h-4 w-4 text-red-600" />
                         </a>
                       )}
                       {member.social.twitter && (
@@ -1213,7 +1217,7 @@ export const TeamSection = () => {
                           className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Twitter className="h-4 w-4 text-red-600" />
+                          <FaTwitter className="h-4 w-4 text-red-600" />
                         </a>
                       )}
                       {member.social.email && (
@@ -1310,7 +1314,7 @@ export const TeamSection = () => {
                                 className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                <Linkedin className="h-4 w-4 text-red-600" />
+                                <FaLinkedin className="h-4 w-4 text-red-600" />
                               </a>
                             )}
                             {member.social.twitter && (
@@ -1319,7 +1323,7 @@ export const TeamSection = () => {
                                 className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                <Twitter className="h-4 w-4 text-red-600" />
+                                <FaTwitter className="h-4 w-4 text-red-600" />
                               </a>
                             )}
                             {member.social.email && (
@@ -1602,7 +1606,7 @@ export const TeamSection = () => {
                                   color: "#C50202",
                                 }}
                               >
-                                <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
+                                <FaLinkedin className="h-4 w-4 sm:h-5 sm:w-5" />
                               </a>
                             )}
                             {selectedMember.social.twitter && (
@@ -1614,7 +1618,7 @@ export const TeamSection = () => {
                                   color: "#C50202",
                                 }}
                               >
-                                <Twitter className="h-4 w-4 sm:h-5 sm:w-5" />
+                                <FaTwitter className="h-4 w-4 sm:h-5 sm:w-5" />
                               </a>
                             )}
                           </div>

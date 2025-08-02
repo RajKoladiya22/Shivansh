@@ -20,6 +20,7 @@ export const GalleryItemComponent = React.memo(
 
     return (
       <div
+      key={index}
         className={`group relative transform cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl ${className}`}
         onClick={onClick}
       >

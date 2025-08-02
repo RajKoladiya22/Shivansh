@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Phone, Users, Award, Brain, Zap, Shield, X } from "lucide-react";
+import { Phone, Users, Brain, Zap, Shield, X } from "lucide-react";
 import type { StatCardProps } from "src/_components/sections/types/startItem.type";
 import Image from "next/image";
 

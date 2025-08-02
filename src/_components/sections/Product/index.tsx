@@ -127,6 +127,8 @@ export const TheProductPage = () => {
 
   // Intersection Observer for infinite scroll
   useEffect(() => {
+    const element = observerRef.current;
+    if (!element) return;
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {

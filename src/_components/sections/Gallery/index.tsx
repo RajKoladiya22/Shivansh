@@ -229,7 +229,7 @@ export default function GalleryPage() {
               </button>
               {Object.entries(categoryLabels).map(([key, label]) => {
                 const k = key as CategoryKey;
-                const Icon = categoryIcons[k];
+                // const Icon = categoryIcons[k];
                 return (
                   <button
                     key={k}

@@ -3,14 +3,10 @@ import React, { useState, useEffect } from "react";
 import {
   Star,
   Play,
-  Heart,
-  Share2,
   Check,
   Shield,
   Truck,
   Phone,
-  Mail,
-  MessageCircle,
   ArrowLeft,
   ChevronUp,
   ChevronDown,
@@ -22,10 +18,14 @@ import Image from "next/image";
 import { ProductSocialShareButton } from "../SocialShare";
 import { VideoModal } from "../VideoModal";
 import { ProductInquiryPopup } from "../ProductInquiry";
-import type { InquiryFormData, Product, ProductDetailPageProps, TabId } from "../../types/product.type";
+import type {
+  InquiryFormData,
+  Product,
+  ProductDetailPageProps,
+  TabId,
+} from "../../types/product.type";
 import { FaWhatsapp } from "react-icons/fa";
-
-
+import { getYouTubeThumbnail } from "src/_components/molecules/Thumbnail";
 
 const tabs: { id: TabId; label: string }[] = [
   { id: "features", label: "Features" },
@@ -68,12 +68,27 @@ const faqs = [
   },
 ];
 
+export const CallChat = () => {
+  return (
+    <div className="grid grid-cols-2 gap-2">
+      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-400 py-2 text-sm text-white transition-colors hover:bg-green-700">
+        <Phone className="h-4 w-4" />
+        Call
+      </button>
+      <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-400 py-2 text-sm text-white transition-colors hover:bg-green-700">
+        <FaWhatsapp className="h-4 w-4" />
+        Chat
+      </button>
+    </div>
+  );
+};
+
 export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
   params,
 }) => {
   const router = useRouter();
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
+  // const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+  // const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
   const [currentVideo, setCurrentVideo] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabId>("features");
   const [product, setProduct] = useState<Product | undefined>(undefined);
@@ -128,10 +143,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
     router.push("/product");
   };
 
-  const handleEnquiry = () => {
-    // Handle enquiry submission
-    console.log("Enquiry for product:", product.id, "Quantity:");
-  };
+  // const handleEnquiry = () => {
+  //   // Handle enquiry submission
+  //   console.log("Enquiry for product:", product.id, "Quantity:");
+  // };
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -221,7 +236,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <Image
                 width={100}
                 height={100}
-                src={productImages[selectedImageIndex] ?? ""}
+                  src={getYouTubeThumbnail(selectedVideoType === "intro"
+                      ? product.introVideoId
+                      : product.detailedVideoId)} 
+                // src={productImages[selectedImageIndex] ?? ""}
                 alt={product.title}
                 className="h-full w-full object-cover"
               />
@@ -237,7 +255,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 }
                 className="group absolute inset-0 flex items-center justify-center bg-black/0 transition-colors hover:bg-black/20"
               >
-                <div className="cursor-pointer bg-opacity-30 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+                <div className="bg-opacity-30 absolute inset-0 flex cursor-pointer items-center justify-center opacity transition-opacity group-hover:opacity-100">
                   <div className="relative">
                     {/* Ripple */}
                     <span className="bg-opacity-3 absolute inset-0 inline-flex animate-ping rounded-full bg-red-600 opacity-75"></span>
@@ -266,7 +284,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   </span>
                 )}
                 {product.isLatest && (
-                  <span className="rounded-full bg-[#C50202] px-3 py-1 text-sm font-medium text-white">
+                  <span className="rounded-full bg-[#C50202] px-3 py-1 text-center text-sm font-medium text-white">
                     Latest
                   </span>
                 )}
@@ -401,17 +419,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 >
                   Send Enquiry
                 </button>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-400 py-2 text-sm text-white transition-colors hover:bg-green-700">
-                    <Phone className="h-4 w-4" />
-                    Call
-                  </button>
-                  <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-400 py-2 text-sm text-white transition-colors hover:bg-green-700">
-                    <FaWhatsapp className="h-4 w-4" />
-                    Chat
-                  </button>
-                </div>
+                <CallChat />
               </div>
             </div>
 
@@ -650,7 +658,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div className="mt-12">
+          <div className="my-12">
             <h2 className="mb-6 text-2xl font-bold text-gray-900">
               Related Products
             </h2>
@@ -664,7 +672,8 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     <Image
                       width={100}
                       height={100}
-                      src={relatedProduct.image}
+                      // src={relatedProduct.image}
+                      src={getYouTubeThumbnail(product.detailedVideoId)} 
                       alt={relatedProduct.title}
                       className="h-48 w-full object-cover"
                     />

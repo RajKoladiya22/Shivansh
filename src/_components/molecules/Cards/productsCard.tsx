@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ProductSocialShareButton } from "src/_components/sections/Product/SocialShare";
 import type { ProductCardProps } from "src/_components/sections/types/product.type";
 import { btn_color } from "src/config/constants";
+import { getYouTubeThumbnail } from "../Thumbnail";
+import Image from "next/image";
 
 export const ProductCard = ({
   product,
@@ -13,14 +15,17 @@ export const ProductCard = ({
     <div className="flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg">
       {/* Image and badges container */}
       <div className="group relative">
-        <img
-          src={product.image}
+        <Image
+          width={100}
+          height={100}
+          // src={product.image}
+          src={getYouTubeThumbnail( product.detailedVideoId)} 
           alt={product.title}
           className="h-48 w-full object-cover"
         />
         <button
           onClick={() => onVideoPlay(product.introVideoId)}
-          className="bg-opacity-50 absolute inset-0 flex cursor-pointer items-center justify-center bg-black/75 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="bg-opacity-50 opacity- absolute inset-0 flex cursor-pointer items-center justify-center transition-opacity duration-300 group-hover:opacity-100 hover:bg-black/50"
         >
           <div className="bg-opacity-30 group-hover:bg-opacity-50 absolute inset-0 flex items-center justify-center">
             <div className="relative">
@@ -51,40 +56,34 @@ export const ProductCard = ({
           <h3 className="mb-2 line-clamp-2 text-base font-semibold hover:text-red-700 md:text-lg">
             {product.title}
           </h3>
-        </Link>
-        <Link href={`/product/${product.id}`}>
-          <p className="mb-4 line-clamp-3 flex-1 text-sm text-gray-600">
+
+          <p className="mb-4 line-clamp-3 flex-1 text-sm text-gray-600 hover:text-red-700">
             {product.description}
           </p>
-        </Link>
 
-        {/* Pricing section */}
-        <div className="mb-4 flex flex-wrap items-center gap-2">
-          <span className="text-lg font-bold text-[#C50202]">
-            ₹{product.salePrice.toLocaleString()}
-          </span>
-
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500 line-through">
-              ₹{product.actualPrice.toLocaleString()}
+          {/* Pricing section */}
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <span className="text-lg font-bold text-[#C50202]">
+              ₹{product.salePrice.toLocaleString()}
             </span>
 
-            <span className="rounded bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-600">
-              {Math.round(
-                ((product.actualPrice - product.salePrice) /
-                  product.actualPrice) *
-                  100,
-              )}
-              % OFF
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500 line-through">
+                ₹{product.actualPrice.toLocaleString()}
+              </span>
+
+              <span className="rounded bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-600">
+                {Math.round(
+                  ((product.actualPrice - product.salePrice) /
+                    product.actualPrice) *
+                    100,
+                )}
+                % OFF
+              </span>
+            </div>
           </div>
-        </div>
-
+        </Link>
         {/* Enquiry button - always at bottom */}
-        {/* <button className="mt-auto w-full transform cursor-pointer rounded-lg bg-[#C50202] px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A00303] hover:shadow-[0_6px_12px_rgba(197,2,2,0.25)] focus:ring-2 focus:ring-[#C50202] focus:outline-none md:py-2 md:text-base">
-          Enquiry Now
-        </button> */}
-
         <div className="mt-auto flex items-center gap-2">
           <button
             onClick={() => onInquiryClick(product)}

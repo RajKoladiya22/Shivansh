@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { Award, Users, Lightbulb, Globe } from "lucide-react";
 import { SectionHeader } from "src/_components/ui";
 import Link from "next/link";
 import { AboutUs } from "public/data/CompanyOverview";

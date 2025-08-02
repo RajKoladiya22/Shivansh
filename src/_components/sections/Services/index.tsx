@@ -13,11 +13,6 @@ import {
   Users,
   Clock,
   Award,
-  ChevronDown,
-  Phone,
-  Mail,
-  MapPin,
-  Globe,
 } from "lucide-react";
 import { HeroService } from "./ServiceHero";
 import { SectionHeader } from "src/_components/ui";

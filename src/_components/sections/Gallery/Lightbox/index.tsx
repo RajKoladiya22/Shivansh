@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { categoryColors, categoryIcons, categoryLabels, type GalleryItem } from "..";
-import { ChevronLeft, ChevronRight, Download, Share, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 
 // Lightbox Component
@@ -65,43 +65,43 @@ export function Lightbox({
     setImageLoaded(false);
   }, [currentItem]);
 
-  const handleShare = useCallback(async () => {
-    if (!currentItem) return;
+  // const handleShare = useCallback(async () => {
+  //   if (!currentItem) return;
 
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: currentItem.title,
-          text: currentItem.description,
-          url: window.location.href,
-        });
-      } catch (err) {
-        console.log("Share cancelled");
-      }
-    } else {
-      // Fallback: copy to clipboard
-      try {
-        await navigator.clipboard.writeText(
-          `${currentItem.title} - ${window.location.href}`,
-        );
-        alert("Link copied to clipboard!");
-      } catch (err) {
-        console.error("Failed to copy link");
-      }
-    }
-  }, [currentItem]);
+  //   if (navigator.share) {
+  //     try {
+  //       await navigator.share({
+  //         title: currentItem.title,
+  //         text: currentItem.description,
+  //         url: window.location.href,
+  //       });
+  //     } catch (err) {
+  //       console.log("Share cancelled");
+  //     }
+  //   } else {
+  //     // Fallback: copy to clipboard
+  //     try {
+  //       await navigator.clipboard.writeText(
+  //         `${currentItem.title} - ${window.location.href}`,
+  //       );
+  //       alert("Link copied to clipboard!");
+  //     } catch (err) {
+  //       console.error("Failed to copy link");
+  //     }
+  //   }
+  // }, [currentItem]);
 
-  const handleDownload = useCallback(() => {
-    if (!currentItem) return;
+  // const handleDownload = useCallback(() => {
+  //   if (!currentItem) return;
 
-    const link = document.createElement("a");
-    link.href = currentItem.image;
-    link.download = `${currentItem.title.replace(/\s+/g, "_")}.jpg`;
-    link.target = "_blank";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }, [currentItem]);
+  //   const link = document.createElement("a");
+  //   link.href = currentItem.image;
+  //   link.download = `${currentItem.title.replace(/\s+/g, "_")}.jpg`;
+  //   link.target = "_blank";
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  // }, [currentItem]);
 
   if (!isOpen || !currentItem) return null;
 
