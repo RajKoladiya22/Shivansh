@@ -1,18 +1,8 @@
 import React from 'react';
 import { ContactWidget } from '../../Blog/Sidebar';
+import type { SidebarFiltersProps } from '../../types/product.type';
 
-interface SidebarFiltersProps {
-  showFilters: boolean;
-  selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
-  selectedIndustry: string;
-  setSelectedIndustry: (industry: string) => void;
-  priceRange: { min: string; max: string };
-  setPriceRange: (range: { min: string; max: string }) => void;
-  clearFilters: () => void;
-  categories: string[];
-  industries: string[];
-}
+
 
 export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
   showFilters,

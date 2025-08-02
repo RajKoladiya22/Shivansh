@@ -1,11 +1,7 @@
 import { X } from "lucide-react";
+import type { VideoModalProps } from "../../types/product.type";
 
-export interface VideoModalProps {
-  /** YouTube video ID to embed. If undefined or empty, the modal won't render */
-  videoId?: string | null;
-  /** Callback to close the modal */
-  onClose: () => void;
-}
+
 
 export const VideoModal: React.FC<VideoModalProps> = ({ videoId, onClose }) => {
   if (!videoId) return null;

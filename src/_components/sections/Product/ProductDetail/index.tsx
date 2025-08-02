@@ -17,20 +17,14 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ProductsList } from "public/data/Product";
-import type { Product } from "..";
 import Link from "next/link";
 import Image from "next/image";
 import { ProductSocialShareButton } from "../SocialShare";
 import { VideoModal } from "../VideoModal";
-import { ProductInquiryPopup, type InquiryFormData } from "../ProductInquiry";
+import { ProductInquiryPopup } from "../ProductInquiry";
+import type { InquiryFormData, Product, ProductDetailPageProps, TabId } from "../../types/product.type";
 
-type TabId = "features" | "benefits" | "specifications" | "reviews" | "faq";
 
-interface ProductDetailPageProps {
-  params: {
-    id: string;
-  };
-}
 
 const tabs: { id: TabId; label: string }[] = [
   { id: "features", label: "Features" },
@@ -83,6 +77,9 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
   const [activeTab, setActiveTab] = useState<TabId>("features");
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [selectedVideoType, setSelectedVideoType] = useState<
+    "intro" | "detail"
+  >("intro");
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
@@ -192,7 +189,32 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
       <div className="py- mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Product Images */}
+
           <div className="space-y-4">
+            {/* Video Selection Tabs */}
+            <div className="flex rounded-lg bg-gray-100 p-1">
+              <button
+                onClick={() => setSelectedVideoType("intro")}
+                className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                  selectedVideoType === "intro"
+                    ? "bg-white text-[#C50202] shadow-sm"
+                    : "text-gray-600 hover:text-gray-900"
+                }`}
+              >
+                Intro Video
+              </button>
+              <button
+                onClick={() => setSelectedVideoType("detail")}
+                className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                  selectedVideoType === "detail"
+                    ? "bg-white text-[#C50202] shadow-sm"
+                    : "text-gray-600 hover:text-gray-900"
+                }`}
+              >
+                Detail Video
+              </button>
+            </div>
+
             {/* Main Image */}
             <div className="relative overflow-hidden rounded-lg bg-white shadow-sm">
               <Image
@@ -205,13 +227,35 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
               {/* Video Play Button */}
               <button
-                onClick={() => handleVideoPlay(product.videoId)}
+                onClick={() =>
+                  handleVideoPlay(
+                    selectedVideoType === "intro"
+                      ? product.introVideoId
+                      : product.detailedVideoId,
+                  )
+                }
                 className="group absolute inset-0 flex items-center justify-center bg-black/0 transition-colors hover:bg-black/20"
               >
-                <div className="rounded-full bg-white/90 p-4 opacity-0 transition-opacity group-hover:opacity-100">
-                  <Play className="h-8 w-8 text-[#C50202]" />
+                <div className="bg-opacity-30 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+                  <div className="relative">
+                    {/* Ripple */}
+                    <span className="bg-opacity-3 absolute inset-0 inline-flex animate-ping rounded-full bg-red-600 opacity-75"></span>
+                    {/* Button */}
+                    <div className="relative flex h-12 w-12 items-center justify-center rounded-full bg-[#C50202] text-white transition-all duration-300 group-hover:scale-110">
+                      <Play className="ml-1 h-5 w-5" />
+                    </div>
+                  </div>
                 </div>
               </button>
+
+              {/* Video Type Indicator */}
+              <div className="absolute bottom-4 left-4">
+                <span className="rounded-full bg-black/70 px-3 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
+                  {selectedVideoType === "intro"
+                    ? "📹 Intro Video"
+                    : "🎬 Detail Video"}
+                </span>
+              </div>
 
               {/* Badges */}
               <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -351,7 +395,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               {/* Action Buttons */}
               <div className="space-y-3">
                 <button
-                  onClick={()=>handleInquiryClick(product)}
+                  onClick={() => handleInquiryClick(product)}
                   className="flex w-full transform cursor-pointer items-center justify-center space-x-2 rounded-lg bg-red-700 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-red-800 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-base"
                 >
                   Send Enquiry

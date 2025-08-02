@@ -15,16 +15,12 @@ import {
   Tag,
   IndianRupee,
 } from "lucide-react";
-import type { Product } from "src/_components/sections/Product";
 import { BASE_URL } from "src/config/constants";
-
-interface ProductSocialShareModalProps {
-  product: Product;
-  isOpen: boolean;
-  onClose: () => void;
-  currentUrl?: string;
-  ProID?: string | number;
-}
+import type {
+  Product,
+  ProductSocialShareButtonProps,
+  ProductSocialShareModalProps,
+} from "../../types/product.type";
 
 export const ProductSocialShareModal = ({
   product,
@@ -37,11 +33,10 @@ export const ProductSocialShareModal = ({
 
   if (!isOpen) return null;
 
-  let shareUrl : string;
-  if(ProID){
-      shareUrl = `${BASE_URL}/product/${ProID}`;
-  }else
-  {
+  let shareUrl: string;
+  if (ProID) {
+    shareUrl = `${BASE_URL}/product/${ProID}`;
+  } else {
     shareUrl = currentUrl;
   }
   const discountPercentage = Math.round(
@@ -301,15 +296,6 @@ export const ProductSocialShareModal = ({
     </div>
   );
 };
-
-// Product Share Button Component
-interface ProductSocialShareButtonProps {
-  product: Product;
-  className?: string;
-  showText?: boolean;
-  variant?: "default" | "minimal" | "prominent";
-  ProID?: string | number;
-}
 
 export const ProductSocialShareButton = ({
   product,

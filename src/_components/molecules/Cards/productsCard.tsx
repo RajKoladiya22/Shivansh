@@ -1,42 +1,8 @@
 import { Play } from "lucide-react";
 import Link from "next/link";
 import { ProductSocialShareButton } from "src/_components/sections/Product/SocialShare";
+import type { ProductCardProps } from "src/_components/sections/types/product.type";
 import { btn_color } from "src/config/constants";
-
-// Define a Review type for clarity
-export interface Review {
-  averageRating: number;
-  reviewCount: number;
-}
-
-// Main product interface
-export interface Product {
-  id: number;
-  title: string;
-  description: string;
-  actualPrice: number;
-  salePrice: number;
-  image: string; // URL to the product image
-  videoId: string; // e.g. a YouTube video ID
-  category: string;
-  industry: string;
-  isTopProduct: boolean;
-  isLatest: boolean;
-  createdAt: string; // ISO date string, e.g. "2024-01-15"
-  features: string[]; // list of key features
-  benefits: string[]; // list of benefits
-  review: Review; // aggregated review data
-  tags: string[]; // free‑form tags
-  relatedProductIds: number[]; // IDs of related products
-}
-
-export interface ProductCardProps {
-  /** The product to display */
-  product: Product;
-  /** Callback when the play button is clicked */
-  onVideoPlay: (videoId: string) => void;
-  onInquiryClick: (product: Product) => void;
-}
 
 export const ProductCard = ({
   product,
@@ -53,8 +19,8 @@ export const ProductCard = ({
           className="h-48 w-full object-cover"
         />
         <button
-          onClick={() => onVideoPlay(product.videoId)}
-          className="bg-opacity-50 absolute inset-0 flex cursor-pointer items-center justify-center bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          onClick={() => onVideoPlay(product.introVideoId)}
+          className="bg-opacity-50 absolute inset-0 flex cursor-pointer items-center justify-center bg-black/75 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         >
           <div className="bg-opacity-30 group-hover:bg-opacity-50 absolute inset-0 flex items-center justify-center">
             <div className="relative">
@@ -120,11 +86,14 @@ export const ProductCard = ({
         </button> */}
 
         <div className="mt-auto flex items-center gap-2">
-          <button onClick={() => onInquiryClick(product)} className={`${btn_color} mt-auto w-full transform rounded-lg  px-4 py-2.5 text-sm font-medium md:py-2 md:text-base`}>
+          <button
+            onClick={() => onInquiryClick(product)}
+            className={`${btn_color} mt-auto w-full transform rounded-lg px-4 py-2.5 text-sm font-medium md:py-2 md:text-base`}
+          >
             Inquiry Now
           </button>
           {/* <div className="bg-[#C50202] p-1 rounded-lg"> */}
-            <ProductSocialShareButton
+          <ProductSocialShareButton
             product={product}
             variant="minimal"
             showText={false}

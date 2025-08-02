@@ -7,42 +7,14 @@ import { ProductCard } from "src/_components/molecules/Cards/productsCard";
 import { categories, industries, ProductsList } from "public/data/Product";
 import { VideoModal } from "./VideoModal";
 import { LoadingSpinner } from "./loader";
-import { ProductInquiryPopup, type InquiryFormData } from "./ProductInquiry";
-
-// Define a Review type for clarity
-export interface Review {
-  averageRating: number;
-  reviewCount: number;
-}
-
-// Main product interface
-export interface Product {
-  id: number;
-  title: string;
-  description: string;
-  actualPrice: number;
-  salePrice: number;
-  image: string; // URL to the product image
-  videoId: string; // e.g. a YouTube video ID
-  category: string;
-  industry: string;
-  isTopProduct: boolean;
-  isLatest: boolean;
-  createdAt: string; // ISO date string, e.g. "2024-01-15"
-  features: string[]; // list of key features
-  benefits: string[]; // list of benefits
-  review: Review; // aggregated review data
-  tags: string[]; // free‑form tags
-  relatedProductIds: number[]; // IDs of related products
-}
-
-type SortBy = "all" | "top" | "latest" | "priceAsc" | "priceDesc" | "newest";
-type ViewMode = "grid" | "list";
-
-interface PriceRange {
-  min: string;
-  max: string;
-}
+import type {
+  InquiryFormData,
+  PriceRange,
+  Product,
+  SortBy,
+  ViewMode,
+} from "../types/product.type";
+import { ProductInquiryPopup } from "./ProductInquiry";
 
 export const TheProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);

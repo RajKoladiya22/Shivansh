@@ -10,7 +10,8 @@ export const ProductsList: Product[] = [
     salePrice: 20000,
     image:
       "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Electronics",
     industry: "Photography",
     isTopProduct: true,
@@ -28,7 +29,30 @@ export const ProductsList: Product[] = [
       "Durability in harsh conditions",
       "Versatility across shooting scenarios",
     ],
-    review: { averageRating: 4.8, reviewCount: 132 },
+    specs: [
+      { key: "Sensor", value: "Full-frame CMOS" },
+      { key: "Resolution", value: "24.2 MP" },
+      { key: "Video", value: "4K at 30fps" },
+      { key: "Connectivity", value: "Wi-Fi, Bluetooth" },
+    ],
+    review: {
+      averageRating: 4.8,
+      reviewCount: 132,
+      latestReviews: [
+        {
+          author: "Jane Doe",
+          rating: 5,
+          comment: "Amazing clarity and build quality!",
+          date: "2025-07-01",
+        },
+        {
+          author: "John Smith",
+          rating: 4.5,
+          comment: "Very reliable, great for low light.",
+          date: "2025-06-28",
+        },
+      ],
+    },
     tags: ["camera", "4K", "professional", "DSLR"],
     relatedProductIds: [2, 9, 12],
   },
@@ -41,7 +65,8 @@ export const ProductsList: Product[] = [
     salePrice: 45000,
     image:
       "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Machinery",
     industry: "Manufacturing",
     isTopProduct: true,
@@ -70,7 +95,8 @@ export const ProductsList: Product[] = [
     salePrice: 1000,
     image:
       "https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Food",
     industry: "Agriculture",
     isTopProduct: false,
@@ -99,7 +125,8 @@ export const ProductsList: Product[] = [
     salePrice: 85000,
     image:
       "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Medical",
     industry: "Healthcare",
     isTopProduct: true,
@@ -128,7 +155,8 @@ export const ProductsList: Product[] = [
     salePrice: 2500,
     image:
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Textiles",
     industry: "Fashion",
     isTopProduct: false,
@@ -153,7 +181,8 @@ export const ProductsList: Product[] = [
     salePrice: 12000,
     image:
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Tools",
     industry: "Construction",
     isTopProduct: false,
@@ -178,7 +207,8 @@ export const ProductsList: Product[] = [
     salePrice: 19000,
     image:
       "https://images.unsplash.com/photo-1581092337752-9c7d9450c3b8?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Laboratory",
     industry: "Research",
     isTopProduct: true,
@@ -208,7 +238,8 @@ export const ProductsList: Product[] = [
     salePrice: 650,
     image:
       "https://images.unsplash.com/photo-1593032465179-24083904d61f?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Packaging",
     industry: "Sustainability",
     isTopProduct: false,
@@ -237,7 +268,8 @@ export const ProductsList: Product[] = [
     salePrice: 9000,
     image:
       "https://images.unsplash.com/photo-1516707570260-39e7b41c8c86?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Audio",
     industry: "Electronics",
     isTopProduct: true,
@@ -263,7 +295,8 @@ export const ProductsList: Product[] = [
     salePrice: 5500,
     image:
       "https://images.unsplash.com/photo-1563306406-23c1610a6f42?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Automotive",
     industry: "Automotive Services",
     isTopProduct: false,
@@ -293,7 +326,8 @@ export const ProductsList: Product[] = [
     salePrice: 6500,
     image:
       "https://images.unsplash.com/photo-1587899891567-6d17e8a50719?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Furniture",
     industry: "Office",
     isTopProduct: true,
@@ -318,7 +352,8 @@ export const ProductsList: Product[] = [
     salePrice: 13000,
     image:
       "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Software",
     industry: "Finance",
     isTopProduct: true,
@@ -348,7 +383,8 @@ export const ProductsList: Product[] = [
     salePrice: 7500,
     image:
       "https://images.unsplash.com/photo-1598514982433-74c3929d0e8e?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Appliances",
     industry: "Home",
     isTopProduct: false,
@@ -373,7 +409,8 @@ export const ProductsList: Product[] = [
     salePrice: 5000,
     image:
       "https://images.unsplash.com/photo-1581094452111-3b2ed4f7dfdc?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Garden",
     industry: "Outdoor",
     isTopProduct: false,
@@ -398,7 +435,8 @@ export const ProductsList: Product[] = [
     salePrice: 6000,
     image:
       "https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?w=400&h=300&fit=crop",
-    videoId: "dQw4w9WgXcQ",
+    introVideoId: "dQw4w9WgXcQ",
+    detailedVideoId: "gUGY1IC9gQk",
     category: "Sports",
     industry: "Athletics",
     isTopProduct: true,
@@ -419,7 +457,6 @@ export const ProductsList: Product[] = [
     relatedProductIds: [9, 11],
   },
 ];
-
 
 export const categories = [
   "All",
