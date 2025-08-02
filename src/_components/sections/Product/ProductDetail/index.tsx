@@ -23,6 +23,7 @@ import { ProductSocialShareButton } from "../SocialShare";
 import { VideoModal } from "../VideoModal";
 import { ProductInquiryPopup } from "../ProductInquiry";
 import type { InquiryFormData, Product, ProductDetailPageProps, TabId } from "../../types/product.type";
+import { FaWhatsapp } from "react-icons/fa";
 
 
 
@@ -236,7 +237,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 }
                 className="group absolute inset-0 flex items-center justify-center bg-black/0 transition-colors hover:bg-black/20"
               >
-                <div className="bg-opacity-30 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+                <div className="cursor-pointer bg-opacity-30 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
                   <div className="relative">
                     {/* Ripple */}
                     <span className="bg-opacity-3 absolute inset-0 inline-flex animate-ping rounded-full bg-red-600 opacity-75"></span>
@@ -406,12 +407,8 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     <Phone className="h-4 w-4" />
                     Call
                   </button>
-                  {/* <button className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 py-2 text-sm text-white transition-colors hover:bg-blue-700">
-                    <Mail className="h-4 w-4" />
-                    Email
-                  </button> */}
-                  <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-400 py-2 text-sm text-white transition-colors hover:bg-green-600">
-                    <MessageCircle className="h-4 w-4" />
+                  <button className="flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-red-400 py-2 text-sm text-white transition-colors hover:bg-green-700">
+                    <FaWhatsapp className="h-4 w-4" />
                     Chat
                   </button>
                 </div>
