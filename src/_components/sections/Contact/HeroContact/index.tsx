@@ -4,6 +4,7 @@ import { CheckCircle, Send } from "lucide-react";
 import type { InputChangeEvent } from "src/_components/sections/types/contact.type";
 import { contactInfo } from "public/data/Contact";
 import { OurArchivements } from "public/data/Reason";
+import { hero_heading_font, hero_headline_font } from "src/config/constants";
 
 export const ContactHeroSection = () => {
   const [formData, setFormData] = useState({
@@ -59,7 +60,7 @@ export const ContactHeroSection = () => {
           {/* Badge */}
           <div className="flex justify-center">
             <div className="relative inline-block">
-              <p className="text-center text-base font-medium tracking-wide text-[var(--primery-color)] sm:text-lg lg:text-xl">
+              <p className={`text-center ${hero_heading_font}`}>
                 Contact Our
               </p>
               <div
@@ -82,7 +83,7 @@ export const ContactHeroSection = () => {
             </div>
           </div> */}
 
-            <h1 className="text-4xl leading-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+            <h1 className={`${hero_headline_font}`}>
               Expert
               <span className="relative inline-block">
                 <span className="relative z-10 text-(--primery-color)">

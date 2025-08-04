@@ -1,14 +1,15 @@
 "use client";
 import React from "react";
+import { hero_content_font, hero_heading_font, hero_headline_font } from "src/config/constants";
 
 export const HeroProduct = () => {
   return (
-    <section className="bg-white pt-20 pb-12 md:pt-24">
+    <section className="bg-white pt-20 pb-5 md:pt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Badge */}
         <div className="my-5 flex justify-center">
           <div className="relative inline-block">
-            <p className="text-center text-base font-medium tracking-wide text-[var(--primery-color)] sm:text-lg lg:text-xl">
+            <p className={` text-center font-medium ${hero_heading_font} `}>
               Your Future, Made Better
             </p>
             <div
@@ -26,7 +27,7 @@ export const HeroProduct = () => {
         {/* Main Heading */}
         <div className="text-center">
 
-          <h1 className="text-4xl leading-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+          <h1 className={` ${hero_headline_font}`}>
             Transform Your Workday with{" "}
             <span className="relative inline-block">
               <span className="relative z-10 text-(--primery-color)">
@@ -35,7 +36,7 @@ export const HeroProduct = () => {
               <span className="absolute bottom-0 left-0 z-0 h-3 w-full -rotate-1 transform bg-(--pink) opacity-80"></span>
             </span>
           </h1>
-          <p className="mx-auto max-w-3xl py-3 text-lg leading-relaxed text-gray-700 md:text-xl">
+          <p className={`mx-auto max-w-3xl py-3 ${hero_content_font}`}>
             Get more done in less time—our feature-packed tool helps teams stay organized, automate tasks, and hit targets faster.
           </p>
         </div>

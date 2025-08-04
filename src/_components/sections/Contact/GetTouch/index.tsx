@@ -1,7 +1,7 @@
 "use client";
 import { reasons } from "public/data/Reason";
 import React from "react";
-
+import { SectionHeader } from "src/_components/ui";
 
 export function Gettouch() {
   return (
@@ -10,17 +10,14 @@ export function Gettouch() {
       <div className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h2
-              className="mb-6 text-3xl font-bold md:text-4xl"
-              style={{ color: "#C50202" }}
-            >
-              Why Get In Touch With Us?
-            </h2>
-            <p className="mx-auto max-w-3xl text-xl text-gray-600">
-              {`Whether you're looking to start a new project, need expert advice,
+            <SectionHeader
+              heading="why"
+              headingText="Get In Touch With Us?"
+              headingDescription="Whether you're looking to start a new project, need expert advice,
               or want to explore partnership opportunities, we're here to help
-              you succeed.`}
-            </p>
+              you succeed."
+              // headingTextClassName="pb-10"
+            />
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">

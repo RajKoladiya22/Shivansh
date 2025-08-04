@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { btn_color } from "src/config/constants";
 import { ABOUT } from "public/data/Navigation";
+import { SectionHeader } from "src/_components/ui";
 
 export const TheFounder = () => {
   const [years, setYears] = useState(0);
@@ -17,7 +18,7 @@ export const TheFounder = () => {
       const end = 13;
       const duration = 2000;
       // const incrementTime = 50;
-      
+
       const timer = setInterval(() => {
         start += 1;
         setYears(start);
@@ -29,7 +30,7 @@ export const TheFounder = () => {
   return (
     // py-16 sm:py-20 md:pb-24
     <div className="py-12 sm:py-16 md:py-20 lg:py-15">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="mb-12 text-center sm:mb-16">
           <motion.div
@@ -39,24 +40,21 @@ export const TheFounder = () => {
             transition={{ duration: 0.6 }}
             className="mb-4"
           >
-            <h3 className="text-sm font-bold text-red-600 uppercase tracking-wider mb-3">
-              ABOUT THE FOUNDER
-            </h3>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              {`Hello, We're Shivansh Infosys`}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              {`We are a digital agency with a team of passionate individuals. The journey started with a single man's dream to build a company providing remarkable IT services.`}
-            </p>
+            <SectionHeader
+              heading="ABOUT THE FOUNDER"
+              headingText="Hello, We're Shivansh Infosys"
+              headingDescription="We are a digital agency with a team of passionate individuals. The journey started with a single man's dream to build a company providing remarkable IT services."
+              // headingTextClassName="pb-10"
+            />
           </motion.div>
         </div>
 
         {/* Content Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
           {/* Image Section - Left Column */}
-          <div 
+          <div
             ref={ref}
-            className="relative lg:col-span-7 h-[400px] sm:h-[500px] md:h-[550px] lg:h-[600px]"
+            className="relative h-[400px] sm:h-[500px] md:h-[550px] lg:col-span-7 lg:h-[600px]"
           >
             {/* Founder Image */}
             <motion.div
@@ -64,7 +62,7 @@ export const TheFounder = () => {
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="absolute bottom-0 right-0 h-[85%] w-[75%] z-20 rounded-2xl overflow-hidden shadow-xl"
+              className="absolute right-0 bottom-0 z-20 h-[85%] w-[75%] overflow-hidden rounded-2xl shadow-xl"
             >
               {/* <div className="bg-gray-200 border-2 border-dashed w-full h-full" /> */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -76,14 +74,14 @@ export const TheFounder = () => {
                 className="h-full w-full object-cover"
               />
             </motion.div>
-            
+
             {/* Office Image */}
             <motion.div
               initial={{ x: 20, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="absolute top-0 left-0 h-[70%] w-[65%] rounded-2xl overflow-hidden shadow-lg"
+              className="absolute top-0 left-0 h-[70%] w-[65%] overflow-hidden rounded-2xl shadow-lg"
             >
               <Image
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
@@ -92,37 +90,37 @@ export const TheFounder = () => {
                 height={400}
                 className="h-full w-full object-cover"
               />
-              <div className="bg-gray-200 border-2 border-dashed w-full h-full" />
+              <div className="h-full w-full border-2 border-dashed bg-gray-200" />
             </motion.div>
-            
+
             {/* Experience Badge */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute top-2 sm:top-4 left-2 sm:left-4 z-30 bg-gradient-to-r from-red-600 to-red-700 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full shadow-lg flex items-center gap-3"
+              className="absolute top-2 left-2 z-30 flex items-center gap-3 rounded-full bg-gradient-to-r from-red-600 to-red-700 px-2 py-1 text-white shadow-lg sm:top-4 sm:left-4 sm:px-4 sm:py-2"
             >
-              <div className="text-3xl md:text-4xl font-bold">{years}+</div>
-              <div className="text-sm font-medium max-w-[100px]">
+              <div className="text-3xl font-bold md:text-4xl">{years}+</div>
+              <div className="max-w-[100px] text-sm font-medium">
                 Years of Excellence
               </div>
             </motion.div>
-            
+
             {/* Since 2007 Badge */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute bottom-4 right-4 z-30 bg-white px-5 py-2 rounded-full shadow-md"
+              className="absolute right-4 bottom-4 z-30 rounded-full bg-white px-5 py-2 shadow-md"
             >
-              <div className="text-red-600 font-bold tracking-wider text-sm sm:text-base">
+              <div className="text-sm font-bold tracking-wider text-red-600 sm:text-base">
                 SINCE 2007
               </div>
             </motion.div>
           </div>
-          
+
           {/* Text Content - Right Column */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -135,31 +133,43 @@ export const TheFounder = () => {
               <h3 className="text-2xl font-bold text-gray-900">
                 {`Our Founder's Vision`}
               </h3>
-              
-              <p className="text-gray-600 leading-relaxed">
-                Our reputation grew as we began taking on bigger projects, but we never lost sight of our main goal: building long-term relationships and ensuring our clients are happy.
+
+              <p className="leading-relaxed text-gray-600">
+                Our reputation grew as we began taking on bigger projects, but
+                we never lost sight of our main goal: building long-term
+                relationships and ensuring our clients are happy.
               </p>
-              
-              <p className="text-gray-600 leading-relaxed">
+
+              <p className="leading-relaxed text-gray-600">
                 {`With over a decade of experience, we've maintained our commitment to excellence in every project we undertake. Our founder's passion for technology continues to drive our innovation.`}
               </p>
-              
+
               <div className="pt-4">
                 <div className="flex flex-wrap gap-4">
                   {[
                     { value: "1500+", label: "End Users" },
                     { value: "450+", label: "Companies" },
-                    { value: "65K+", label: "YouTube Subs" }
+                    { value: "65K+", label: "YouTube Subs" },
                   ].map((stat, index) => (
-                    <div key={index} className="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-lg border border-gray-100">
-                      <div className="text-xl font-bold text-red-600">{stat.value}</div>
-                      <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+                    <div
+                      key={index}
+                      className="min-w-[120px] flex-1 rounded-lg border border-gray-100 bg-gray-50 p-4"
+                    >
+                      <div className="text-xl font-bold text-red-600">
+                        {stat.value}
+                      </div>
+                      <div className="mt-1 text-sm text-gray-600">
+                        {stat.label}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
-              
-              <Link href={ABOUT} className={`${btn_color} mt-6 px-8 py-3 font-medium rounded-lg shadow-lg`}>
+
+              <Link
+                href={ABOUT}
+                className={`${btn_color} mt-6 rounded-lg px-8 py-3 font-medium shadow-lg`}
+              >
                 Read Full Story
               </Link>
             </div>

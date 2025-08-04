@@ -119,7 +119,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       {/* Heading (Small text above main heading) */}
       {showHeading && heading && (
         <div
-          className={`text-sm font-semibold tracking-wide uppercase ${headingColor} ${headingClassName} `.trim()}
+          className={`text-sm sm:text-lg font-semibold tracking-wide uppercase ${headingColor} ${headingClassName} `.trim()}
         >
           {heading}
         </div>

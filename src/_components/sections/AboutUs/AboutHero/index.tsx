@@ -2,12 +2,15 @@
 import Image from "next/image";
 import { teamFacts } from "public/data/Team";
 import React, { useState, useEffect } from "react";
+import {
+  hero_content_font,
+  hero_heading_font,
+  hero_headline_font,
+} from "src/config/constants";
 
 export const AboutUsHero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
-
-
 
   useEffect(() => {
     setIsVisible(true);
@@ -51,7 +54,7 @@ export const AboutUsHero = () => {
         />
       </div>
 
-      <div className="relative z-10 px-4 pt-22 sm:pt-19 sm:px-6 lg:px-8">
+      <div className="relative z-10 px-4 pt-22 sm:px-6 sm:pt-1 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left Content */}
           <div
@@ -63,7 +66,7 @@ export const AboutUsHero = () => {
           >
             {/* Badge */}
             <div className="relative inline-block">
-              <p className="z-10 text-base font-[400] tracking-[3px] text-(--primery-color) sm:text-lg lg:text-xl">
+              <p className={`z-10 ${hero_heading_font}`}>
                 Meet Our Amazing Team
               </p>
               <div
@@ -79,7 +82,7 @@ export const AboutUsHero = () => {
 
             {/* Main Heading */}
             <div className="space-y-4">
-              <h1 className="text-4xl leading-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+              <h1 className={`${hero_headline_font}`}>
                 We Are{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-(--primery-color)">
@@ -90,7 +93,7 @@ export const AboutUsHero = () => {
               </h1>
 
               {/* Subheading */}
-              <p className="max-w-2xl text-lg leading-relaxed text-gray-700 md:text-xl">
+              <p className={`max-w-2xl ${hero_content_font}`}>
                 {`A passionate team of creative professionals dedicated to
                 transforming your digital vision into reality. We don't just
                 build websites and apps – we craft experiences that inspire and
@@ -101,7 +104,7 @@ export const AboutUsHero = () => {
             {/* Rotating Stats */}
             <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-8 lg:justify-start">
               <div className="text-center">
-                <div className="mb-1 text-2xl font-bold text-gray-800">
+                <div className="mb-1 text-xl font-bold text-gray-800 sm:text-2xl">
                   Since 2007
                 </div>
                 <div className="text-sm tracking-wide text-gray-500 uppercase">
@@ -110,7 +113,7 @@ export const AboutUsHero = () => {
               </div>
               <div className="hidden h-12 w-px bg-gray-300 sm:block" />
               <div className="text-center sm:text-left">
-                <div className="mb-1 text-3xl font-bold text-red-600">
+                <div className="mb-1 text-2xl font-bold text-red-600 sm:text-3xl">
                   {teamFacts[currentFactIndex]}
                 </div>
                 <div className="text-sm tracking-wide text-gray-500 uppercase">
@@ -171,10 +174,11 @@ export const AboutUsHero = () => {
                 isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-10 opacity-0"
-              }`}
+              } px-4 sm:px-6 lg:px-8`}
             >
-              <div className="grid max-w-2xl grid-cols-1 gap-8 sm:grid-cols-3">
-                <div className="group ">
+              <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {/* Feature Item */}
+                <div className="group">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-red-100 to-red-200 transition-transform group-hover:scale-110">
                     <svg
                       className="h-8 w-8 text-red-600"
@@ -190,15 +194,16 @@ export const AboutUsHero = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-gray-800">
+                  <h3 className="mb-2 text-base font-semibold text-gray-800 sm:text-lg">
                     Innovation
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 sm:text-base">
                     We bring fresh ideas and cutting-edge solutions to every
                     project.
                   </p>
                 </div>
 
+                {/* Collaboration */}
                 <div className="group">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-100 to-blue-200 transition-transform group-hover:scale-110">
                     <svg
@@ -215,15 +220,16 @@ export const AboutUsHero = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-gray-800">
+                  <h3 className="mb-2 text-base font-semibold text-gray-800 sm:text-lg">
                     Collaboration
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 sm:text-base">
                     We work closely with our clients to achieve exceptional
                     results.
                   </p>
                 </div>
 
+                {/* Excellence */}
                 <div className="group">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-green-100 to-green-200 transition-transform group-hover:scale-110">
                     <svg
@@ -240,12 +246,11 @@ export const AboutUsHero = () => {
                       />
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-gray-800">
+                  <h3 className="mb-2 text-base font-semibold text-gray-800 sm:text-lg">
                     Excellence
                   </h3>
-                  <p className="text-sm text-gray-600">
-                    {`We're committed to delivering the highest quality in
-                    everything we do.`}
+                  <p className="text-sm text-gray-600 sm:text-base">
+                    {`We're committed to delivering the highest quality in everything we do.`}
                   </p>
                 </div>
               </div>

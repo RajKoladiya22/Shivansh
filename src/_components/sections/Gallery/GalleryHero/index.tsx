@@ -1,3 +1,5 @@
+import { hero_content_font, hero_heading_font, hero_headline_font } from "src/config/constants";
+
 export default function GalleryHero() {
   return (
     <>
@@ -5,7 +7,7 @@ export default function GalleryHero() {
         {/* Badge */}
         <div className="my-5 flex justify-center">
           <div className="relative inline-block">
-            <p className="text-center text-base font-medium tracking-wide text-[var(--primery-color)] sm:text-lg lg:text-xl">
+            <p className={`text-center ${hero_heading_font} `}>
               Our Journey Together
             </p>
             <div
@@ -21,8 +23,8 @@ export default function GalleryHero() {
         </div>
 
         {/* Main Heading */}
-        <div className="mb-16 text-center">
-          <h1 className="text-4xl leading-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+        <div className="mb-1 sm:mb-16 text-center">
+          <h1 className={`${hero_headline_font}`}>
             Fun Activities &{" "}
             <span className="relative inline-block">
               <span className="relative z-10 text-(--primery-color)">
@@ -31,7 +33,7 @@ export default function GalleryHero() {
               <span className="absolute bottom-0 left-0 z-0 h-3 w-full -rotate-1 transform bg-(--pink) opacity-80"></span>
             </span>
           </h1>
-          <p className="mx-auto max-w-3xl py-3 text-lg leading-relaxed text-gray-700 md:text-xl">
+          <p className={`mx-auto max-w-3xl py-3 ${hero_content_font}`}>
             {`Celebrating our team spirit, milestones, and memorable moments
                    that make our journey special`}
           </p>

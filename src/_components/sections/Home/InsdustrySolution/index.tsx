@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { IndustryCard } from "src/_components/molecules";
 import { industries } from "public/data/Solutions";
+import { SectionHeader } from "src/_components/ui";
 
 export const WiseSolutionsIndustry = () => {
   return (
@@ -18,16 +19,13 @@ export const WiseSolutionsIndustry = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <div className="mb-4 inline-block rounded-full px-4 py-1 text-sm font-medium text-(--primery-color)">
-            INDUSTRY SOLUTIONS
-          </div>
-          <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-            Tailored Solutions for Every Industry
-          </h2>
-          <p className="mx-auto max-w-3xl text-lg text-gray-600">
-            Discover how our specialized Tally solutions can transform your
-            business operations, regardless of your industry.
-          </p>
+          <SectionHeader
+            heading="INDUSTRY SOLUTIONS"
+            headingText="Tailored Solutions for Every Industry"
+            headingDescription="Discover how our specialized Tally solutions can transform your
+            business operations, regardless of your industry."
+            // headingTextClassName="pb-10"
+          />
         </motion.div>
 
         {/* Industries Grid */}

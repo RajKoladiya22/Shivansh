@@ -4,6 +4,7 @@ import { CheckCircle, Send } from "lucide-react";
 import type { InputChangeEvent } from "src/_components/sections/types/contact.type";
 import { contactInfo } from "public/data/Contact";
 import { btn_color } from "src/config/constants";
+import { SectionHeader } from "src/_components/ui";
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -53,7 +54,10 @@ export const ContactForm = () => {
 
   return (
     // py-12
-    <div className="px-4  sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-15" id="contact">
+    <div
+      className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-15"
+      id="contact"
+    >
       {/* Success Message */}
       {/* {isSuccess && (
         <div className="fixed top-4 right-4 z-50 transform transition-all duration-300 ease-in-out">
@@ -84,13 +88,13 @@ export const ContactForm = () => {
       <div className="mx-auto max-w-6xl">
         {/* Header Section */}
         <div className="mb-12 text-center">
-          <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-            {`Let's Work Together`}
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600">
-            {`Have a project in mind? We'd love to hear about it. Send us a
-            message and we'll respond within 24 hours.`}
-          </p>
+          <SectionHeader
+            heading="get in touch"
+            headingText="Let's Work Together"
+            headingDescription="Have a project in mind? We'd love to hear about it. Send us a
+            message and we'll respond within 24 hours."
+            // headingTextClassName="pb-10"
+          />
         </div>
 
         <div className="flex max-w-6xl flex-col justify-center gap-6 lg:flex-row">
@@ -254,7 +258,7 @@ export const ContactForm = () => {
                     type="button"
                     disabled={isSubmitting}
                     onClick={handleSubmit}
-                    className={`${btn_color} flex w-full transform items-center justify-center space-x-2 rounded-lg  px-6 py-3 text-sm font-semibold disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:py-4 sm:text-base`}
+                    className={`${btn_color} flex w-full transform items-center justify-center space-x-2 rounded-lg px-6 py-3 text-sm font-semibold disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:py-4 sm:text-base`}
                   >
                     {isSubmitting ? (
                       <>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SERVICE } from "public/data/Navigation";
 import { useState, useEffect, useCallback, memo } from "react";
 import type { StatItemProps } from "src/_components/sections/types/home.type";
-import { btn_color } from "src/config/constants";
+import { btn_color, hero_content_font, hero_heading_font, hero_headline_font } from "src/config/constants";
 
 const FEATURES = [
   "Expert Tally Consultants",
@@ -24,7 +24,7 @@ const FeatureItem = memo(
   ({ feature, index }: { feature: string; index: number }) => (
     <div key={index} className="group flex items-center space-x-3">
       <div className="h-3 w-3 flex-shrink-0 rounded-full bg-(--primery-color) group-hover:animate-pulse"></div>
-      <span className="font-medium text-gray-700 transition-colors group-hover:text-(--primery-color)">
+      <span className={` ${hero_content_font} font-medium transition-colors group-hover:text-(--primery-color) `}>
         {feature}
       </span>
     </div>
@@ -78,7 +78,7 @@ export const HeroContent = () => {
           <div className="space-y-6 md:space-y-8">
             {/* Top Badge */}
             <div className="relative inline-block">
-              <p className="z-10 text-base font-[400] tracking-[3px] text-(--primery-color) sm:text-lg lg:text-xl">
+              <p className={`${hero_heading_font} z-10`}>
                 Quick Response – Quick Support
               </p>
               <div
@@ -93,7 +93,7 @@ export const HeroContent = () => {
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl leading-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+            <h1 className={`${hero_headline_font}`}>
               The Team Behind Your{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 text-(--primery-color)">
@@ -104,7 +104,7 @@ export const HeroContent = () => {
             </h1>
 
             {/* Subheading */}
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-700 md:text-xl">
+            <p className={`max-w-2xl ${hero_content_font}`}>
               Tally Certified 3-Star Partner · 3000+ Customers Served in all
               Over India
             </p>
