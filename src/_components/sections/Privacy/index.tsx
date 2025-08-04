@@ -707,10 +707,10 @@ export const PrivacyPolicy = () => {
                           Contact Details
                         </h4>
                         <p className="mb-1 text-sm text-gray-700">
-                          Phone: +91-72260 56106
+                          Phone: +91-8141703007
                         </p>
                         <p className="text-sm text-gray-700">
-                          Email: legal@Shivansh.com
+                          Email: info@shivanshinfosys.com
                         </p>
                       </div>
                     </div>

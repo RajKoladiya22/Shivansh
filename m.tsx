@@ -120,7 +120,7 @@
 //                         name="phone"
 //                         value={formData.phone}
 //                         onChange={handleChange}
-//                         placeholder="+91 90510 58963"
+//                         placeholder="+91 8141703007"
 //                         className={`w-full rounded-xl border px-4 py-3 text-gray-900 placeholder-gray-500 transition-all duration-200 focus:border-red-500 focus:ring-2 focus:ring-red-500 focus:outline-none ${
 //                           errors.phone
 //                             ? "border-red-300 bg-red-50"

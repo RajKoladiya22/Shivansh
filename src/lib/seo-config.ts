@@ -15,7 +15,7 @@
 //   },
 //   business: {
 //     type: "ProfessionalService",
-//     phone: "+91-XXXXXXXXXX",
+//     phone: "+91-8141703007",
 //     email: "info@shivanshinfosys.com",
 //     address: {
 //       street: "Your Street Address",
