@@ -296,9 +296,9 @@ export const ReusableSlider: React.FC<SliderProps> = ({
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`cursor-pointer h-2 rounded-full transition-all duration-300 ${
                     index === currentSlide
-                      ? "w-6 bg-blue-500"
+                      ? "w-6 bg-red-700"
                       : "w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}

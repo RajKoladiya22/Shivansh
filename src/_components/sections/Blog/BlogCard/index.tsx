@@ -144,7 +144,7 @@ export const BlogCard = ({ blog, onLike, onShare }: BlogCardProps) => {
 
   return (
     <article className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
-      <div className="aspect-video bg-gradient-to-br from-[#EEF6FF] to-[#FCF2F2] p-6 flex items-center justify-center">
+      <div onClick={handleReadMore} className="cursor-pointer aspect-video bg-gradient-to-br from-[#EEF6FF] to-[#FCF2F2] p-6 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 bg-[#C50202] rounded-full flex items-center justify-center mb-4 mx-auto">
             <Tag className="w-8 h-8 text-white" />
@@ -170,7 +170,7 @@ export const BlogCard = ({ blog, onLike, onShare }: BlogCardProps) => {
           {blog.title}
         </h3>
         
-        <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
+        <p onClick={handleReadMore} className="cursor-pointer text-gray-600 mb-4 line-clamp-3 leading-relaxed hover:text-[#C50202]">
           {blog.excerpt}
         </p>
         

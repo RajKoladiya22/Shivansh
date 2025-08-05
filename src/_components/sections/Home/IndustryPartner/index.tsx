@@ -7,7 +7,7 @@ import { ImageSlider } from "src/_components/molecules";
 
 export const IndustryPartnerSlider: React.FC = () => {
   return (
-    <section className="py-8 md:py-12 lg:py-1">
+    <section className="">
       {/* Section Header */}
       <div className="py-8 text-center">
         <SectionHeader

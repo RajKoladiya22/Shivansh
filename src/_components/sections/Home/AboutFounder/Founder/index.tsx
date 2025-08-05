@@ -29,8 +29,9 @@ export const TheFounder = () => {
 
   return (
     // py-16 sm:py-20 md:pb-24
-    <div className="py-12 sm:py-16 md:py-20 lg:py-15">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <div className="container mx-auto px-4">
+      <div className="row">
         {/* Header Section */}
         <div className="mb-12 text-center sm:mb-16">
           <motion.div

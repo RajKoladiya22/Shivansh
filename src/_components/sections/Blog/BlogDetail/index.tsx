@@ -376,10 +376,10 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
       <div className="min-h-screen  pt-14 md:pt-20">
         {/* Header */}
         <div className="border-b border-gray-200 ">
-          <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
             <button
               onClick={handleBackToBlogs}
-              className="group mb-6 inline-flex items-center gap-2 text-[#C50202] transition-colors hover:text-[#A50202]"
+              className="cursor-pointer group mb-6 inline-flex items-center gap-2 text-[#C50202] transition-colors hover:text-[#A50202]"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
               <span className="font-medium">Back to Blog</span>
@@ -403,7 +403,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
             </div>
 
             {/* Title */}
-            <h1 className="mb-6 text-3xl leading-tight font-bold text-gray-900 md:text-4xl">
+            <h1 className="mb-6 text-xl leading-tight font-bold text-gray-900 sm:text-3xl md:text-4xl">
               {blog.title}
             </h1>
 
@@ -417,14 +417,14 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
                 <Calendar className="h-4 w-4" />
                 <span>{blog.date}</span>
               </div>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
                 <span>{readingTime} min read</span>
               </div>
               <div className="flex items-center gap-2">
                 <Eye className="h-4 w-4" />
                 <span>{blog.views.toLocaleString()} views</span>
-              </div>
+              </div> */}
             </div>
 
             {/* Action Buttons */}

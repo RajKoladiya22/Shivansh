@@ -5,14 +5,12 @@ import { Partnerlogos } from "public/data/partnersLogo";
 import { ImageSlider } from "src/_components/molecules";
 import { AboutUsLeftContent, AboutUsRightContent } from "./content";
 
-
 // Main About Us Section Component
 export const AboutUsSection = () => {
   return (
-    
-    <section className="bg-gradient-to-b from-white to-red-50 py-12 sm:py-16 md:py-20 lg:py-15"> 
+    <>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-screen-2xl">
           <SectionHeader
             heading="ABOUT US"
             headingText="We Are Standing With 10+ Years Of Experience"
@@ -27,16 +25,15 @@ export const AboutUsSection = () => {
           </div>
 
           {/* Trusted Partners */}
-          <div className="pt-30 md:pt-50 lg:pt-30 text-center">
+          <div className="pt-30 text-center md:pt-50 lg:pt-30">
             {/* <h3 className="mb-6 text-xl font- text-(--primery-color)">
               We Also Work With
             </h3> */}
-             <SectionHeader
-            heading="We Also Work With"
-            headingClassName="pb-5"
-            // headingText="We Are Standing With 10+ Years Of Experience"
-          />
-
+            <SectionHeader
+              heading="We Also Work With"
+              headingClassName="pb-5"
+              // headingText="We Are Standing With 10+ Years Of Experience"
+            />
           </div>
         </div>
       </div>
@@ -56,6 +53,6 @@ export const AboutUsSection = () => {
         priority={4}
         respectReducedMotion={true}
       />
-    </section>
+    </>
   );
 };

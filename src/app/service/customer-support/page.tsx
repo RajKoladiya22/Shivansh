@@ -1,93 +1,5 @@
-// // page.tsx - structured data and SEO optimizations
-
-// import { auth } from "src/server/auth";
-// import { api } from "src/trpc/server";
-// import {
-//   AboutTheFounder,
-//   AboutUsSection,
-//   ClinteSlider,
-//   WiseSolutionsIndustry,
-//   Hero,
-//   // IndustryPartnerSlider,
-//   StatisticsSection,
-//   ContactForm,
-//   CustomerTestimonials,
-//   ProductShowcaseSection,
-// } from "../_components/sections/Home";
-
-// // JSON-LD structured data
-// const structuredData = {
-//   "@context": "https://schema.org",
-//   "@type": "Organization",
-//   name: "Shivansh Infosys",
-//   description:
-//     "Empowering businesses with trusted Tally solutions. Tally Certified 3-Star Partner serving 3000+ customers across India.",
-//   url: "https://shivanshinfosys.in/",
-//   logo: "https://shivanshinfosys.in/logo.png",
-//   contactPoint: {
-//     "@type": "ContactPoint",
-//     telephone: "+91-8141703007",
-//     contactType: "customer service",
-//     availableLanguage: ["English", "Hindi", "Gujarati"],
-//     areaServed: "IN",
-//     email: "shivanshinfosys@gmail.com",
-//   },
-//   address: {
-//     "@type": "PostalAddress",
-//     addressCountry: "IN",
-//     addressLocality: "Surat",
-//     addressRegion: "Gujarat",
-//     postalCode: "395007",
-//     streetAddress: "214,215 Soham Arcasde, Bagban circle, Adajan, Surat",
-//   },
-//   sameAs: [
-//     "https://www.youtube.com/@HetanshAcademy",
-//     "https://bitly.cx/rNEH4",
-//     "https://www.linkedin.com/company/shivansh-infosys",
-//     // Add other social media URLs
-//   ],
-// };
-
-// export default async function Home() {
-//   const session = await auth();
-
-//   if (session?.user) {
-//     void api.post.getLatest.prefetch();
-//   }
-
-//   return (
-//     <>
-//         <script
-//           type="application/ld+json"
-//           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-//         />
-//         <Hero />
-//         <AboutUsSection />
-//         <StatisticsSection />
-//         <ProductShowcaseSection />
-//         <AboutTheFounder />
-//         <CustomerTestimonials />
-//         <WiseSolutionsIndustry />
-//         <ClinteSlider />
-//         <ContactForm />
-//     </>
-//   );
-// }
-
-import { auth } from "src/server/auth";
-import { api } from "src/trpc/server";
-import {
-  AboutTheFounder,
-  AboutUsSection,
-  ClinteSlider,
-  WiseSolutionsIndustry,
-  Hero,
-  StatisticsSection,
-  ContactForm,
-  CustomerTestimonials,
-  ProductShowcaseSection,
-} from "../_components/sections/Home";
 import type { Metadata } from "next";
+import {  TheCustomerSupportPage } from "src/_components/sections/Services/customer-support";
 import { BASE_URL, SITE_NAME, DEFAULT_DESCRIPTION } from "src/config/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -105,23 +17,23 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: BASE_URL,
+      url:  `${BASE_URL}/service`,
       type: "website",
       siteName: SITE_NAME,
       images: [
         {
           // Using your actual logo with correct dimensions
           url: "/images/logo/logo.png",
-          // width: 199,
-          // height: 35,
+        //   width: 199,
+        //   height: 35,
           alt: `${SITE_NAME} - Professional Tally Solutions Partner`,
           type: "image/png",
         },
         {
           // Fallback: Use same image but with optimized alt text for different contexts
           url: "/images/logo/logo.png",
-          // width: 199,
-          // height: 35,
+        //   width: 199,
+        //   height: 35,
           alt: `${SITE_NAME} Logo - Tally Certified Partner in Gujarat`,
           type: "image/png",
         },
@@ -147,13 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
-  const session = await auth();
-
-  if (session?.user) {
-    void api.post.getLatest.prefetch();
-  }
-
+export default async function CustomerSupportPage() {
   // Structured Data
   const organizationStructuredData = {
     "@context": "https://schema.org",
@@ -261,33 +167,8 @@ export default async function Home() {
           __html: JSON.stringify(websiteStructuredData),
         }}
       />
-
-      <Hero />
-      <section className="bg-gradient-to-b from-white to-red-50 py-14 sm:py-18">
-        <AboutUsSection />
-      </section>
-      <section className="bg-gradient-to-b from-red-50 to-white py-14 sm:py-18">
-        <StatisticsSection />
-      </section>
-      <section className="py-14 sm:py-18">
-        <ProductShowcaseSection />
-      </section>
-      <section className="from-red bg-gradient-to-b to-red-50">
-        <AboutTheFounder />
-      </section>
-      <section className="to-red bg-gradient-to-b from-red-50 py-14 sm:py-18">
-        <CustomerTestimonials />
-      </section>
-      <section className="py-14 sm:py-18">
-        <WiseSolutionsIndustry />
-      </section>
-      <section className="py-14 sm:py-18">
-        <ClinteSlider />
-      </section>
-      <section className="py-14 sm:py-18">
-        <ContactForm />
-      </section>
-
+        {/* <SupportPage /> */}
+        <TheCustomerSupportPage />
       {/* Hidden SEO Content */}
       <div className="sr-only" aria-hidden="true">
         <h1>Shivansh Infosys - Tally Solutions & Accounting Experts</h1>

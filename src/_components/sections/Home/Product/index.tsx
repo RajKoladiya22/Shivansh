@@ -1,10 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  ArrowRight,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { SectionHeader } from "src/_components/ui";
 import Link from "next/link";
 import { ProductCard } from "src/_components/molecules/Cards/productsCard";
@@ -14,21 +10,13 @@ import { btn_color } from "src/config/constants";
 import type { InquiryFormData, Product } from "../../types/product.type";
 import { ProductInquiryPopup } from "../../Product/ProductInquiry";
 
-
 const topProducts = ProductsList.filter((product) => product.isTopProduct);
 
 export const ProductShowcaseSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  // const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [currentVideo, setCurrentVideo] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
-
-  // const handleProductClick = (productId: string) => {
-  //   // Navigate to product page
-  //   console.log("Navigating to product:", productId);
-  //   // Example: router.push(`/products/${productId}`);
-  // };
 
   const nextSlide = () => {
     setCurrentSlide(
@@ -54,8 +42,8 @@ export const ProductShowcaseSection = () => {
     return 4; // default
   };
 
-    useEffect(() => {
-    const intervalId = setInterval(nextSlide, 3000);
+  useEffect(() => {
+    const intervalId = setInterval(nextSlide, 5000);
     return () => clearInterval(intervalId);
   }, [nextSlide]);
 
@@ -99,8 +87,8 @@ export const ProductShowcaseSection = () => {
   };
 
   return (
-    <section className="bg-gradient-to-b from-white via-red-50 to-white py-12 lg:py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-15">
+    <div className="bg-gradient-to-b from-white via-red-50 to-white">
+      <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12 text-center">
           <SectionHeader heading="Our Top " headingText="Products" />
@@ -113,7 +101,7 @@ export const ProductShowcaseSection = () => {
             <>
               <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-0 z-10 -translate-x-4 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg transition-shadow duration-200 hover:bg-gray-50 hover:shadow-xl"
+                className="absolute sm:top-1/2 sm:-left-10 left-3 top-108 z-10 -translate-x-4 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg transition-shadow duration-200 hover:bg-gray-50 hover:shadow-xl"
                 disabled={currentSlide === 0}
               >
                 <ChevronLeft className="h-5 w-5 text-gray-600" />
@@ -121,7 +109,7 @@ export const ProductShowcaseSection = () => {
 
               <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-0 z-10 translate-x-4 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg transition-shadow duration-200 hover:bg-gray-50 hover:shadow-xl"
+                className="absolute sm:top-1/2 sm:-right-10 right-3 z-10 top-108 translate-x-4 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg transition-shadow duration-200 hover:bg-gray-50 hover:shadow-xl"
                 disabled={currentSlide === totalSlides - 1}
               >
                 <ChevronRight className="h-5 w-5 text-gray-600" />
@@ -202,6 +190,6 @@ export const ProductShowcaseSection = () => {
         onClose={handleInquiryClose}
         onSubmit={handleInquirySubmit}
       />
-    </section>
+    </div>
   );
 };

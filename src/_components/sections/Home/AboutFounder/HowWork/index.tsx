@@ -11,8 +11,8 @@ import { SectionHeader } from "src/_components/ui";
 
 export const HowItWork = () => {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-15">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="container mx-auto max-w-7xl px-4">
+      <div className="row">
         {/* Header Section */}
         <div className="mb-16 text-center">
           <motion.div
@@ -204,6 +204,6 @@ export const HowItWork = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };

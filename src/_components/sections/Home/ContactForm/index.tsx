@@ -54,37 +54,7 @@ export const ContactForm = () => {
 
   return (
     // py-12
-    <div
-      className="px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-15"
-      id="contact"
-    >
-      {/* Success Message */}
-      {/* {isSuccess && (
-        <div className="fixed top-4 right-4 z-50 transform transition-all duration-300 ease-in-out">
-          <div className="flex items-center rounded-lg bg-green-500 p-4 text-white shadow-lg">
-            <svg
-              className="mr-3 h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-            <div>
-              <p className="font-semibold">Message sent successfully!</p>
-              <p className="text-sm opacity-90">
-                {`We'll get back to you within 24 hours.`}
-              </p>
-            </div>
-          </div>
-        </div>
-      )} */}
-
+    <div className="px-4 sm:px-6" id="contact">
       <div className="mx-auto max-w-6xl">
         {/* Header Section */}
         <div className="mb-12 text-center">
@@ -101,14 +71,6 @@ export const ContactForm = () => {
           {/* Contact Form */}
           <div className="w-full overflow-hidden rounded-2xl border border-red-100 bg-white shadow-2xl lg:w-[70%]">
             {/* Form Header */}
-            {/* <div className="bg-gradient-to-r from-red-600 to-red-700 px-6 py-8 sm:px-8">
-              <h2 className="text-2xl font-semibold text-white">
-                Tell us about your project
-              </h2>
-              <p className="mt-2 text-red-100">
-                {`Fill out the form below and we'll get back to you soon.`}
-              </p>
-            </div> */}
 
             {/* Form Body */}
             <div className="px-6 py-8 sm:px-8">
