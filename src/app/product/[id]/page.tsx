@@ -15,19 +15,21 @@ interface ProductDetailPageProps {
 
 // Helper function to get product by ID
 async function getProduct(id: string): Promise<Product | null> {
-  const product = ProductsList.find(p => p.id.toString() === id);
+  const product = ProductsList.find((p) => p.id.toString() === id);
   return product ?? null;
 }
 
 // Helper function to get related products
 function getRelatedProducts(product: Product): Product[] {
-  return ProductsList.filter(p => 
-    product.relatedProductIds?.includes(p.id) || false
+  return ProductsList.filter(
+    (p) => product.relatedProductIds?.includes(p.id) || false,
   ).slice(0, 3);
 }
 
 // Dynamic metadata generation based on product
-export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProductDetailPageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const product = await getProduct(resolvedParams.id);
 
@@ -35,17 +37,25 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     return {
       title: "Product Not Found",
       description: "The requested product could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+        nocache: true,
+      },
     };
   }
 
-  const discountPercentage = Math.round(((product.actualPrice - product.salePrice) / product.actualPrice) * 100);
-  const priceInfo = product.salePrice < product.actualPrice 
-    ? `₹${product.salePrice.toLocaleString()} (${discountPercentage}% off)` 
-    : `₹${product.actualPrice.toLocaleString()}`;
+  const discountPercentage = Math.round(
+    ((product.actualPrice - product.salePrice) / product.actualPrice) * 100,
+  );
+  const priceInfo =
+    product.salePrice < product.actualPrice
+      ? `₹${product.salePrice.toLocaleString()} (${discountPercentage}% off)`
+      : `₹${product.actualPrice.toLocaleString()}`;
 
   return {
     title: `${product.title} | ${priceInfo} | ${SITE_NAME}`,
-    description: `${product.description} ${product.features.slice(0, 3).join(', ')}. Rated ${product.review.averageRating}/5 by ${product.review.reviewCount} customers. ${product.salePrice < product.actualPrice ? `Save ₹${(product.actualPrice - product.salePrice).toLocaleString()}!` : 'Best price guaranteed.'}`,
+    description: `${product.description} ${product.features.slice(0, 3).join(", ")}. Rated ${product.review.averageRating}/5 by ${product.review.reviewCount} customers. ${product.salePrice < product.actualPrice ? `Save ₹${(product.actualPrice - product.salePrice).toLocaleString()}!` : "Best price guaranteed."}`,
     keywords: [
       product.title.toLowerCase(),
       ...product.tags,
@@ -55,8 +65,15 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       "best price",
       "professional grade",
       "quality assured",
+      "tally certified partner",
+      "tally solutions provider",
       `${product.category} equipment`,
-      `${product.industry} solutions`
+      `${product.industry} solutions`,
+      `${product.title} features`,
+      `${product.title} benefits`,
+      `${product.title} price`,
+      `${product.category} software`,
+      `tally ${product.category}`,
     ],
     openGraph: {
       title: `${product.title} - ${priceInfo}`,
@@ -67,18 +84,21 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       siteName: SITE_NAME,
       images: [
         {
-          url: `https://img.youtube.com/vi/${product.detailedVideoId}/maxresdefault.jpg`,
-          // url: product.image,
+          url: product.image,
           width: 1200,
           height: 630,
-          alt: `${product.title} - Professional ${product.category}`,
+          alt: `${product.title} - Tally Solution by ${SITE_NAME}`,
         },
-        {
-          url: product.image,
-          width: 800,
-          height: 600,
-          alt: `${product.title} detailed view`,
-        }
+        ...(product.detailedVideoId
+          ? [
+              {
+                url: `https://img.youtube.com/vi/${product.detailedVideoId}/maxresdefault.jpg`,
+                width: 1280,
+                height: 720,
+                alt: `${product.title} Demo Video`,
+              },
+            ]
+          : []),
       ],
     },
     twitter: {
@@ -124,7 +144,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+export default async function ProductDetailPage({
+  params,
+}: ProductDetailPageProps) {
   const resolvedParams = await params;
   const product = await getProduct(resolvedParams.id);
 
@@ -133,7 +155,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   }
 
   const relatedProducts = getRelatedProducts(product);
-  const discountPercentage = Math.round(((product.actualPrice - product.salePrice) / product.actualPrice) * 100);
+  const discountPercentage = Math.round(
+    ((product.actualPrice - product.salePrice) / product.actualPrice) * 100,
+  );
 
   // Product Structured Data
   const productStructuredData = {
@@ -145,22 +169,22 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     image: [
       product.image,
       `${product.image}?w=800&h=600`,
-      `${product.image}?w=400&h=300`
+      `${product.image}?w=400&h=300`,
     ],
     brand: {
       "@type": "Brand",
       name: SITE_NAME,
-      url: BASE_URL
+      url: BASE_URL,
     },
     manufacturer: {
       "@type": "Organization",
-      name: SITE_NAME,
-      url: BASE_URL
+      name: "Tally Solutions",
+      url: "https://tallysolutions.com",
     },
     category: product.category,
     productID: product.id.toString(),
     mpn: `${product.category.toUpperCase()}-${product.id}`,
-    sku: `SKU-${product.id.toString().padStart(6, '0')}`,
+    sku: `SKU-${product.id.toString().padStart(6, "0")}`,
     gtin: `${Date.now()}${product.id}`.substring(0, 13), // Mock GTIN
     url: `${BASE_URL}/product/${product.id}`,
     offers: {
@@ -174,31 +198,36 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       seller: {
         "@type": "Organization",
         name: SITE_NAME,
-        url: BASE_URL
+        url: BASE_URL,
       },
       ...(product.salePrice < product.actualPrice && {
         highPrice: product.actualPrice,
-        lowPrice: product.salePrice
-      })
+        lowPrice: product.salePrice,
+      }),
     },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: product.review.averageRating,
       reviewCount: product.review.reviewCount,
       bestRating: 5,
-      worstRating: 1
+      worstRating: 1,
     },
     additionalProperty: product.features.map((feature, index) => ({
       "@type": "PropertyValue",
       name: `Feature ${index + 1}`,
-      value: feature
+      value: feature,
     })),
-    isRelatedTo: relatedProducts.map(rp => ({
+    isRelatedTo: relatedProducts.map((rp) => ({
       "@type": "Product",
       name: rp.title,
-      url: `${BASE_URL}/product/${rp.id}`
+      url: `${BASE_URL}/product/${rp.id}`,
     })),
     dateCreated: product.createdAt,
+    softwareHelp: {
+      "@type": "CreativeWork",
+      name: "Tally Support",
+      url: `${BASE_URL}/service`,
+    },
     ...(product.introVideoId && {
       video: {
         "@type": "VideoObject",
@@ -206,9 +235,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         description: `Watch ${product.title} in action`,
         thumbnailUrl: product.image,
         embedUrl: `https://www.youtube.com/embed/${product.introVideoId}`,
-        uploadDate: product.createdAt
-      }
-    })
+        uploadDate: product.createdAt,
+      },
+    }),
   };
 
   // Breadcrumb Structured Data
@@ -220,27 +249,27 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: BASE_URL
+        item: BASE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Products",
-        item: `${BASE_URL}/product`
+        item: `${BASE_URL}/product`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: product.category,
-        item: `${BASE_URL}/product?category=${product.category.toLowerCase()}`
+        item: `${BASE_URL}/product?category=${product.category.toLowerCase()}`,
       },
       {
         "@type": "ListItem",
         position: 4,
         name: product.title,
-        item: `${BASE_URL}/product/${product.id}`
-      }
-    ]
+        item: `${BASE_URL}/product/${product.id}`,
+      },
+    ],
   };
 
   // FAQ Structured Data
@@ -253,34 +282,34 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         name: `What are the key features of ${product.title}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `${product.title} includes the following key features: ${product.features.join(', ')}. These features provide ${product.benefits.join(', ').toLowerCase()}.`
-        }
+          text: `${product.title} includes the following key features: ${product.features.join(", ")}. These features provide ${product.benefits.join(", ").toLowerCase()}.`,
+        },
       },
       {
         "@type": "Question",
         name: `What is the price of ${product.title}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `${product.title} is priced at ₹${product.salePrice.toLocaleString()}${product.salePrice < product.actualPrice ? ` (discounted from ₹${product.actualPrice.toLocaleString()}, saving you ${discountPercentage}%)` : ''}. This includes professional support and warranty coverage.`
-        }
+          text: `${product.title} is priced at ₹${product.salePrice.toLocaleString()}${product.salePrice < product.actualPrice ? ` (discounted from ₹${product.actualPrice.toLocaleString()}, saving you ${discountPercentage}%)` : ""}. This includes professional support and warranty coverage.`,
+        },
       },
       {
         "@type": "Question",
         name: `Is ${product.title} suitable for ${product.industry.toLowerCase()} applications?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Yes, ${product.title} is specifically designed for ${product.industry.toLowerCase()} applications. It offers ${product.benefits.join(', ').toLowerCase()} making it ideal for professional ${product.industry.toLowerCase()} use.`
-        }
+          text: `Yes, ${product.title} is specifically designed for ${product.industry.toLowerCase()} applications. It offers ${product.benefits.join(", ").toLowerCase()} making it ideal for professional ${product.industry.toLowerCase()} use.`,
+        },
       },
       {
         "@type": "Question",
         name: `What do customers say about ${product.title}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `${product.title} has received excellent reviews with an average rating of ${product.review.averageRating} out of 5 stars from ${product.review.reviewCount} verified customers. Users particularly appreciate its reliability and professional-grade performance.`
-        }
-      }
-    ]
+          text: `${product.title} has received excellent reviews with an average rating of ${product.review.averageRating} out of 5 stars from ${product.review.reviewCount} verified customers. Users particularly appreciate its reliability and professional-grade performance.`,
+        },
+      },
+    ],
   };
 
   // Review Structured Data (Sample reviews)
@@ -289,19 +318,19 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     "@type": "Review",
     itemReviewed: {
       "@type": "Product",
-      name: product.title
+      name: product.title,
     },
     reviewRating: {
       "@type": "Rating",
       ratingValue: product.review.averageRating,
-      bestRating: 5
+      bestRating: 5,
     },
     author: {
       "@type": "Person",
-      name: "Verified Customer"
+      name: "Verified Customer",
     },
     reviewBody: `Excellent ${product.category.toLowerCase()}! ${product.benefits[0]} and the overall quality exceeds expectations. Highly recommended for ${product.industry.toLowerCase()} professionals.`,
-    datePublished: product.createdAt
+    datePublished: product.createdAt,
   };
 
   return (
@@ -331,7 +360,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           __html: JSON.stringify(reviewStructuredData),
         }}
       />
-      
+
       {/* Page Content */}
       <TheProductDetailPage params={resolvedParams} />
     </>
