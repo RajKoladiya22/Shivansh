@@ -191,7 +191,7 @@ export const TheCustomerSupportPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-white  text-black pt-20 lg:pt-32">
+      <section className="relative bg-white pt-20 text-black lg:pt-32">
         {/* <div className="absolute inset-0 bg-black/10"></div> */}
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
@@ -403,15 +403,15 @@ export const TheCustomerSupportPage = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
-            <SectionHeader
-              heading="How Our Support"
-              headingText="Helps Your Business "
-              headingDescription="Our comprehensive support services are designed to enhance your
+              <SectionHeader
+                heading="How Our Support"
+                headingText="Helps Your Business "
+                headingDescription="Our comprehensive support services are designed to enhance your
                 business efficiency, reduce costs, and ensure smooth operations."
-              descriptionClassName="mb-8 "
-              alignment="left"
-              containerClassName="!px-0"
-            />
+                descriptionClassName="mb-8 "
+                alignment="left"
+                containerClassName="!px-0"
+              />
 
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -519,7 +519,7 @@ export const TheCustomerSupportPage = () => {
                 className="rounded-2xl border border-[#C502021A] bg-[#FCF2F2] p-8"
               >
                 <div className="mb-4 flex">
-                  {[...Array(testimonial.rating)].map((_, i) => (
+                  {Array.from({ length: testimonial.rating }, (_, i) => (
                     <Star
                       key={i}
                       className="h-5 w-5 fill-current text-[#C50202]"
@@ -527,7 +527,7 @@ export const TheCustomerSupportPage = () => {
                   ))}
                 </div>
                 <p className="mb-6 leading-relaxed text-gray-700">
-                  "{testimonial.text}"
+                  {`"${testimonial.text}"`}
                 </p>
                 <div>
                   <div className="font-semibold text-[#000000]">
