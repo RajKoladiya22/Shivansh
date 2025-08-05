@@ -1,24 +1,3 @@
-// import { TheProductDetailPage } from "src/_components/sections/Product/ProductDetail";
-
-
-// interface ProductDetailPageProps {
-//   params: Promise<{
-//     id: string;
-//   }>;
-// }
-
-// export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
-//   const resolvedParams = await params;
-  
-//   return (
-//     <>
-//       <TheProductDetailPage params={resolvedParams}/>
-//     </>
-//   );
-// }
-
-
-
 // app/products/[id]/page.tsx
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -105,7 +84,8 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       card: "summary_large_image",
       title: `${product.title} - ${priceInfo}`,
       description: `${product.description.substring(0, 120)}... Rated ${product.review.averageRating}⭐`,
-      images: [product.image],
+      // images: [product.image],
+      images: `https://img.youtube.com/vi/${product.detailedVideoId}/maxresdefault.jpg`,
       site: "@shivanshinfosys",
       creator: "@shivanshinfosys",
     },

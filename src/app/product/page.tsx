@@ -1,17 +1,3 @@
-// import { TheProductPage } from "src/_components/sections/Product";
-// import { HeroProduct } from "src/_components/sections/Product/productHero";
-
-// export default function ProductPage() {
-//   return (
-//     <>
-//       <HeroProduct />
-//       <TheProductPage />
-//     </>
-//   );
-// }
-
-
-
 // app/products/page.tsx
 import type { Metadata } from "next";
 import { TheProductPage } from "src/_components/sections/Product";
@@ -20,8 +6,8 @@ import { BASE_URL, SITE_NAME } from "src/config/constants";
 
 // SEO-optimized metadata for Products page
 export const metadata: Metadata = {
-  title: "Tally Software Products & Solutions | Complete Business Management Suite",
-  description: "Explore our comprehensive range of Tally software products including TallyPrime, Tally Server, TallyShoper, and custom business solutions. Get the right Tally product for your business needs with expert support and implementation.",
+  title: "Tally Services | Customization & Implementation",
+  description: "Expert Tally services including customization, TDL development, and implementation by certified 3-star partners",
   keywords: [
     "Tally products",
     "TallyPrime software",

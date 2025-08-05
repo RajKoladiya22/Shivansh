@@ -1,7 +1,7 @@
 // src/config/constants.ts
 export const BASE_URL = "https://shivansh-three.vercel.app";
-export const SITE_NAME = "Shivansh Infosys";
-export const DEFAULT_DESCRIPTION = "Empowering businesses with trusted Tally solutions. Tally Certified 3-Star Partner serving 3000+ customers across India. Quick response, expert support for all your Tally needs.";
+export const SITE_NAME = "Shivansh Infosys - 3-Star Tally Partner"
+export const DEFAULT_DESCRIPTION = "India's premier Tally Solutions Partner offering Tally software, custom TDL development, and expert consultancy services. Certified 3-star Tally partner."
 export const COMPANY_EMAIL = "info@shivanshinfosys.com";
 export const COMPANY_PHONE = "+918141703007";
 export const btn_color = "cursor-pointer bg-gradient-to-r from-[#C50202] to-[#A00000] text-white hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A00303]"
