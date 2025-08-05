@@ -67,7 +67,8 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       siteName: SITE_NAME,
       images: [
         {
-          url: product.image,
+          url: `https://img.youtube.com/vi/${product.detailedVideoId}/maxresdefault.jpg`,
+          // url: product.image,
           width: 1200,
           height: 630,
           alt: `${product.title} - Professional ${product.category}`,
