@@ -81,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
           width: 1373,
           height: 234,
           alt: `${SITE_NAME} - Tally Solutions Partner`,
-        }
+        },
       ],
     },
     robots: {
@@ -95,26 +95,30 @@ export async function generateMetadata(): Promise<Metadata> {
         "max-snippet": -1,
       },
     },
-    icons: {
-      icon: "/favicon.ico",
-      apple: "/images/logo/logo.png",
-    },
-    //     icons: {
-    //   // Your main favicon.ico (512x512) - works for most cases
-    //   icon: [
-    //     { url: "/favicon.ico", sizes: "any" }, // This covers all sizes
-    //     { url: "/favicon.ico", sizes: "16x16", type: "image/x-icon" },
-    //     { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
-    //     { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
-    //     { url: "/favicon.ico", sizes: "512x512", type: "image/x-icon" },
-    //   ],
-    //   // Apple devices will use your favicon.ico
-    //   apple: [
-    //     { url: "/favicon.ico", sizes: "180x180" }, // iOS will resize automatically
-    //   ],
-    //   // For modern browsers that prefer PNG
-    //   shortcut: "/favicon.ico",
+    // icons: {
+    //   icon: "/favicon.ico",
+    //   apple: "/images/logo/logo.png",
     // },
+    icons: {
+      // Your main favicon.ico (512x512) - works for most cases
+      icon: [
+        { url: "favicon_io/favicon.ico", sizes: "any" }, // This covers all sizes
+        { url: "favicon_io/favicon.ico", sizes: "16x16", type: "image/x-icon" },
+        { url: "favicon_io/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+        { url: "favicon_io/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+        {
+          url: "favicon_io/favicon.ico",
+          sizes: "512x512",
+          type: "image/x-icon",
+        },
+      ],
+      // Apple devices will use your favicon.ico
+      apple: [
+        { url: "favicon_io/apple-touch-icon.png", sizes: "any" }, // iOS will resize automatically
+      ],
+      // For modern browsers that prefer PNG
+      shortcut: "/favicon.ico",
+    },
     verification: {
       google: "your-google-verification-code",
     },

@@ -1,6 +1,10 @@
 "use client";
 import React from "react";
-import { hero_content_font, hero_heading_font, hero_headline_font } from "src/config/constants";
+import {
+  hero_content_font,
+  hero_heading_font,
+  hero_headline_font,
+} from "src/config/constants";
 
 export const HeroCareer = () => {
   return (
@@ -9,9 +13,7 @@ export const HeroCareer = () => {
         {/* Badge */}
         <div className="my-5 flex justify-center">
           <div className="relative inline-block">
-            <p className={`text-center ${hero_heading_font}`}>
-              Join Our Team
-            </p>
+            <p className={`text-center ${hero_heading_font}`}>Join Our Team</p>
             <div
               className="absolute top-0 h-[50%] rounded-lg bg-[var(--pink)] sm:h-full"
               style={{
@@ -32,7 +34,7 @@ export const HeroCareer = () => {
             </div>
           </div> */}
 
-          <h1 className={`${hero_headline_font} leading-tight `}>
+          <h1 className={`${hero_headline_font} leading-tight`}>
             You have great{" "}
             <span className="relative inline-block">
               <span className="relative z-10 text-(--primery-color)">
