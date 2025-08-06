@@ -538,7 +538,7 @@ export const TheEWayBillPage = () => {
                 </div>
 
                 <p className="mb-6 leading-relaxed text-gray-700 italic">
-                  "{testimonial.text}"
+                  {`"${testimonial.text}"`}
                 </p>
 
                 <div className="flex items-center gap-4">

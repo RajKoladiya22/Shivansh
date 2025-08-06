@@ -65,9 +65,9 @@ export const services = [
     duration: "Ongoing Support",
     clients: "500+",
     rating: 4.9,
-    color: "from-blue-500 to-blue-600",
-    bgColor: "bg-blue-50",
-    borderColor: "border-blue-200",
+    color: "from-rose-500 to-rose-600",
+    bgColor: "bg-rose-50",
+    borderColor: "border-rose-200",
   },
   {
     id: "tally-e-invoice",
@@ -93,9 +93,9 @@ export const services = [
     duration: "3-5 Business Days",
     clients: "300+",
     rating: 4.8,
-    color: "from-green-500 to-green-600",
-    bgColor: "bg-green-50",
-    borderColor: "border-green-200",
+    color: "from-amber-500 to-amber-600",
+    bgColor: "bg-amber-50",
+    borderColor: "border-amber-200",
   },
   {
     id: "tally-e-way-bill-setup",
@@ -326,16 +326,16 @@ export const TheServicesPage = () => {
                   {/* CTA Buttons */}
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <Link
-                    href={`/${service.id}`}
-                      className={`flex-1 text-center bg-gradient-to-r ${service.color} cursor-pointer group rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105`}
-                      
+                      href={`/${service.id}`}
+                      className={`flex-1 bg-gradient-to-r text-center ${service.color} group cursor-pointer rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105`}
                     >
                       Learn More
                       <ArrowRight className="ml-2 inline h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
-                    <Link 
-                    href={'/'}
-                    className="flex-1 text-center cursor-pointer rounded-xl border-2 border-gray-200 px-4 py-3 text-sm font-semibold text-gray-700 transition-all duration-300 hover:border-gray-300 hover:bg-gray-50">
+                    <Link
+                      href={"/"}
+                      className="flex-1 cursor-pointer rounded-xl border-2 border-gray-200 px-4 py-3 text-center text-sm font-semibold text-gray-700 transition-all duration-300 hover:border-gray-300 hover:bg-gray-50"
+                    >
                       Get Quote
                     </Link>
                   </div>
