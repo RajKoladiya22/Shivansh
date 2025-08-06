@@ -39,190 +39,184 @@ export const stats = [
     label: "Client Rating",
   },
 ];
+export const services = [
+  {
+    id: "tally-customer-support",
+    title: "Customer Support",
+    icon: <Headphones className="h-8 w-8" />,
+    shortDescription:
+      "24/7 dedicated customer support to resolve your queries instantly",
+    fullDescription:
+      "Our expert customer support team provides round-the-clock assistance to ensure your business operations run smoothly without any interruptions.",
+    features: [
+      "One-year dedicated support for Tally users",
+      "Expert Technical Assistance",
+      "GST, E-Invoice & E-Way Bill Guide",
+      "Multi-language Support",
+      "Remote Desktop Support",
+    ],
+    benefits: [
+      "Reduced Downtime",
+      "Improved Productivity",
+      "Expert Guidance",
+      "Peace of Mind",
+    ],
+    pricing: "Starting from ₹ **0/year",
+    duration: "Ongoing Support",
+    clients: "500+",
+    rating: 4.9,
+    color: "from-blue-500 to-blue-600",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-200",
+  },
+  {
+    id: "tally-e-invoice",
+    title: "E-Invoice Setup",
+    icon: <FileText className="h-8 w-8" />,
+    shortDescription: "Complete e-invoicing system setup for GST compliance",
+    fullDescription:
+      "Streamline your billing process with our comprehensive e-invoice setup service, ensuring 100% GST compliance and automated invoice generation.",
+    features: [
+      "Seamless E‑Invoice portal → Tally integration",
+      "staff training on E‑Invoice generation",
+      "1-month post‑setup error resolution & support",
+      "Bulk Invoice Processing",
+      "Real-time Validation",
+    ],
+    benefits: [
+      "GST Compliance",
+      "Faster Processing",
+      "Reduced Errors",
+      "Cost Savings",
+    ],
+    pricing: "Starting from ₹ **0/-",
+    duration: "3-5 Business Days",
+    clients: "300+",
+    rating: 4.8,
+    color: "from-green-500 to-green-600",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-200",
+  },
+  {
+    id: "tally-e-way-bill-setup",
+    title: "E-Way Bill Setup",
+    icon: <Truck className="h-8 w-8" />,
+    shortDescription:
+      "Automated e-way bill generation for seamless goods transportation",
+    fullDescription:
+      "Ensure smooth goods movement with our e-way bill setup service, featuring automated generation and real-time tracking capabilities.",
+    features: [
+      "Tally-E‑Way Bill Portal Setup",
+      "Real-time Tracking",
+      "30‑Day Post‑Setup Support",
+      "Hands‑On Staff Training",
+      "Compliance Monitoring",
+    ],
+    benefits: [
+      "Legal Compliance",
+      "Smooth Transportation",
+      "Time Saving",
+      "Error Reduction",
+    ],
+    pricing: "Starting from ₹ **0/-",
+    duration: "2-4 Business Days",
+    clients: "250+",
+    rating: 4.7,
+    color: "from-orange-500 to-orange-600",
+    bgColor: "bg-orange-50",
+    borderColor: "border-orange-200",
+  },
+  {
+    id: "tally-security-setup",
+    title: "Security Setup",
+    icon: <Shield className="h-8 w-8" />,
+    shortDescription:
+      "Comprehensive security solutions to protect your business data",
+    fullDescription:
+      "Safeguard your business with our multi-layered security setup including firewall configuration, data encryption, and access controls.",
+    features: [
+      "Role-Based Access Controls",
+      "Admin & User Setup",
+      "Data Encryption",
+      "Access Control Systems",
+      "Security Auditing",
+      "Threat Monitoring",
+    ],
+    benefits: [
+      "Data Protection",
+      "Cyber Security",
+      "Compliance",
+      "Risk Mitigation",
+    ],
+    pricing: "Starting from ₹ **0/-",
+    duration: "5-7 Business Days",
+    clients: "400+",
+    rating: 4.9,
+    color: "from-red-500 to-red-600",
+    bgColor: "bg-red-50",
+    borderColor: "border-red-200",
+  },
+  {
+    id: "tally",
+    title: "Tally Implementation",
+    icon: <Calculator className="h-8 w-8" />,
+    shortDescription:
+      "Complete Tally ERP setup and customization for your business",
+    fullDescription:
+      "Get your accounting system up and running with our comprehensive Tally implementation service, including customization and data migration.",
+    features: [
+      "Complete Tally Setup",
+      "License activation and configuration",
+      "Data Migration",
+      "Custom Reports",
+      "User Training",
+      "Integration Services",
+    ],
+    benefits: [
+      "Streamlined Accounting",
+      "Better Reporting",
+      "Improved Efficiency",
+      "Cost Control",
+    ],
+    pricing: "Starting from ₹ **0/-",
+    duration: "4-6 Business Days",
+    clients: "600+",
+    rating: 4.8,
+    color: "from-purple-500 to-purple-600",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-200",
+  },
+  {
+    id: "tally-data-entry",
+    title: "Data Entry Training",
+    icon: <GraduationCap className="h-8 w-8" />,
+    shortDescription:
+      "Professional training programs to enhance data entry skills",
+    fullDescription:
+      "Boost your team's productivity with our comprehensive data entry training covering accuracy, speed, and best practices.",
+    features: [
+      "Hands-on Training",
+      "Speed & Accuracy Focus",
+      "Software Proficiency",
+      "Best Practices",
+      "Certification Program",
+    ],
+    benefits: [
+      "Improved Accuracy",
+      "Increased Speed",
+      "Better Productivity",
+      "Skill Development",
+    ],
+    pricing: "Starting from ₹ **0/person",
+    duration: "1-2 Weeks",
+    clients: "200+",
+    rating: 4.7,
+    color: "from-indigo-500 to-indigo-600",
+    bgColor: "bg-indigo-50",
+    borderColor: "border-indigo-200",
+  },
+];
 export const TheServicesPage = () => {
-//   const [activeService, setActiveService] = useState(null);
-//   const [isVisible, setIsVisible] = useState(false);
-
-//   useEffect(() => {
-//     setIsVisible(true);
-//   }, []);
-
-  const services = [
-    {
-      id: "customer-support",
-      title: "Customer Support",
-      icon: <Headphones className="h-8 w-8" />,
-      shortDescription:
-        "24/7 dedicated customer support to resolve your queries instantly",
-      fullDescription:
-        "Our expert customer support team provides round-the-clock assistance to ensure your business operations run smoothly without any interruptions.",
-      features: [
-        "24/7 Phone & Chat Support",
-        "Expert Technical Assistance",
-        "Quick Issue Resolution",
-        "Multi-language Support",
-        "Remote Desktop Support",
-      ],
-      benefits: [
-        "Reduced Downtime",
-        "Improved Productivity",
-        "Expert Guidance",
-        "Peace of Mind",
-      ],
-      pricing: "Starting from ₹5,000/month",
-      duration: "Ongoing Support",
-      clients: "500+",
-      rating: 4.9,
-      color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
-    },
-    {
-      id: "e-invoice-setup",
-      title: "E-Invoice Setup",
-      icon: <FileText className="h-8 w-8" />,
-      shortDescription: "Complete e-invoicing system setup for GST compliance",
-      fullDescription:
-        "Streamline your billing process with our comprehensive e-invoice setup service, ensuring 100% GST compliance and automated invoice generation.",
-      features: [
-        "GST Compliant Setup",
-        "Automated Invoice Generation",
-        "API Integration",
-        "Bulk Invoice Processing",
-        "Real-time Validation",
-      ],
-      benefits: [
-        "GST Compliance",
-        "Faster Processing",
-        "Reduced Errors",
-        "Cost Savings",
-      ],
-      pricing: "Starting from ₹15,000",
-      duration: "3-5 Business Days",
-      clients: "300+",
-      rating: 4.8,
-      color: "from-green-500 to-green-600",
-      bgColor: "bg-green-50",
-      borderColor: "border-green-200",
-    },
-    {
-      id: "e-way-bill-setup",
-      title: "E-Way Bill Setup",
-      icon: <Truck className="h-8 w-8" />,
-      shortDescription:
-        "Automated e-way bill generation for seamless goods transportation",
-      fullDescription:
-        "Ensure smooth goods movement with our e-way bill setup service, featuring automated generation and real-time tracking capabilities.",
-      features: [
-        "Automated Bill Generation",
-        "Real-time Tracking",
-        "Bulk Processing",
-        "Integration with ERP",
-        "Compliance Monitoring",
-      ],
-      benefits: [
-        "Legal Compliance",
-        "Smooth Transportation",
-        "Time Saving",
-        "Error Reduction",
-      ],
-      pricing: "Starting from ₹12,000",
-      duration: "2-4 Business Days",
-      clients: "250+",
-      rating: 4.7,
-      color: "from-orange-500 to-orange-600",
-      bgColor: "bg-orange-50",
-      borderColor: "border-orange-200",
-    },
-    {
-      id: "security-setup",
-      title: "Security Setup",
-      icon: <Shield className="h-8 w-8" />,
-      shortDescription:
-        "Comprehensive security solutions to protect your business data",
-      fullDescription:
-        "Safeguard your business with our multi-layered security setup including firewall configuration, data encryption, and access controls.",
-      features: [
-        "Advanced Firewall Setup",
-        "Data Encryption",
-        "Access Control Systems",
-        "Security Auditing",
-        "Threat Monitoring",
-      ],
-      benefits: [
-        "Data Protection",
-        "Cyber Security",
-        "Compliance",
-        "Risk Mitigation",
-      ],
-      pricing: "Starting from ₹25,000",
-      duration: "5-7 Business Days",
-      clients: "400+",
-      rating: 4.9,
-      color: "from-red-500 to-red-600",
-      bgColor: "bg-red-50",
-      borderColor: "border-red-200",
-    },
-    {
-      id: "tally-implementation",
-      title: "Tally Implementation",
-      icon: <Calculator className="h-8 w-8" />,
-      shortDescription:
-        "Complete Tally ERP setup and customization for your business",
-      fullDescription:
-        "Get your accounting system up and running with our comprehensive Tally implementation service, including customization and data migration.",
-      features: [
-        "Complete Tally Setup",
-        "Data Migration",
-        "Custom Reports",
-        "User Training",
-        "Integration Services",
-      ],
-      benefits: [
-        "Streamlined Accounting",
-        "Better Reporting",
-        "Improved Efficiency",
-        "Cost Control",
-      ],
-      pricing: "Starting from ₹20,000",
-      duration: "4-6 Business Days",
-      clients: "600+",
-      rating: 4.8,
-      color: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-50",
-      borderColor: "border-purple-200",
-    },
-    {
-      id: "data-entry-training",
-      title: "Data Entry Training",
-      icon: <GraduationCap className="h-8 w-8" />,
-      shortDescription:
-        "Professional training programs to enhance data entry skills",
-      fullDescription:
-        "Boost your team's productivity with our comprehensive data entry training covering accuracy, speed, and best practices.",
-      features: [
-        "Hands-on Training",
-        "Speed & Accuracy Focus",
-        "Software Proficiency",
-        "Best Practices",
-        "Certification Program",
-      ],
-      benefits: [
-        "Improved Accuracy",
-        "Increased Speed",
-        "Better Productivity",
-        "Skill Development",
-      ],
-      pricing: "Starting from ₹8,000/person",
-      duration: "1-2 Weeks",
-      clients: "200+",
-      rating: 4.7,
-      color: "from-indigo-500 to-indigo-600",
-      bgColor: "bg-indigo-50",
-      borderColor: "border-indigo-200",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       {/* SEO Meta Tags would go in head */}
@@ -331,18 +325,19 @@ export const TheServicesPage = () => {
 
                   {/* CTA Buttons */}
                   <div className="flex flex-col gap-3 sm:flex-row">
-                    <button
-                      className={`flex-1 bg-gradient-to-r ${service.color} group rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105`}
-                      onClick={() =>
-                        (window.location.href = `/services/${service.id}`)
-                      }
+                    <Link
+                    href={`/${service.id}`}
+                      className={`flex-1 text-center bg-gradient-to-r ${service.color} cursor-pointer group rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105`}
+                      
                     >
                       Learn More
                       <ArrowRight className="ml-2 inline h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </button>
-                    <button className="flex-1 rounded-xl border-2 border-gray-200 px-4 py-3 text-sm font-semibold text-gray-700 transition-all duration-300 hover:border-gray-300 hover:bg-gray-50">
+                    </Link>
+                    <Link 
+                    href={'/'}
+                    className="flex-1 text-center cursor-pointer rounded-xl border-2 border-gray-200 px-4 py-3 text-sm font-semibold text-gray-700 transition-all duration-300 hover:border-gray-300 hover:bg-gray-50">
                       Get Quote
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -360,7 +355,7 @@ export const TheServicesPage = () => {
                 Why Choose Our Services?
               </h2>
               <p className="mb-8 text-lg text-gray-600">
-               {`With over a decade of experience, we've helped thousands of
+                {`With over a decade of experience, we've helped thousands of
                 businesses streamline their operations and achieve their goals.`}
               </p>
 
@@ -421,7 +416,7 @@ export const TheServicesPage = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Call to Action */}
       <div className="mx-auto mb-15 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-xl bg-gradient-to-r from-gray-900 to-black p-6 text-center text-white sm:rounded-2xl sm:p-8 md:p-12">

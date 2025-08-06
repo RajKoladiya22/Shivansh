@@ -11,12 +11,12 @@ export const navItems = [
 ];
 
 export const ProductServices = [
-  { label: "Customer Support", href: "service/customer-support" },
-  { label: "E-Invoice Setup", href: "service/e-invoice" },
-  { label: "E-Way Bill Setup", href: "service/e-waybill" },
-  { label: "Security Setup", href: "service/Security-setup" },
-  { label: "Tally Implementation", href: "service/tally" },
-  { label: "Data Entry Training", href: "service/data-entry" },
+  { label: "Customer Support", href: "/tally-customer-support" },
+  { label: "E-Invoice Setup", href: "/tally-e-invoice" },
+  { label: "E-Way Bill Setup", href: "/tally-e-way-bill-setup" },
+  { label: "Security Setup", href: "/tally-security-setup" },
+  { label: "Tally Implementation", href: "/tally" },
+  { label: "Data Entry Training", href: "/tally-data-entry" },
   { label: "Products", href: "/product" },
 ];
 

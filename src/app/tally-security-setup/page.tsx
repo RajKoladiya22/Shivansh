@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import {  TheCustomerSupportPage } from "src/_components/sections/Services/customer-support";
+import { TheSecuritySetupPage } from "src/_components/sections/Security-setup";
+
 import { BASE_URL, SITE_NAME, DEFAULT_DESCRIPTION } from "src/config/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -59,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function CustomerSupportPage() {
+export default async function SecuritySetupPage() {
   // Structured Data
   const organizationStructuredData = {
     "@context": "https://schema.org",
@@ -167,8 +168,8 @@ export default async function CustomerSupportPage() {
           __html: JSON.stringify(websiteStructuredData),
         }}
       />
-        {/* <SupportPage /> */}
-        <TheCustomerSupportPage />
+
+        <TheSecuritySetupPage />
       {/* Hidden SEO Content */}
       <div className="sr-only" aria-hidden="true">
         <h1>Shivansh Infosys - Tally Solutions & Accounting Experts</h1>
