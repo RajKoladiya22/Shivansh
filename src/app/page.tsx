@@ -240,6 +240,8 @@ export default async function Home() {
     },
   };
 
+
+
   return (
     <>
       {/* Structured Data */}
@@ -262,10 +264,17 @@ export default async function Home() {
         }}
       />
 
+
+
+
       <Hero />
+
       <section className="bg-gradient-to-b from-white to-red-50 py-14 sm:py-18">
         <AboutUsSection />
       </section>
+
+
+
       <section className="bg-gradient-to-b from-red-50 to-white py-14 sm:py-18">
         <StatisticsSection />
       </section>

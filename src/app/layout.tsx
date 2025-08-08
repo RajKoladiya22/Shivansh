@@ -4,8 +4,10 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
 import "../styles/globals.css";
 import { TRPCReactProvider } from "src/trpc/react";
-import { Footer, Header, FloatingContactButton } from "../_components/ui";
+import { FloatingContactButton } from "../_components/ui";
 import { BASE_URL, DEFAULT_DESCRIPTION, SITE_NAME } from "src/config/constants";
+import { Footer } from "src/_components/molecules";
+import { Header,  } from "src/_components/molecules/Header";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],

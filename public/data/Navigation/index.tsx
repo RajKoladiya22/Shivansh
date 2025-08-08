@@ -1,12 +1,12 @@
 export const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Product", href: "/product" },
-  { label: "Service", href: "/service" },
-  { label: "About", href: "/about" },
-  { label: "Team", href: "/team" },
-  { label: "Blog", href: "/blog" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Career", href: "/career" },
+  { id: 1, label: "Home", href: "/" },
+  { id: 2, label: "Product", href: "/product" },
+  { id: 3, label: "Service", href: "/service" },
+  { id: 4, label: "About", href: "/about" },
+  { id: 5, label: "Team", href: "/team" },
+  { id: 6, label: "Blog", href: "/blog" },
+  { id: 7, label: "Gallery", href: "/gallery" },
+  { id: 8, label: "Career", href: "/career" },
   // { label: "Contact", href: "/contact" },
 ];
 
