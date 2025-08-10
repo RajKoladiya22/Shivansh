@@ -139,9 +139,9 @@ export function VideoRingSlider({
       } else {
         newSet.forEach((id) => {
           if (id != itemId) {
-            const vid = document.querySelector(
+            const vid = document.querySelector<HTMLVideoElement>(
               `video[data-id="${id}"]`,
-            ) as HTMLVideoElement;
+            );
             if (vid) void vid.pause();
           }
         });
@@ -279,8 +279,6 @@ export function VideoRingSlider({
     );
   }
 
-  const activeItem = items[currentIndex];
-
   return (
     <div
       className={`relative h-screen w-full overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-red-50 ${containerClassName}`}
@@ -394,8 +392,8 @@ export function VideoRingSlider({
                           e.stopPropagation();
                           const video = e.currentTarget
                             .closest("div.relative")
-                            ?.querySelector("video") as HTMLVideoElement;
-                          if (video) toggleVideo(item.id, video);
+                            ?.querySelector<HTMLVideoElement>("video");
+                          if (video) void toggleVideo(item.id, video);
                         }}
                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/20 p-3 backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-white/30"
                         aria-label={
