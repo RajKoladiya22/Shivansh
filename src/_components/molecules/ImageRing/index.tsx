@@ -126,13 +126,16 @@ export function VideoRingSlider({
   };
 
   // Toggle play/pause for video cards
-  const toggleVideo = async (itemId: string, videoElement: HTMLVideoElement) => {
+  const toggleVideo = async (
+    itemId: string,
+    videoElement: HTMLVideoElement,
+  ) => {
     setPlayingVideos((prev) => {
       const newSet = new Set(prev);
 
       if (newSet.has(itemId)) {
         newSet.delete(itemId);
-       void videoElement.pause();
+        void videoElement.pause();
       } else {
         newSet.forEach((id) => {
           if (id != itemId) {
@@ -143,177 +146,12 @@ export function VideoRingSlider({
           }
         });
         newSet.clear();
-         newSet.add(itemId);
+        newSet.add(itemId);
         void videoElement.play();
       }
       return newSet;
     });
   };
-
-  // Compute 3D card transforms based on index offset from center
-  // const getCardPosition = (index: number) => {
-  //   const isMobile = windowSize.width < 768;
-  //   const totalItems = items.length;
-  //   const centerIndex = currentIndex;
-  //   let offset = index - centerIndex;
-  //   // Wrap around circularly
-  //   if (offset > totalItems / 2) offset -= totalItems;
-  //   if (offset < -totalItems / 2) offset += totalItems;
-
-  //   const cardSpacing = isMobile ? 80 : 200;
-  //   const baseWidth = isMobile ? 160 : 200;
-  //   const baseHeight = isMobile ? 220 : 300;
-  //   const distance = Math.abs(offset) ;
-
-  //   // Default values
-  //   let x = offset * cardSpacing;
-  //   let y = 0;
-  //   let z = 0;
-  //   let rotateY = 0;
-  //   let opacity = 1;
-  //   let scale = 1;
-  //   let zIndex = totalItems - distance;
-
-  //   // if (offset === 0) {
-  //   //   // Center card: largest and frontmost
-  //   //   scale = 1.2;
-  //   //   opacity = 1;
-  //   //   z = 300;
-  //   //   rotateY = 0;
-  //   // } else if (distance === 1) {
-  //   //   // Immediate neighbors: slightly smaller, slight tilt
-  //   //   scale = 1.0;
-  //   //   opacity = 0.9;
-  //   //   z = 150;
-  //   //   rotateY = offset * -30;  // tilt towards center
-  //   // } else if (distance === 2) {
-  //   //   scale = 0.8;
-  //   //   opacity = 0.7;
-  //   //   z = 100;
-  //   //   rotateY = offset * -45;
-  //   // } else {
-  //   //   // Farther cards: much smaller / mostly hidden
-  //   //   scale = 0.6;
-  //   //   opacity = 0.5;
-  //   //   z = 50;
-  //   //   rotateY = offset > 0 ? -60 : 60;
-  //   // }
-
-  //   if (offset === 0) {
-  //     // Center card: largest and frontmost
-  //     scale = 0.6;
-  //     opacity = 1.2;
-  //     z = 300;
-  //     rotateY = 0;
-  //   } else if (distance === 1) {
-  //     // Immediate neighbors: slightly smaller, slight tilt
-  //     scale = 0.9;
-  //     opacity = 0.9;
-  //     z = 150;
-  //     rotateY = offset * -25; // tilt towards center
-  //   } else if (distance === 2) {
-  //     scale = 1;
-  //     opacity = 0.7;
-  //     z = 100;
-  //     rotateY = offset * -20;
-  //   } else if (distance === 3) {
-  //     scale = 1.2;
-  //     opacity = 0.6;
-  //     z = 100;
-  //     rotateY = offset * -18;
-  //   } else {
-  //     // Farther cards: much smaller / mostly hidden
-  //     scale = 0.6;
-  //     opacity = 0;
-  //     z = 50;
-  //     rotateY = offset > 0 ? -60 : 60;
-  //   }
-
-  //   return {
-  //     x,
-  //     y,
-  //     z,
-  //     scale,
-  //     rotateY,
-  //     zIndex,
-  //     opacity,
-  //     width: baseWidth,
-  //     height: baseHeight,
-  //   };
-  // };
-
-  // Compute 3D card transforms based on index offset from center
-  // const getCardPosition = (index: number) => {
-  //   const isMobile = windowSize.width < 768;
-  //   const totalItems = items.length;
-  //   const centerIndex = currentIndex;
-  //   let offset = index - centerIndex ;
-
-  //   // Wrap around circularly
-  //   if (offset > totalItems / 2) offset -= totalItems;
-  //   if (offset < -totalItems / 2) offset += totalItems;
-
-  //   // Tuned spacing / sizes to match the reference spacing + visual rhythm
-  //   const cardSpacing = isMobile ? 84 : 280; // horizontal gap between card centers
-  //   const baseWidth = isMobile ? 140 : 180;
-  //   const baseHeight = isMobile ? 200 : 260;
-
-  //  const distance = Math.abs(offset) ;
-
-  //   // Defaults
-  //   const x = offset * cardSpacing;
-  //   const y = 0;
-  //   let z = 0;
-  //   let rotateY = 0;
-  //   let opacity = 1;
-  //   let scale = 1;
-  //   let zIndex = 100 - distance; // simpler zIndex that decreases with distance
-
-  //   // Tighter, more natural progression from center -> sides
-  //   if (offset === 0) {
-  //     // Center card - prominent but not absurdly large
-  //     scale = isMobile ? 1.05 : 0.8;
-  //     opacity = 1;
-  //     z = 400;
-  //     rotateY = 0;
-  //   } else if (distance === 1) {
-  //     // immediate neighbors - slight tilt and slightly smaller
-  //     scale = isMobile ? 0.98 : 0.96;
-  //     opacity = 0.95;
-  //     z = 220;
-  //     rotateY = -offset * 12; // tilt towards center (right cards tilt left and vice-versa)
-  //   } else if (distance === 2) {
-  //     // second neighbors
-  //     scale = isMobile ? 0.88 : 1;
-  //     opacity = 0.78;
-  //     z = 140;
-  //     rotateY = -offset * 12;
-  //   } else if (distance === 3) {
-  //     // third neighbors
-  //     scale = isMobile ? 0.78 : 1.2;
-  //     opacity = 0.55;
-  //     z = 80;
-  //     rotateY = -offset * 8;
-  //   } else {
-  //     // far cards - mostly hidden/flat
-  //     scale = isMobile ? 0.68 : 1.3;
-  //     opacity = 1;
-  //     z = 30;
-  //     rotateY = offset > 0 ? -20 : 20;
-  //   }
-
-  //   return {
-  //     x,
-  //     y,
-  //     z,
-  //     scale,
-  //     rotateY,
-  //     zIndex,
-  //     opacity,
-  //     width: baseWidth,
-  //     height: baseHeight,
-  //   };
-  // };
 
   // Compute 3D card transforms based on index offset from center
   const getCardPosition = (index: number) => {
@@ -341,7 +179,7 @@ export function VideoRingSlider({
       if (d === 1) return isMobile ? 1 : 1.1;
       if (d === 2) return isMobile ? 1.3 : 1.3;
       if (d === 3) return isMobile ? 1.5 : 1.5;
-      return isMobile ? 0.68 : 0.7;
+      return isMobile ? 0.68 : 1.6;
     };
 
     const getOpacity = (d: number) => {
@@ -481,6 +319,7 @@ export function VideoRingSlider({
                   height: `${position.height}px`,
                   zIndex: position.zIndex,
                   transformOrigin: "center center",
+                  // transformOrigin: "top center",
                 }}
                 initial={false}
                 animate={{
@@ -524,8 +363,8 @@ export function VideoRingSlider({
                     />
                   ) : (
                     <Image
-                    width={100}
-                    height={100}
+                      width={100}
+                      height={100}
                       src={item.thumbnail}
                       alt={item.title}
                       className="h-full w-full object-cover"
