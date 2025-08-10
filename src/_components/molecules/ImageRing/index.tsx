@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 import GalleryHero from "src/_components/sections/Gallery/GalleryHero";
+import Image from "next/image";
 
 export interface MediaItem {
   id: string;
@@ -125,24 +126,25 @@ export function VideoRingSlider({
   };
 
   // Toggle play/pause for video cards
-  const toggleVideo = (itemId: string, videoElement: HTMLVideoElement) => {
+  const toggleVideo = async (itemId: string, videoElement: HTMLVideoElement) => {
     setPlayingVideos((prev) => {
       const newSet = new Set(prev);
+
       if (newSet.has(itemId)) {
         newSet.delete(itemId);
-        videoElement.pause();
+       void videoElement.pause();
       } else {
         newSet.forEach((id) => {
-          if (id !== itemId) {
+          if (id != itemId) {
             const vid = document.querySelector(
               `video[data-id="${id}"]`,
             ) as HTMLVideoElement;
-            if (vid) vid.pause();
+            if (vid) void vid.pause();
           }
         });
         newSet.clear();
-        newSet.add(itemId);
-        videoElement.play();
+         newSet.add(itemId);
+        void videoElement.play();
       }
       return newSet;
     });
@@ -521,7 +523,9 @@ export function VideoRingSlider({
                       }}
                     />
                   ) : (
-                    <img
+                    <Image
+                    width={100}
+                    height={100}
                       src={item.thumbnail}
                       alt={item.title}
                       className="h-full w-full object-cover"
