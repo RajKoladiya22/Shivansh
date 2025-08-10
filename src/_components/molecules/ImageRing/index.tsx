@@ -788,5 +788,3 @@ export function VideoRingDemo() {
     </div>
   );
 }
-
-
