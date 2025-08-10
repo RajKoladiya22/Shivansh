@@ -1,3 +1,4 @@
+'use client';
 import type { IndustryCardProps, IndustryItem } from "src/_components/sections/types/Industry.type";
 import { motion } from "framer-motion";
 import Link from "next/link";
