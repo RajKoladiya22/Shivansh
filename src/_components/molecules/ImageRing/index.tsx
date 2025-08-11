@@ -184,9 +184,9 @@ export function VideoRingSlider({
 
     const getOpacity = (d: number) => {
       if (d === 0) return 1;
-      if (d === 1) return 0.95;
-      if (d === 2) return 0.78;
-      if (d === 3) return 0.55;
+      if (d === 1) return 0.97;
+      if (d === 2) return 0.91;
+      if (d === 3) return 0.97;
       return 0;
     };
 
@@ -518,91 +518,70 @@ export function HomeHero2() {
     {
       id: "1",
       title: "Coffee Art",
-      thumbnail: "/images/team/hero/hinalMam.png",
+      thumbnail: "/images/STAFF/SURESH.png",
       type: "image",
       category: "Food & Beverage",
     },
     {
       id: "2",
       title: "Urban Photo",
-      thumbnail: "/images/team/hero/hinalMam.png",
+      thumbnail: "/images/STAFF/ADARSH.png",
       type: "image",
       category: "Photography",
     },
     {
       id: "3",
       title: "Skincare",
-      thumbnail: "/images/team/hero/hinalMam.png",
+      thumbnail: "/images/STAFF/DAS.png",
       type: "image",
       category: "Beauty & Wellness",
     },
     {
       id: "4",
       title: "Cooking",
-      thumbnail: "/images/team/hero/hinalMam.png",
+      thumbnail: "/images/STAFF/HARJEET.png",
       type: "image",
       category: "Culinary",
     },
     {
       id: "5",
       title: "Fashion",
-      thumbnail: "/images/team/hero/hinalMam.png",
+      thumbnail: "/images/STAFF/KRISHNA.png",
       type: "image",
       category: "Fashion",
     },
     {
       id: "6",
       title: "Travel",
-      thumbnail: "/images/team/hero/hinalMam.png",
+      thumbnail: "/images/STAFF/MADHVI.png",
       type: "image",
       category: "Travel",
     },
     {
       id: "7",
       title: "Tech Review",
-      thumbnail: "/images/team/hero/hinalMam.png",
+      thumbnail: "/images/STAFF/POOJA.png",
       type: "image",
       category: "Technology",
     },
     {
       id: "8",
       title: "Fitness",
-      thumbnail: "/images/team/hero/hinalMam.png",
+      thumbnail: "/images/STAFF/PRIA.png",
       type: "image",
       category: "Health & Fitness",
-    },
-    {
-      id: "9",
-      title: "Art Tutorial",
-      thumbnail: "/images/team/hero/hinalMam.png",
-      type: "image",
-      category: "Art & Design",
-    },
-    {
-      id: "10",
-      title: "Music",
-      thumbnail: "/images/team/hero/hinalMam.png",
-      type: "image",
-      category: "Music",
-    },
-    {
-      id: "11",
-      title: "Music 2",
-      thumbnail: "/images/team/hero/hinalMam.png",
-      type: "image",
-      category: "Music",
-    },
-    {
-      id: "12",
-      title: "Urban Photo 2",
-      thumbnail: "/images/team/hero/hinalMam.png",
-      type: "image",
-      category: "Photography",
     },
     {
       id: "13",
       title: "Skincare 2",
       thumbnail: "/images/team/hero/hinalMam.png",
+      type: "image",
+      category: "Beauty & Wellness",
+    },
+    {
+      id: "13",
+      title: "Skincare 2",
+      thumbnail: "/images/STAFF/HINAL.png",
       type: "image",
       category: "Beauty & Wellness",
     },
