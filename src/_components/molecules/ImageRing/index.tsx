@@ -282,8 +282,6 @@ export function VideoRingSlider({
   return (
     <div
       className={`relative h-screen w-full overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-red-50 ${containerClassName}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Header (kept as-is) */}
       <div className="absolute top-8 left-1/2 z-10 w-full -translate-x-1/2 transform px-4 text-center md:top-16">
@@ -310,6 +308,8 @@ export function VideoRingSlider({
             const isActive = index === currentIndex;
             return (
               <motion.div
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
                 key={`${item.id}-${index}`}
                 className="absolute cursor-pointer overflow-hidden rounded-2xl shadow-lg"
                 style={{
@@ -330,7 +330,8 @@ export function VideoRingSlider({
                 }}
                 transition={{
                   duration: 0.6,
-                  ease: [0.25, 0.46, 0.45, 0.94],
+                  // ease: [0.25, 0.46, 0.45, 0.94],
+                  ease: "linear",
                 }}
                 onClick={() => navigateToIndex(index)}
                 whileHover={
@@ -434,7 +435,7 @@ export function VideoRingSlider({
       </div>
 
       {/* Prev/Next arrows (unchanged) */}
-      <div className="absolute top-1/2 left-8 z-10 -translate-y-1/2 transform">
+      {/* <div className="absolute top-1/2 left-8 z-10 -translate-y-1/2 transform">
         <button
           onClick={navigatePrev}
           className="rounded-full bg-white/80 p-3 shadow-lg backdrop-blur-sm transition-all duration-200 hover:scale-110 hover:bg-white"
@@ -451,7 +452,7 @@ export function VideoRingSlider({
         >
           <ChevronRight className="h-5 w-5 text-gray-700" />
         </button>
-      </div>
+      </div> */}
 
       {/* Decorative arrows and text (unchanged) */}
       <div className="absolute top-1/3 right-12 z-10 hidden lg:block">
@@ -512,109 +513,96 @@ export function VideoRingSlider({
 }
 
 // Sample demo usage (unchanged)
-export function VideoRingDemo() {
+export function HomeHero2() {
   const sampleItems: MediaItem[] = [
     {
       id: "1",
       title: "Coffee Art",
-      thumbnail:
-        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Food & Beverage",
     },
     {
       id: "2",
       title: "Urban Photo",
-      thumbnail:
-        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Photography",
     },
     {
       id: "3",
       title: "Skincare",
-      thumbnail:
-        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Beauty & Wellness",
     },
     {
       id: "4",
       title: "Cooking",
-      thumbnail:
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Culinary",
     },
     {
       id: "5",
       title: "Fashion",
-      thumbnail:
-        "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Fashion",
     },
     {
       id: "6",
       title: "Travel",
-      thumbnail:
-        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Travel",
     },
     {
       id: "7",
       title: "Tech Review",
-      thumbnail:
-        "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Technology",
     },
     {
       id: "8",
       title: "Fitness",
-      thumbnail:
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Health & Fitness",
     },
     {
       id: "9",
       title: "Art Tutorial",
-      thumbnail:
-        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Art & Design",
     },
     {
       id: "10",
       title: "Music",
-      thumbnail:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Music",
     },
     {
       id: "11",
       title: "Music 2",
-      thumbnail:
-        "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Music",
     },
     {
       id: "12",
       title: "Urban Photo 2",
-      thumbnail:
-        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Photography",
     },
     {
       id: "13",
       title: "Skincare 2",
-      thumbnail:
-        "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=600&fit=crop",
+      thumbnail: "/images/team/hero/hinalMam.png",
       type: "image",
       category: "Beauty & Wellness",
     },
@@ -624,7 +612,7 @@ export function VideoRingDemo() {
       <VideoRingSlider
         items={sampleItems}
         autoRotate={true}
-        rotationInterval={3500}
+        rotationInterval={1900}
       />
     </div>
   );

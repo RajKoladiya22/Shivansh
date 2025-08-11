@@ -89,6 +89,7 @@ import {
 } from "../_components/sections/Home";
 import type { Metadata } from "next";
 import { BASE_URL, SITE_NAME, DEFAULT_DESCRIPTION } from "src/config/constants";
+import { HomeHero2 } from "src/_components/molecules/ImageRing";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title =
@@ -267,7 +268,8 @@ export default async function Home() {
 
 
 
-      <Hero />
+      {/* <Hero /> */}
+      <HomeHero2 />
 
       <section className="bg-gradient-to-b from-white to-red-50 py-14 sm:py-18">
         <AboutUsSection />

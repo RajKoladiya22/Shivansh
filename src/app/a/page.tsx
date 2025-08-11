@@ -1,4 +1,4 @@
-import { VideoRingDemo } from "src/_components/molecules/ImageRing";
+import { HomeHero2 } from "src/_components/molecules/ImageRing";
 
 export default async function Apage() {
   const imageUrls = [
@@ -17,7 +17,7 @@ export default async function Apage() {
       {/* Structured Data */}
 
       <div className="py-20">
-        <VideoRingDemo  />
+        <HomeHero2  />
       </div>
     </>
   );
