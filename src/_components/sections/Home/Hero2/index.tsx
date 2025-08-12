@@ -15,71 +15,77 @@ import {
 } from "src/config/constants";
 
 export const Hero2 = () => {
-  const slides= useMemo(() => [
-    {
-      id: "1",
-      src: "/images/STAFF/01.jpg",
-      alt: "Abstract colorful design",
-    },
-    {
-      id: "2",
-      src: "/images/STAFF/02.jpg",
-      alt: "Modern geometric shapes",
-    },
-    {
-      id: "3",
-      src: "/images/STAFF/03.jpg",
-      alt: "Artistic composition",
-    },
-    {
-      id: "4",
-      src: "/images/STAFF/04.jpg",
-      alt: "Creative design element",
-    },
-    {
-      id: "5",
-      src: "/images/STAFF/05.jpg",
-      alt: "Digital art piece",
-    },
-    {
-      id: "6",
-      src: "/images/STAFF/06.jpg",
-      alt: "Contemporary visual",
-    },
-    {
-      id: "7",
-      src: "/images/STAFF/07.jpg",
-      alt: "Minimalist design",
-    },
-    {
-      id: "8",
-      src: "/images/STAFF/HARJEET.PNG",
-      alt: "Vibrant artwork",
-    },
-    {
-      id: "9",
-      src: "/images/team/hero/hinalMam.png",
-      alt: "Modern abstract",
-    },
-  ], []);
+  const slides = useMemo(
+    () => [
+      {
+        id: "1",
+        src: "/images/STAFF/01.jpg",
+        alt: "Abstract colorful design",
+      },
+      {
+        id: "2",
+        src: "/images/STAFF/02.jpg",
+        alt: "Modern geometric shapes",
+      },
+      {
+        id: "3",
+        src: "/images/STAFF/03.jpg",
+        alt: "Artistic composition",
+      },
+      {
+        id: "4",
+        src: "/images/STAFF/04.jpg",
+        alt: "Creative design element",
+      },
+      {
+        id: "5",
+        src: "/images/STAFF/05.jpg",
+        alt: "Digital art piece",
+      },
+      {
+        id: "6",
+        src: "/images/STAFF/06.jpg",
+        alt: "Contemporary visual",
+      },
+      {
+        id: "7",
+        src: "/images/STAFF/07.jpg",
+        alt: "Minimalist design",
+      },
+      {
+        id: "8",
+        src: "/images/STAFF/HARJEET.PNG",
+        alt: "Vibrant artwork",
+      },
+      {
+        id: "9",
+        src: "/images/team/hero/hinalMam.png",
+        alt: "Modern abstract",
+      },
+    ],
+    [],
+  );
 
-//   const customConfig: Partial<CarouselConfig> = {
-//     slideHeight: 600,
-//     slidesInRing: 21,
-//     autoRotate: true,
-//     rotationSpeed: 0.15,
-//     pauseOnHover: true,
-//     entranceAnimation: "fadeIn",
-//   };
+  //   const customConfig: Partial<CarouselConfig> = {
+  //     slideHeight: 600,
+  //     slidesInRing: 21,
+  //     autoRotate: true,
+  //     rotationSpeed: 0.15,
+  //     pauseOnHover: true,
+  //     entranceAnimation: "fadeIn",
+  //   };
 
- const customConfig = useMemo<Partial<CarouselConfig>>(() => ({
-    slideHeight: 600,
-    slidesInRing: 21,
-    autoRotate: true,
-    rotationSpeed: 0.15,
-    pauseOnHover: true,
-    entranceAnimation: "fadeIn"
-  }), []);
+  const customConfig = useMemo<Partial<CarouselConfig>>(
+    () => ({
+      slideHeight: 600,
+      slidesInRing: 21,
+      autoRotate: true,
+      rotationSpeed: 0.15,
+      pauseOnHover: true,
+      entranceAnimation: "fadeIn",
+    }),
+    [],
+  );
 
   const handleYouTubeClick = useCallback(() => {
     window.open("https://bitly.cx/rNEH4", "_blank", "noopener,noreferrer");
@@ -129,7 +135,7 @@ export const Hero2 = () => {
             </p>
           </div>
         </div>
-        <div className="pt-25 pb-35">
+        <div className="sm:pt-25 sm:pb-35">
           <CurvedCarousel
             slides={slides}
             config={customConfig}
@@ -138,7 +144,7 @@ export const Hero2 = () => {
           />
         </div>
         {/* Action Buttons */}
-        <div className="flex flex-col justify-center space-y-4 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4">
+        <div className="flex flex-col justify-center space-y-4 px-3 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 sm:px-1">
           <button
             className={`${btn_color} flex transform items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold tracking-wide shadow-lg`}
             onClick={handleYouTubeClick}
