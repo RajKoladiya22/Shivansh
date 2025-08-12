@@ -518,7 +518,7 @@ export interface CarouselConfig {
 export interface SlideData {
   id?: string;
   src?: string;
-  alt?: string;
+  name?: string;
 }
 
 interface CurvedCarouselProps {
@@ -903,39 +903,37 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
           ref={ringRef}
           className="curved-carousel__ring absolute h-full w-full"
         >
-          {allSlides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className="carousel-slide group absolute cursor-pointer overflow-hidden"
-              onMouseEnter={handleSlideMouseEnter}
-              onMouseLeave={handleSlideMouseLeave}
-            >
-              <img
-                src={slide.src}
-                alt={slide.alt}
-                className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
-                draggable={false}
-                loading={index < 5 ? "eager" : "lazy"}
-                decoding="async"
-              />
-              {/* Hover overlay content */}
-              <div className="absolute inset-0 flex items-center justify-center rounded-3xl transition-all duration-300 group-hover:bg-opacity-60">
-                <div className="transform scale-90 p-4 text-center text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
-                  <h3 className="mb-2 text-lg font-bold">
-                    {slide.alt ?? "Image"}
-                  </h3>
-                  <p className="text-sm opacity-90">
-                    Hover content for slide {index + 1}
-                  </p>
-                  <div className="mt-3">
-                    <button className="rounded-lg bg-white bg-opacity-20 px-4 py-2 text-sm transition-colors hover:bg-opacity-30">
-                      View Details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+         {allSlides.map((slide, index) => (
+  <div
+    key={slide.id}
+    className="carousel-slide group absolute cursor-pointer overflow-hidden"
+    onMouseEnter={handleSlideMouseEnter}
+    onMouseLeave={handleSlideMouseLeave}
+  >
+    <img
+      src={slide.src}
+      alt={slide.name}
+      className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
+      draggable={false}
+      loading={index < 5 ? "eager" : "lazy"}
+      decoding="async"
+    />
+    {/* Hover overlay content at bottom */}
+    <div className="absolute inset-x-0 bottom-0 rounded-b-3xl bg-gradient-to-t from-black/99 via-black/70 to-transparent p-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
+      <div className="text-white">
+        <h3 className="mb-1 text-5xl font-bold drop-shadow-sm">
+          {slide.name ?? "Image"}
+        </h3>
+        <p className="mb-3 text-sm opacity-90 drop-shadow-sm">
+          Hover content for slide {index + 1}
+        </p>
+        {/* <button className="rounded-lg bg-white/20 px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-200 hover:bg-white/30 hover:scale-105">
+          View Details
+        </button> */}
+      </div>
+    </div>
+  </div>
+))}
         </div>
       </div>
 

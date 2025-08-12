@@ -19,65 +19,63 @@ export const Hero2 = () => {
     () => [
       {
         id: "1",
-        src: "/images/STAFF/01.jpg",
-        alt: "Abstract colorful design",
+        src: "/images/STAFF/01.png",
+        
+        name: "Priya Ma'am",
       },
       {
         id: "2",
-        src: "/images/STAFF/02.jpg",
-        alt: "Modern geometric shapes",
+        src: "/images/STAFF/02.png",
+        name: "Pooja Ma'am",
       },
       {
         id: "3",
-        src: "/images/STAFF/03.jpg",
-        alt: "Artistic composition",
+        src: "/images/STAFF/03.png",
+    
+        name: "Dhara ma'am",
       },
       {
         id: "4",
-        src: "/images/STAFF/04.jpg",
-        alt: "Creative design element",
+        src: "/images/STAFF/04.png",
+        
+        name: "Krishna Ma'am",
       },
       {
         id: "5",
-        src: "/images/STAFF/05.jpg",
-        alt: "Digital art piece",
+        src: "/images/STAFF/05.png",
+        name: "Hinal Ma'am",
       },
       {
         id: "6",
-        src: "/images/STAFF/06.jpg",
-        alt: "Contemporary visual",
+        src: "/images/STAFF/06.png",
+       name: "Mehul Sir",
+        
       },
       {
         id: "7",
-        src: "/images/STAFF/07.jpg",
-        alt: "Minimalist design",
+        src: "/images/STAFF/07.png",
+        
+         name: "Madhvi Ma'am",
       },
-      {
-        id: "8",
-        src: "/images/STAFF/HARJEET.PNG",
-        alt: "Vibrant artwork",
-      },
-      {
-        id: "9",
-        src: "/images/team/hero/hinalMam.png",
-        alt: "Modern abstract",
-      },
+    //   {
+    //     id: "8",
+    //     src: "/images/STAFF/HARJEET.PNG",
+    //     name: "Harjeet Sir",
+    //   },
+    //   {
+    //     id: "9",
+    //     src: "/images/team/hero/hinalMam.png",
+    //     name: "Honey Ma'am",
+    //   },
     ],
     [],
   );
 
-  //   const customConfig: Partial<CarouselConfig> = {
-  //     slideHeight: 600,
-  //     slidesInRing: 21,
-  //     autoRotate: true,
-  //     rotationSpeed: 0.15,
-  //     pauseOnHover: true,
-  //     entranceAnimation: "fadeUp",
-  //   };
+
 
   const customConfig = useMemo<Partial<CarouselConfig>>(
     () => ({
-      slideHeight: 600,
+      slideHeight: 725,
       slidesInRing: 21,
       autoRotate: true,
       rotationSpeed: 0.15,
