@@ -922,7 +922,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
               <div className="absolute inset-0 flex items-center justify-center rounded-3xl transition-all duration-300 group-hover:bg-opacity-60">
                 <div className="transform scale-90 p-4 text-center text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
                   <h3 className="mb-2 text-lg font-bold">
-                    {slide.alt || "Image"}
+                    {slide.alt ?? "Image"}
                   </h3>
                   <p className="text-sm opacity-90">
                     Hover content for slide {index + 1}
