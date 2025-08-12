@@ -1,4 +1,5 @@
-import { HomeHero2 } from "src/_components/molecules/ImageRing";
+import { CarouselExample } from "src/_components/molecules/HeroSlider";
+
 
 export default async function Apage() {
   const imageUrls = [
@@ -17,7 +18,7 @@ export default async function Apage() {
       {/* Structured Data */}
 
       <div className="py-20">
-        <HomeHero2  />
+        <CarouselExample  />
       </div>
     </>
   );
