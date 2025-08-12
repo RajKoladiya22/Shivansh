@@ -23,7 +23,7 @@ export const WebsiteLoader: React.FC = () => {
     // Hide loader after 3 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2500);
 
     return () => {
       clearInterval(progressInterval);
@@ -36,7 +36,7 @@ export const WebsiteLoader: React.FC = () => {
   }
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white">
+    <div className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white duration-300 transition-opacity ${isLoading ? 'opacity-100' : 'opacity-0'}`}>
       {/* Background Pattern */}
       {/* <div className="absolute inset-0 opacity-5">
         <div className="h-full w-full bg-gradient-to-br from-red-50 via-pink-50 to-blue-50"></div>
@@ -67,7 +67,7 @@ export const WebsiteLoader: React.FC = () => {
 
             {/* Logo/Icon in center */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-black to-black shadow-lg">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/95 shadow-lg">
                 {/* Tally-inspired icon */}
                 {/* <svg
                   className="h-8 w-8 animate-pulse text-white"
@@ -80,7 +80,7 @@ export const WebsiteLoader: React.FC = () => {
                   <path d="M8 15h8v2H8z" />
                 </svg> */}
                 <Image 
-                className="h-8 w-8 animate-pulse text-white"
+                className="h-8 w-8 animate-pulse"
                 width={10}
                 height={10}
                 src={'/images/logo/Logo-name.svg'}
