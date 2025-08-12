@@ -471,6 +471,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     "--block-offset": "-18rem",
     "--block-offset-m": "-6rem",
     overflow: "hidden",
+    zIndex : 1,
     "--fadeout": fadeout
       ? "linear-gradient(90deg, transparent, white 20%, white 80%, transparent 100%)"
       : "none",

@@ -8,6 +8,7 @@ import { FloatingContactButton } from "../_components/ui";
 import { BASE_URL, DEFAULT_DESCRIPTION, SITE_NAME } from "src/config/constants";
 import { Footer } from "src/_components/molecules";
 import { Header,  } from "src/_components/molecules/Header";
+import { WebsiteLoader } from "src/_components/molecules/Loader";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -205,6 +206,8 @@ export default function RootLayout({
         <link rel="preload" href="/images/logo/logo.png" as="image" />
       </head>
       <body cz-shortcut-listen="true">
+        <WebsiteLoader />
+
         <Header />
         <TRPCReactProvider>{children}</TRPCReactProvider>
         <Footer />

@@ -72,7 +72,7 @@ export const Hero2 = () => {
   //     autoRotate: true,
   //     rotationSpeed: 0.15,
   //     pauseOnHover: true,
-  //     entranceAnimation: "fadeIn",
+  //     entranceAnimation: "fadeUp",
   //   };
 
   const customConfig = useMemo<Partial<CarouselConfig>>(
@@ -82,7 +82,7 @@ export const Hero2 = () => {
       autoRotate: true,
       rotationSpeed: 0.15,
       pauseOnHover: true,
-      entranceAnimation: "fadeIn",
+      entranceAnimation: "fadeUp",
     }),
     [],
   );
@@ -144,7 +144,7 @@ export const Hero2 = () => {
           />
         </div>
         {/* Action Buttons */}
-        <div className="flex flex-col justify-center space-y-4 px-3 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 sm:px-1">
+        <div className="flex z-10 relative flex-col justify-center space-y-4 px-3 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 sm:px-1">
           <button
             className={`${btn_color} flex transform items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold tracking-wide shadow-lg`}
             onClick={handleYouTubeClick}
