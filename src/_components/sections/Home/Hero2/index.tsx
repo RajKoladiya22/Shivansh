@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { SERVICE } from "public/data/Navigation";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import {
   CurvedCarousel,
   type CarouselConfig,
@@ -15,7 +15,7 @@ import {
 } from "src/config/constants";
 
 export const Hero2 = () => {
-  const slides: SlideData[] = [
+  const slides= useMemo(() => [
     {
       id: "1",
       src: "/images/STAFF/01.jpg",
@@ -61,16 +61,25 @@ export const Hero2 = () => {
       src: "/images/team/hero/hinalMam.png",
       alt: "Modern abstract",
     },
-  ];
+  ], []);
 
-  const customConfig: Partial<CarouselConfig> = {
+//   const customConfig: Partial<CarouselConfig> = {
+//     slideHeight: 600,
+//     slidesInRing: 21,
+//     autoRotate: true,
+//     rotationSpeed: 0.15,
+//     pauseOnHover: true,
+//     entranceAnimation: "fadeIn",
+//   };
+
+ const customConfig = useMemo<Partial<CarouselConfig>>(() => ({
     slideHeight: 600,
     slidesInRing: 21,
     autoRotate: true,
     rotationSpeed: 0.15,
     pauseOnHover: true,
-    entranceAnimation: "fadeIn",
-  };
+    entranceAnimation: "fadeIn"
+  }), []);
 
   const handleYouTubeClick = useCallback(() => {
     window.open("https://bitly.cx/rNEH4", "_blank", "noopener,noreferrer");

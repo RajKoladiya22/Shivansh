@@ -1,4 +1,4 @@
-import { CarouselExample } from "src/_components/molecules/HeroSlider";
+// import { CarouselExample } from "src/_components/molecules/HeroSlider";
 
 
 export default async function Apage() {
@@ -17,8 +17,9 @@ export default async function Apage() {
     <>
       {/* Structured Data */}
 
-      <div className="py-20">
-        <CarouselExample  />
+      <div className="py-40 text-center">
+        {/* <CarouselExample  /> */}
+        <h6 className="text-6xl">TEST PAGE</h6>
       </div>
     </>
   );
