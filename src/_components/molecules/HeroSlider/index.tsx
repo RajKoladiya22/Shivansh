@@ -479,7 +479,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   // Memoized slide processing
   const processedSlides = useMemo(() => {
     const originalSlideCount = slides.length;
-    let processed = [...slides];
+    const processed = [...slides];
 
     if (originalSlideCount < carouselConfig.slidesInRing) {
       const duplicatesNeeded = carouselConfig.slidesInRing - originalSlideCount;
