@@ -902,7 +902,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
           {allSlides.map((slide, index) => (
             <div
               key={slide.id}
-              className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-b-3xl"
+              className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-3xl"
               onMouseEnter={handleSlideMouseEnter}
               onMouseLeave={handleSlideMouseLeave}
             >
