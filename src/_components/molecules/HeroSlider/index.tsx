@@ -535,7 +535,7 @@ const defaultConfig: CarouselConfig = {
   rotationSpeed: 0.1,
   rotationDirection: 1,
   pauseOnHover: true,
-  resumeDelay: 1000, // Increased delay to prevent rapid start/stop
+  resumeDelay: 100, // Increased delay to prevent rapid start/stop
   pauseEaseDuration: 0.5,
   entranceAnimation: "fadeIn",
   entranceDuration: 1.5,
