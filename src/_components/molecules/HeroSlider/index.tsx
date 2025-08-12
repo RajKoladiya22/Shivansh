@@ -123,9 +123,9 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     stage.style.height = `${carouselConfig.slideHeight}px`;
 
     // Auto-rotation variables
-    let autoRotate = carouselConfig.autoRotate;
-    let targetRotationSpeed = carouselConfig.rotationSpeed;
-    let rotationDirection = carouselConfig.rotationDirection;
+    const autoRotate = carouselConfig.autoRotate;
+    const targetRotationSpeed = carouselConfig.rotationSpeed;
+    const rotationDirection = carouselConfig.rotationDirection;
 
     // Initialize timeline
     const timeline = gsap.timeline();
