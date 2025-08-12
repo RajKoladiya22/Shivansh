@@ -75,7 +75,7 @@ export const Hero2 = () => {
 
   const customConfig = useMemo<Partial<CarouselConfig>>(
     () => ({
-      slideHeight: 725,
+      slideHeight: 750,
       slidesInRing: 21,
       autoRotate: true,
       rotationSpeed: 0.15,

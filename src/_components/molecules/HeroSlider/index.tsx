@@ -909,13 +909,13 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
               <img
                 src={slide.src}
                 alt={slide.name}
-                className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
+                className="max-h-full max-w-full rounded-3xl object-contain transition-transform duration-300 group-hover:scale-105"
                 draggable={false}
                 loading={index < 5 ? "eager" : "lazy"}
                 decoding="async"
               />
               {/* Hover overlay content at bottom */}
-              <div className="absolute inset-x-0 bottom-0 rounded-b-3xl bg-gradient-to-t from-black/99 via-black/70 to-transparent p-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
+              <div className="absolute inset-x-0 bottom-20 rounded-b-3xl bg-gradient-to-t from-black via-black/90 to-transparent p-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
                 <div className="text-white">
                   <h3 className="mb-1 text-5xl font-bold drop-shadow-sm">
                     {slide.name ?? "Image"}
