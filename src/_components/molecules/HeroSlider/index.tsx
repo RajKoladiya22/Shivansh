@@ -264,7 +264,7 @@
 //       slideElement.style.transformStyle = "preserve-3d";
 //       slideElement.style.backfaceVisibility = "hidden";
 //       slideElement.style.transform = `
-//         rotateY(${index * -anglePerSlide}deg) 
+//         rotateY(${index * -anglePerSlide}deg)
 //         translateZ(${-carouselConfig.radius}px)
 //       `;
 //       slideElement.style.transformOrigin = `50% 50% 0px`;
@@ -425,7 +425,7 @@
 //               className="carousel-slide group absolute cursor-pointer overflow-hidden"
 //             >
 //               <img
-              
+
 //                 src={slide.src}
 //                 alt={slide.alt}
 //                 className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
@@ -483,9 +483,6 @@
 //     </div>
 //   );
 // };
-
-
-
 
 "use client";
 import React, {
@@ -686,7 +683,11 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     }
 
     autoRotateTimeoutRef.current = setTimeout(() => {
-      if (carouselConfig.autoRotate && isActiveRef.current && !isPausedRef.current) {
+      if (
+        carouselConfig.autoRotate &&
+        isActiveRef.current &&
+        !isPausedRef.current
+      ) {
         startAutoRotation();
       }
     }, carouselConfig.resumeDelay);
@@ -699,7 +700,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   // Event handlers for container hover
   const handleContainerMouseEnter = useCallback(() => {
     if (!carouselConfig.pauseOnHover) return;
-    
+
     if (autoRotateTimeoutRef.current) {
       clearTimeout(autoRotateTimeoutRef.current);
     }
@@ -857,11 +858,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       if (ring) ring.style.willChange = "auto";
       if (stage) stage.style.willChange = "auto";
     };
-  }, [
-    allSlides,
-    carouselConfig,
-    startAutoRotation,
-  ]);
+  }, [allSlides, carouselConfig, startAutoRotation]);
 
   // Component unmount cleanup
   useEffect(() => {
@@ -890,7 +887,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       ref={containerRef}
       className={`curved-carousel relative z-10 w-full overflow-visible select-none ${className}`}
       style={carouselStyles}
- 
     >
       {/* Stage */}
       <div
@@ -903,37 +899,37 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
           ref={ringRef}
           className="curved-carousel__ring absolute h-full w-full"
         >
-         {allSlides.map((slide, index) => (
-  <div
-    key={slide.id}
-    className="carousel-slide group absolute cursor-pointer overflow-hidden"
-    onMouseEnter={handleSlideMouseEnter}
-    onMouseLeave={handleSlideMouseLeave}
-  >
-    <img
-      src={slide.src}
-      alt={slide.name}
-      className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
-      draggable={false}
-      loading={index < 5 ? "eager" : "lazy"}
-      decoding="async"
-    />
-    {/* Hover overlay content at bottom */}
-    <div className="absolute inset-x-0 bottom-0 rounded-b-3xl bg-gradient-to-t from-black/99 via-black/70 to-transparent p-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
-      <div className="text-white">
-        <h3 className="mb-1 text-5xl font-bold drop-shadow-sm">
-          {slide.name ?? "Image"}
-        </h3>
-        <p className="mb-3 text-sm opacity-90 drop-shadow-sm">
-          Hover content for slide {index + 1}
-        </p>
-        {/* <button className="rounded-lg bg-white/20 px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-200 hover:bg-white/30 hover:scale-105">
+          {allSlides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-b-3xl"
+              onMouseEnter={handleSlideMouseEnter}
+              onMouseLeave={handleSlideMouseLeave}
+            >
+              <img
+                src={slide.src}
+                alt={slide.name}
+                className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
+                draggable={false}
+                loading={index < 5 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              {/* Hover overlay content at bottom */}
+              <div className="absolute inset-x-0 bottom-0 rounded-b-3xl bg-gradient-to-t from-black/99 via-black/70 to-transparent p-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                <div className="text-white">
+                  <h3 className="mb-1 text-5xl font-bold drop-shadow-sm">
+                    {slide.name ?? "Image"}
+                  </h3>
+                  <p className="mb-3 text-sm opacity-90 drop-shadow-sm">
+                    Hover content for slide {index + 1}
+                  </p>
+                  {/* <button className="rounded-lg bg-white/20 px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-200 hover:bg-white/30 hover:scale-105">
           View Details
         </button> */}
-      </div>
-    </div>
-  </div>
-))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
