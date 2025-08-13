@@ -1,3 +1,25 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // "use client";
 // import React, {
 //   useEffect,
@@ -29,7 +51,8 @@
 // export interface SlideData {
 //   id?: string;
 //   src?: string;
-//   alt?: string;
+//   name?: string;
+//   position?: string;
 // }
 
 // interface CurvedCarouselProps {
@@ -49,7 +72,7 @@
 //   rotationSpeed: 0.1,
 //   rotationDirection: 1,
 //   pauseOnHover: true,
-//   resumeDelay: 0,
+//   resumeDelay: 100, // Increased delay to prevent rapid start/stop
 //   pauseEaseDuration: 0.5,
 //   entranceAnimation: "fadeIn",
 //   entranceDuration: 1.5,
@@ -66,9 +89,9 @@
 //   const ringRef = useRef<HTMLDivElement>(null);
 //   const stageRef = useRef<HTMLDivElement>(null);
 //   const containerRef = useRef<HTMLDivElement>(null);
-//   const containerRefHov = useRef<HTMLDivElement>(null);
 //   const slideElementsRef = useRef<NodeListOf<Element> | null>(null);
 //   const [allSlides, setAllSlides] = useState<SlideData[]>([]);
+//   const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
 
 //   // Performance optimization: Use RAF for smooth animations
 //   const rafIdRef = useRef<number | null>(null);
@@ -84,6 +107,9 @@
 //   const autoRotateTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 //   const speedControllerRef = useRef({ value: 0 });
 //   const isActiveRef = useRef<boolean>(true);
+//   const isPausedRef = useRef<boolean>(false);
+
+//   const isMobile = windowSize.width < 768;
 
 //   // Memoized styles for better performance
 //   const carouselStyles = useMemo(
@@ -91,8 +117,8 @@
 //       ({
 //         "--viewport-height": "35rem",
 //         "--viewport-height-m": "35rem",
-//         "--perspective": "600px",
-//         "--perspective-m": "400px",
+//         "--perspective": "1000px",
+//         "--perspective-m": "800px",
 //         "--block-offset": "-18rem",
 //         "--block-offset-m": "-6rem",
 //         overflow: "hidden",
@@ -124,11 +150,14 @@
 
 //   // High-performance rotation update using RAF
 //   const updateRotation = useCallback(() => {
-//     if (!isActiveRef.current || !ringRef.current) return;
+//     if (!isActiveRef.current || !ringRef.current || isPausedRef.current) {
+//       rafIdRef.current = null;
+//       return;
+//     }
 
 //     const currentRotationSpeed = speedControllerRef.current.value;
 //     if (currentRotationSpeed === 0) {
-//       rafIdRef.current = null;
+//       rafIdRef.current = requestAnimationFrame(updateRotation);
 //       return;
 //     }
 
@@ -143,7 +172,7 @@
 
 //   // Optimized start/stop functions
 //   const startAutoRotation = useCallback(() => {
-//     if (!carouselConfig.autoRotate || rafIdRef.current) return;
+//     if (!carouselConfig.autoRotate || isPausedRef.current) return;
 
 //     if (speedTweenRef.current) {
 //       speedTweenRef.current.kill();
@@ -167,6 +196,8 @@
 //   ]);
 
 //   const stopAutoRotation = useCallback(() => {
+//     isPausedRef.current = true;
+
 //     if (speedTweenRef.current) {
 //       speedTweenRef.current.kill();
 //     }
@@ -185,12 +216,18 @@
 //   }, [carouselConfig.pauseEaseDuration]);
 
 //   const resumeAutoRotation = useCallback(() => {
+//     isPausedRef.current = false;
+
 //     if (autoRotateTimeoutRef.current) {
 //       clearTimeout(autoRotateTimeoutRef.current);
 //     }
 
 //     autoRotateTimeoutRef.current = setTimeout(() => {
-//       if (carouselConfig.autoRotate && isActiveRef.current) {
+//       if (
+//         carouselConfig.autoRotate &&
+//         isActiveRef.current &&
+//         !isPausedRef.current
+//       ) {
 //         startAutoRotation();
 //       }
 //     }, carouselConfig.resumeDelay);
@@ -200,15 +237,30 @@
 //     startAutoRotation,
 //   ]);
 
-//   // Event handlers with proper cleanup
-//   const handleMouseEnter = useCallback(() => {
+//   // Event handlers for container hover
+//   const handleContainerMouseEnter = useCallback(() => {
+//     if (!carouselConfig.pauseOnHover) return;
+
+//     if (autoRotateTimeoutRef.current) {
+//       clearTimeout(autoRotateTimeoutRef.current);
+//     }
+//     stopAutoRotation();
+//   }, [carouselConfig.pauseOnHover, stopAutoRotation]);
+
+//   const handleContainerMouseLeave = useCallback(() => {
+//     if (!carouselConfig.pauseOnHover) return;
+//     resumeAutoRotation();
+//   }, [carouselConfig.pauseOnHover, resumeAutoRotation]);
+
+//   // Individual slide hover handlers
+//   const handleSlideMouseEnter = useCallback(() => {
 //     if (autoRotateTimeoutRef.current) {
 //       clearTimeout(autoRotateTimeoutRef.current);
 //     }
 //     stopAutoRotation();
 //   }, [stopAutoRotation]);
 
-//   const handleMouseLeave = useCallback(() => {
+//   const handleSlideMouseLeave = useCallback(() => {
 //     resumeAutoRotation();
 //   }, [resumeAutoRotation]);
 
@@ -248,9 +300,6 @@
 //     ring.style.willChange = "transform";
 //     ring.style.transformStyle = "preserve-3d";
 
-//     // Batch DOM updates for better performance
-//     const fragment = document.createDocumentFragment();
-
 //     // Position slides in 3D space with GPU acceleration
 //     slideElements.forEach((slide, index) => {
 //       const slideElement = slide as HTMLElement;
@@ -264,7 +313,7 @@
 //       slideElement.style.transformStyle = "preserve-3d";
 //       slideElement.style.backfaceVisibility = "hidden";
 //       slideElement.style.transform = `
-//         rotateY(${index * -anglePerSlide}deg)
+//         rotateY(${index * -anglePerSlide}deg) 
 //         translateZ(${-carouselConfig.radius}px)
 //       `;
 //       slideElement.style.transformOrigin = `50% 50% 0px`;
@@ -322,26 +371,10 @@
 //       startAutoRotation();
 //     }
 
-//     // Add optimized event listeners
-//     if (carouselConfig.pauseOnHover && containerRefHov.current) {
-//       const container = containerRefHov.current;
-//       container.addEventListener("mouseenter", handleMouseEnter, {
-//         passive: true,
-//       });
-//       container.addEventListener("mouseleave", handleMouseLeave, {
-//         passive: true,
-//       });
-//       container.addEventListener("touchstart", handleMouseEnter, {
-//         passive: true,
-//       });
-//       container.addEventListener("touchend", handleMouseLeave, {
-//         passive: true,
-//       });
-//     }
-
 //     // Cleanup function
 //     return () => {
 //       isActiveRef.current = false;
+//       isPausedRef.current = true;
 
 //       if (rafIdRef.current) {
 //         cancelAnimationFrame(rafIdRef.current);
@@ -356,14 +389,6 @@
 //         clearTimeout(autoRotateTimeoutRef.current);
 //       }
 
-//       if (containerRef.current) {
-//         const container = containerRef.current;
-//         container.removeEventListener("mouseenter", handleMouseEnter);
-//         container.removeEventListener("mouseleave", handleMouseLeave);
-//         container.removeEventListener("touchstart", handleMouseEnter);
-//         container.removeEventListener("touchend", handleMouseLeave);
-//       }
-
 //       // Clean up will-change properties
 //       if (slideElementsRef.current) {
 //         slideElementsRef.current.forEach((slide) => {
@@ -373,19 +398,15 @@
 //       if (ring) ring.style.willChange = "auto";
 //       if (stage) stage.style.willChange = "auto";
 //     };
-//   }, [
-//     allSlides,
-//     carouselConfig,
-//     startAutoRotation,
-//     handleMouseEnter,
-//     handleMouseLeave,
-//   ]);
+//   }, [allSlides, carouselConfig, startAutoRotation]);
 
 //   // Component unmount cleanup
 //   useEffect(() => {
 //     isActiveRef.current = true;
+//     isPausedRef.current = false;
 //     return () => {
 //       isActiveRef.current = false;
+//       isPausedRef.current = true;
 //     };
 //   }, []);
 
@@ -420,32 +441,32 @@
 //         >
 //           {allSlides.map((slide, index) => (
 //             <div
-//             ref={containerRefHov}
 //               key={slide.id}
-//               className="carousel-slide group absolute cursor-pointer overflow-hidden"
+//               className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-3xl"
+//               onMouseEnter={handleSlideMouseEnter}
+//               onMouseLeave={handleSlideMouseLeave}
 //             >
 //               <img
-
 //                 src={slide.src}
-//                 alt={slide.alt}
-//                 className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
+//                 alt={slide.name}
+//                 className="max-h-full max-w-full rounded-3xl object-contain transition-transform duration-300 group-hover:scale-105"
 //                 draggable={false}
 //                 loading={index < 5 ? "eager" : "lazy"}
 //                 decoding="async"
 //               />
-//               {/* Hover overlay content */}
-//               <div className="bg-opacity-60 absolute inset-0 flex items-center justify-center rounded-3xl bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-//                 <div className="p-4 text-center text-white">
-//                   <h3 className="mb-2 text-lg font-bold">
-//                     {slide.alt || "Image"}
-//                   </h3>
-//                   <p className="text-sm opacity-90">
-//                     Hover content for slide {index + 1}
-//                   </p>
-//                   <div className="mt-3">
-//                     <button className="bg-opacity-20 hover:bg-opacity-30 rounded-lg bg-white px-4 py-2 text-sm transition-colors">
-//                       View Details
-//                     </button>
+//               {/* Hover Overlay - Full Coverage */}
+
+//               <div className="absolute inset-0 bottom-30 flex flex-col justify-end rounded-3xl bg-gradient-to-b from-transparent via-black/70 to-black opacity-0 transition-opacity duration-400 group-hover:opacity-100">
+//                 <div className="translate-y-full transform p-4 text-white transition-transform duration-500 ease-out group-hover:translate-y-0 md:p-5 lg:p-6">
+//                   <div className="space-y-2 md:space-y-3">
+//                     <div>
+//                       <h3 className="line-clamp-1 text-2xl font-bold md:text-5xl">
+//                         {slide.name || `Team Member ${index + 1}`}
+//                       </h3>
+//                       <p className="text-xl font-medium text-red-300 md:text-3xl">
+//                         {slide.position || "Team Member"}
+//                       </p>
+//                     </div>
 //                   </div>
 //                 </div>
 //               </div>
@@ -484,6 +505,20 @@
 //   );
 // };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 import React, {
   useEffect,
@@ -516,6 +551,7 @@ export interface SlideData {
   id?: string;
   src?: string;
   name?: string;
+  position?: string;
 }
 
 interface CurvedCarouselProps {
@@ -535,7 +571,7 @@ const defaultConfig: CarouselConfig = {
   rotationSpeed: 0.1,
   rotationDirection: 1,
   pauseOnHover: true,
-  resumeDelay: 100, // Increased delay to prevent rapid start/stop
+  resumeDelay: 100,
   pauseEaseDuration: 0.5,
   entranceAnimation: "fadeIn",
   entranceDuration: 1.5,
@@ -554,6 +590,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const slideElementsRef = useRef<NodeListOf<Element> | null>(null);
   const [allSlides, setAllSlides] = useState<SlideData[]>([]);
+  const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
 
   // Performance optimization: Use RAF for smooth animations
   const rafIdRef = useRef<number | null>(null);
@@ -571,14 +608,19 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const isActiveRef = useRef<boolean>(true);
   const isPausedRef = useRef<boolean>(false);
 
+  const currentIndexRef = useRef<number>(0);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const isMobile = windowSize.width < 768;
+
   // Memoized styles for better performance
   const carouselStyles = useMemo(
     () =>
       ({
         "--viewport-height": "35rem",
         "--viewport-height-m": "35rem",
-        "--perspective": "600px",
-        "--perspective-m": "400px",
+        "--perspective": "1000px",
+        "--perspective-m": "800px",
         "--block-offset": "-18rem",
         "--block-offset-m": "-6rem",
         overflow: "hidden",
@@ -607,6 +649,11 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     }
     return processed;
   }, [slides, carouselConfig.slidesInRing]);
+
+  // Helper: normalize angle in [0,360)
+  const normalize = (a: number) => {
+    return ((a % 360) + 360) % 360;
+  };
 
   // High-performance rotation update using RAF
   const updateRotation = useCallback(() => {
@@ -697,6 +744,80 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     startAutoRotation,
   ]);
 
+  // Public method: goToIndex (centers a slide)
+  const goToIndex = useCallback(
+    (index: number) => {
+      if (!ringRef.current) return;
+      const slideCount =
+        slideElementsRef.current?.length ?? carouselConfig.slidesInRing;
+      const anglePerSlide = 360 / carouselConfig.slidesInRing;
+
+      // desired base angle (one canonical solution in [0,360))
+      const baseAngle = normalize(index * anglePerSlide);
+
+      // Choose k so the rotation change is the shortest path
+      const current = normalize(rotationValueRef.current);
+      const k = Math.round((current - baseAngle) / 360);
+      const target = baseAngle + 360 * k;
+
+      // Stop auto rotation while animating to the index
+      stopAutoRotation();
+
+      const rotationObj = { value: rotationValueRef.current };
+      gsap.to(rotationObj, {
+        value: target,
+        duration: 0.8,
+        ease: "power2.out",
+        onUpdate: () => {
+          rotationValueRef.current = rotationObj.value;
+          if (ringRef.current) {
+            ringRef.current.style.transform = `rotateY(${rotationValueRef.current}deg)`;
+          }
+        },
+        onComplete: () => {
+          currentIndexRef.current = index % slideCount;
+          setSelectedIndex(index % slideCount);
+
+          // small pause then resume auto rotation if allowed
+          setTimeout(() => {
+            isPausedRef.current = false;
+            resumeAutoRotation();
+          }, 200);
+        },
+      });
+    },
+    [carouselConfig.slidesInRing, resumeAutoRotation, stopAutoRotation],
+  );
+
+  const prev = useCallback(() => {
+    const slideCount =
+      slideElementsRef.current?.length ?? carouselConfig.slidesInRing;
+    const currentIndex = currentIndexRef.current;
+    const nextIndex = (currentIndex - 1 + slideCount) % slideCount;
+    goToIndex(nextIndex);
+  }, [carouselConfig.slidesInRing, goToIndex]);
+
+  const next = useCallback(() => {
+    const slideCount =
+      slideElementsRef.current?.length ?? carouselConfig.slidesInRing;
+    const currentIndex = currentIndexRef.current;
+    const nextIndex = (currentIndex + 1) % slideCount;
+    goToIndex(nextIndex);
+  }, [carouselConfig.slidesInRing, goToIndex]);
+
+  // Tap / click handler for mobile: center the tapped slide and toggle overlay
+  const handleSlideTap = useCallback(
+    (index: number) => {
+      if (selectedIndex === index) {
+        setSelectedIndex(null);
+        resumeAutoRotation();
+        return;
+      }
+      goToIndex(index);
+    },
+    [goToIndex, resumeAutoRotation, selectedIndex],
+  );
+
   // Event handlers for container hover
   const handleContainerMouseEnter = useCallback(() => {
     if (!carouselConfig.pauseOnHover) return;
@@ -731,7 +852,8 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
 
   // Main setup effect with performance optimizations
   useEffect(() => {
-    if (!ringRef.current || !stageRef.current || allSlides.length === 0) return;
+    if (!ringRef.current || !stageRef.current || allSlides.length === 0)
+      return;
 
     const ring = ringRef.current;
     const stage = stageRef.current;
@@ -772,9 +894,9 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       slideElement.style.willChange = "transform";
       slideElement.style.transformStyle = "preserve-3d";
       slideElement.style.backfaceVisibility = "hidden";
-      slideElement.style.transform = `
-        rotateY(${index * -anglePerSlide}deg) 
-        translateZ(${-carouselConfig.radius}px)
+      slideElement.style.transform = `\
+        rotateY(${index * -anglePerSlide}deg) \
+        translateZ(${-carouselConfig.radius}px)\
       `;
       slideElement.style.transformOrigin = `50% 50% 0px`;
 
@@ -887,6 +1009,8 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       ref={containerRef}
       className={`curved-carousel relative z-10 w-full overflow-visible select-none ${className}`}
       style={carouselStyles}
+      onMouseEnter={handleContainerMouseEnter}
+      onMouseLeave={handleContainerMouseLeave}
     >
       {/* Stage */}
       <div
@@ -905,6 +1029,12 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
               className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-3xl"
               onMouseEnter={handleSlideMouseEnter}
               onMouseLeave={handleSlideMouseLeave}
+              onClick={() => (isMobile ? handleSlideTap(index) : goToIndex(index))}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") goToIndex(index);
+              }}
             >
               <img
                 src={slide.src}
@@ -914,23 +1044,48 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
                 loading={index < 5 ? "eager" : "lazy"}
                 decoding="async"
               />
-              {/* Hover overlay content at bottom */}
-              <div className="absolute inset-x-0 bottom-20 rounded-b-3xl bg-gradient-to-t from-black via-black/90 to-transparent p-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                <div className="text-white">
-                  <h3 className="mb-1 text-5xl font-bold drop-shadow-sm">
-                    {slide.name ?? "Image"}
-                  </h3>
-                  <p className="mb-3 text-sm opacity-90 drop-shadow-sm">
-                    Hover content for slide {index + 1}
-                  </p>
-                  {/* <button className="rounded-lg bg-white/20 px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-200 hover:bg-white/30 hover:scale-105">
-          View Details
-        </button> */}
+              {/* Hover Overlay - Full Coverage */}
+
+              <div className={`absolute inset-0 bottom-30 flex flex-col justify-end rounded-3xl bg-gradient-to-b from-transparent via-black/70 to-black transition-opacity duration-400 ${
+                selectedIndex === index ? "opacity-100" : "opacity-0"
+              } group-hover:opacity-100`}>
+                <div className={`transform p-4 text-white transition-transform duration-500 ease-out ${selectedIndex === index ? "translate-y-0" : "translate-y-full"} md:p-5 lg:p-6`}>
+                  <div className="space-y-2 md:space-y-3">
+                    <div>
+                      <h3 className="line-clamp-1 text-2xl font-bold md:text-5xl">
+                        {slide.name || `Team Member ${index + 1}`}
+                      </h3>
+                      <p className="text-xl font-medium text-red-300 md:text-3xl">
+                        {slide.position || "Team Member"}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Prev / Next Controls */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-between px-6">
+        <button
+          type="button"
+          aria-label="Previous"
+          onClick={prev}
+          className="pointer-events-auto rounded-full bg-black/60 text-white p-3 backdrop-blur"
+        >
+          ‹
+        </button>
+
+        <button
+          type="button"
+          aria-label="Next"
+          onClick={next}
+          className="pointer-events-auto rounded-full bg-black/60 text-white p-3 backdrop-blur"
+        >
+          ›
+        </button>
       </div>
 
       <style jsx>{`
