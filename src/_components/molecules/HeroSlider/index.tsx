@@ -1053,10 +1053,10 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
                   <div className="space-y-2 md:space-y-3">
                     <div>
                       <h3 className="line-clamp-1 text-2xl font-bold md:text-5xl">
-                        {slide.name || `Team Member ${index + 1}`}
+                        {slide.name ?? `Team Member ${index + 1}`}
                       </h3>
                       <p className="text-xl font-medium text-red-300 md:text-3xl">
-                        {slide.position || "Team Member"}
+                        {slide.position ?? "Team Member"}
                       </p>
                     </div>
                   </div>
