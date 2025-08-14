@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { IndustryCard } from "src/_components/molecules";
+import { IndustryCard, SpotlightCard } from "src/_components/molecules";
 import { industries } from "public/data/Solutions";
 import { SectionHeader } from "src/_components/ui";
 
@@ -31,7 +31,10 @@ export const WiseSolutionsIndustry = () => {
       {/* Industries Grid */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {industries.map((industry, index) => (
-          <IndustryCard key={industry.id} industry={industry} index={index} />
+          <SpotlightCard className="custom-spotlight-card" >
+            <IndustryCard key={industry.id} industry={industry} index={index} />
+          </SpotlightCard>
+            
         ))}
       </div>
 

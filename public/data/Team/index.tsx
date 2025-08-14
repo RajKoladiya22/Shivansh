@@ -10,7 +10,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "Rajesh Kumar is a visionary leader with over two decades of experience in financial technology and enterprise solutions. He founded our company with the mission to democratize financial management for Indian businesses. Under his leadership, we've grown from a small startup to serving 600+ companies nationwide. Rajesh is passionate about leveraging technology to solve complex business challenges and has been instrumental in developing our innovative accounting platform that serves enterprises of all sizes.",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      "/images/team/person.png",
     experience: "20+ Years",
     specialties: [
       "Strategic Planning",
@@ -71,7 +71,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "Priya Sharma is our Chief Technology Officer and the architectural brain behind our cutting-edge financial platform. With 15+ years of experience in building scalable systems, she has led the development of AI-driven solutions that process millions of transactions daily. Priya's expertise in cloud computing and machine learning has been instrumental in creating our intelligent accounting automation features that save businesses countless hours.",
     image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
+      "/images/team/bg-hinal.png",
     experience: "15+ Years",
     specialties: [
       "System Architecture",
@@ -134,7 +134,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "Amit Patel brings 18+ years of financial expertise to our leadership team. As our CFO, he ensures that every financial solution we develop meets the highest standards of compliance and accuracy. His deep knowledge of Indian accounting standards, GST regulations, and international financial reporting has been crucial in building trust with our enterprise clients.",
     image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+      "/images/team/person.png",
     experience: "18+ Years",
     specialties: [
       "Financial Strategy",
@@ -197,7 +197,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "Sneha Gupta leads our operations with a focus on delivering exceptional client experiences. With 12+ years in operations management, she has built our client success framework that ensures 99% client satisfaction. Sneha's process optimization initiatives have improved our service delivery efficiency by 300% while maintaining the highest quality standards.",
     image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+      "/images/team/person.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",

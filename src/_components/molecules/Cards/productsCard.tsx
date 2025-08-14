@@ -1,3 +1,4 @@
+"use client";
 import { Play } from "lucide-react";
 import Link from "next/link";
 import { ProductSocialShareButton } from "src/_components/sections/Product/SocialShare";
