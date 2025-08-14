@@ -31,7 +31,7 @@ export const WiseSolutionsIndustry = () => {
       {/* Industries Grid */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {industries.map((industry, index) => (
-          <SpotlightCard className="custom-spotlight-card" >
+          <SpotlightCard key={industry.id} className="custom-spotlight-card" >
             <IndustryCard key={industry.id} industry={industry} index={index} />
           </SpotlightCard>
             
