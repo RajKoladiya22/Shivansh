@@ -20,7 +20,7 @@ export const IndustryCard: React.FC<IndustryCardProps> = ({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group h-full"
     >
-      <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 border-red-100 bg-white shadow-sm transition-all duration-300 group-hover:shadow-xl ">
+      <div className="flex h-full flex-col overflow-hidden rounded-2xl  bg-red-50 shadow-sm transition-all duration-300 group-hover:shadow-xl ">
         {/* Icon with gradient background */}
         <div className={`bg-gradient-to-r ${industry.color} p-6`}>
           <div className="flex items-start justify-between">
@@ -32,11 +32,11 @@ export const IndustryCard: React.FC<IndustryCardProps> = ({
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 flex-col p-6">
+        <div className="flex flex-1 flex-col p-6 group-hover:text-gray-900">
           <h3 className="mb-3 text-xl font-bold text-gray-900">
             {industry.title}
           </h3>
-          <p className="mb-6 flex-1 text-gray-600 group-hover:text-red">{industry.description}</p>
+          <p className="mb-6 flex-1 text-gray-600 group-hover:text-gray-900">{industry.description}</p>
 
           <div className="mt-auto flex items-center justify-between">
             <Link href={PRODUCT} className="cursor-pointer flex items-center text-sm font-medium text-red-600 group-hover:underline hover:text-red-700">

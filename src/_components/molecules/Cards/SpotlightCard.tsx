@@ -14,7 +14,7 @@ interface SpotlightCardProps extends React.PropsWithChildren {
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = "",
-  spotlightColor = "rgb(247, 100, 100)"
+  spotlightColor = "rgb(254, 152, 152)"
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -54,13 +54,13 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative rounded-3xl  bg-neutral-900 overflow-hidden  ${className}`}
+      className={`relative rounded-3xl  overflow-hidden  ${className}`}
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out"
+        className="pointer-events-none  absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out"
         style={{
           opacity,
-          background: `radial-gradient(circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 100%)`,
+          background: `radial-gradient(circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
         }}
       />
       {children}
@@ -68,3 +68,4 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   );
 };
 
+// https://www.reactbits.dev/text-animations/fuzzy-text
