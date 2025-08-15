@@ -324,7 +324,7 @@ export const TeamSection = () => {
                   showUserInfo={true}
                   enableTilt={true}
                   enableMobileTilt={false}
-                  onContactClick={() => openModal(member)}
+                  // onContactClick={() => openModal(member)}
                 />
                 {/* <div className="transform overflow-hidden rounded-xl border border-red-300 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:rounded-2xl">
                   <div className="relative h-48 overflow-hidden lg:h-56">

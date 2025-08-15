@@ -742,6 +742,12 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
           mask-image: var(--fadeout);
           contain: layout style paint;
         }
+        @media (max-width: 600px) {
+          .curved-carousel {
+            -webkit-mask-image: none;
+            mask-image: none;
+          }
+        }
 
         .carousel-slide {
           contain: layout style paint;
@@ -781,28 +787,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // "use client";
 // import React, {

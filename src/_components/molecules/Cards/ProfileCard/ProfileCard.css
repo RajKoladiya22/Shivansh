@@ -32,7 +32,15 @@
   perspective: 850px;
   transform: translate3d(0, 0, 0.1px);
   position: relative;
-  touch-action: none;
+  /* FIXED: Allow vertical scrolling on mobile while preventing horizontal pan */
+  touch-action: pan-y;
+}
+
+/* Desktop: Enable full touch interaction for card effects */
+@media (min-width: 769px) {
+  .pc-card-wrapper {
+    touch-action: none;
+  }
 }
 
 /* .pc-card-wrapper::before {
@@ -76,6 +84,8 @@
   background-position: 0 0, 0 0, 50% 50%, 0 0;
   background-image: radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y), hsla(266, 100%, 90%, var(--card-opacity)) 4%, hsla(266, 50%, 80%, calc(var(--card-opacity) * 0.75)) 10%, hsla(266, 25%, 70%, calc(var(--card-opacity) * 0.5)) 50%, hsla(266, 0%, 60%, 0) 100%), radial-gradient(35% 52% at 55% 20%, #00ffaac4 0%, #073aff00 100%), radial-gradient(100% 100% at 50% 50%, #00c1ffff 1%, #073aff00 76%), conic-gradient(from 124deg at 50% 50%, #c137ffff 0%, #07c6ffff 40%, #07c6ffff 60%, #c137ffff 100%);
   overflow: hidden;
+  /* FIXED: Ensure card doesn't interfere with page scrolling on mobile */
+  will-change: transform;
 }
 
 .pc-card:hover,
@@ -351,6 +361,7 @@
     aspect-ratio: 0.518;
   }
 }
+
 @media (max-width: 991px) {
   .pc-card {
     aspect-ratio: 0.65;

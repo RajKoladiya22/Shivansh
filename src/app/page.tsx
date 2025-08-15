@@ -285,6 +285,7 @@ export default async function Home() {
       <section className="py-14 sm:py-18">
         <ProductShowcaseSection />
       </section>
+
       <section className="from-red bg-gradient-to-b to-red-50">
         <AboutTheFounder />
       </section>

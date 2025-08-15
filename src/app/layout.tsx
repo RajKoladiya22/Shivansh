@@ -206,6 +206,7 @@ export default function RootLayout({
         <link rel="preload" href="/images/logo/logo.png" as="image" />
       </head>
       <body cz-shortcut-listen="true">
+        
         <WebsiteLoader />
 
         <Header />

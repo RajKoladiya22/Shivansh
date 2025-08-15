@@ -2,8 +2,17 @@
 import Link from "next/link";
 import { SERVICE } from "public/data/Navigation";
 import { useCallback, useMemo } from "react";
-import {CurvedCarousel, type CarouselConfig} from "src/_components/molecules/HeroSlider";
-import { btn_color,hero_content_font, hero_heading_font, hero_headline_font} from "src/config/constants";
+import { CircularGallery } from "src/_components/molecules";
+import {
+  CurvedCarousel,
+  type CarouselConfig,
+} from "src/_components/molecules/HeroSlider";
+import {
+  btn_color,
+  hero_content_font,
+  hero_heading_font,
+  hero_headline_font,
+} from "src/config/constants";
 
 export const Hero2 = () => {
   const slides = useMemo(
@@ -19,12 +28,12 @@ export const Hero2 = () => {
         src: "/images/STAFF2/02.png",
         name: "Pooja Ma'am",
       },
-        {
-          id: "3",
-          src: "/images/STAFF2/03.png",
+      {
+        id: "3",
+        src: "/images/STAFF2/03.png",
 
-          name: "Dhara ma'am",
-        },
+        name: "Dhara ma'am",
+      },
       {
         id: "4",
         src: "/images/STAFF2/04.png",
@@ -36,11 +45,11 @@ export const Hero2 = () => {
         src: "/images/STAFF2/05.png",
         name: "Hinal Ma'am",
       },
-        {
-          id: "6",
-          src: "/images/STAFF2/06.png",
-          name: "Mehul Sir",
-        },
+      {
+        id: "6",
+        src: "/images/STAFF2/06.png",
+        name: "Mehul Sir",
+      },
       {
         id: "7",
         src: "/images/STAFF2/07.png",
@@ -71,16 +80,16 @@ export const Hero2 = () => {
 
         name: "Madhvi Ma'am",
       },
-        {
-          id: "8",
-          src: "/images/STAFF/HARJEET.PNG",
-          name: "Harjeet Sir",
-        },
-        {
-          id: "9",
-          src: "/images/team/hero/hinalMam.png",
-          name: "Honey Ma'am",
-        },
+      {
+        id: "8",
+        src: "/images/STAFF2/HARJEET.PNG",
+        name: "Harjeet Sir",
+      },
+      {
+        id: "9",
+        src: "/images/team/hero/hinalMam.png",
+        name: "Honey Ma'am",
+      },
     ],
     [],
   );
@@ -93,6 +102,7 @@ export const Hero2 = () => {
       rotationSpeed: 0.15,
       pauseOnHover: true,
       entranceAnimation: "fadeUp",
+      // fadeout: false
     }),
     [],
   );
@@ -102,11 +112,8 @@ export const Hero2 = () => {
   }, []);
 
   return (
-
-
-
     <>
-      <section className="relative h-screen bg-white flex flex-col">
+      <section className="relative flex h-screen flex-col bg-white">
         {/* Header Content */}
         <div className="flex-shrink-0 py-19 sm:py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
@@ -139,6 +146,7 @@ export const Hero2 = () => {
                 <span className="relative inline-block">
                   <span className="relative z-10 text-[var(--primery-color)]">
                     Leadership Team
+                  
                   </span>
                   <span className="absolute bottom-0 left-0 z-0 h-1.5 w-full -rotate-1 transform bg-[var(--pink)] opacity-80 sm:h-2 md:h-3 lg:h-4"></span>
                 </span>
@@ -147,27 +155,29 @@ export const Hero2 = () => {
                 className={`mx-auto max-w-xs px-2 text-sm sm:max-w-lg sm:px-4 sm:text-base md:max-w-2xl md:px-6 md:text-lg lg:max-w-3xl lg:px-0 lg:text-xl xl:max-w-4xl ${hero_content_font} leading-relaxed`}
               >
                 Our experienced leadership team combines decades of expertise in
-                finance, technology, and business strategy to drive innovation and
-                excellence.
+                finance, technology, and business strategy to drive innovation
+                and excellence.
               </p>
             </div>
           </div>
         </div>
 
         {/* Carousel Container - Centered and Flexible */}
-        <div className="flex-1 flex items-center justify-center min-h-0 px-4 sm:px-6 md:px-8 mb-[100px]">
-          <div className="w-full max-w-8xl">
+        <div className="mb-[100px] flex min-h-0 flex-1 items-center justify-center px-4 sm:px-6 md:px-8">
+          <div className="max-w-8xl w-full relative" >
+          {/* <div className="max-w-8xl w-full relative" style={{ height: '600px', position: 'relative' }}> */}
             <CurvedCarousel
               slides={slides}
               config={customConfig}
               fadeout={true}
               className="w-full"
             />
+            {/* <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} cameraFov={5}/> */}
           </div>
         </div>
 
         {/* Action Buttons - Fixed to Bottom */}
-        <div className="flex-shrink-0 py-6 sm:py-8 z-10 mb-10">
+        <div className="z-10 mb-10 flex-shrink-0 py-6 sm:py-8">
           <div className="mx-auto px-4 sm:px-6">
             <div className="flex flex-col justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
               <button
@@ -187,7 +197,7 @@ export const Hero2 = () => {
 
               <Link href={SERVICE}>
                 <button
-                  className="flex w-full transform cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-[#A00303] bg-white px-6 py-3 font-bold tracking-wide text-[#A00303] transition-all duration-300 hover:-translate-y-0.5 hover:border-2 hover:bg-[#A00303] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] hover:scale-105"
+                  className="flex w-full transform cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-[#A00303] bg-white px-6 py-3 font-bold tracking-wide text-[#A00303] transition-all duration-300 hover:-translate-y-0.5 hover:scale-105 hover:border-2 hover:bg-[#A00303] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)]"
                   // onClick={() => window.open("tel:+91 8141703007", "_self")}
                 >
                   <svg
@@ -209,30 +219,3 @@ export const Hero2 = () => {
     </>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
