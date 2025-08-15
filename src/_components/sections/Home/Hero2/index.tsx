@@ -81,7 +81,7 @@ export const Hero2 = () => {
       },
       {
         id: "8",
-        src: "/images/STAFF2/HARJEET.PNG",
+        src: "/images/STAFF2/HARJEET.png",
         name: "Harjeet Sir",
       },
       {
@@ -179,7 +179,7 @@ export const Hero2 = () => {
         <div className="z-10 mb-10 flex-shrink-0 py-6 sm:py-8">
           <div className="mx-auto px-4 sm:px-6">
             <div className="flex flex-col justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <button
+              <button aria-label="Click"
                 className={`${btn_color} flex transform items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold`}
                 onClick={handleYouTubeClick}
               >
@@ -195,7 +195,7 @@ export const Hero2 = () => {
               </button>
 
               <Link href={SERVICE}>
-                <button
+                <button aria-label="Click"
                   className="flex w-full transform cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-[#A00303] bg-white px-6 py-3 font-bold tracking-wide text-[#A00303] transition-all duration-300 hover:-translate-y-0.5 hover:border-2 hover:bg-[#A00303] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)]"
                   // onClick={() => window.open("tel:+91 8141703007", "_self")}
                 >

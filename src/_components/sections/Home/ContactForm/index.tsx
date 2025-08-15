@@ -216,7 +216,7 @@ export const ContactForm = () => {
                   </div>
 
                   {/* Submit Button */}
-                  <button
+                  <button aria-label="Click"
                     type="button"
                     disabled={isSubmitting}
                     onClick={handleSubmit}

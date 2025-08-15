@@ -175,7 +175,7 @@ export const BlogCard = ({ blog, onLike, onShare }: BlogCardProps) => {
         </p>
         
         {/* Read More Button */}
-        <button
+        <button aria-label="Click"
           onClick={handleReadMore}
           className="inline-flex items-center gap-2 text-[#C50202] font-semibold hover:text-[#A50202] transition-colors mb-4 group"
         >
@@ -185,7 +185,7 @@ export const BlogCard = ({ blog, onLike, onShare }: BlogCardProps) => {
         
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
           <div className="flex items-center gap-4">
-            <button
+            <button aria-label="Click"
               onClick={() => onLike(blog.id)}
               className={`flex items-center gap-1 px-3 py-1 rounded-full text-sm transition-all ${
                 blog.isLiked 
@@ -203,7 +203,7 @@ export const BlogCard = ({ blog, onLike, onShare }: BlogCardProps) => {
             </div>
           </div>
           
-          <button
+          <button aria-label="Click-to-share"
             onClick={() => onShare?.(blog)}
             className="flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 text-gray-600 hover:bg-[#FCF2F2] hover:text-[#C50202] transition-all text-sm"
           >

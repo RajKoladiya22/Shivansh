@@ -141,7 +141,7 @@ export const CareerComponent = () => {
                       </div>
                     </div>
 
-                    <button
+                    <button aria-label="Click"
                       onClick={() => setSelectedJob(job)}
                       className="rounded-lg bg-[#C50202] px-6 py-2 font-medium whitespace-nowrap text-white transition-colors duration-200 hover:bg-[#C5020280]"
                     >
@@ -218,7 +218,7 @@ export const CareerComponent = () => {
                 <h2 className="text-xl font-semibold text-[#000000]">
                   Apply for - {selectedJob.title}
                 </h2>
-                <button
+                <button aria-label="Click"
                   onClick={closeModal}
                   className="rounded-full p-2 transition-colors hover:bg-gray-100"
                 >
@@ -359,7 +359,7 @@ export const CareerComponent = () => {
                 className="mb-6 w-full resize-none rounded-lg border border-gray-300 p-3 focus:border-[#C50202] focus:outline-none"
               ></textarea>
 
-              <button
+              <button aria-label="Click"
                 type="submit"
                 className="w-full rounded-lg bg-[#C50202] py-3 font-semibold text-white transition-colors duration-200 hover:bg-[#C5020280]"
               >

@@ -389,6 +389,7 @@ export function VideoRingSlider({
                     {/* Play/pause button for active video */}
                     {item.type === "video" && item.videoUrl && isActive && (
                       <button
+                      
                         onClick={(e) => {
                           e.stopPropagation();
                           const video = e.currentTarget

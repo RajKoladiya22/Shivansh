@@ -25,6 +25,7 @@ export function TestimonialQuote({ text, lines = 4 }: TestimonialQuoteProps) {
       </p>
       {isTruncated && (
         <button
+        aria-label="Click-to-read-more"
           className="text-sm font-semibold text-blue-600"
           onClick={() => setExpanded((prev) => !prev)}
         >

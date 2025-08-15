@@ -117,6 +117,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
                   {`${name}'s Certificate`}
                 </h3>
                 <button
+                
                   className="rounded-full p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setShowFullScreen(false)}
                   aria-label="Close document"
@@ -187,7 +188,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
                   </div>
                 </div>
 
-                <button className="mt-8 rounded-lg bg-gradient-to-r from-red-600 to-red-700 px-6 py-3 font-medium text-white shadow-md transition-all hover:shadow-lg">
+                <button aria-label="download" className="mt-8 rounded-lg bg-gradient-to-r from-red-600 to-red-700 px-6 py-3 font-medium text-white shadow-md transition-all hover:shadow-lg">
                   Download Certificate
                 </button>
               </div>

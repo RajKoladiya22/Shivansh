@@ -82,7 +82,7 @@ export const FloatingContactButton = () => {
       >
         {/* WhatsApp Button */}
         <div className="group relative">
-          <button
+          <button aria-label="Click"
             onClick={handleWhatsApp}
             className="animate-bounce-in flex h-12 w-12 transform items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all duration-200 hover:scale-110 hover:bg-[#20BA5A] hover:shadow-xl sm:h-14 sm:w-14"
             style={{ animationDelay: "0.1s" }}
@@ -100,7 +100,7 @@ export const FloatingContactButton = () => {
 
         {/* Call Button */}
         <div className="group relative">
-          <button
+          <button aria-label="Click"
             onClick={handleCall}
             className="animate-bounce-in flex h-12 w-12 transform items-center justify-center rounded-full bg-[#C50202] text-white shadow-lg transition-all duration-200 hover:scale-110 hover:bg-[#A50202] hover:shadow-xl sm:h-14 sm:w-14"
             style={{ animationDelay: "0.2s" }}

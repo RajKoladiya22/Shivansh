@@ -153,7 +153,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <h1 className="mb-4 text-2xl font-bold text-gray-900">
             Product Not Found
           </h1>
-          <button
+          <button aria-label="Click"
             onClick={() => window.history.back()}
             className="text-[#C50202] hover:underline"
           >
@@ -207,7 +207,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
       <nav className="">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <button
+            <button aria-label="Click"
               onClick={handleBackToBlogs}
               className="group mb-6 inline-flex cursor-pointer items-center gap-2 text-[#C50202] transition-colors hover:text-[#A50202]"
             >
@@ -216,7 +216,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
             </button>
 
             <div className="flex items-center gap-4">
-              {/* <button
+              {/* <button aria-label="Click"
                 onClick={() => handleShare(product)}
                 className="cursor-pointer rounded-full p-2 text-gray-400 transition-colors hover:text-[#A50202]"
               >
@@ -240,7 +240,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <div className="space-y-4">
             {/* Video Selection Tabs */}
             <div className="flex rounded-lg bg-gray-100 p-1">
-              <button
+              <button aria-label="Click"
                 onClick={() => setSelectedVideoType("intro")}
                 className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                   selectedVideoType === "intro"
@@ -250,7 +250,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               >
                 Intro Video
               </button>
-              <button
+              <button aria-label="Click"
                 onClick={() => setSelectedVideoType("detail")}
                 className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
                   selectedVideoType === "detail"
@@ -278,7 +278,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               />
 
               {/* Video Play Button */}
-              <button
+              <button aria-label="Click"
                 onClick={() =>
                   handleVideoPlay(
                     selectedVideoType === "intro"
@@ -336,7 +336,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
               </div>
             </div>
 
-            <button
+            <button aria-label="Click"
               onClick={() => HowToUse(product.stepsID)}
               className="group relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-[#C50202] to-[#A00000] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:from-[#A00000] hover:to-[#800000] hover:shadow-xl focus-visible:ring-2 focus-visible:ring-[#C50202] focus-visible:ring-offset-2 focus-visible:outline-none"
             >
@@ -364,7 +364,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
             {/* Thumbnail Images */}
             {/* <div className="flex gap-2 overflow-x-auto">
               {productImages.map((image, index) => (
-                <button
+                <button aria-label="Click"
                   key={index}
                   onClick={() => setSelectedImageIndex(index)}
                   className={`h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
@@ -453,14 +453,14 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   Quantity:
                 </label>
                 <div className="flex items-center rounded-lg border">
-                  <button
+                  <button aria-label="Click"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
                     className="px-3 py-2 hover:bg-gray-50"
                   >
                     -
                   </button>
                   <span className="border-x px-4 py-2">{quantity}</span>
-                  <button
+                  <button aria-label="Click"
                     onClick={() => setQuantity(quantity + 1)}
                     className="px-3 py-2 hover:bg-gray-50"
                   >
@@ -471,7 +471,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
               {/* Action Buttons */}
               <div className="space-y-3">
-                <button
+                <button aria-label="Click"
                   onClick={() => handleInquiryClick(product)}
                   className={`${btn_color} flex w-full items-center justify-center space-x-2 rounded-lg px-6 py-3 text-sm font-semibold text-white hover:bg-red-700 hover:shadow-lg disabled:transform-none disabled:cursor-not-allowed disabled:opacity-50 sm:px-8 sm:text-base`}
                 >
@@ -510,7 +510,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <div className="border-b">
               <nav className="flex overflow-x-auto">
                 {tabs.map((tab) => (
-                  <button
+                  <button aria-label="Click"
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`min-w-max border-b-2 px-6 py-4 text-sm font-medium transition-colors ${
@@ -676,7 +676,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   </div>
 
                   <div className="mt-8 text-center">
-                    <button
+                    <button aria-label="Click"
                       onClick={() => {
                         setShowAllReviews(!showAllReviews);
                         if (!showAllReviews) {
@@ -748,7 +748,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                       {visibleReviewsCount <
                         product.review.allReviews.length && (
                         <div className="mt-6 text-center">
-                          <button
+                          <button aria-label="Click"
                             onClick={() =>
                               setVisibleReviewsCount((prev) => prev + 5)
                             }
@@ -771,7 +771,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         product.review.allReviews.length &&
                         product.review.allReviews.length > 5 && (
                           <div className="mt-6 text-center">
-                            <button
+                            <button aria-label="Click"
                               onClick={() => setVisibleReviewsCount(5)}
                               className="rounded-lg border border-gray-300 px-6 py-2 font-medium text-gray-600 transition-colors hover:bg-gray-50"
                             >
@@ -791,7 +791,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                       key={index}
                       className="overflow-hidden rounded-lg border border-[#FFCCD6]"
                     >
-                      <button
+                      <button aria-label="Click"
                         onClick={() => toggleFaq(index)}
                         className="flex w-full items-center justify-between p-4 text-left font-medium text-gray-900 hover:bg-[#FCF2F2]"
                       >
@@ -863,7 +863,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <div className="max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-lg bg-white">
             <div className="flex items-center justify-between border-b p-4">
               <h3 className="text-lg font-medium">Product Video</h3>
-              <button
+              <button aria-label="Click"
                 onClick={() => setIsVideoModalOpen(false)}
                 className="text-gray-400 hover:text-gray-600"
               >

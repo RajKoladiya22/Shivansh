@@ -377,7 +377,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
         {/* Header */}
         <div className="border-b border-gray-200 ">
           <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
-            <button
+            <button aria-label="Click"
               onClick={handleBackToBlogs}
               className="cursor-pointer group mb-6 inline-flex items-center gap-2 text-[#C50202] transition-colors hover:text-[#A50202]"
             >
@@ -429,7 +429,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
 
             {/* Action Buttons */}
             <div className="flex items-center gap-3">
-              <button
+              <button aria-label="Click"
                 onClick={handleLike}
                 className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
                   blog.isLiked
@@ -443,7 +443,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
                 <span>{blog.likes}</span>
               </button>
 
-              <button
+              <button aria-label="Click"
                 onClick={() => handleShare(blog)}
                 className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-[#FCF2F2] hover:text-[#C50202]"
               >
@@ -525,7 +525,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
 
                   {/* Action Buttons */}
                   <div className="mt-12 flex items-center gap-3 border-t border-gray-200 pt-8">
-                    <button
+                    <button aria-label="Click"
                       onClick={handleLike}
                       className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
                         blog.isLiked
@@ -539,7 +539,7 @@ export default function TheBlogDetailPage({ params }: BlogDetailPageProps) {
                       <span>{blog.likes}</span>
                     </button>
 
-                    <button
+                    <button aria-label="Click"
                       onClick={() => handleShare(blog)}
                       className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-[#FCF2F2] hover:text-[#C50202]"
                     >

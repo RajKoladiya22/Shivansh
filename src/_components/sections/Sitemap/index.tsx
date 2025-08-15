@@ -293,28 +293,28 @@ export const Sitemap = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <button className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 group">
+            <button aria-label="Click" className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 group">
               <div className="w-10 h-10 bg-[#C50202] rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-[#C5020280]">
                 <Home className="w-5 h-5 text-white" />
               </div>
               <div className="text-sm font-semibold text-[#000000]">Homepage</div>
             </button>
 
-            <button className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 group">
+            <button aria-label="Click" className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 group">
               <div className="w-10 h-10 bg-[#C50202] rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-[#C5020280]">
                 <Code className="w-5 h-5 text-white" />
               </div>
               <div className="text-sm font-semibold text-[#000000]">Services</div>
             </button>
 
-            <button className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 group">
+            <button aria-label="Click" className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 group">
               <div className="w-10 h-10 bg-[#C50202] rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-[#C5020280]">
                 <Briefcase className="w-5 h-5 text-white" />
               </div>
               <div className="text-sm font-semibold text-[#000000]">Portfolio</div>
             </button>
 
-            <button className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 group">
+            <button aria-label="Click" className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-105 group">
               <div className="w-10 h-10 bg-[#C50202] rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-[#C5020280]">
                 <Mail className="w-5 h-5 text-white" />
               </div>

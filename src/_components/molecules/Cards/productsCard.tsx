@@ -26,6 +26,7 @@ export const ProductCard = ({
           className="h-48 w-full object-cover"
         />
         <button
+        aria-label="Click"
           onClick={() => onVideoPlay(product.introVideoId)}
           className="bg-opacity-50 opacity- absolute inset-0 flex cursor-pointer items-center justify-center transition-opacity duration-300 group-hover:opacity-100 hover:bg-black/50"
         >

@@ -117,7 +117,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
       {/* Header */}
       <div className="sticky top-0 z-10 bg-white/95 shadow-lg backdrop-blur-sm">
         <div className="flex items-center justify-between px-4 py-4 sm:px-6">
-          <button
+          <button aria-label="Click"
             onClick={onClose}
             className="group inline-flex cursor-pointer items-center gap-2 text-[#C50202] transition-colors hover:text-[#A50202]"
           >
@@ -129,7 +129,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
             Product Inquiry
           </h1>
 
-          <button
+          <button aria-label="Click"
             onClick={onClose}
             className="cursor-pointer rounded-full p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-[#A50202]"
           >
@@ -418,7 +418,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
 
                 {/* Submit Button */}
                 <div className="pt-4">
-                  <button
+                  <button aria-label="Click"
                     type="button"
                     onClick={handleSubmit}
                     disabled={isSubmitting || submitStatus === "success"}

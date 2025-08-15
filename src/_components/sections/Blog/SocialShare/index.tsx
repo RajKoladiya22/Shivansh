@@ -100,7 +100,7 @@ export const SocialShareModal = ({
             <Share2 className="h-5 w-5 text-[#C50202]" />
             Share Article
           </h3>
-          <button
+          <button aria-label="Click"
             onClick={onClose}
             className="rounded-full p-1 transition-colors hover:bg-gray-100"
           >
@@ -140,7 +140,7 @@ export const SocialShareModal = ({
           </h4>
           <div className="mb-6 grid grid-cols-2 gap-3">
             {/* Facebook */}
-            <button
+            <button aria-label="Click"
               onClick={() => handleSocialShare("facebook")}
               className="flex items-center gap-3 rounded-lg bg-[#1877F2] p-3 text-white transition-colors hover:bg-[#166FE5]"
             >
@@ -149,7 +149,7 @@ export const SocialShareModal = ({
             </button>
 
             {/* Twitter */}
-            <button
+            <button aria-label="Click"
               onClick={() => handleSocialShare("twitter")}
               className="flex items-center gap-3 rounded-lg bg-[#1DA1F2] p-3 text-white transition-colors hover:bg-[#1A91DA]"
             >
@@ -158,7 +158,7 @@ export const SocialShareModal = ({
             </button>
 
             {/* WhatsApp */}
-            <button
+            <button aria-label="Click"
               onClick={() => handleSocialShare("whatsapp")}
               className="flex items-center gap-3 rounded-lg bg-[#25D366] p-3 text-white transition-colors hover:bg-[#22C55E]"
             >
@@ -167,7 +167,7 @@ export const SocialShareModal = ({
             </button>
 
             {/* LinkedIn */}
-            <button
+            <button aria-label="Click"
               onClick={() => handleSocialShare("linkedin")}
               className="flex items-center gap-3 rounded-lg bg-[#0A66C2] p-3 text-white transition-colors hover:bg-[#095BB0]"
             >
@@ -176,7 +176,7 @@ export const SocialShareModal = ({
             </button>
 
             {/* instagram */}
-            <button
+            <button aria-label="Click"
               onClick={() => handleSocialShare("instagram")}
               className="flex items-center gap-3 rounded-lg bg-gradient-to-tr from-[#feda75] via-[#fa7e1e] to-[#d62976] p-3 text-white transition-colors hover:opacity-90"
             >
@@ -186,7 +186,7 @@ export const SocialShareModal = ({
 
             {/* Native Share (if available) */}
             {typeof navigator.share === "function" && (
-              <button
+              <button aria-label="Click"
                 onClick={handleNativeShare}
                 className="flex items-center gap-3 rounded-lg bg-gray-600 p-3 text-white transition-colors hover:bg-gray-700"
               >
@@ -210,7 +210,7 @@ export const SocialShareModal = ({
                   className="w-full truncate bg-transparent text-sm text-gray-700 focus:outline-none"
                 />
               </div>
-              <button
+              <button aria-label="Click"
                 onClick={handleCopyLink}
                 className={`rounded-lg px-4 py-2 text-sm font-medium transition-all ${
                   copyStatus === "copied"
@@ -251,7 +251,7 @@ export const SocialShareButton = ({
 
   return (
     <>
-      <button
+      <button aria-label="Click"
         onClick={() => setIsModalOpen(true)}
         className={`flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:bg-[#FCF2F2] hover:text-[#C50202] ${className}`}
       >

@@ -152,7 +152,7 @@ export const TermsOfService = () => {
               </div>
             </div>
 
-            <button
+            <button aria-label="Click"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="rounded-lg p-2 transition-colors hover:bg-[#C502021A] lg:hidden"
             >
@@ -173,7 +173,7 @@ export const TermsOfService = () => {
                 </h3>
                 <div className="space-y-2">
                   {sections.map((section) => (
-                    <button
+                    <button aria-label="Click"
                       key={section.id}
                       onClick={() => scrollToSection(section.id)}
                       className={`flex w-full items-center gap-2 rounded-lg p-2 text-left transition-colors ${
@@ -204,7 +204,7 @@ export const TermsOfService = () => {
                 </h2>
                 <div className="space-y-2">
                   {sections.map((section) => (
-                    <button
+                    <button aria-label="Click"
                       key={section.id}
                       onClick={() => scrollToSection(section.id)}
                       className={`flex w-full items-center gap-3 rounded-lg p-3 text-left transition-all duration-200 ${

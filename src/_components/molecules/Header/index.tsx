@@ -542,7 +542,6 @@
 // };
 
 "use client";
-
 import { useEffect, useState, useCallback, memo, useMemo, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -558,7 +557,6 @@ import { ArrowRight, Phone, Menu, X } from "lucide-react";
 import { CONTACT, HOME, navItems } from "public/data/Navigation";
 import { btn_color } from "src/config/constants";
 import { Button } from "../Buttons/Button";
-// import { Button } from "../Buttons/Button";
 
 // Constants to prevent recreation
 const SCROLL_THRESHOLD = 10;
@@ -627,11 +625,11 @@ const AnimatedNavItem = memo(
     index: number;
   }) => (
     <motion.div
-      // initial={{ opacity: 0, y: -20 }}
-      // animate={{ opacity: 1, y: 0 }}
-      // transition={{ delay: index * 0.1, duration: 0.5 }}
-      // whileHover={{ scale: 1.05 }}
-      // whileTap={{ scale: 0.95 }}
+    // initial={{ opacity: 0, y: -20 }}
+    // animate={{ opacity: 1, y: 0 }}
+    // transition={{ delay: index * 0.1, duration: 0.5 }}
+    // whileHover={{ scale: 1.05 }}
+    // whileTap={{ scale: 0.95 }}
     >
       <Link
         href={item.href}
@@ -640,13 +638,13 @@ const AnimatedNavItem = memo(
         aria-current={isActive ? "page" : undefined}
       >
         {/* <span className="relative z-10">{item.label}</span> */}
-               <span className="relative z-10">{item.label}</span>
-       <span
-         className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ${
-           isActive ? "w-full" : "w-0 group-hover:w-full"
-         }`}
-         aria-hidden="true"
-       />
+        <span className="relative z-10">{item.label}</span>
+        <span
+          className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ${
+            isActive ? "w-full" : "w-0 group-hover:w-full"
+          }`}
+          aria-hidden="true"
+        />
         <motion.span
           className="absolute bottom-0 left-0 h-0.5 bg-red-600"
           initial={{ width: 0 }}
@@ -664,10 +662,10 @@ AnimatedNavItem.displayName = "AnimatedNavItem";
 // Animated logo component
 const AnimatedLogo = memo(() => (
   <motion.div
-    // initial={{ opacity: 0, x: -20 }}
-    // animate={{ opacity: 1, x: 0 }}
-    // transition={{ duration: 0.5 }}
-    // whileHover={{ scale: 1.02 }}
+  // initial={{ opacity: 0, x: -20 }}
+  // animate={{ opacity: 1, x: 0 }}
+  // transition={{ duration: 0.5 }}
+  // whileHover={{ scale: 1.02 }}
   >
     <Link
       href={HOME}

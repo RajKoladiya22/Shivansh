@@ -70,7 +70,7 @@ export const SearchWidget: React.FC<SearchWidgetProps> = ({ onSearch }) => {
           className="w-full rounded-lg border border-gray-200 py-3 pr-4 pl-10 transition-all focus:border-[#C50202] focus:ring-2 focus:ring-[#C5020233]"
         />
         <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
-        <button
+        <button aria-label="Click"
           onClick={() => onSearch(searchTerm)}
           className="absolute top-1/2 right-2 -translate-y-1/2 transform rounded-md bg-[#C50202] px-3 py-1 text-sm text-white transition-all hover:bg-[#C5020280]"
         >
@@ -91,7 +91,7 @@ export const CategoriesWidget: React.FC<CategoriesWidgetProps> = ({
       <h3 className="mb-4 text-lg font-bold text-gray-900">Categories</h3>
       <div className="space-y-2">
         {categories.map((category) => (
-          <button
+          <button aria-label="Click"
             key={category.name}
             onClick={() => onCategorySelect(category.name)}
             className={`flex w-full items-center justify-between rounded-lg p-3 text-left transition-all ${
@@ -126,7 +126,7 @@ export const HrCategoriesWidget: React.FC<CategoriesWidgetProps> = ({
       {/* <h3 className="text-lg font-bold text-gray-900 mb-4">Categories</h3> */}
       <div className="flex flex-wrap justify-center gap-3">
         {categories.map((category) => (
-          <button
+          <button aria-label="Click"
             key={category.name}
             onClick={() => onCategorySelect(category.name)}
             className={`flex transform items-center gap-2 rounded-full px-4 py-2 font-medium transition-all duration-300 hover:scale-105 ${
@@ -242,16 +242,16 @@ export const ContactWidget = () => {
         </div>
       </div>
       <div className="mt-6 flex gap-3">
-        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-green-500 transition-all">
+        <button aria-label="Click" className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-green-500 transition-all">
           <FaWhatsapp className="h-4 w-4" />
         </button>
-        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-blue-500 transition-all">
+        <button aria-label="Click" className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-blue-500 transition-all">
           <FaFacebook className="h-4 w-4" />
         </button>
-        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-red-700 transition-all">
+        <button aria-label="Click" className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-red-700 transition-all">
           <FaYoutube className="h-4 w-4" />
         </button>
-        <button className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-red-600 transition-all">
+        <button aria-label="Click" className="bg-opacity-20 hover:bg-opacity-30 flex h-8 w-8 items-center justify-center rounded-full bg-white text-red-600 transition-all">
           <FaInstagram className="h-4 w-4" />
         </button>
       </div>

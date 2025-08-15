@@ -525,14 +525,14 @@ export const TeamSection = () => {
                   </div> */}
 
               {/* Navigation Buttons */}
-              {/* <button
+              {/* <button  
                 onClick={prevSlide}
                 className="absolute top-1/2 -left-2 sm:-left-4 -translate-y-1/2 transform rounded-full bg-white p-2 sm:p-3 shadow-lg transition-shadow duration-300 hover:shadow-xl z-10"
                 aria-label="Previous team member"
               >
                 <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6 text-gray-600" />
               </button>
-              <button
+              <button  
                 onClick={nextSlide}
                 className="absolute top-1/2 -right-2 sm:-right-4 -translate-y-1/2 transform rounded-full bg-white p-2 sm:p-3 shadow-lg transition-shadow duration-300 hover:shadow-xl z-10"
                 aria-label="Next team member"
@@ -543,7 +543,7 @@ export const TeamSection = () => {
               {/* Indicators */}
               {/* <div className="mt-4 sm:mt-6 flex justify-center space-x-2">
                 {teamMembers.map((_, index) => (
-                  <button
+                  <button  
                     key={index}
                     onClick={() => setActiveSlide(index)}
                     className={`h-2 w-2 sm:h-3 sm:w-3 rounded-full transition-colors duration-300 ${
@@ -596,7 +596,7 @@ export const TeamSection = () => {
             />
 
             {/* Close Button */}
-            <button
+            <button 
               onClick={closeModal}
               className="fixed top-2 right-2 z-[60] flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-black/80 text-white backdrop-blur-sm transition-all duration-200 hover:bg-black sm:top-4 sm:right-4 sm:h-10 sm:w-10"
               aria-label="Close preview"
@@ -963,7 +963,7 @@ export const TeamSection = () => {
                             {/* Navigation Arrows */}
                             {selectedMember.testimonials.length > 1 && (
                               <>
-                                <button
+                                <button  
                                   onClick={prevTestimonial}
                                   className="absolute top-1/2 left-2 -translate-y-1/2 transform rounded-full p-2 shadow-md transition-all sm:left-4 sm:p-3"
                                   style={{
@@ -974,7 +974,7 @@ export const TeamSection = () => {
                                 >
                                   <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
                                 </button>
-                                <button
+                                <button  
                                   onClick={nextTestimonial}
                                   className="absolute top-1/2 right-2 -translate-y-1/2 transform rounded-full p-2 shadow-md transition-all sm:right-4 sm:p-3"
                                   style={{
@@ -994,7 +994,7 @@ export const TeamSection = () => {
                         {selectedMember.testimonials.length > 1 && (
                           <div className="mt-4 flex justify-center space-x-2 sm:mt-6">
                             {selectedMember.testimonials.map((_, index) => (
-                              <button
+                              <button  
                                 key={index}
                                 onClick={() => setActiveTestimonial(index)}
                                 className={`h-2 w-2 rounded-full transition-colors duration-300 sm:h-3 sm:w-3`}

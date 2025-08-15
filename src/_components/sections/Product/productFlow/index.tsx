@@ -96,7 +96,7 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
                 </p> */}
               </div>
             </div>
-            <button
+            <button aria-label="Click"
               onClick={() => setIsAutoPlay(!isAutoPlay)}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors sm:block ${
                 isAutoPlay
@@ -137,7 +137,7 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
               </div>
             </div>
 
-            <button
+            <button aria-label="Click"
               onClick={onClose}
               className="rounded-full p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
             >

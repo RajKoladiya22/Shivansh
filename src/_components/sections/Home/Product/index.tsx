@@ -99,7 +99,7 @@ export const ProductShowcaseSection = () => {
           {/* Navigation Buttons */}
           {totalSlides > 1 && (
             <>
-              <button
+              <button aria-label="Click"
                 onClick={prevSlide}
                 className="absolute sm:top-1/2 sm:-left-10 left-3 top-108 z-10 -translate-x-4 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg transition-shadow duration-200 hover:bg-gray-50 hover:shadow-xl"
                 disabled={currentSlide === 0}
@@ -107,7 +107,7 @@ export const ProductShowcaseSection = () => {
                 <ChevronLeft className="h-5 w-5 text-gray-600" />
               </button>
 
-              <button
+              <button aria-label="Click"
                 onClick={nextSlide}
                 className="absolute sm:top-1/2 sm:-right-10 right-3 z-10 top-108 translate-x-4 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg transition-shadow duration-200 hover:bg-gray-50 hover:shadow-xl"
                 disabled={currentSlide === totalSlides - 1}
@@ -133,7 +133,7 @@ export const ProductShowcaseSection = () => {
           {totalSlides > 1 && (
             <div className="mt-8 flex justify-center space-x-2">
               {Array.from({ length: totalSlides }, (_, index) => (
-                <button
+                <button aria-label="Click"
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`h-2 w-2 rounded-full transition-colors ${

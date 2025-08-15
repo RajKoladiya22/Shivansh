@@ -163,6 +163,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled || loading}
       onClick={onClick}
       className={combinedClassName}
+      aria-label="Click"
     >
       {buttonContent}
     </button>

@@ -115,13 +115,13 @@ export const CommentCard: React.FC<CommentCardProps> = ({
             {/* Actions */}
             {showLikes && (
               <div className="mt-2 flex items-center space-x-4">
-                <button className="flex items-center space-x-1 text-gray-600 transition-colors hover:text-blue-600">
+                <button className="flex items-center space-x-1 text-gray-600 transition-colors hover:text-blue-600" aria-label="like">
                   <ThumbsUp size={compact ? 14 : 16} />
                   <span className="text-xs font-medium">
                     {comment.likeCount > 0 ? comment.likeCount : ""}
                   </span>
                 </button>
-                <button className="text-xs font-medium text-gray-600 hover:text-gray-800">
+                <button className="text-xs font-medium text-gray-600 hover:text-gray-800" aria-label="reply">
                   Reply
                 </button>
               </div>
@@ -130,7 +130,7 @@ export const CommentCard: React.FC<CommentCardProps> = ({
 
           {/* More Options */}
           {showMoreOptions && (
-            <button className="flex-shrink-0 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600">
+            <button className="flex-shrink-0 rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600" aria-label="Click-to-more">
               <MoreVertical size={16} />
             </button>
           )}
