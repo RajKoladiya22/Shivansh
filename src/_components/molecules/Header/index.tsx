@@ -627,11 +627,11 @@ const AnimatedNavItem = memo(
     index: number;
   }) => (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      // initial={{ opacity: 0, y: -20 }}
+      // animate={{ opacity: 1, y: 0 }}
+      // transition={{ delay: index * 0.1, duration: 0.5 }}
+      // whileHover={{ scale: 1.05 }}
+      // whileTap={{ scale: 0.95 }}
     >
       <Link
         href={item.href}
@@ -664,10 +664,10 @@ AnimatedNavItem.displayName = "AnimatedNavItem";
 // Animated logo component
 const AnimatedLogo = memo(() => (
   <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5 }}
-    whileHover={{ scale: 1.02 }}
+    // initial={{ opacity: 0, x: -20 }}
+    // animate={{ opacity: 1, x: 0 }}
+    // transition={{ duration: 0.5 }}
+    // whileHover={{ scale: 1.02 }}
   >
     <Link
       href={HOME}
@@ -711,10 +711,10 @@ const AnimatedContactInfo = memo(
     return (
       <motion.div
         className={baseClasses}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        whileHover={{ scale: 1.05 }}
+        // initial={{ opacity: 0, x: 20 }}
+        // animate={{ opacity: 1, x: 0 }}
+        // transition={{ duration: 0.5, delay: 0.3 }}
+        // whileHover={{ scale: 1.05 }}
       >
         <div
           className={
