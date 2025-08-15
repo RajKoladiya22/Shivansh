@@ -91,8 +91,6 @@ import {
 import type { Metadata } from "next";
 import { BASE_URL, SITE_NAME, DEFAULT_DESCRIPTION } from "src/config/constants";
 
-
-
 export async function generateMetadata(): Promise<Metadata> {
   const title =
     "Tally Solutions Partner | Accounting Software Experts | Shivansh Infosys";
@@ -243,8 +241,6 @@ export default async function Home() {
     },
   };
 
-
-
   return (
     <>
       {/* Structured Data */}
@@ -267,9 +263,6 @@ export default async function Home() {
         }}
       />
 
-
-
-
       {/* <Hero /> */}
       <Hero2 />
 
@@ -277,11 +270,10 @@ export default async function Home() {
         <AboutUsSection />
       </section>
 
-
-
       <section className="bg-gradient-to-b from-red-50 to-white py-14 sm:py-18">
         <StatisticsSection />
       </section>
+
       <section className="py-14 sm:py-18">
         <ProductShowcaseSection />
       </section>
