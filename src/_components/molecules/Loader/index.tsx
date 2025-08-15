@@ -23,7 +23,7 @@ export const WebsiteLoader: React.FC = () => {
     // Hide loader after 3 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 900);
 
     return () => {
       clearInterval(progressInterval);
@@ -67,7 +67,7 @@ export const WebsiteLoader: React.FC = () => {
 
             {/* Logo/Icon in center */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/95 shadow-lg">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/90 shadow-lg">
                 {/* Tally-inspired icon */}
                 {/* <svg
                   className="h-8 w-8 animate-pulse text-white"
