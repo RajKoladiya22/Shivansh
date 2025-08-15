@@ -27,7 +27,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-        className="flex flex-col rounded-2xl border border-red-100 bg-gradient-to-br from-white to-gray-50 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl"
+        className="flex flex-col rounded-2xl border border-red-100 bg-gradient-to-br from-white to-gray-50 p-6 shadow-xl transition-all duration-300 hover:shadow-2xl shadow-2xl  hover:scale-101"
       >
         {/* Rating */}
         <div className="mb-4 flex gap-1">{renderStars(rating)}</div>
@@ -53,7 +53,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
               className="group relative cursor-pointer overflow-hidden rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 transition-all duration-300 hover:shadow-md"
               onClick={() => setShowFullScreen(true)}
             >
-              <div className="flex h-40 items-center justify-center p-5">
+              <div className="flex h-40 items-center justify-center p-5 shadow-xl transition-all duration-300 hover:shadow-2xl shadow-2xl  hover:scale-102">
                 <div className="text-center">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-red-600 transition-all duration-300 group-hover:scale-110">
                     <svg
@@ -71,7 +71,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
                     </svg>
                   </div>
                   <p className="text-sm font-medium text-gray-600 transition-colors duration-300 group-hover:text-red-500">
-                    View Certificate
+                    View Testimonial
                   </p>
                 </div>
               </div>

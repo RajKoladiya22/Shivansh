@@ -36,12 +36,12 @@ export const HowItWork = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
           {/* Vision Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-700 p-8 text-white shadow-xl"
-          >
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-700 p-8 text-white shadow-2xl transition transform duration-300 ease-out hover:scale-101 "
+>
             <div className="absolute top-6 right-6 z-0 opacity-10">
               <LightBulbIcon className="h-24 w-24" />
             </div>
@@ -96,7 +96,7 @@ export const HowItWork = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-700 to-red-500 p-8 text-white shadow-xl"
+            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-700 to-red-500 p-8 text-white shadow-2xl transition transform duration-300 ease-out hover:scale-101 "
           >
             <div className="absolute top-6 right-6 z-0 opacity-10">
               <FlagIcon className="h-24 w-24" />
@@ -195,7 +195,7 @@ export const HowItWork = () => {
                   desc: "Building long-term relationships",
                 },
               ].map((value, index) => (
-                <div key={index} className="rounded-xl bg-white/10 p-5">
+                <div key={index} className="rounded-xl bg-white/10 p-5 shadow-2xl transition transform duration-300 ease-out hover:scale-103">
                   <div className="mb-2 text-lg font-bold">{value.title}</div>
                   <p className="text-sm opacity-80">{value.desc}</p>
                 </div>

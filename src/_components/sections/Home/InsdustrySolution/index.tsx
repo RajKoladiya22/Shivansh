@@ -10,7 +10,7 @@ export const WiseSolutionsIndustry = () => {
   return (
     // py-16 sm:py-20 md:py-24
 
-    <div className="container mx-auto max-w-7xl px-4">
+    <div className="container mx-auto max-w-7xl px-4 group-hover:shadow-xl">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -31,7 +31,7 @@ export const WiseSolutionsIndustry = () => {
       {/* Industries Grid */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {industries.map((industry, index) => (
-          <SpotlightCard key={industry.id} className="custom-spotlight-card" >
+          <SpotlightCard key={industry.id} className="custom-spotlight-card duration-300 hover:border-pink-200 hover:scale-105 hover:shadow-xl " >
             <IndustryCard key={industry.id} industry={industry} index={index} />
           </SpotlightCard>
             

@@ -899,20 +899,17 @@
 //   );
 // }
 
-
-
-
-
 "use client";
 
-import { motion } from "motion/react";
+// import { motion } from "motion/react";
 import { WorldMap } from "src/_components/molecules/Map";
+import { SectionHeader } from "src/_components/ui";
 
 export function WorldMapDemo() {
   return (
-    <div className=" py-40  bg-white w-full">
-      <div className="max-w-7xl mx-auto text-center">
-        <p className="font-bold text-xl md:text-4xl  text-black">
+    <div className="w-full bg-white py-20">
+      <div className="mx-auto max-w-7xl text-center">
+        {/* <p className="font-bold text-xl md:text-4xl  text-black">
           Remote{" "}
           <span className="text-neutral-400">
             {"Connectivity".split("").map((word, idx) => (
@@ -932,41 +929,50 @@ export function WorldMapDemo() {
           Break free from traditional boundaries. Work from anywhere, at the
           comfort of your own studio apartment. Perfect for Nomads and
           Travellers.
-        </p>
+        </p> */}
+
+        <SectionHeader
+          heading="Remote"
+          headingText="Connectivity"
+          headingDescription="Break free from traditional boundaries. Work from anywhere, at the
+          comfort of your own studio apartment. Perfect for Nomads and
+          Travellers."
+          // headingTextClassName="pb-10"
+        />
       </div>
       <WorldMap
         dots={[
-  {
-    start: {
-      lat: 64.8378,
-      lng: -147.7164,
-    }, // Fairbanks, Alaska, USA
-    end: {
-      lat: 34.0522,
-      lng: -118.2437,
-    }, // Los Angeles, California, USA
-  },
-  {
-    start: { lat: 64.8378, lng: -147.7164 }, // Fairbanks, Alaska, USA
-    end: { lat: -15.8267, lng: -47.9218 }, // Brasília, Brazil
-  },
-  {
-    start: { lat: -15.8267, lng: -47.9218 }, // Brasília, Brazil
-    end: { lat: 38.7223, lng: -9.1393 }, // Lisbon, Portugal
-  },
-  {
-    start: { lat: 51.5074, lng: -0.1278 }, // London, United Kingdom
-    end: { lat: 28.6139, lng: 77.2090 }, // New Delhi, India
-  },
-  {
-    start: { lat: 28.6139, lng: 77.2090 }, // New Delhi, India
-    end: { lat: 43.1056, lng: 131.8735 }, // Vladivostok, Russia
-  },
-  {
-    start: { lat: 28.6139, lng: 77.2090 }, // New Delhi, India
-    end: { lat: -1.2864, lng: 36.8172 }, // Nairobi, Kenya
-  },
-]}
+          {
+            start: {
+              lat: 64.8378,
+              lng: -147.7164,
+            }, // Fairbanks, Alaska, USA
+            end: {
+              lat: 34.0522,
+              lng: -118.2437,
+            }, // Los Angeles, California, USA
+          },
+          {
+            start: { lat: 64.8378, lng: -147.7164 }, // Fairbanks, Alaska, USA
+            end: { lat: -15.8267, lng: -47.9218 }, // Brasília, Brazil
+          },
+          {
+            start: { lat: -15.8267, lng: -47.9218 }, // Brasília, Brazil
+            end: { lat: 38.7223, lng: -9.1393 }, // Lisbon, Portugal
+          },
+          {
+            start: { lat: 51.5074, lng: -0.1278 }, // London, United Kingdom
+            end: { lat: 28.6139, lng: 77.209 }, // New Delhi, India
+          },
+          {
+            start: { lat: 28.6139, lng: 77.209 }, // New Delhi, India
+            end: { lat: 43.1056, lng: 131.8735 }, // Vladivostok, Russia
+          },
+          {
+            start: { lat: 28.6139, lng: 77.209 }, // New Delhi, India
+            end: { lat: -1.2864, lng: 36.8172 }, // Nairobi, Kenya
+          },
+        ]}
       />
     </div>
   );

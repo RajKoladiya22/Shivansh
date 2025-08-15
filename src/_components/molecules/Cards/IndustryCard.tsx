@@ -20,7 +20,7 @@ export const IndustryCard: React.FC<IndustryCardProps> = ({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group h-full"
     >
-      <div className="flex h-full flex-col overflow-hidden rounded-2xl  bg-red-50 shadow-sm transition-all duration-300 group-hover:shadow-xl ">
+      <div className="flex h-full flex-col overflow-hidden rounded-2xl  bg-pink-50 transition-all duration-300 hover:border-pink-200 hover:shadow-xl ">
         {/* Icon with gradient background */}
         <div className={`bg-gradient-to-r ${industry.color} p-6`}>
           <div className="flex items-start justify-between">

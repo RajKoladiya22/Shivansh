@@ -817,11 +817,11 @@ export const Header = memo(() => {
           width: isScrolled ? "90%" : "100%",
           y: isScrolled ? 8 : 0,
         }}
-        transition={{
-          type: "spring",
-          stiffness: 200,
-          damping: 25,
-        }}
+        // transition={{
+        //   type: "spring",
+        //   stiffness: 200,
+        //   damping: 25,
+        // }}
       >
         <div className="flex h-16 items-center justify-between sm:h-18 lg:h-20">
           {/* Logo Section */}
