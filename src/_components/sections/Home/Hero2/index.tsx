@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { SERVICE } from "public/data/Navigation";
 import { useCallback, useMemo } from "react";
-import { CircularGallery } from "src/_components/molecules";
 import {
   CurvedCarousel,
   type CarouselConfig,
