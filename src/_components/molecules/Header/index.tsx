@@ -635,18 +635,18 @@ const AnimatedNavItem = memo(
     >
       <Link
         href={item.href}
-        className={`${className} group relative `}
+        className={`${className} group relative focus:outline-none focus-visible:outline-none`}
         onClick={onClick}
         aria-current={isActive ? "page" : undefined}
       >
         {/* <span className="relative z-10">{item.label}</span> */}
                <span className="relative z-10">{item.label}</span>
-       {/* <span
+       <span
          className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-300 ${
            isActive ? "w-full" : "w-0 group-hover:w-full"
          }`}
          aria-hidden="true"
-       /> */}
+       />
         <motion.span
           className="absolute bottom-0 left-0 h-0.5 bg-red-600"
           initial={{ width: 0 }}
