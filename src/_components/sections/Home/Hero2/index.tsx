@@ -18,76 +18,67 @@ export const Hero2 = () => {
     () => [
       {
         id: "1",
-        src: "/images/STAFF2/01.png",
-
-        name: "Priya Ma'am",
+        src: "/images/STAFF/01.png",
+name: "Pooja Ma'am",
+        
       },
       {
         id: "2",
-        src: "/images/STAFF2/02.png",
-        name: "Pooja Ma'am",
+        src: "/images/STAFF/02.png",
+        name: "_ Sir",
       },
       {
         id: "3",
-        src: "/images/STAFF2/03.png",
+        src: "/images/STAFF/03.png",
 
-        name: "Dhara ma'am",
+        name: "Madhavi ma'am",
       },
       {
         id: "4",
-        src: "/images/STAFF2/04.png",
+        src: "/images/STAFF/04.png",
 
-        name: "Krishna Ma'am",
+        name: "Harjeet Sir",
       },
       {
         id: "5",
-        src: "/images/STAFF2/05.png",
+        src: "/images/STAFF/05.png",
         name: "Hinal Ma'am",
       },
       {
         id: "6",
-        src: "/images/STAFF2/06.png",
-        name: "Mehul Sir",
+        src: "/images/STAFF/06.png",
+        
+        name: "Priya Ma'am",
       },
       {
         id: "7",
-        src: "/images/STAFF2/07.png",
+        src: "/images/STAFF/07.png",
 
-        name: "Madhvi Ma'am",
+        name: "Krishna Ma'am",
       },
       {
         id: "8",
-        src: "/images/STAFF2/08.png",
+        src: "/images/STAFF/08.png",
 
-        name: "Madhvi Ma'am",
+        name: "Suresh Sir",
       },
       {
         id: "9",
-        src: "/images/STAFF2/09.png",
+        src: "/images/STAFF/09.png",
 
-        name: "Madhvi Ma'am",
+        name: "Dhara ma'am",
       },
       {
         id: "10",
-        src: "/images/STAFF2/10.png",
+        src: "/images/STAFF/10.png",
 
-        name: "Madhvi Ma'am",
+        name: "_ Sir",
       },
       {
         id: "11",
-        src: "/images/STAFF2/11.png",
+        src: "/images/STAFF/11.png",
 
-        name: "Madhvi Ma'am",
-      },
-      {
-        id: "8",
-        src: "/images/STAFF2/HARJEET.png",
-        name: "Harjeet Sir",
-      },
-      {
-        id: "9",
-        src: "/images/team/hero/hinalMam.png",
-        name: "Honey Ma'am",
+        name: "Mehul Sir",
       },
     ],
     [],
