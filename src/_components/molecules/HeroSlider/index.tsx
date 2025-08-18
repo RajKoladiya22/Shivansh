@@ -7,6 +7,7 @@ import React, {
   useState,
 } from "react";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 export interface CarouselConfig {
   slideHeight: number;
@@ -107,23 +108,40 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const isMobile = windowSize.width < 768;
 
   // inline style (no invalid '@media' here)
+  // const carouselStyles = useMemo(
+  //   () =>
+  //     ({
+  //       "--viewport-height": "35rem",
+  //       "--viewport-height-m": "35rem",
+  //       "--perspective": "1000px",
+  //       "--perspective-m": "800px",
+  //       "--block-offset": "-18rem",
+  //       "--block-offset-m": "-6rem",
+  //       overflow: "hidden",
+  //       zIndex: 1,
+  //       "--fadeout": fadeout
+  //         ? "linear-gradient(90deg, transparent, white 5%, white 95%, transparent 100%)"
+  //         : "none",
+  //     }) as React.CSSProperties,
+  //   [fadeout],
+  // );
   const carouselStyles = useMemo(
-    () =>
-      ({
-        "--viewport-height": "35rem",
-        "--viewport-height-m": "35rem",
-        "--perspective": "1000px",
-        "--perspective-m": "800px",
-        "--block-offset": "-18rem",
-        "--block-offset-m": "-6rem",
-        overflow: "hidden",
-        zIndex: 1,
-        "--fadeout": fadeout
-          ? "linear-gradient(90deg, transparent, white 5%, white 95%, transparent 100%)"
-          : "none",
-      }) as React.CSSProperties,
-    [fadeout],
-  );
+  () => ({
+    "--viewport-height": "clamp(30rem, 60vh, 50rem)", // Responsive height
+    "--viewport-height-m": "clamp(25rem, 50vh, 40rem)", // Mobile height
+    "--perspective": "clamp(800px, 100vw, 1200px)",
+    "--perspective-m": "600px",
+    "--block-offset": "clamp(-12rem, -15vh, -18rem)",
+    "--block-offset-m": "clamp(-4rem, -8vh, -6rem)",
+    overflow: "hidden",
+    zIndex: 1,
+    "--fadeout": fadeout
+      ? "linear-gradient(90deg, transparent, white 5%, white 95%, transparent 100%)"
+      : "none",
+  }) as React.CSSProperties,
+  [fadeout]
+);
+
 
   // -- Guard & processed slides (avoid division by zero)
   const processedSlides = useMemo(() => {
@@ -652,8 +670,10 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
                 }
               }}
             >
-              <img
-                src={slide.src}
+              <Image
+                src={slide.src ?? '/images/STAFF2/06.png'}
+                width={100}
+                height={100}
                 alt={slide.alt ?? slide.name ?? `Slide ${index + 1}`}
                 className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
                 draggable={false}

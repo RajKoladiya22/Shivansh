@@ -106,6 +106,28 @@ export const Hero2 = () => {
     [],
   );
 
+  const responsiveCarouselConfig: Partial<CarouselConfig> = {
+  slideHeight: typeof window !== "undefined"
+    ? window.innerWidth < 640
+      ? 260
+      : window.innerWidth < 1024
+      ? 650
+      : 680
+    : 350,
+  slidesInRing: 13, // Fewer slides for mobile, adjust for density
+  radius: typeof window !== "undefined"
+    ? window.innerWidth < 640
+      ? 520
+      : window.innerWidth < 1024
+      ? 900
+      : 1200
+    : 900,
+  autoRotate: true,
+  rotationSpeed: 0.18,
+  pauseOnHover: true,
+  entranceAnimation: "fadeUp",
+};
+
   const handleYouTubeClick = useCallback(() => {
     window.open("https://bitly.cx/rNEH4", "_blank", "noopener,noreferrer");
   }, []);

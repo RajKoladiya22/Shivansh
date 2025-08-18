@@ -88,8 +88,14 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
+  const isDesktop = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth > 1024;
+  }, []);
+
   const animationHandlers = useMemo(() => {
-    if (!enableTilt) return null;
+    // if (!enableTilt) return null;
+    if (!enableTilt || !isDesktop) return null;
 
     let rafId: number | null = null;
 
@@ -173,6 +179,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
       if (!card || !wrap || !animationHandlers) return;
 
+      if (window.innerWidth <= 1024) return;
+
       const rect = card.getBoundingClientRect();
       animationHandlers.updateCardTransform(
         event.clientX - rect.left,
@@ -189,6 +197,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     const wrap = wrapRef.current;
 
     if (!card || !wrap || !animationHandlers) return;
+
+    if (window.innerWidth <= 1024) return;
 
     animationHandlers.cancelAnimation();
     wrap.classList.add("active");
@@ -236,7 +246,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   );
 
   useEffect(() => {
-    if (!enableTilt || !animationHandlers) return;
+    // if (!enableTilt || !animationHandlers) return;
+    if (!enableTilt || !animationHandlers || window.innerWidth <= 1024) return;
 
     const card = cardRef.current;
     const wrap = wrapRef.current;
@@ -264,30 +275,44 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       }
     };
 
-    card.addEventListener("pointerenter", pointerEnterHandler);
-    card.addEventListener("pointermove", pointerMoveHandler);
-    card.addEventListener("pointerleave", pointerLeaveHandler);
-    card.addEventListener('click', handleClick);
+    // FIXED: Only add pointer events on desktop
+    if (window.innerWidth > 1024) {
+      card.addEventListener("pointerenter", pointerEnterHandler);
+      card.addEventListener("pointermove", pointerMoveHandler);
+      card.addEventListener("pointerleave", pointerLeaveHandler);
+    }
 
-    const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
-    const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
+    // FIXED: Only add click handler for mobile tilt if enabled and on mobile
+    if (enableMobileTilt && window.innerWidth <= 1024) {
+      card.addEventListener('click', handleClick);
+    }
 
-    animationHandlers.updateCardTransform(initialX, initialY, card, wrap);
-    animationHandlers.createSmoothAnimation(
-      ANIMATION_CONFIG.INITIAL_DURATION,
-      initialX,
-      initialY,
-      card,
-      wrap
-    );
+    // FIXED: Only run initial animation on desktop
+    if (window.innerWidth > 1024) {
+      const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
+      const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
+
+      animationHandlers.updateCardTransform(initialX, initialY, card, wrap);
+      animationHandlers.createSmoothAnimation(
+        ANIMATION_CONFIG.INITIAL_DURATION,
+        initialX,
+        initialY,
+        card,
+        wrap
+      );
+    }
 
     return () => {
-      card.removeEventListener("pointerenter", pointerEnterHandler);
-      card.removeEventListener("pointermove", pointerMoveHandler);
-      card.removeEventListener("pointerleave", pointerLeaveHandler);
-      card.removeEventListener('click', handleClick);
+      if (window.innerWidth > 1024) {
+        card.removeEventListener("pointerenter", pointerEnterHandler);
+        card.removeEventListener("pointermove", pointerMoveHandler);
+        card.removeEventListener("pointerleave", pointerLeaveHandler);
+      }
+      if (enableMobileTilt && window.innerWidth <= 1024) {
+        card.removeEventListener('click', handleClick);
+      }
       window.removeEventListener('deviceorientation', deviceOrientationHandler);
-      animationHandlers.cancelAnimation();
+      animationHandlers?.cancelAnimation();
     };
   }, [
     enableTilt,
