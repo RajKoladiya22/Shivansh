@@ -19,8 +19,7 @@ export const Hero2 = () => {
       {
         id: "1",
         src: "/images/STAFF/01.png",
-name: "Pooja Ma'am",
-        
+        name: "Pooja Ma'am",
       },
       {
         id: "2",
@@ -47,7 +46,7 @@ name: "Pooja Ma'am",
       {
         id: "6",
         src: "/images/STAFF/06.png",
-        
+
         name: "Priya Ma'am",
       },
       {
@@ -98,26 +97,28 @@ name: "Pooja Ma'am",
   );
 
   const responsiveCarouselConfig: Partial<CarouselConfig> = {
-  slideHeight: typeof window !== "undefined"
-    ? window.innerWidth < 640
-      ? 260
-      : window.innerWidth < 1024
-      ? 650
-      : 680
-    : 350,
-  slidesInRing: 13, // Fewer slides for mobile, adjust for density
-  radius: typeof window !== "undefined"
-    ? window.innerWidth < 640
-      ? 520
-      : window.innerWidth < 1024
-      ? 900
-      : 1200
-    : 900,
-  autoRotate: true,
-  rotationSpeed: 0.18,
-  pauseOnHover: true,
-  entranceAnimation: "fadeUp",
-};
+    slideHeight:
+      typeof window !== "undefined"
+        ? window.innerWidth < 640
+          ? 260
+          : window.innerWidth < 1024
+            ? 650
+            : 680
+        : 350,
+    slidesInRing: 13, // Fewer slides for mobile, adjust for density
+    radius:
+      typeof window !== "undefined"
+        ? window.innerWidth < 640
+          ? 520
+          : window.innerWidth < 1024
+            ? 900
+            : 1200
+        : 900,
+    autoRotate: true,
+    rotationSpeed: 0.18,
+    pauseOnHover: true,
+    entranceAnimation: "fadeUp",
+  };
 
   const handleYouTubeClick = useCallback(() => {
     window.open("https://bitly.cx/rNEH4", "_blank", "noopener,noreferrer");
@@ -158,7 +159,6 @@ name: "Pooja Ma'am",
                 <span className="relative inline-block">
                   <span className="relative z-10 text-[var(--primery-color)]">
                     Leadership Team
-                  
                   </span>
                   <span className="absolute bottom-0 left-0 z-0 h-1.5 w-full -rotate-1 transform bg-[var(--pink)] opacity-80 sm:h-2 md:h-3 lg:h-4"></span>
                 </span>
@@ -176,8 +176,8 @@ name: "Pooja Ma'am",
 
         {/* Carousel Container - Centered and Flexible */}
         <div className="mb-[100px] flex min-h-0 flex-1 items-center justify-center px-4 sm:px-6 md:px-8">
-          <div className="max-w-8xl w-full relative" >
-          {/* <div className="max-w-8xl w-full relative" style={{ height: '600px', position: 'relative' }}> */}
+          <div className="max-w-8xl relative w-full">
+            {/* <div className="max-w-8xl w-full relative" style={{ height: '600px', position: 'relative' }}> */}
             <CurvedCarousel
               slides={slides}
               config={customConfig}
@@ -192,7 +192,8 @@ name: "Pooja Ma'am",
         <div className="z-10 mb-10 flex-shrink-0 py-6 sm:py-8">
           <div className="mx-auto px-4 sm:px-6">
             <div className="flex flex-col justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <button aria-label="Click"
+              <button
+                aria-label="Click"
                 className={`${btn_color} flex transform items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold`}
                 onClick={handleYouTubeClick}
               >
@@ -208,7 +209,8 @@ name: "Pooja Ma'am",
               </button>
 
               <Link href={SERVICE}>
-                <button aria-label="Click"
+                <button
+                  aria-label="Click"
                   className="flex w-full transform cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-[#A00303] bg-white px-6 py-3 font-bold tracking-wide text-[#A00303] transition-all duration-300 hover:-translate-y-0.5 hover:border-2 hover:bg-[#A00303] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)]"
                   // onClick={() => window.open("tel:+91 8141703007", "_self")}
                 >

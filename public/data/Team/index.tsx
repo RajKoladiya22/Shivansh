@@ -4,7 +4,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Pooja Ma'am",
-    position: "Chief Executive Officer",
+    position: "Head of Operations",
     department: "Leadership",
     bio: "Visionary leader with 20+ years in fintech and enterprise solutions. Rajesh has pioneered digital transformation initiatives across Fortune 500 companies.",
     detailedBio:
@@ -326,6 +326,70 @@ export const teamMembers: TeamMember[] = [
       "Sneha Gupta leads our operations with a focus on delivering exceptional client experiences. With 12+ years in operations management, she has built our client success framework that ensures 99% client satisfaction. Sneha's process optimization initiatives have improved our service delivery efficiency by 300% while maintaining the highest quality standards.",
     image:
       "/images/team/01.png",
+    experience: "12+ Years",
+    specialties: [
+      "Process Optimization",
+      "Client Success",
+      "Quality Management",
+      "Team Leadership",
+    ],
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      email: "sneha@company.com",
+      phone: "+91 98765 43213",
+    },
+    achievements: [
+      "Operations Excellence",
+      "Client Success Champion",
+      "Quality Leadership Award",
+    ],
+    education: [
+      "MBA Operations - XLRI Jamshedpur",
+      "B.Tech Industrial Engineering - NIT Trichy",
+    ],
+    certifications: [
+      "Six Sigma Black Belt",
+      "Project Management Professional",
+      "Customer Success Manager",
+    ],
+    location: "Pune, India",
+    joinDate: "2012",
+    testimonials: [
+      {
+        id: 1,
+        clientName: "Karan Malhotra",
+        clientCompany: "ServiceFirst Group",
+        clientPosition: "COO",
+        testimonial:
+          "Sneha's operational expertise transformed our implementation process. What typically takes 6 months was completed in 2 months with zero issues. Her team's proactive support and attention to detail is outstanding.",
+        rating: 5,
+        projectType: "Process Optimization",
+        date: "2024",
+      },
+      {
+        id: 2,
+        clientName: "Meera Joshi",
+        clientCompany: "GrowthTech Solutions",
+        clientPosition: "Founder",
+        testimonial:
+          "Sneha's client-centric approach is refreshing. She personally ensured our team was comfortable with the new system and provided ongoing support that exceeded our expectations. Her leadership makes all the difference.",
+        rating: 5,
+        projectType: "Client Success",
+        date: "2023",
+      },
+    ],
+  },
+  {
+    id: 0,
+    name: "Mehul Sir",
+    position: "Chief Executive Officer",
+    department: "Operations",
+    bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
+    detailedBio:
+      "Sneha Gupta leads our operations with a focus on delivering exceptional client experiences. With 12+ years in operations management, she has built our client success framework that ensures 99% client satisfaction. Sneha's process optimization initiatives have improved our service delivery efficiency by 300% while maintaining the highest quality standards.",
+    image:
+      "/images/team/07.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
