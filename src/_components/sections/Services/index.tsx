@@ -242,7 +242,7 @@ export const TheServicesPage = () => {
             {services.map((service, index) => (
               <div
                 key={service.id}
-                className={`group rounded-2xl border bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${service.borderColor} overflow-hidden`}
+                className={`group rounded-2xl border bg-white shadow-lg transition-all duration-500 hover:-translate-y-1.03 hover:shadow-2xl ${service.borderColor} overflow-hidden`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Service Header */}
@@ -327,14 +327,14 @@ export const TheServicesPage = () => {
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <Link
                       href={`/${service.id}`}
-                      className={`flex-1 bg-gradient-to-r text-center ${service.color} group cursor-pointer rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105`}
+                      className={`flex-1 bg-gradient-to-r text-center ${service.color} group cursor-pointer rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-md hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-300`}
                     >
                       Learn More
                       <ArrowRight className="ml-2 inline h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                     <Link
-                      href={"/"}
-                      className="flex-1 cursor-pointer rounded-xl border-2 border-gray-200 px-4 py-3 text-center text-sm font-semibold text-gray-700 transition-all duration-300 hover:border-gray-300 hover:bg-gray-50"
+                      href="tel:+918141703007"
+                      className="flex-1 cursor-pointer rounded-xl border-2 border-gray-200 px-4 py-3 text-center text-sm font-semibold text-gray-700 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-300 hover:border-gray-300 hover:bg-gray-50"
                     >
                       Get Quote
                     </Link>

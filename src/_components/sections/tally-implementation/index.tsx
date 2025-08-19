@@ -269,10 +269,13 @@ export const TheTallyImplementationPage = () => {
 
             {/* Action Buttons */}
             <div className="mt-5 mb-16 flex flex-col justify-center space-y-4 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-center">
-              <button aria-label="Click"
-                className="flex transform cursor-pointer items-center justify-center gap-2 rounded-lg bg-(--primery-color) from-blue-600 to-indigo-700 px-6 py-3 font-bold tracking-wide text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                onClick={() => window.open("https://bitly.cx/rNEH4", "_blank")}
-              >
+              <button
+                              aria-label="Click"
+                              className={`flex transform cursor-pointer items-center justify-center gap-2 rounded-lg ${btn_color} px-6 py-3 font-bold tracking-wide text-white`}
+                              onClick={() => {
+                                window.location.href = "tel:+918141703007";
+                              }}
+                            >
                 <Phone className="h-5 w-5" />
                 Instant Support
               </button>

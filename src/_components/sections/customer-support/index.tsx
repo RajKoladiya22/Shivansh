@@ -265,9 +265,12 @@ export const TheCustomerSupportPage = () => {
 
             {/* Action Buttons */}
             <div className="mt-5 mb-16 flex flex-col justify-center space-y-4 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-center">
-              <button aria-label="Click"
-                className="flex transform cursor-pointer items-center justify-center gap-2 rounded-lg bg-(--primery-color) from-blue-600 to-indigo-700 px-6 py-3 font-bold tracking-wide text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                onClick={() => window.open("https://bitly.cx/rNEH4", "_blank")}
+              <button
+                aria-label="Click"
+                className={`flex transform cursor-pointer items-center justify-center gap-2 rounded-lg ${btn_color} px-6 py-3 font-bold tracking-wide text-white`}
+                onClick={() => {
+                  window.location.href = "tel:+918141703007";
+                }}
               >
                 <Phone className="h-5 w-5" />
                 Instant Support
@@ -443,7 +446,8 @@ export const TheCustomerSupportPage = () => {
               </div>
 
               <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-                <button aria-label="Click"
+                <button
+                  aria-label="Click"
                   className={`${btn_color} inline-flex w-full transform items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-semibold text-white`}
                   onClick={() => window.open("tel:+918141703007", "_self")}
                 >
@@ -474,7 +478,8 @@ export const TheCustomerSupportPage = () => {
                 key={index}
                 className="overflow-hidden rounded-lg border border-[#C502021A] bg-white"
               >
-                <button aria-label="Click"
+                <button
+                  aria-label="Click"
                   className="flex w-full items-center justify-between p-6 text-left transition-colors duration-300 hover:bg-[#FCF2F2]"
                   onClick={() =>
                     setActiveFaq(activeFaq === index ? null : index)
@@ -580,14 +585,17 @@ export const TheCustomerSupportPage = () => {
               {`Join 500+ satisfied clients who trust us with their Tally ERP and business support needs. Get started today!`}
             </p>
             <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
-                <Link
+              <Link
                 href="tel:+918141703007"
                 className="rounded-lg bg-white px-6 py-2.5 text-sm font-semibold text-gray-900 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-100 sm:rounded-xl sm:px-8 sm:py-3 sm:text-base"
               >
                 Call Now: +91 8141703007
               </Link>
-              <button aria-label="Click"
-                onClick={() => window.open("https://wa.me/918141703007", "_blank")}
+              <button
+                aria-label="Click"
+                onClick={() =>
+                  window.open("https://wa.me/918141703007", "_blank")
+                }
                 className="cursor-pointer rounded-lg border-2 border-white px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 sm:rounded-xl sm:px-8 sm:py-3 sm:text-base"
               >
                 WhatsApp
