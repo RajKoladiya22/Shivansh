@@ -19,24 +19,24 @@ export const Hero2 = () => {
       {
         id: "1",
         src: "/images/STAFF/01.png",
-        name: "Pooja Ma'am",
+
+        name: "Priya Ma'am",
       },
       {
         id: "2",
         src: "/images/STAFF/02.png",
-        name: "_ Sir",
+        name: "Pooja Ma'am",
       },
       {
         id: "3",
         src: "/images/STAFF/03.png",
-
-        name: "Madhavi ma'am",
+        name: "Dhara ma'am",
       },
       {
         id: "4",
         src: "/images/STAFF/04.png",
 
-        name: "Harjeet Sir",
+        name: "Krishna Ma'am",
       },
       {
         id: "5",
@@ -47,13 +47,13 @@ export const Hero2 = () => {
         id: "6",
         src: "/images/STAFF/06.png",
 
-        name: "Priya Ma'am",
+        name: "Mehul Sir",
       },
       {
         id: "7",
         src: "/images/STAFF/07.png",
 
-        name: "Krishna Ma'am",
+        name: "Madhavi ma'am",
       },
       {
         id: "8",
@@ -65,19 +65,13 @@ export const Hero2 = () => {
         id: "9",
         src: "/images/STAFF/09.png",
 
-        name: "Dhara ma'am",
+        name: "Harjeet Sir",
       },
       {
         id: "10",
         src: "/images/STAFF/10.png",
 
         name: "_ Sir",
-      },
-      {
-        id: "11",
-        src: "/images/STAFF/11.png",
-
-        name: "Mehul Sir",
       },
     ],
     [],
