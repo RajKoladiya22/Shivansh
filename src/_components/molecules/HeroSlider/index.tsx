@@ -1084,7 +1084,7 @@ const SmartCarouselImage: React.FC<{
       }
     };
 
-    loadImageProgressive();
+    void loadImageProgressive();
 
     return () => {
       isMounted = false;
