@@ -282,7 +282,7 @@ export const AboutUsHero = () => {
                   <Image
                     width={200}
                     height={200}
-                    src="/images/team/hero/TeamGroup.png"
+                    src="/images/team/group/team.jpg"
                     alt="Shivansh Infosys Team - Creative professionals working together"
                     className="absolute inset-0 h-full w-full rounded-2xl object-cover"
                     style={{ filter: "brightness(1.05) contrast(1.1)" }}

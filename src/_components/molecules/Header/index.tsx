@@ -816,7 +816,7 @@ export const Header = memo(() => {
             : "0 0 0 0 rgba(0,0,0,0)",
           backgroundColor: isScrolled
             ? "rgba(255, 255, 255, 0.9)"
-            : "rgba(255, 255, 255, 0.95)",
+            : "rgba(255, 255, 255, 0.9)",
           borderRadius: isScrolled ? "5rem" : "0rem",
           // margin: isScrolled ? "0.5rem 1rem" : "0rem",
           width: isScrolled ? "90%" : "100%",
