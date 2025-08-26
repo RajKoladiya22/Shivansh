@@ -14,6 +14,7 @@ import {
   hero_headline_font,
 } from "src/config/constants";
 import type { TeamMember } from "../../types/team.type";
+import Image from "next/image";
 
 interface Slide {
   id: string | number;
@@ -177,9 +178,11 @@ const MobileSlider = ({ slides }: { slides: TeamMember[] }) => {
                   }
                   onMouseLeave={() => setHoveredSlide(null)}
                 >
-                  <img
-                    src={slides[slideIndex * 2]?.src}
-                    alt={slides[slideIndex * 2]?.name ?? ""}
+                  <Image
+                    width={100}
+                    height={100}
+                    src={slides[slideIndex * 2]?.src ?? "/images/STAFF/skeleton.png"}
+                    alt={slides[slideIndex * 2]?.name ?? "team member"}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     draggable={false}
                   />
