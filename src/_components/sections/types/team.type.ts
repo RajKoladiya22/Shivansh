@@ -17,6 +17,7 @@ export interface TeamMember {
   bio: string;
   detailedBio: string;
   image: string;
+  src?: string;
   experience: string;
   specialties: string[];
   social: {

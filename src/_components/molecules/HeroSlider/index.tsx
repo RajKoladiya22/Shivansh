@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
+import type { TeamMember } from "src/_components/sections/types/team.type";
 
 export interface CarouselConfig {
   slideHeight: number;
@@ -37,7 +38,7 @@ export interface SlideData {
 }
 
 interface CurvedCarouselProps {
-  slides: SlideData[];
+  slides: TeamMember[];
   config?: Partial<CarouselConfig>;
   fadeout?: boolean;
   className?: string;
@@ -161,7 +162,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
         const slideToClone = slides[i % originalSlideCount]!;
         processed.push({
           ...slideToClone,
-          id: `${slideToClone.id ?? i}-clone-${i}`,
+          id: typeof slideToClone.id === "number" ? slideToClone.id : i,
         });
       }
     }
@@ -365,7 +366,15 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
 
   // Initialize slides state
   useEffect(() => {
-    setAllSlides(processedSlides);
+    setAllSlides(
+      processedSlides.map((slide, i) => ({
+        id: typeof slide.id === "string" ? slide.id : String(slide.id ?? i),
+        src: slide.src ?? slide.image,
+        name: slide.name,
+        position: slide.position,
+        alt: slide.name,
+      }))
+    );
   }, [processedSlides]);
 
   // Setup main effect (positioning + entrance animation)
