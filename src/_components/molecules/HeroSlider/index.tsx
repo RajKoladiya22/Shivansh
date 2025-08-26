@@ -143,7 +143,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
         overflow: "hidden",
         zIndex: 1,
         "--fadeout": fadeout
-          ? "linear-gradient(90deg, transparent, white 5%, white 95%, transparent 100%)"
+          ? "linear-gradient(90deg, transparent, white 15%, white 85%, transparent 100%)"
           : "none",
       }) as React.CSSProperties,
     [fadeout],
@@ -682,13 +682,13 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
                 height={100}
                 alt={slide.alt ?? slide.name ?? `Slide ${index + 1}`}
                 className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
-                draggable={false}
+                // draggable={false}
                 loading={index < 5 ? "eager" : "lazy"}
                 decoding="async"
-                blurDataURL={BLUR_DATA_URL}
+                // blurDataURL={BLUR_DATA_URL}
                 onLoad={() => setIsLoading(false)}
                 onError={() => setIsLoading(false)}
-                placeholder="blur"
+                // placeholder="blur"
               />
               {isLoading && (
                 <div className="absolute inset-0 flex items-center justify-center rounded-3xl bg-gray-100">

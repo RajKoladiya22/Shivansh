@@ -18,7 +18,6 @@ export const CompanyOverview = () => {
         </div>
 
         {/* Sections */}
-
         <section className="py-16 lg:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
@@ -126,7 +125,7 @@ export const CompanyOverview = () => {
             </div>
           </div>
         </section>
-
+  
         {/* Call to Action */}
         <div className="mx-auto mt-15 max-w-7xl">
           <div className="rounded-xl bg-gradient-to-r from-gray-900 to-black p-6 text-center text-white sm:rounded-2xl sm:p-8 md:p-12">
@@ -153,6 +152,7 @@ export const CompanyOverview = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
