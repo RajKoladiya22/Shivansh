@@ -197,7 +197,7 @@ const MobileSlider = ({ slides }: { slides: TeamMember[] }) => {
                         {slides[slideIndex * 2]?.name}
                       </h3>
                       <p className="text-sm opacity-90">
-                        Leadership Team Member
+                        {slides[slideIndex * 2]?.position}
                       </p>
                       <div className="mt-2 h-0.5 w-8 bg-[var(--primery-color)]"></div>
                     </div>
@@ -234,7 +234,7 @@ const MobileSlider = ({ slides }: { slides: TeamMember[] }) => {
                         {slides[slideIndex * 2 + 1]?.name}
                       </h3>
                       <p className="text-sm opacity-90">
-                        Leadership Team Member
+                        {slides[slideIndex * 2]?.position}
                       </p>
                       <div className="mt-2 h-0.5 w-8 bg-[var(--primery-color)]"></div>
                     </div>
@@ -263,7 +263,61 @@ export const Hero2 = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-
+  const slides = useMemo(
+    () => [
+      {
+        id: "1",
+        src: "/images/STAFF/01.png",
+        name: "Priya Ma'am",
+      },
+      {
+        id: "2",
+        src: "/images/STAFF/02.png",
+        name: "Pooja Ma'am",
+      },
+      {
+        id: "3",
+        src: "/images/STAFF/03.png",
+        name: "Dhara ma'am",
+      },
+      {
+        id: "4",
+        src: "/images/STAFF/04.png",
+        name: "Krishna Ma'am",
+      },
+      {
+        id: "5",
+        src: "/images/STAFF/05.png",
+        name: "Hinal Ma'am",
+      },
+      {
+        id: "6",
+        src: "/images/STAFF/06.png",
+        name: "Mehul Sir",
+      },
+      {
+        id: "7",
+        src: "/images/STAFF/07.png",
+        name: "Madhavi ma'am",
+      },
+      {
+        id: "8",
+        src: "/images/STAFF/08.png",
+        name: "Suresh Sir",
+      },
+      {
+        id: "9",
+        src: "/images/STAFF/09.png",
+        name: "Harjeet Sir",
+      },
+      {
+        id: "10",
+        src: "/images/STAFF/10.png",
+        name: "_ Sir",
+      },
+    ],
+    [],
+  );
 
   // Curved Carousel Config for larger screens
   const curvedCarouselConfig = useMemo<Partial<CarouselConfig>>(

@@ -396,6 +396,7 @@ export const teamMembers: TeamMember[] = [
       "Sneha Gupta leads our operations with a focus on delivering exceptional client experiences. With 12+ years in operations management, she has built our client success framework that ensures 99% client satisfaction. Sneha's process optimization initiatives have improved our service delivery efficiency by 300% while maintaining the highest quality standards.",
     image:
       "/images/team/07.png",
+      src: "/images/STAFF/06.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
