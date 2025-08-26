@@ -560,8 +560,8 @@ export const Hero2 = () => {
         typeof window !== "undefined"
           ? window.innerWidth < 1024
             ? 800
-            : 1000
-          : 1000,
+            : 1100
+          : 1100,
 
       slidesInRing: 15,
       autoRotate: true,
