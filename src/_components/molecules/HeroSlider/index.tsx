@@ -82,7 +82,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   // Performance & control refs
   const rafIdRef = useRef<number | null>(null);
@@ -683,18 +683,18 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
                 alt={slide.alt ?? slide.name ?? `Slide ${index + 1}`}
                 className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
                 // draggable={false}
-                loading={index < 5 ? "eager" : "lazy"}
-                decoding="async"
+                // loading={index < 5 ? "eager" : "lazy"}
+                // decoding="async"
                 // blurDataURL={BLUR_DATA_URL}
-                onLoad={() => setIsLoading(false)}
-                onError={() => setIsLoading(false)}
+                // onLoad={() => setIsLoading(false)}
+                // onError={() => setIsLoading(false)}
                 // placeholder="blur"
               />
-              {isLoading && (
+              {/* {isLoading && (
                 <div className="absolute inset-0 flex items-center justify-center rounded-3xl bg-gray-100">
                   <div className="h-8 w-8 animate-spin rounded-full border-2 border-gray-300 border-t-blue-600"></div>
                 </div>
-              )}
+              )} */}
               {/* Hover Overlay */}
               <div
                 className={`absolute inset-0 flex flex-col justify-end rounded-3xl bg-gradient-to-b from-transparent via-black/70 to-black transition-opacity duration-400 ${
@@ -709,9 +709,10 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
                       <h3 className="line-clamp-1 text-2xl font-bold md:text-5xl">
                         {slide.name ?? `Team Member ${index + 1}`}
                       </h3>
-                      <p className="text-xl font-medium text-red-300 md:text-3xl">
+                      <p className="text-xl font-medium text-white md:text-3xl">
                         {slide.position ?? "Team Member"}
                       </p>
+                      <div className="mt-2 h-0.5 w-40 bg-[var(--primery-color)]"></div>
                     </div>
                   </div>
                 </div>
@@ -721,26 +722,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
         </div>
       </div>
 
-      {/* Prev / Next Controls */}
-      {/* <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-6">
-        <button
-          type="button"
-          aria-label="Previous"
-          onClick={prev}
-          className="pointer-events-auto rounded-full bg-black/60 p-3 text-white backdrop-blur hover:bg-black/80 transition-colors"
-        >
-          ‹
-        </button>
 
-        <button
-          type="button"
-          aria-label="Next"
-          onClick={next}
-          className="pointer-events-auto rounded-full bg-black/60 p-3 text-white backdrop-blur hover:bg-black/80 transition-colors"
-        >
-          ›
-        </button>
-      </div> */}
       <div className="pointer-events-none absolute -inset-4 z-30 flex sm:hidden">
         {/* Left / Right buttons (center vertically) */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-4 md:px-6">

@@ -556,13 +556,14 @@ export const Hero2 = () => {
             ? 450
             : 650
           : 650,
-      slidesInRing: 13,
       radius:
         typeof window !== "undefined"
           ? window.innerWidth < 1024
             ? 800
-            : 1200
-          : 1200,
+            : 1000
+          : 1000,
+
+      slidesInRing: 15,
       autoRotate: true,
       rotationSpeed: 0.15,
       pauseOnHover: true,
@@ -627,7 +628,7 @@ export const Hero2 = () => {
         </div>
 
         {/* Carousel Container - Responsive */}
-        <div className="mb-8 flex min-h-0 flex-1 items-center justify-center px-4 sm:px-6 md:px-8">
+        <div className="mb-2 flex min-h-0 flex-1 items-center justify-center px-4 sm:px-6 md:px-8">
           {isMobile ? (
             // Mobile Slider
             <MobileSlider slides={slides} />
