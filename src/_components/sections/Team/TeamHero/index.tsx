@@ -196,7 +196,7 @@ export const TeamSection = () => {
               className="group cursor-pointer"
               onClick={() => openModal(member)}
             >
-              <ProfileCard
+              {/* <ProfileCard
                 name={member.name}
                 title={member.position}
                 handle={member.name}
@@ -207,8 +207,8 @@ export const TeamSection = () => {
                 enableTilt={true}
                 enableMobileTilt={false}
                 onContactClick={() => openModal(member)}
-              />
-              {/* <div className="transform overflow-hidden rounded-2xl border border-red-300 bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+              /> */}
+              <div className="transform overflow-hidden rounded-2xl border border-red-300 bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
                 <div className="relative h-56 overflow-hidden lg:h-64">
                   <Image
                     width={200}
@@ -252,7 +252,6 @@ export const TeamSection = () => {
                   </div>
                 </div>
 
-               
                 <div className="p-4 lg:p-6">
                   <div className="mb-4">
                     <h3 className="mb-1 text-lg font-bold text-gray-900 lg:text-xl">
@@ -270,7 +269,6 @@ export const TeamSection = () => {
                     {member.bio}
                   </p>
 
-               
                   <div className="mb-4">
                     <div className="flex flex-wrap gap-2">
                       {member.specialties
@@ -291,7 +289,6 @@ export const TeamSection = () => {
                     </div>
                   </div>
 
-             
                   <div className="flex items-center text-xs text-gray-500">
                     <Award className="mr-1 h-3 w-3 flex-shrink-0 text-yellow-500" />
                     <span className="line-clamp-2">
@@ -299,7 +296,7 @@ export const TeamSection = () => {
                     </span>
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           ))}
         </div>
@@ -314,7 +311,7 @@ export const TeamSection = () => {
                 className="group cursor-pointer"
                 onClick={() => openModal(member)}
               >
-                <ProfileCard
+                {/* <ProfileCard
                   name={member.name}
                   title={member.position}
                   handle={member.name}
@@ -325,8 +322,8 @@ export const TeamSection = () => {
                   enableTilt={true}
                   enableMobileTilt={false}
                   // onContactClick={() => openModal(member)}
-                />
-                {/* <div className="transform overflow-hidden rounded-xl border border-red-300 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:rounded-2xl">
+                /> */}
+                <div className="transform overflow-hidden rounded-xl border border-red-300 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl lg:rounded-2xl">
                   <div className="relative h-48 overflow-hidden lg:h-56">
                     <Image
                       width={200}
@@ -399,7 +396,7 @@ export const TeamSection = () => {
                       )}
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             ))}
           </div>
@@ -432,7 +429,7 @@ export const TeamSection = () => {
                   ))}
                 </div>
               </div>
-                  {/* <div className="rounded-xl border border-red-200 bg-white shadow-lg">
+              {/* <div className="rounded-xl border border-red-200 bg-white shadow-lg">
                     
                     <div className="relative h-48 overflow-hidden rounded-t-xl sm:h-56">
                       <Image
@@ -596,7 +593,7 @@ export const TeamSection = () => {
             />
 
             {/* Close Button */}
-            <button 
+            <button
               onClick={closeModal}
               className="fixed top-2 right-2 z-[60] flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-black/80 text-white backdrop-blur-sm transition-all duration-200 hover:bg-black sm:top-4 sm:right-4 sm:h-10 sm:w-10"
               aria-label="Close preview"
@@ -963,7 +960,7 @@ export const TeamSection = () => {
                             {/* Navigation Arrows */}
                             {selectedMember.testimonials.length > 1 && (
                               <>
-                                <button  
+                                <button
                                   onClick={prevTestimonial}
                                   className="absolute top-1/2 left-2 -translate-y-1/2 transform rounded-full p-2 shadow-md transition-all sm:left-4 sm:p-3"
                                   style={{
@@ -974,7 +971,7 @@ export const TeamSection = () => {
                                 >
                                   <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
                                 </button>
-                                <button  
+                                <button
                                   onClick={nextTestimonial}
                                   className="absolute top-1/2 right-2 -translate-y-1/2 transform rounded-full p-2 shadow-md transition-all sm:right-4 sm:p-3"
                                   style={{
@@ -994,7 +991,7 @@ export const TeamSection = () => {
                         {selectedMember.testimonials.length > 1 && (
                           <div className="mt-4 flex justify-center space-x-2 sm:mt-6">
                             {selectedMember.testimonials.map((_, index) => (
-                              <button  
+                              <button
                                 key={index}
                                 onClick={() => setActiveTestimonial(index)}
                                 className={`h-2 w-2 rounded-full transition-colors duration-300 sm:h-3 sm:w-3`}
