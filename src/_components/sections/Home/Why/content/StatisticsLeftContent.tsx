@@ -145,8 +145,8 @@ export const StatisticsLeftContent = () => {
               Why Shivansh Infosys
             </h2>
             <p className="mt-4 max-w-xl text-gray-600">
-              {`With over a decade of experience, we've helped thousands of businesses 
-            streamline their accounting with Tally solutions.`}
+              {`We are a Tally Sales & Solutions Partner delivering expert Tally services through a dedicated team.
+Founded from one individual's vision to provide the best Tally solutions for every user.`}
             </p>
           </div>
         </div>

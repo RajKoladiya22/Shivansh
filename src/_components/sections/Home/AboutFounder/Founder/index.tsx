@@ -15,7 +15,7 @@ export const TheFounder = () => {
   useEffect(() => {
     if (isInView) {
       let start = 0;
-      const end = 13;
+      const end = 14;
       const duration = 2000;
       // const incrementTime = 50;
 
@@ -68,7 +68,7 @@ export const TheFounder = () => {
               {/* <div className="bg-gray-200 border-2 border-dashed w-full h-full" /> */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
               <Image
-                src="/images/founder/founder.png"
+                src="/images/founder/mehul_patel.jpg"
                 alt="Founder"
                 width={400}
                 height={400}
@@ -85,7 +85,7 @@ export const TheFounder = () => {
               className="absolute top-0 left-0 h-[70%] w-[65%] overflow-hidden rounded-2xl shadow-lg"
             >
               <Image
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                src="/images/founder/founder_back_.jpg"
                 alt="Office environment"
                 width={400}
                 height={400}
@@ -100,7 +100,7 @@ export const TheFounder = () => {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute top-2 left-2 z-30 flex items-center gap-3 rounded-full bg-gradient-to-r from-red-600 to-red-700 px-2 py-1 text-white shadow-lg sm:top-4 sm:left-4 sm:px-4 sm:py-2"
+              className="absolute top-2 right-0 z-30 flex items-center gap-3 rounded-full bg-gradient-to-r from-red-600 to-red-700 px-2 py-1 text-white shadow-lg sm:top-4 sm:right-4 sm:px-4 sm:py-2"
             >
               <div className="text-3xl font-bold md:text-4xl">{years}+</div>
               <div className="max-w-[100px] text-sm font-medium">
@@ -114,7 +114,7 @@ export const TheFounder = () => {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute right-4 bottom-4 z-30 rounded-full bg-white px-5 py-2 shadow-md"
+              className="absolute left-50 bottom-4 z-30 rounded-full bg-white px-5 py-2 shadow-md"
             >
               <div className="text-sm font-bold tracking-wider text-red-600 sm:text-base">
                 SINCE 2007

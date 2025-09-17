@@ -36,12 +36,12 @@ export const HowItWork = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
           {/* Vision Card */}
           <motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6, delay: 0.2 }}
-  className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-700 p-8 text-white shadow-2xl transition transform duration-300 ease-out hover:scale-101 "
->
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group relative transform overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-700 p-8 text-white shadow-2xl transition duration-300 ease-out hover:scale-101"
+          >
             <div className="absolute top-6 right-6 z-0 opacity-10">
               <LightBulbIcon className="h-24 w-24" />
             </div>
@@ -64,7 +64,8 @@ export const HowItWork = () => {
                     <div className="flex items-start">
                       <div className="mt-1.5 mr-3 h-2 w-2 flex-shrink-0 rounded-full bg-yellow-300"></div>
                       <p className="text-base leading-relaxed opacity-90">
-                        {`Transparency is not just a buzzword. It's one of our core values that continues to impress our clients.`}
+                        {`To be the most trusted Tally partner, driving efficiency and growth with innovative solutions.
+`}
                       </p>
                     </div>
                     <div className="flex items-start">
@@ -96,7 +97,7 @@ export const HowItWork = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-700 to-red-500 p-8 text-white shadow-2xl transition transform duration-300 ease-out hover:scale-101 "
+            className="group relative transform overflow-hidden rounded-2xl bg-gradient-to-br from-red-700 to-red-500 p-8 text-white shadow-2xl transition duration-300 ease-out hover:scale-101"
           >
             <div className="absolute top-6 right-6 z-0 opacity-10">
               <FlagIcon className="h-24 w-24" />
@@ -118,7 +119,7 @@ export const HowItWork = () => {
 
                   <div className="space-y-4">
                     <p className="text-base leading-relaxed opacity-90">
-                      {`We partner with the world's most exciting companies to deliver exceptional IT Solutions.`}
+                      {`To deliver reliable Tally services and customizations that solve business challenges and support mutual success.`}
                     </p>
                     <p className="text-base leading-relaxed opacity-90">
                       We work alongside clients to identify problems and develop
@@ -180,7 +181,7 @@ export const HowItWork = () => {
               {[
                 {
                   title: "Integrity",
-                  desc: "Honest communication and ethical business practices",
+                  desc: "Honest communication and ethical business",
                 },
                 {
                   title: "Innovation",
@@ -195,7 +196,10 @@ export const HowItWork = () => {
                   desc: "Building long-term relationships",
                 },
               ].map((value, index) => (
-                <div key={index} className="rounded-xl bg-white/10 p-5 shadow-2xl transition transform duration-300 ease-out hover:scale-103">
+                <div
+                  key={index}
+                  className="transform rounded-xl bg-white/10 p-5 shadow-2xl transition duration-300 ease-out hover:scale-103"
+                >
                   <div className="mb-2 text-lg font-bold">{value.title}</div>
                   <p className="text-sm opacity-80">{value.desc}</p>
                 </div>

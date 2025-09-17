@@ -730,11 +730,11 @@ const AnimatedContactInfo = memo(
               {!isMobile && <ArrowIcon />}
             </span>
             <a
-              href={`tel:${PHONE_NUMBER}`}
+              href={`tel:+916353061867`}
               className={`${isMobile ? "block text-sm" : "text-lg"} font-bold text-gray-800 transition-colors duration-200 hover:text-red-600`}
-              aria-label={`Call us at ${PHONE_NUMBER}`}
+              aria-label={`Call us at +916353061867`}
             >
-              {PHONE_NUMBER}
+              +91 6353061867
             </a>
           </div>
         </div>

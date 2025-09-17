@@ -20,17 +20,17 @@ export const contactInfo = [
   {
     icon: <Phone className="h-5 w-5 sm:h-6 sm:w-6" />,
     title: "Phone",
-    details: ["+91 8141703007", "+91 8141703007"],
+    details: ["+91 8141703007", "+91 6353061867"],
   },
   {
     icon: <Mail className="h-5 w-5 sm:h-6 sm:w-6" />,
     title: "Email",
-    details: ["info@shivanshinfosys.com", "info@shivanshinfosys.com"],
+    details: ["info@shivanshinfosys.com"],
   },
   {
     icon: <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />,
     title: "WhatsApp",
-    details: ["+91 8141703007", "+91 8141703007"],
+    details: ["+91 8141703007"],
   },
   {
     icon: <MapPin className="h-5 w-5 sm:h-6 sm:w-6" />,
