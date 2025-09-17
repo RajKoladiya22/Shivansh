@@ -21,7 +21,7 @@ export const AboutUsLeftContent = () => (
         </p>
 
         <p className="rounded-xl bg-red-800/30 p-4 backdrop-blur-sm">
-          {`Today, we're proud to serve over 1500 end users and 450 companies across India. 
+          {`Today, we're proud to serve over 1000+ CA's & Tax Consultant across India. 
           Our clients' trust and support have been instrumental in our journey, and we're grateful for the opportunity to contribute to their success.`}
         </p>
       </div>
@@ -48,19 +48,19 @@ export const AboutUsLeftContent = () => (
       {/* Stats Section */}
       <div className="mt-10 grid grid-cols-2 gap-4">
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
-          <div className="text-2xl font-bold">13+</div>
+          <div className="text-2xl font-bold">14+</div>
           <div className="text-xs opacity-80">Years Experience</div>
         </div>
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
-          <div className="text-2xl font-bold">1500+</div>
-          <div className="text-xs opacity-80">End Users</div>
+          <div className="text-2xl font-bold">1000+</div>
+          <div className="text-xs opacity-80">CA's</div>
         </div>
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
-          <div className="text-2xl font-bold">450+</div>
-          <div className="text-xs opacity-80">Companies</div>
+          <div className="text-2xl font-bold">999+</div>
+          <div className="text-xs opacity-80">Tax Consultant</div>
         </div>
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
-          <div className="text-2xl font-bold">24/7</div>
+          <div className="text-2xl font-bold">10 AM to 6 PM</div>
           <div className="text-xs opacity-80">Support</div>
         </div>
       </div>

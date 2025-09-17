@@ -54,9 +54,9 @@ export const AboutUsRightContent = () => {
 
           {/* Floating Tally Logo */}
           <div className="sn:-bottom-2 absolute -right-4 -bottom-4 z-10 rounded-full bg-white p-3 shadow-xl sm:right-8 md:right-12 lg:-right-10 lg:bottom-16">
-            <div className="h-16 w-16 rounded-xl border-2 border-dashed bg-gray-200" />
+            <div className="h-16 w-16 rounded-xl  bg-gray-200" />
             <Image
-              src="/images/industry_logo/tally.avif"
+              src="/images/industry_logo/tally_white.jpg"
               alt="Tally Logo"
               width={64}
               height={64}
