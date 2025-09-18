@@ -53,7 +53,7 @@ export const AboutUsLeftContent = () => (
         </div>
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
           <div className="text-2xl font-bold">1000+</div>
-          <div className="text-xs opacity-80">CA's</div>
+          <div className="text-xs opacity-80">{"CA's"}</div>
         </div>
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
           <div className="text-2xl font-bold">999+</div>

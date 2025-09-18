@@ -453,7 +453,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "Mr. Harjeet Singh brings extensive expertise in GST compliance, Tally solutions, and taxation. With his in-depth knowledge and experience, he provides valuable guidance to businesses for efficient tax planning, Tally customization, and regulatory compliance.",
     image: "/images/team/skeleton_1.png",
-    src: "/images/STAFF/skeleton.png",
+    src: "/images/STAFF/09.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
@@ -517,7 +517,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "Mr. Das is our GST, Tally & Cloud Expert. He has in-depth knowledge of GST compliance, Tally solutions, and cloud support, helping clients manage their business operations smoothly and securely.",
     image: "/images/team/skeleton_1.png",
-    src: "/images/STAFF/skeleton.png",
+    src: "/images/STAFF/11.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
@@ -581,7 +581,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "Suresh Modi is our talented Tally Developer. With his brilliant expertise in TDL development, he creates customized solutions for Shivansh Infosys as per client requirements. His innovative approach and strong technical skills ensure that every solution is tailored to enhance efficiency and simplify business processes.",
     image: "/images/team/skeleton_1.png",
-    src: "/images/STAFF/skeleton.png",
+    src: "/images/STAFF/08.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
@@ -709,7 +709,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "She manages accounts with accuracy and efficiency, ensuring smooth financial operations and maintaining transparency in all records.",
     image: "/images/team/skeleton_1.png",
-    src: "/images/STAFF/skeleton.png",
+    src: "/images/STAFF/13.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
@@ -773,7 +773,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "She brings creativity and innovation to our designs, ensuring that our brand and client projects always stand out with a professional touch..",
     image: "/images/team/skeleton_1.png",
-    src: "/images/STAFF/skeleton.png",
+    src: "/images/STAFF/12.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
