@@ -510,14 +510,14 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: 9,
-    name: "Lalit Dad",
+    name: "Litan Das",
     position: "GST ,Tally & Cloud Expert",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Mr. Das is our GST, Tally & Cloud Expert. He has in-depth knowledge of GST compliance, Tally solutions, and cloud support, helping clients manage their business operations smoothly and securely.",
     image: "/images/team/skeleton_1.png",
-    src: "/images/STAFF/11.png",
+    src: "/images/STAFF/10.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
@@ -645,7 +645,7 @@ export const teamMembers: TeamMember[] = [
     detailedBio:
       "Adarsh Kahar is our dependable Tally Support & Client Relations Executive. He not only assists clients with Tally operations and technical queries but also actively visits customer offices in Vapi town to strengthen relationships and provide on-site support. His dedication and client-focused approach ensure smooth Tally usage and long-term trust with our customers.",
     image: "/images/team/skeleton_1.png",
-    src: "/images/STAFF/skeleton.png",
+    src: "/images/STAFF/11.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",

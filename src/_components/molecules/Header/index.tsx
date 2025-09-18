@@ -542,7 +542,7 @@
 // };
 
 "use client";
-import { useEffect, useState, useCallback, memo, useMemo, useRef } from "react";
+import { useEffect, useState, useCallback, memo, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -553,7 +553,7 @@ import {
 } from "framer-motion";
 
 import Image from "next/image";
-import { ArrowRight, Phone, Menu, X } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { CONTACT, HOME, navItems } from "public/data/Navigation";
 import { btn_color } from "src/config/constants";
 import { Button } from "../Buttons/Button";
