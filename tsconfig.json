@@ -45,7 +45,7 @@
     "**/*.cjs",
     "**/*.js",
     ".next/types/**/*.ts",
-    "src/_components/molecules/Buttons/moving-border",
+    "src/_components/molecules/Buttons/moving-border", "src/app/widget.jsx",
     // "types/**/*",
     // "next-env.d.ts"
   ],

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GSAP 3D Rotating Image Carousel</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            perspective: 3000px;
+            /* increased perspective */
+        }
+
+        #ring,
+        .img,
+        #dragger {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            user-select: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .img {
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .img img {
+            position: absolute;
+            top: 0;
+           /* left: 50%;
+            transform: translateX(-50%); */
+            width: 250%; 
+            /* increased width for wider parallax */
+            height: 100%;
+            object-fit: cover;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            will-change: transform;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 25%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 12px;
+            box-sizing: border-box;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            opacity: 0;
+            transition: opacity .25s;
+            pointer-events: none;
+        }
+
+        .img:hover .overlay {
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        #dragger {
+            z-index: 20;
+            cursor: grab;
+            pointer-events: all;
+            opacity: 0;
+        }
+
+        .vignette {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+            /*background: linear-gradient(to left, rgb(255, 255, 255) 12%, rgba(0, 0, 0, 0) 40%, rgba(255, 255, 255, 0) 60%, rgb(255, 255, 255) 88%);*/
+            left: 30%;
+            transform: translateX(-30%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="ring">
+            <!-- images omitted for brevity, use same .img blocks as before -->
+            <div class="img"><img src="https://picsum.photos/id/32/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">John Smith</div>
+                    <div class="position">Creative Director</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/33/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Sarah Johnson</div>
+                    <div class="position">Art Director</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/34/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Michael Brown</div>
+                    <div class="position">Design Lead</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/35/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Emily Davis</div>
+                    <div class="position">UX Designer</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/36/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">David Wilson</div>
+                    <div class="position">Frontend Developer</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/37/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Jennifer Taylor</div>
+                    <div class="position">Project Manager</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/38/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Robert Martinez</div>
+                    <div class="position">Marketing Director</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/39/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Lisa Anderson</div>
+                    <div class="position">Content Strategist</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/40/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">James Thomas</div>
+                    <div class="position">Brand Manager</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/41/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Mary Garcia</div>
+                    <div class="position">Photographer</div>
+                </div>
+            </div>
+
+
+                        <!-- images omitted for brevity, use same .img blocks as before -->
+            <div class="img"><img src="https://picsum.photos/id/32/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">John Smith</div>
+                    <div class="position">Creative Director</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/33/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Sarah Johnson</div>
+                    <div class="position">Art Director</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/34/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Michael Brown</div>
+                    <div class="position">Design Lead</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/35/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Emily Davis</div>
+                    <div class="position">UX Designer</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/36/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">David Wilson</div>
+                    <div class="position">Frontend Developer</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/37/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Jennifer Taylor</div>
+                    <div class="position">Project Manager</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/38/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Robert Martinez</div>
+                    <div class="position">Marketing Director</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/39/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Lisa Anderson</div>
+                    <div class="position">Content Strategist</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/40/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">James Thomas</div>
+                    <div class="position">Brand Manager</div>
+                </div>
+            </div>
+            <div class="img"><img src="https://picsum.photos/id/41/700/300" alt="">
+                <div class="overlay">
+                    <div class="name">Mary Garcia</div>
+                    <div class="position">Photographer</div>
+                </div>
+            </div>
+        </div>
+        <div id="dragger" aria-hidden="true"></div>
+    </div>
+
+    <div class="vignette" aria-hidden="true"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/Draggable.min.js"></script>
+
+    <script>
+        (function () {
+            const ring = document.getElementById('ring');
+            const dragger = document.getElementById('dragger');
+            const items = Array.from(ring.querySelectorAll('.img'));
+            const imgs = Array.from(ring.querySelectorAll('.img img'));
+            const count = items.length;
+            const radius = 1000;         // increased radius
+            const angleStep = 360 / count;
+            let xPos = 0;
+            let resumeTimeout = null;
+            let autoRotate = null;
+
+            gsap.registerPlugin(Draggable);
+
+            function getTranslateX(i) {
+                const rot = Number(gsap.getProperty(ring, 'rotationY')) || 0;
+                const wrapped = gsap.utils.wrap(0, 360, rot - 180 - i * angleStep);
+                return (-wrapped / 360) * 800; // increased parallax range
+            }
+
+            function updateImgs() {
+                imgs.forEach((img, i) => {
+                    gsap.set(img, { x: getTranslateX(i) });
+                });
+            }
+
+            const tl = gsap.timeline({ onComplete: startAutoRotate });
+
+            tl.set(dragger, { opacity: 0, pointerEvents: 'all' })
+                .set(ring, { rotationY: 180 })
+                .set(items, {
+                    rotateY: (i) => i * -angleStep,
+                    transformOrigin: `50% 50% ${radius}px`,
+                    z: -radius,
+                    backfaceVisibility: 'hidden'
+                })
+                .set(imgs, { x: (i) => getTranslateX(i) })
+                .from(items, { duration: 1.4, y: 200, opacity: 0, stagger: 0.08, ease: 'expo.out' })
+                .to('.overlay', { opacity: 1, duration: 0.4, stagger: 0.05, delay: 0.25 }, '<+=0.3');
+
+            function startAutoRotate() {
+                if (autoRotate) return;
+                autoRotate = gsap.to(ring, { rotationY: '+=360', duration: 22, ease: 'none', repeat: -1, onUpdate: updateImgs });
+            }
+
+            function pauseAutoRotate() {
+                if (autoRotate && autoRotate.isActive()) autoRotate.pause();
+                if (resumeTimeout) { clearTimeout(resumeTimeout); resumeTimeout = null; }
+            }
+
+            function resumeAutoRotateAfterDelay(delay = 2000) {
+                if (resumeTimeout) clearTimeout(resumeTimeout);
+                resumeTimeout = setTimeout(() => { if (autoRotate) autoRotate.play(); resumeTimeout = null; }, delay);
+            }
+
+            Draggable.create(dragger, {
+                type: 'x',
+                onDragStart(e) { if (e.touches) e.clientX = e.touches[0].clientX; xPos = Math.round(e.clientX); pauseAutoRotate(); dragger.style.cursor = 'grabbing'; },
+                onDrag(e) { if (e.touches) e.clientX = e.touches[0].clientX; const clientX = Math.round(e.clientX); const delta = clientX - xPos; if (delta === 0) return; gsap.set(ring, { rotationY: `-=${delta}` }); updateImgs(); xPos = clientX; },
+                onDragEnd() { dragger.style.cursor = 'grab'; gsap.set(dragger, { x: 0, y: 0 }); resumeAutoRotateAfterDelay(2000); },
+                onPress() { pauseAutoRotate(); }
+            });
+
+            window.addEventListener('blur', () => { if (autoRotate) autoRotate.pause(); });
+            window.addEventListener('focus', () => { if (autoRotate && !resumeTimeout) autoRotate.play(); });
+
+            window._carousel = { ring, items, imgs, updateImgs };
+        })();
+    </script>
+</body>
+
+</html>
