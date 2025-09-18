@@ -560,7 +560,7 @@ import { Button } from "../Buttons/Button";
 
 // Constants to prevent recreation
 const SCROLL_THRESHOLD = 10;
-const PHONE_NUMBER = "+918141703007";
+const PHONE_NUMBER = "+916353061867";
 const LOGO_ALT_TEXT = "Shivansh Infosys - Quick Response, Quick Support";
 
 // Memoized icon components
@@ -730,11 +730,11 @@ const AnimatedContactInfo = memo(
               {!isMobile && <ArrowIcon />}
             </span>
             <a
-              href={`tel:+916353061867`}
+              href={`tel:${PHONE_NUMBER}`}
               className={`${isMobile ? "block text-sm" : "text-lg"} font-bold text-gray-800 transition-colors duration-200 hover:text-red-600`}
-              aria-label={`Call us at +916353061867`}
+              aria-label={`Call us at ${PHONE_NUMBER}`}
             >
-              +91 6353061867
+              {PHONE_NUMBER}
             </a>
           </div>
         </div>

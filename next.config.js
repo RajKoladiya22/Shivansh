@@ -11,7 +11,7 @@ const config = {
     '*.192.168.29.130',
   ],
   images: {
-    domains: ['https://shivansh-three.vercel.app', 'https://shivanshinfosys.in', 'localhost'],
+    domains: ['https://shivansh-three.vercel.app', 'https://shivanshinfosys.in', 'localhost', 'www.bilo.ua'],
     formats: ['image/webp', 'image/avif'],
 
     deviceSizes: [640, 768, 1024, 1280, 1600],
