@@ -45,7 +45,7 @@ const MobileSlider = ({ slides }: { slides: TeamMember[] }) => {
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 3500); // Smooth auto-slide every 3.5 seconds
+    }, 2000); // Smooth auto-slide every 3.5 seconds
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, totalSlides, isDragging]);

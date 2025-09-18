@@ -215,7 +215,7 @@ export const TeamSection = () => {
                     height={200}
                     src={member.image}
                     alt={member.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
 
@@ -330,7 +330,7 @@ export const TeamSection = () => {
                       height={200}
                       src={member.image}
                       alt={member.name}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
 
@@ -407,7 +407,7 @@ export const TeamSection = () => {
               {/* Carousel Container */}
               <div className="overflow-hidden rounded-xl">
                 <div className="grid-row-2 grid transition-transform duration-300 ease-in-out">
-                  {teamMembers.map((member) => (
+                  {/* {teamMembers.map((member) => (
                     <div
                       key={member.id}
                       className="my-2 w-full flex-shrink-0 cursor-pointer px-1"
@@ -426,100 +426,104 @@ export const TeamSection = () => {
                         onContactClick={() => openModal(member)}
                       />
                     </div>
+                  ))} */}
+
+                  {teamMembers.map((member) => (
+                    <div
+                      key={member.id}
+                      className="my-2 w-full flex-shrink-0 cursor-pointer px-1"
+                      onClick={() => openModal(member)}
+                    >
+                      <div className="rounded-xl border border-red-200 bg-white shadow-lg">
+                        <div className="relative h-48 overflow-hidden rounded-t-xl sm:h-56">
+                          <Image
+                            width={200}
+                            height={200}
+                            src={member.image}
+                            alt={member.name}
+                            className="h-full w-full object-contain"
+                          />
+                        </div>
+
+                        <div className="p-4 sm:p-5">
+                          <div className="mb-3">
+                            <h3 className="mb-1 text-lg font-bold text-gray-900 sm:text-xl">
+                              {member.name}
+                            </h3>
+                            <p className="mb-1 text-sm font-semibold text-red-600 sm:text-base">
+                              {member.position}
+                            </p>
+                            <p className="text-xs text-gray-500 sm:text-sm">
+                              {member.department} • {member.experience}
+                            </p>
+                          </div>
+
+                          <p className="mb-4 line-clamp-3 text-sm text-gray-600">
+                            {member.bio}
+                          </p>
+
+                          <div className="mb-4">
+                            <div className="flex flex-wrap gap-2">
+                              {member.specialties
+                                .slice(0, 3)
+                                .map((specialty, index) => (
+                                  <span
+                                    key={index}
+                                    className="rounded-full bg-red-100 px-2 py-1 text-xs text-red-700"
+                                  >
+                                    {specialty}
+                                  </span>
+                                ))}
+                              {member.specialties.length > 3 && (
+                                <span className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600">
+                                  +{member.specialties.length - 3}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="mb-4 flex items-start text-xs text-gray-500">
+                            <Award className="mt-0.5 mr-2 h-3 w-3 flex-shrink-0 text-yellow-500" />
+                            <span className="line-clamp-2">
+                              {member.achievements[0]}
+                            </span>
+                          </div>
+
+                          <div className="flex space-x-3">
+                            {member.social.linkedin && (
+                              <a
+                                href={member.social.linkedin}
+                                className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <FaLinkedin className="h-4 w-4 text-red-600" />
+                              </a>
+                            )}
+                            {member.social.twitter && (
+                              <a
+                                href={member.social.twitter}
+                                className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <FaTwitter className="h-4 w-4 text-red-600" />
+                              </a>
+                            )}
+                            {member.social.email && (
+                              <a
+                                href={`mailto:${member.social.email}`}
+                                className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <Mail className="h-4 w-4 text-red-600" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
-              {/* <div className="rounded-xl border border-red-200 bg-white shadow-lg">
-                    
-                    <div className="relative h-48 overflow-hidden rounded-t-xl sm:h-56">
-                      <Image
-                        width={200}
-                        height={200}
-                        src={member.image}
-                        alt={member.name}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-
-                    
-                    <div className="p-4 sm:p-5">
-                      <div className="mb-3">
-                        <h3 className="mb-1 text-lg font-bold text-gray-900 sm:text-xl">
-                          {member.name}
-                        </h3>
-                        <p className="mb-1 text-sm font-semibold text-red-600 sm:text-base">
-                          {member.position}
-                        </p>
-                        <p className="text-xs text-gray-500 sm:text-sm">
-                          {member.department} • {member.experience}
-                        </p>
-                      </div>
-
-                      <p className="mb-4 line-clamp-3 text-sm text-gray-600">
-                        {member.bio}
-                      </p>
-
-                     
-                      <div className="mb-4">
-                        <div className="flex flex-wrap gap-2">
-                          {member.specialties
-                            .slice(0, 3)
-                            .map((specialty, index) => (
-                              <span
-                                key={index}
-                                className="rounded-full bg-red-100 px-2 py-1 text-xs text-red-700"
-                              >
-                                {specialty}
-                              </span>
-                            ))}
-                          {member.specialties.length > 3 && (
-                            <span className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600">
-                              +{member.specialties.length - 3}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      
-                      <div className="mb-4 flex items-start text-xs text-gray-500">
-                        <Award className="mt-0.5 mr-2 h-3 w-3 flex-shrink-0 text-yellow-500" />
-                        <span className="line-clamp-2">
-                          {member.achievements[0]}
-                        </span>
-                      </div>
-
-                      
-                      <div className="flex space-x-3">
-                        {member.social.linkedin && (
-                          <a
-                            href={member.social.linkedin}
-                            className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <FaLinkedin className="h-4 w-4 text-red-600" />
-                          </a>
-                        )}
-                        {member.social.twitter && (
-                          <a
-                            href={member.social.twitter}
-                            className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <FaTwitter className="h-4 w-4 text-red-600" />
-                          </a>
-                        )}
-                        {member.social.email && (
-                          <a
-                            href={`mailto:${member.social.email}`}
-                            className="rounded-lg bg-red-100 p-2 transition-colors hover:bg-red-200"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <Mail className="h-4 w-4 text-red-600" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div> */}
 
               {/* Navigation Buttons */}
               {/* <button  
