@@ -22,10 +22,11 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const loopWidthRef = useRef<number>(0);
 
   // ---------- Derived data ----------
-  if (!members || members.length === 0) return null;
-  const clampedMembers = members.slice(0, 14);
+  const clampedMembers = members?.slice(0, 14) || [];
   const loopItems = [...clampedMembers, ...clampedMembers];
-  if (clampedMembers.length === 0) {
+
+  // Early return only after all hooks have been called
+  if (!members || members.length === 0 || clampedMembers.length === 0) {
     return null;
   }
 
@@ -66,10 +67,14 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   useEffect(() => {
     measure();
     const handleResize = () => {
-      setTimeout(measure, 100);
+      if (resizeTimer.current) clearTimeout(resizeTimer.current);
+      resizeTimer.current = setTimeout(measure, 100);
     };
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeTimer.current) clearTimeout(resizeTimer.current);
+    };
   }, [measure]);
 
   // Animation loop
@@ -119,7 +124,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   );
   const handleItemLeave = useCallback(() => setHoveredId(null), []);
 
-  if (clampedMembers.length === 0) return null;
 
   // Use sample data if no members provided
   const displayMembers = members.length > 0 ? clampedMembers : [];
@@ -220,3 +224,9 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
     </section>
   );
 }
+
+// const imageSizeClasses =
+//   "w-38 h-50 xs:w-28 xs:h-38 sm:w-32 sm:h-42 md:w-40 md:h-50 lg:w-48 lg:h-58 xl:w-52 xl:h-65";
+// const bioContainerClasses = "mt-4 text-center max-w-xs mx-auto px-2";
+// const sliderHeightClasses =
+//   "h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem]";
