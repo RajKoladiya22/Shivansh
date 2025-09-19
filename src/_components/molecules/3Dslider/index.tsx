@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { TeamMember } from "src/_components/sections/types/team.type";
 
 type Props = {
@@ -39,7 +39,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   }, [loopItems.length]);
 
   // Measure widths
-  const measure = useCallback(() => {
+  const measure =() => {
     const inner = innerRef.current;
     if (!inner) {
       loopWidthRef.current = 0;
@@ -62,7 +62,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
       }, 0);
 
     loopWidthRef.current = singleLoopWidth;
-  }, []);
+  };
 
   useEffect(() => {
     measure();
@@ -113,16 +113,13 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
     };
   }, [paused, speed]);
 
-  const handleSliderEnter = useCallback(() => setPaused(true), []);
-  const handleSliderLeave = useCallback(() => {
+  const handleSliderEnter = () => setPaused(true);
+  const handleSliderLeave = () => {
     setPaused(false);
     setHoveredId(null);
-  }, []);
-  const handleItemEnter = useCallback(
-    (id: string | number) => setHoveredId(id),
-    [],
-  );
-  const handleItemLeave = useCallback(() => setHoveredId(null), []);
+  };
+  const handleItemEnter =(id: string | number) => setHoveredId(id);
+  const handleItemLeave = () => setHoveredId(null);
 
 
   // Use sample data if no members provided
