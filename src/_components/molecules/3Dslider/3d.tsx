@@ -117,14 +117,14 @@ const Slide: React.FC<SlideProps> = ({
         '--dir': (offset ?? 0) === 0 ? 0 : (offset ?? 0) > 0 ? 1 : -1,
       } as React.CSSProperties}
     >
-      {isPageBackground && (
+      {/* {isPageBackground && (
         <div
           className="slideBackground"
           style={{
             backgroundImage: `url('${image}')`,
           }}
         />
-      )}
+      )} */}
       <div
         className="slideContent"
         style={{

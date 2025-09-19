@@ -460,6 +460,8 @@ import {
 } from "src/config/constants";
 
 import App from "src/_components/molecules/3Dslider/3d";
+import ResponsiveCarousel from "src/_components/molecules/3Dslider/index";
+import RotatingTeamSlider from "src/_components/molecules/3Dslider/index";
 
 export const Hero2 = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -589,10 +591,13 @@ export const Hero2 = () => {
         </div>
 
         {/* Carousel Container - Responsive */}
-        <div className="mb-2 flex min-h-0 flex-1 items-center justify-center">
+        <div className="mb-2 flex min-h-0 flex-1 items-center justify-center w-full">
           {/* <GSAPCarousel
           /> */}
-           <App />
+           {/* <App /> */}
+           <RotatingTeamSlider
+           members={teamMembers}
+            />
         </div>
       </section>
     </>

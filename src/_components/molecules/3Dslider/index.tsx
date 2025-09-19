@@ -1,287 +1,222 @@
-// import React, { useEffect, useRef } from "react";
-// import { gsap } from "gsap";
-// import { Draggable } from "gsap/dist/Draggable";
-// import type { TeamMember } from "src/_components/sections/types/team.type";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import type { TeamMember } from "src/_components/sections/types/team.type";
 
-// // Register GSAP plugins
-// if (typeof window !== "undefined") {
-//   gsap.registerPlugin(Draggable);
-// }
+type Props = {
+  members: TeamMember[];
+  speed?: number; // pixels per second
+};
 
-// interface CarouselProps {
-//   images?: string[];
-//   teamMembers?: TeamMember[];
-//   containerSize?: number;
-//   radius?: number;
-//   className?: string;
-//   autoRotate?: boolean;
-//   autoRotateSpeed?: number;
-//   pauseOnHover?: boolean;
-// }
+export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
+  if (!members || members.length === 0) return null;
 
-// const GSAPCarousel: React.FC<CarouselProps> = ({
-//   images,
-//   teamMembers,
-//   containerSize = 300,
-//   radius = 500,
-//   className = "",
-//   autoRotate = true,
-//   autoRotateSpeed = 1, // Speed multiplier for auto rotation
-//   pauseOnHover = true,
-// }) => {
-//   const containerRef = useRef<HTMLDivElement>(null);
-//   const ringRef = useRef<HTMLDivElement>(null);
-//   const draggerRef = useRef<HTMLDivElement>(null);
-//   const imgRefs = useRef<HTMLDivElement[]>([]);
-//   const xPos = useRef(0);
-//   const autoRotateRef = useRef<GSAPTimeline | null>(null);
-//   const isDragging = useRef(false);
-//   const isHovering = useRef(false);
+  // Clamp to 14 members
+  const clampedMembers = members.slice(0, 14);
 
-//   // Use team member images if provided, otherwise use custom images, fallback to default
-//   const getCarouselImages = () => {
-//     if (teamMembers && teamMembers.length > 0) {
-//       return teamMembers.map((member) => member.src || member.image);
-//     }
-//     if (images && images.length > 0) {
-//       return images;
-//     }
-//     // Default fallback images
-//     return Array.from(
-//       { length: 10 },
-//       (_, i) => `https://picsum.photos/id/${i + 32}/700/300/`,
-//     );
-//   };
+  // Duplicated list for seamless loop
+  const loopItems = [...clampedMembers, ...clampedMembers];
 
-//   const carouselImages = getCarouselImages();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const innerRef = useRef<HTMLDivElement | null>(null);
+  const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
 
-//   const getBgPos = (i: number): string => {
-//     if (!ringRef.current) return "0px 0px";
-//     const rotationY = gsap.getProperty(ringRef.current, "rotationY") as number;
-//     const angleStep = 360 / carouselImages.length;
-//     const bgOffset =
-//       (-gsap.utils.wrap(0, 360, rotationY - 180 - i * angleStep) / 360) * 400;
-//     return `${bgOffset}px 0px`;
-//   };
+  const [paused, setPaused] = useState(false);
+  const [hoveredId, setHoveredId] = useState<string | number | null>(null);
 
-//   // Start auto rotation
-//   const startAutoRotation = () => {
-//     if (!autoRotate || !ringRef.current || autoRotateRef.current) return;
+  // Animation state
+  const posRef = useRef(0);
+  const lastTimeRef = useRef<number | null>(null);
+  const loopWidthRef = useRef<number>(0);
 
-//     const imgs = imgRefs.current.filter(Boolean);
+  // Measure widths
+  const measure = useCallback(() => {
+    const inner = innerRef.current;
+    const container = containerRef.current;
+    if (!inner || !container) return;
 
-//     autoRotateRef.current = gsap.timeline({ repeat: -1 });
-//     autoRotateRef.current.to(ringRef.current, {
-//       rotationY: "+=360",
-//       duration: 20 / autoRotateSpeed, // Adjust duration based on speed
-//       ease: "none",
-//       onUpdate: () => {
-//         gsap.set(imgs, {
-//           backgroundPosition: (i) => getBgPos(i),
-//         });
-//       },
-//     });
-//   };
+    const children = Array.from(inner.children) as HTMLDivElement[];
+    if (children.length === 0) return;
 
-//   // Stop auto rotation
-//   const stopAutoRotation = () => {
-//     if (autoRotateRef.current) {
-//       autoRotateRef.current.kill();
-//       autoRotateRef.current = null;
-//     }
-//   };
+    const singleLoopWidth = children
+      .slice(0, Math.floor(children.length / 2))
+      .reduce((acc, el) => {
+        const rect = el.getBoundingClientRect();
+        return acc + rect.width;
+      }, 0);
 
-//   // Resume auto rotation if conditions are met
-//   const resumeAutoRotation = () => {
-//     if (autoRotate && !isDragging.current && (!pauseOnHover || !isHovering.current)) {
-//       startAutoRotation();
-//     }
-//   };
+    loopWidthRef.current = singleLoopWidth;
+  }, []);
 
-//   // Handle mouse enter/leave for hover pause
-//   const handleMouseEnter = () => {
-//     if (pauseOnHover) {
-//       isHovering.current = true;
-//       stopAutoRotation();
-//     }
-//   };
+  // Initialize item refs array
+  useEffect(() => {
+    itemRefs.current = new Array(loopItems.length).fill(null);
+  }, [loopItems.length]);
 
-//   const handleMouseLeave = () => {
-//     if (pauseOnHover) {
-//       isHovering.current = false;
-//       resumeAutoRotation();
-//     }
-//   };
+  useEffect(() => {
+    measure();
+    const handleResize = () => {
+      setTimeout(measure, 100);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [measure]);
 
-//   useEffect(() => {
-//     if (!containerRef.current || !ringRef.current || !draggerRef.current)
-//       return;
+  // Animation loop
+  useEffect(() => {
+    let raf = 0;
 
-//     const ring = ringRef.current;
-//     const dragger = draggerRef.current;
-//     const container = containerRef.current;
-//     const imgs = imgRefs.current.filter(Boolean); // Filter out null/undefined refs
+    function step(ts: number) {
+      if (lastTimeRef.current == null) {
+        lastTimeRef.current = ts;
+      }
 
-//     if (imgs.length === 0) return;
+      const dt = ts - lastTimeRef.current;
+      lastTimeRef.current = ts;
 
-//     // Calculate angle based on number of images
-//     const angleStep = 360 / carouselImages.length;
+      if (!paused && innerRef.current) {
+        const deltaPx = (speed * dt) / 1000;
+        posRef.current -= deltaPx;
 
-//     // Initial GSAP timeline setup
-//     const tl = gsap.timeline({
-//       onComplete: () => {
-//         // Start auto rotation after initial animation completes
-//         startAutoRotation();
-//       },
-//     });
+        const loopW = loopWidthRef.current;
+        if (loopW > 0 && Math.abs(posRef.current) >= loopW) {
+          posRef.current += loopW;
+        }
 
-//     tl.set(dragger, { opacity: 0 }) // make the drag layer invisible
-//       .set(ring, { rotationY: 180 }) // set initial rotationY so the parallax jump happens off screen
-//       .set(imgs, {
-//         // apply transform rotations to each image
-//         rotateY: (i) => i * -angleStep,
-//         transformOrigin: `50% 50% ${radius}px`,
-//         z: -radius,
-//         backgroundImage: (i) => `url(${carouselImages[i]})`,
-//         backgroundPosition: (i) => getBgPos(i),
-//         backgroundSize: "cover",
-//         backfaceVisibility: "hidden",
-//       })
-//       .from(imgs, {
-//         duration: 1.5,
-//         y: 200,
-//         opacity: 0,
-//         stagger: 0.1,
-//         ease: "expo",
-//       });
+        innerRef.current.style.transform = `translateX(${posRef.current}px)`;
+      }
 
-//     // Setup draggable
-//     const draggableInstance = Draggable.create(dragger, {
-//       onDragStart: (e: any) => {
-//         isDragging.current = true;
-//         stopAutoRotation();
+      raf = requestAnimationFrame(step);
+    }
 
-//         if (e.touches) e.clientX = e.touches[0].clientX;
-//         xPos.current = Math.round(e.clientX);
-//       },
+    raf = requestAnimationFrame(step);
 
-//       onDrag: (e: any) => {
-//         if (e.touches) e.clientX = e.touches[0].clientX;
+    return () => {
+      cancelAnimationFrame(raf);
+      lastTimeRef.current = null;
+    };
+  }, [paused, speed]);
 
-//         gsap.to(ring, {
-//           rotationY: "-=" + ((Math.round(e.clientX) - xPos.current) % 360),
-//           onUpdate: () => {
-//             gsap.set(imgs, {
-//               backgroundPosition: (i) => getBgPos(i),
-//             });
-//           },
-//         });
+  // Pause handlers
+  const handleSliderEnter = useCallback(() => {
+    setPaused(true);
+  }, []);
 
-//         xPos.current = Math.round(e.clientX);
-//       },
+  const handleSliderLeave = useCallback(() => {
+    setPaused(false);
+    setHoveredId(null);
+  }, []);
 
-//       onDragEnd: () => {
-//         isDragging.current = false;
-//         gsap.set(dragger, { x: 0, y: 0 }); // reset drag layer
+  const handleItemEnter = useCallback((memberId: string | number) => {
+    setHoveredId(memberId);
+  }, []);
 
-//         // Resume auto rotation after a brief delay
-//         setTimeout(() => {
-//           resumeAutoRotation();
-//         }, 1000);
-//       },
-//     });
+  const handleItemLeave = useCallback(() => {
+    setHoveredId(null);
+  }, []);
 
-//     // Add hover event listeners
-//     if (pauseOnHover) {
-//       container.addEventListener('mouseenter', handleMouseEnter);
-//       container.addEventListener('mouseleave', handleMouseLeave);
-//     }
+  // Use sample data if no members provided
+  const displayMembers = members.length > 0 ? clampedMembers : [];
+  const displayLoopItems = [...displayMembers, ...displayMembers];
 
-//     // Cleanup function
-//     return () => {
-//       if (draggableInstance && draggableInstance[0]) {
-//         draggableInstance[0].kill();
-//       }
-//       tl.kill();
-//       stopAutoRotation();
+  // Responsive image size classes
+  const imageSizeClasses =
+    "w-38 h-50 xs:w-28 xs:h-38 sm:w-32 sm:h-42 md:w-40 md:h-50 lg:w-48 lg:h-58 xl:w-52 xl:h-65";
+  const bioContainerClasses = "mt-4 text-center max-w-xs mx-auto px-2";
+  const sliderHeightClasses =
+    "h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem]";
 
-//       if (pauseOnHover && container) {
-//         container.removeEventListener('mouseenter', handleMouseEnter);
-//         container.removeEventListener('mouseleave', handleMouseLeave);
-//       }
-//     };
-//   }, [carouselImages, radius, autoRotate, autoRotateSpeed, pauseOnHover]);
+  return (
+    <section
+      aria-label="Team carousel"
+      className="w-full"
+    >
+      <div className="mx-auto ">
+        <div
+          ref={containerRef}
+          className={`relative w-full overflow-hidden ${sliderHeightClasses} flex items-center`}
+          onMouseEnter={handleSliderEnter}
+          onMouseLeave={handleSliderLeave}
+        >
+          <div
+            ref={innerRef}
+            className="flex items-center will-change-transform"
+            style={{ transform: "translateX(0px)" }}
+          >
+            {displayLoopItems.map((m, idx) => {
+              const originalIdx = idx % displayMembers.length;
+              const isHovered = hoveredId === m.id;
 
-//   return (
-//     <div className="gsap-carousel-wrapper">
-//       <style jsx>{`
-//         .gsap-carousel-wrapper {
-//           width: 100%;
-//           height: 50vh;
-//           overflow: hidden;
-//           position: relative;
-//           background: green;
-//         }
+              return (
+                <div
+                  key={`${m.id}-${idx}`}
+                  ref={(el) => {
+                    if (itemRefs.current) {
+                      itemRefs.current[idx] = el;
+                    }
+                  }}
+                  className={`xs:p-3 flex-shrink-0 transform p-2 transition-all duration-300 ease-out sm:p-4 ${
+                    isHovered ? "z-20 scale-105" : "scale-100 opacity-80"
+                  }`}
+                  style={{
+                    width: "clamp(150px, 20vw, 240px)",
+                    // width: "clamp(120px, 20vw, 220px)",
+                    minWidth: "150px",
+                  }}
+                  onMouseEnter={() => handleItemEnter(m.id)}
+                  onMouseLeave={handleItemLeave}
+                >
+                  <div
+                    className={`relative mx-auto overflow-hidden rounded-2xl border-4 border-white shadow-lg ${imageSizeClasses}`}
+                  >
+                    <img
+                      src={m.src}
+                      alt={m.name}
+                      className={`h-full w-full object-cover transition-transform duration-300 ${
+                        isHovered ? "scale-110" : "scale-100"
+                      }
+                      ${
+                        isHovered
+                          ? "scale-110 grayscale-0"
+                          : "scale-100 grayscale-[40%]"
+                      }`
+                      
+                      
+                    }
+                    />
 
-//         .carousel-container {
-//           perspective: 2000px;
-//           width: ${containerSize}px;
-//           height: ${containerSize}px;
-//           position: absolute;
-//           left: 50%;
-//           top: 50%;
-//           transform: translate(-50%, -50%);
-//         }
+                    {/* Overlay that appears only on hover */}
+                    <div
+                      className={`absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 transition-opacity duration-300 ${
+                        isHovered ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <div className="text-center text-white">
+                        <h3 className="text-sm font-bold md:text-base">
+                          {m.name}
+                        </h3>
+                        <p className="text-xs opacity-90 md:text-sm">
+                          {m.position}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
 
-//         .carousel-ring,
-//         .carousel-img,
-//         .carousel-dragger {
-//           width: 100%;
-//           height: 100%;
-//           transform-style: preserve-3d;
-//           user-select: none;
-//         }
+                  {/* Bio content displayed below the image on hover */}
+                  {/* <div
+                    className={`${bioContainerClasses} transition-all duration-300 ${
+                      isHovered
+                        ? "translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-4 opacity-0"
+                    }`}
+                  >
+                    <p className="text-xs text-gray-700 md:text-sm">{m.bio}</p>
+                  </div> */}
+                </div>
+              );
+            })}
+          </div>
+        </div>
 
-//         .carousel-ring,
-//         .carousel-img,
-//         .carousel-dragger {
-//           position: absolute;
-//         }
-
-//         .carousel-img {
-//           background-size: contain;
-//           background-repeat: no-repeat;
-//           cursor: pointer;
-//         }
-//       `}</style>
-
-//       <div className="carousel-container" ref={containerRef}>
-//         <div className="carousel-ring" ref={ringRef}>
-//           {carouselImages.map((_, index) => (
-//             <div
-//               key={index}
-//               className="carousel-img"
-//               ref={(el) => {
-//                 if (el) imgRefs.current[index] = el;
-//               }}
-//               onMouseEnter={() => {
-//                 isHovering.current = true;
-//                 stopAutoRotation();
-//               }}
-//               onMouseLeave={() => {
-//                 isHovering.current = false;
-//                 resumeAutoRotation();
-//               }}
-//             />
-//           ))}
-//         </div>
-//       </div>
-
-//       <div className="carousel-vignette" />
-//       <div className="carousel-dragger" ref={draggerRef} />
-//     </div>
-//   );
-// };
-
-// export default GSAPCarousel;
-
+      </div>
+    </section>
+  );
+}

@@ -45,3 +45,6 @@ yarn-error.log*
 .idea
 
 /Payload
+
+
+public/index.html
