@@ -8,16 +8,7 @@ type Props = {
 };
 
 export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
-  // ---------- Derived data (compute first) ----------
-  const clampedMembers = members?.slice(0, 14) || [];
-  const loopItems = [...clampedMembers, ...clampedMembers];
-
-  // Early return before any hooks.
-  if (!members || members.length === 0 || clampedMembers.length === 0) {
-    return null;
-  }
-
-  // ---------- Hooks (now unconditional) ----------
+  // ---------- All hooks must be called before any early returns ----------
   const containerRef = useRef<HTMLDivElement | null>(null);
   const innerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -30,67 +21,43 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const lastTimeRef = useRef<number | null>(null);
   const loopWidthRef = useRef<number>(0);
 
+  // ---------- Derived data (compute after hooks) ----------
+  const clampedMembers = members?.slice(0, 14) || [];
+  const loopItems = [...clampedMembers, ...clampedMembers];
+
   // Initialize item refs array
   useEffect(() => {
-    // itemRefs.current = new Array(loopItems.length).fill(null);
-    itemRefs.current = new Array<HTMLDivElement | null>(loopItems.length).fill(
-      null,
-    );
+    itemRefs.current = new Array<HTMLDivElement | null>(loopItems.length).fill(null);
   }, [loopItems.length]);
 
-  // Measure widths
+  const measure = () => {
+    const inner = innerRef.current;
+    if (!inner) {
+      loopWidthRef.current = 0;
+      return;
+    }
+    const container = containerRef.current;
+    if (!inner || !container) return;
 
-  // const measure =() => {
-  //   const inner = innerRef.current;
-  //   if (!inner) {
-  //     loopWidthRef.current = 0;
-  //     return;
-  //   }
-  //   const container = containerRef.current;
-  //   if (!inner || !container) return;
+    const children = Array.from(inner.children) as HTMLDivElement[];
+    if (children.length === 0) {
+      loopWidthRef.current = 0;
+      return;
+    }
 
-  //   const children = Array.from(inner.children) as HTMLDivElement[];
-  //   if (children.length === 0) {
-  //     loopWidthRef.current = 0;
-  //     return;
-  //   }
+    const singleLoopWidth = children
+      .slice(0, Math.floor(children.length / 2))
+      .reduce((acc, el) => {
+        const rect = el.getBoundingClientRect();
+        return acc + rect.width;
+      }, 0);
 
-  //   const singleLoopWidth = children
-  //     .slice(0, Math.floor(children.length / 2))
-  //     .reduce((acc, el) => {
-  //       const rect = el.getBoundingClientRect();
-  //       return acc + rect.width;
-  //     }, 0);
-
-  //   loopWidthRef.current = singleLoopWidth;
-  // };
+    loopWidthRef.current = singleLoopWidth;
+  };
 
   useEffect(() => {
-    // measure();
-    const measure = () => {
-      const inner = innerRef.current;
-      if (!inner) {
-        loopWidthRef.current = 0;
-        return;
-      }
-      const container = containerRef.current;
-      if (!inner || !container) return;
+    measure();
 
-      const children = Array.from(inner.children) as HTMLDivElement[];
-      if (children.length === 0) {
-        loopWidthRef.current = 0;
-        return;
-      }
-
-      const singleLoopWidth = children
-        .slice(0, Math.floor(children.length / 2))
-        .reduce((acc, el) => {
-          const rect = el.getBoundingClientRect();
-          return acc + rect.width;
-        }, 0);
-
-      loopWidthRef.current = singleLoopWidth;
-    };
     const handleResize = () => {
       if (resizeTimer.current) clearTimeout(resizeTimer.current);
       resizeTimer.current = setTimeout(measure, 100);
@@ -107,9 +74,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
     let raf = 0;
 
     function step(ts: number) {
-      // if (lastTimeRef.current == null) {
-      //   lastTimeRef.current ??= ts;
-      // }
       lastTimeRef.current ??= ts;
 
       const dt = ts - lastTimeRef.current;
@@ -146,6 +110,11 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const handleItemEnter = (id: string | number) => setHoveredId(id);
   const handleItemLeave = () => setHoveredId(null);
 
+  // ---------- Early return AFTER all hooks ----------
+  if (!members || members.length === 0 || clampedMembers.length === 0) {
+    return null;
+  }
+
   // Use sample data if no members provided
   const displayMembers = members.length > 0 ? clampedMembers : [];
   const displayLoopItems = [...displayMembers, ...displayMembers];
@@ -153,7 +122,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   // Responsive image size classes
   const imageSizeClasses =
     "w-38 h-50 xs:w-28 xs:h-38 sm:w-32 sm:h-42 md:w-40 md:h-50 lg:w-48 lg:h-58 xl:w-52 xl:h-65";
-  const bioContainerClasses = "mt-4 text-center max-w-xs mx-auto px-2";
   const sliderHeightClasses =
     "h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem]";
 
@@ -172,7 +140,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
             style={{ transform: "translateX(0px)" }}
           >
             {displayLoopItems.map((m, idx) => {
-              const originalIdx = idx % displayMembers.length;
               const isHovered = hoveredId === m.id;
 
               return (
@@ -188,7 +155,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                   }`}
                   style={{
                     width: "clamp(150px, 20vw, 240px)",
-                    // width: "clamp(120px, 20vw, 220px)",
                     minWidth: "150px",
                   }}
                   onMouseEnter={() => handleItemEnter(m.id)}
@@ -225,17 +191,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                       </div>
                     </div>
                   </div>
-
-                  {/* Bio content displayed below the image on hover */}
-                  {/* <div
-                    className={`${bioContainerClasses} transition-all duration-300 ${
-                      isHovered
-                        ? "translate-y-0 opacity-100"
-                        : "pointer-events-none -translate-y-4 opacity-0"
-                    }`}
-                  >
-                    <p className="text-xs text-gray-700 md:text-sm">{m.bio}</p>
-                  </div> */}
                 </div>
               );
             })}
