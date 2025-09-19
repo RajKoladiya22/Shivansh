@@ -29,6 +29,14 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
     return null;
   }
 
+  // Initialize item refs array
+  useEffect(() => {
+    // itemRefs.current = new Array(loopItems.length).fill(null);
+    itemRefs.current = new Array<HTMLDivElement | null>(loopItems.length).fill(
+      null,
+    );
+  }, [loopItems.length]);
+
   // Measure widths
   const measure = useCallback(() => {
     const inner = innerRef.current;
@@ -54,14 +62,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
 
     loopWidthRef.current = singleLoopWidth;
   }, []);
-
-  // Initialize item refs array
-  useEffect(() => {
-    // itemRefs.current = new Array(loopItems.length).fill(null);
-    itemRefs.current = new Array<HTMLDivElement | null>(loopItems.length).fill(
-      null,
-    );
-  }, [loopItems.length]);
 
   useEffect(() => {
     measure();
