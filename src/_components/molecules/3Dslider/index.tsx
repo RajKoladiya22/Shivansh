@@ -24,6 +24,9 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   if (!members || members.length === 0) return null;
   const clampedMembers = members.slice(0, 14);
   const loopItems = [...clampedMembers, ...clampedMembers];
+  if (clampedMembers.length === 0) {
+  return null;
+}
 
   // Measure widths
   const measure = useCallback(() => {
