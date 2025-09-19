@@ -7,12 +7,6 @@ type Props = {
 };
 
 export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
-  // Ensure members always has a value, even if it's empty
-  const clampedMembers = members?.slice(0, 14) ?? [];
-  const loopItems = [...clampedMembers, ...clampedMembers];
-
-  if (clampedMembers.length === 0) return null;
-
   const containerRef = useRef<HTMLDivElement | null>(null);
   const innerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -24,6 +18,14 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const posRef = useRef(0);
   const lastTimeRef = useRef<number | null>(null);
   const loopWidthRef = useRef<number>(0);
+
+  if (!members || members.length === 0) return null;
+
+  // Clamp to 14 members
+  const clampedMembers = members.slice(0, 14);
+
+  // Duplicated list for seamless loop
+  const loopItems = [...clampedMembers, ...clampedMembers];
 
   // Measure widths
   const measure = useCallback(() => {
@@ -111,6 +113,10 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
     setHoveredId(null);
   }, []);
 
+  // Use sample data if no members provided
+  const displayMembers = members.length > 0 ? clampedMembers : [];
+  const displayLoopItems = [...displayMembers, ...displayMembers];
+
   // Responsive image size classes
   const imageSizeClasses =
     "w-38 h-50 xs:w-28 xs:h-38 sm:w-32 sm:h-42 md:w-40 md:h-50 lg:w-48 lg:h-58 xl:w-52 xl:h-65";
@@ -120,7 +126,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
 
   return (
     <section aria-label="Team carousel" className="w-full">
-      <div className="mx-auto ">
+      <div className="mx-auto">
         <div
           ref={containerRef}
           className={`relative w-full overflow-hidden ${sliderHeightClasses} flex items-center`}
@@ -132,8 +138,8 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
             className="flex items-center will-change-transform"
             style={{ transform: "translateX(0px)" }}
           >
-            {loopItems.map((m, idx) => {
-              const originalIdx = idx % clampedMembers.length;
+            {displayLoopItems.map((m, idx) => {
+              const originalIdx = idx % displayMembers.length;
               const isHovered = hoveredId === m.id;
 
               return (
@@ -149,6 +155,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                   }`}
                   style={{
                     width: "clamp(150px, 20vw, 240px)",
+                    // width: "clamp(120px, 20vw, 220px)",
                     minWidth: "150px",
                   }}
                   onMouseEnter={() => handleItemEnter(m.id)}
@@ -162,8 +169,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                       alt={m.name}
                       className={`h-full w-full object-cover transition-transform duration-300 ${
                         isHovered ? "scale-110" : "scale-100"
-                      }
-                      ${
+                      } ${
                         isHovered
                           ? "scale-110 grayscale-0"
                           : "scale-100 grayscale-[40%]"
@@ -186,6 +192,17 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                       </div>
                     </div>
                   </div>
+
+                  {/* Bio content displayed below the image on hover */}
+                  {/* <div
+                    className={`${bioContainerClasses} transition-all duration-300 ${
+                      isHovered
+                        ? "translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-4 opacity-0"
+                    }`}
+                  >
+                    <p className="text-xs text-gray-700 md:text-sm">{m.bio}</p>
+                  </div> */}
                 </div>
               );
             })}
