@@ -282,8 +282,8 @@ import Image from "next/image";
 const COMPANY_ADDRESS =
   "SHOP NO.105, AJIT PLAZA, M.G ROAD, OPP. BANK OF BARODA, VAPI, VALSAD, GUJARAT, 396191";
 const PHONE_NUMBERS = [
-  { number: "+918141703007", display: "+91 81417 03007" },
-  { number: "+919484843007", display: "+91 94848 43007" },
+  { number: "+916353061867", display: "+91 63530 61867" },
+  { number: "+917863818924", display: "+91 78638 18924" },
 ] as const;
 const EMAIL = "info@shivanshinfosys.in";
 const WHATSAPP_URL = "https://wa.me/918141703007";
@@ -450,7 +450,7 @@ const BusinessHours = memo(() => (
     </IconWrapper>
     <div>
       <p className="text-sm font-medium text-gray-100">Business Hours</p>
-      <p className="text-sm text-gray-400">Mon-Sat: 9:30 AM - 6:30 PM</p>
+      <p className="text-sm text-gray-400">Mon-Sat: 10:00 AM - 6:00 PM</p>
       <p className="text-sm text-gray-400">Sunday: Closed</p>
     </div>
   </div>

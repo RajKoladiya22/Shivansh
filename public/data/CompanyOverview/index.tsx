@@ -13,7 +13,7 @@ export const AboutUs = [
     ],
     gradient: "from-red-500 via-red-600 to-red-700",
   },
-  {
+  { 
     id: "history",
     title: "Our History",
     icon: <Clock className="h-8 w-8 text-yellow-300" />,

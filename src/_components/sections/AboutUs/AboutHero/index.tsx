@@ -280,12 +280,14 @@ export const AboutUsHero = () => {
                   style={{ aspectRatio: "4 / 3" }}
                 >
                   <Image
-                    width={200}
-                    height={200}
+                    width={1200} // Much larger width for high quality
+                    height={900} // Proportional height (4:3 aspect ratio)
                     src="/images/team/group/team.jpg"
                     alt="Shivansh Infosys Team - Creative professionals working together"
                     className="absolute inset-0 h-full w-full rounded-2xl object-cover"
                     style={{ filter: "brightness(1.05) contrast(1.1)" }}
+                    quality={95}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
 
