@@ -459,8 +459,7 @@ import {
   hero_headline_font,
 } from "src/config/constants";
 
-import App from "src/_components/molecules/3Dslider/3d";
-import ResponsiveCarousel from "src/_components/molecules/3Dslider/index";
+
 import RotatingTeamSlider from "src/_components/molecules/3Dslider/index";
 
 export const Hero2 = () => {

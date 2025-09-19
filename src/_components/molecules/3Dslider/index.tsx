@@ -7,6 +7,10 @@ type Props = {
 };
 
 export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
+
+  const clampedMembers = members.length > 0 ? members.slice(0, 14) : [];
+  const loopItems = [...clampedMembers, ...clampedMembers];
+
   const containerRef = useRef<HTMLDivElement | null>(null);
   const innerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -20,12 +24,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const loopWidthRef = useRef<number>(0);
 
   if (!members || members.length === 0) return null;
-
-  // Clamp to 14 members
-  const clampedMembers = members.slice(0, 14);
-
-  // Duplicated list for seamless loop
-  const loopItems = [...clampedMembers, ...clampedMembers];
 
   // Measure widths
   const measure = useCallback(() => {
@@ -66,11 +64,11 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
 
     function step(ts: number) {
       if (lastTimeRef.current == null) {
-        lastTimeRef.current = ts;
+        lastTimeRef.current ??= ts;
       }
 
       const dt = ts - lastTimeRef.current;
-      lastTimeRef.current = ts;
+      lastTimeRef.current ??= ts;
 
       if (!paused && innerRef.current) {
         const deltaPx = (speed * dt) / 1000;
