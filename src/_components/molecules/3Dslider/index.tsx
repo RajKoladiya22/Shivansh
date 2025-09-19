@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import type { TeamMember } from "src/_components/sections/types/team.type";
 
@@ -25,17 +26,24 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const clampedMembers = members.slice(0, 14);
   const loopItems = [...clampedMembers, ...clampedMembers];
   if (clampedMembers.length === 0) {
-  return null;
-}
+    return null;
+  }
 
   // Measure widths
   const measure = useCallback(() => {
     const inner = innerRef.current;
+    if (!inner) {
+      loopWidthRef.current = 0;
+      return;
+    }
     const container = containerRef.current;
     if (!inner || !container) return;
 
     const children = Array.from(inner.children) as HTMLDivElement[];
-    if (children.length === 0) return;
+    if (children.length === 0) {
+      loopWidthRef.current = 0;
+      return;
+    }
 
     const singleLoopWidth = children
       .slice(0, Math.floor(children.length / 2))
