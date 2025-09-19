@@ -8,7 +8,16 @@ type Props = {
 };
 
 export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
-  // ---------- Hooks (must be unconditional) ----------
+  // ---------- Derived data (compute first) ----------
+  const clampedMembers = members?.slice(0, 14) || [];
+  const loopItems = [...clampedMembers, ...clampedMembers];
+
+  // Early return before any hooks.
+  if (!members || members.length === 0 || clampedMembers.length === 0) {
+    return null;
+  }
+
+  // ---------- Hooks (now unconditional) ----------
   const containerRef = useRef<HTMLDivElement | null>(null);
   const innerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -21,15 +30,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const lastTimeRef = useRef<number | null>(null);
   const loopWidthRef = useRef<number>(0);
 
-  // ---------- Derived data ----------
-  const clampedMembers = members?.slice(0, 14) || [];
-  const loopItems = [...clampedMembers, ...clampedMembers];
-
-  // Early return only after all hooks have been called
-  if (!members || members.length === 0 || clampedMembers.length === 0) {
-    return null;
-  }
-
   // Initialize item refs array
   useEffect(() => {
     // itemRefs.current = new Array(loopItems.length).fill(null);
@@ -39,33 +39,58 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   }, [loopItems.length]);
 
   // Measure widths
-  const measure =() => {
-    const inner = innerRef.current;
-    if (!inner) {
-      loopWidthRef.current = 0;
-      return;
-    }
-    const container = containerRef.current;
-    if (!inner || !container) return;
 
-    const children = Array.from(inner.children) as HTMLDivElement[];
-    if (children.length === 0) {
-      loopWidthRef.current = 0;
-      return;
-    }
+  // const measure =() => {
+  //   const inner = innerRef.current;
+  //   if (!inner) {
+  //     loopWidthRef.current = 0;
+  //     return;
+  //   }
+  //   const container = containerRef.current;
+  //   if (!inner || !container) return;
 
-    const singleLoopWidth = children
-      .slice(0, Math.floor(children.length / 2))
-      .reduce((acc, el) => {
-        const rect = el.getBoundingClientRect();
-        return acc + rect.width;
-      }, 0);
+  //   const children = Array.from(inner.children) as HTMLDivElement[];
+  //   if (children.length === 0) {
+  //     loopWidthRef.current = 0;
+  //     return;
+  //   }
 
-    loopWidthRef.current = singleLoopWidth;
-  };
+  //   const singleLoopWidth = children
+  //     .slice(0, Math.floor(children.length / 2))
+  //     .reduce((acc, el) => {
+  //       const rect = el.getBoundingClientRect();
+  //       return acc + rect.width;
+  //     }, 0);
+
+  //   loopWidthRef.current = singleLoopWidth;
+  // };
 
   useEffect(() => {
-    measure();
+    // measure();
+    const measure = () => {
+      const inner = innerRef.current;
+      if (!inner) {
+        loopWidthRef.current = 0;
+        return;
+      }
+      const container = containerRef.current;
+      if (!inner || !container) return;
+
+      const children = Array.from(inner.children) as HTMLDivElement[];
+      if (children.length === 0) {
+        loopWidthRef.current = 0;
+        return;
+      }
+
+      const singleLoopWidth = children
+        .slice(0, Math.floor(children.length / 2))
+        .reduce((acc, el) => {
+          const rect = el.getBoundingClientRect();
+          return acc + rect.width;
+        }, 0);
+
+      loopWidthRef.current = singleLoopWidth;
+    };
     const handleResize = () => {
       if (resizeTimer.current) clearTimeout(resizeTimer.current);
       resizeTimer.current = setTimeout(measure, 100);
@@ -75,7 +100,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
       window.removeEventListener("resize", handleResize);
       if (resizeTimer.current) clearTimeout(resizeTimer.current);
     };
-  }, [measure]);
+  }, []);
 
   // Animation loop
   useEffect(() => {
@@ -118,9 +143,8 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
     setPaused(false);
     setHoveredId(null);
   };
-  const handleItemEnter =(id: string | number) => setHoveredId(id);
+  const handleItemEnter = (id: string | number) => setHoveredId(id);
   const handleItemLeave = () => setHoveredId(null);
-
 
   // Use sample data if no members provided
   const displayMembers = members.length > 0 ? clampedMembers : [];
