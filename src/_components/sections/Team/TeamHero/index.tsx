@@ -215,7 +215,7 @@ export const TeamSection = () => {
                     height={200}
                     src={member.image}
                     alt={member.name}
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 "
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
 

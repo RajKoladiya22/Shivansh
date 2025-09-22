@@ -9,7 +9,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Sneha Gupta leads our operations with a focus on delivering exceptional client experiences. With 12+ years in operations management, she has built our client success framework that ensures 99% client satisfaction. Sneha's process optimization initiatives have improved our service delivery efficiency by 300% while maintaining the highest quality standards.",
-    image: "/images/team/07.png",
+    image: "/images/team/06.jpeg",
     src: "/images/STAFF/06.png",
     experience: "12+ Years",
     specialties: [
@@ -73,7 +73,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Visionary leader with 20+ years in fintech and enterprise solutions. Rajesh has pioneered digital transformation initiatives across Fortune 500 companies.",
     detailedBio:
       "Pooja Yadav is our Cloud & Tally Expert, with strong expertise in cloud technologies and Tally solutions. She provides dedicated cloud support and ensures smooth operations for businesses with her in-depth knowledge and problem-solving skills. Her commitment to delivering efficient solutions makes her a valuable part of our team..",
-    image: "/images/team/01.png",
+    image: "/images/team/02.jpeg",
     src: "/images/STAFF/02.png",
     experience: "20+ Years",
     specialties: [
@@ -134,7 +134,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Technology innovator specializing in scalable financial systems and AI-driven solutions. Priya leads our technical vision and product development.",
     detailedBio:
       "Madhvi Mokde is our skilled Tally Prime & GST Support Executive. She provides expert assistance in Tally Prime operations and offers valuable guidance in GST-related matters. With her strong knowledge and problem-solving",
-    image: "/images/team/04.png",
+    image: "/images/team/07.jpeg",
     src: "/images/STAFF/07.png",
     experience: "15+ Years",
     specialties: [
@@ -197,7 +197,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Financial strategist with deep expertise in accounting standards and regulatory compliance. Amit ensures financial excellence and risk management.",
     detailedBio:
       "Amit Patel brings 18+ years of financial expertise to our leadership team. As our CFO, he ensures that every financial solution we develop meets the highest standards of compliance and accuracy. His deep knowledge of Indian accounting standards, GST regulations, and international financial reporting has been crucial in building trust with our enterprise clients.",
-    image: "/images/team/02.png",
+    image: "/images/team/03.jpeg",
     src: "/images/STAFF/03.png",
     experience: "18+ Years",
     specialties: [
@@ -260,7 +260,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Krishna Lakhani is our expert Advanced Tally & GST Support Specialist. With deep knowledge of complex Tally features and advanced GST compliance, she provides high-level support to clients, ensuring accuracy, efficiency, and smooth business operations. Her expertise makes her a valuable resource for handling challenging requirements and delivering effective solutions.",
-    image: "/images/team/05.png",
+    image: "/images/team/04.jpeg",
     src: "/images/STAFF/04.png",
     experience: "12+ Years",
     specialties: [
@@ -324,7 +324,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Hinal Patel is a versatile team member who provides strong support in Tally Prime and has expert knowledge of Biz Analyst – the mobile app for Tally. She assists clients with dedication, ensuring they get the maximum benefit from these solutions. In addition to her core responsibilities, Hinal also manages renewal and sales activities, contributing to client satisfaction and business growth. She is actively involved in digital marketing by finalizing posts and reels, further strengthening our brand presence. With her hardworking nature and ability to handle multiple responsibilities efficiently, Hinal truly stands out as an all-rounder in our team.",
-    image: "/images/team/03.png",
+    image: "/images/team/05.jpeg",
     src: "/images/STAFF/05.png",
     experience: "12+ Years",
     specialties: [
@@ -388,7 +388,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Sneha Gupta leads our operations with a focus on delivering exceptional client experiences. With 12+ years in operations management, she has built our client success framework that ensures 99% client satisfaction. Sneha's process optimization initiatives have improved our service delivery efficiency by 300% while maintaining the highest quality standards.",
-    image: "/images/team/06.png",
+    image: "/images/team/01.jpeg",
     src: "/images/STAFF/01.png",
     experience: "12+ Years",
     specialties: [
@@ -452,7 +452,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Mr. Harjeet Singh brings extensive expertise in GST compliance, Tally solutions, and taxation. With his in-depth knowledge and experience, he provides valuable guidance to businesses for efficient tax planning, Tally customization, and regulatory compliance.",
-    image: "/images/team/skeleton_1.png",
+    image: "/images/STAFF/09.png",
     src: "/images/STAFF/09.png",
     experience: "12+ Years",
     specialties: [
@@ -516,7 +516,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Mr. Das is our GST, Tally & Cloud Expert. He has in-depth knowledge of GST compliance, Tally solutions, and cloud support, helping clients manage their business operations smoothly and securely.",
-    image: "/images/team/skeleton_1.png",
+    image: "/images/STAFF/10.png",
     src: "/images/STAFF/10.png",
     experience: "12+ Years",
     specialties: [
@@ -580,7 +580,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Suresh Modi is our talented Tally Developer. With his brilliant expertise in TDL development, he creates customized solutions for Shivansh Infosys as per client requirements. His innovative approach and strong technical skills ensure that every solution is tailored to enhance efficiency and simplify business processes.",
-    image: "/images/team/skeleton_1.png",
+    image: "/images/STAFF/08.png",
     src: "/images/STAFF/08.png",
     experience: "12+ Years",
     specialties: [
@@ -644,7 +644,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Adarsh Kahar is our dependable Tally Support & Client Relations Executive. He not only assists clients with Tally operations and technical queries but also actively visits customer offices in Vapi town to strengthen relationships and provide on-site support. His dedication and client-focused approach ensure smooth Tally usage and long-term trust with our customers.",
-    image: "/images/team/skeleton_1.png",
+    image: "/images/STAFF/11.png",
     src: "/images/STAFF/11.png",
     experience: "12+ Years",
     specialties: [
@@ -708,7 +708,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "She manages accounts with accuracy and efficiency, ensuring smooth financial operations and maintaining transparency in all records.",
-    image: "/images/team/skeleton_1.png",
+    image: "/images/STAFF/13.png",
     src: "/images/STAFF/13.png",
     experience: "12+ Years",
     specialties: [
@@ -772,7 +772,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "She brings creativity and innovation to our designs, ensuring that our brand and client projects always stand out with a professional touch..",
-    image: "/images/team/skeleton_1.png",
+    image: "/images/STAFF/12.png",
     src: "/images/STAFF/12.png",
     experience: "12+ Years",
     specialties: [
