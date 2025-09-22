@@ -281,6 +281,8 @@ import Image from "next/image";
 // Constants to prevent recreation
 const COMPANY_ADDRESS =
   "SHOP NO.105, AJIT PLAZA, M.G ROAD, OPP. BANK OF BARODA, VAPI, VALSAD, GUJARAT, 396191";
+const BRANCH_ADDRESS =
+  "214,215, SOHAM ARCAD, ADAJAN, SUART, GUJARAT, 395009";
 const PHONE_NUMBERS = [
   { number: "+916353061867", display: "+91 63530 61867" },
   { number: "+917863818924", display: "+91 78638 18924" },
@@ -389,12 +391,20 @@ CompanyLogo.displayName = "CompanyLogo";
 
 // Memoized contact info components
 const ContactAddress = memo(() => (
-  <div className="flex items-start">
-    <IconWrapper>
-      <MapPin className="h-3 w-3 text-white" />
-    </IconWrapper>
-    <p className="text-sm leading-relaxed text-gray-400">{COMPANY_ADDRESS}</p>
-  </div>
+  <>
+    <div className="flex items-start">
+      <IconWrapper>
+        <MapPin className="h-3 w-3 text-white" />
+      </IconWrapper>
+      <p className="text-sm leading-relaxed text-gray-400">{COMPANY_ADDRESS}</p>
+    </div>
+    <div className="flex items-start">
+      <IconWrapper>
+        <MapPin className="h-3 w-3 text-white" />
+      </IconWrapper>
+      <p className="text-sm leading-relaxed text-gray-400">{BRANCH_ADDRESS}</p>
+    </div>
+  </>
 ));
 ContactAddress.displayName = "ContactAddress";
 

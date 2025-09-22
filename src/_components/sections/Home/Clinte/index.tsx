@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 
 import React from "react";
 import { ImageSlider } from "../../../molecules";
@@ -40,6 +40,7 @@ export const ClinteSlider: React.FC = () => {
 {
   /* Section Title */
 }
+
 //   <div className="mb-8 text-center">
 //     <h2 className="text-2xl font-bold text-gray-900 md:text-3xl lg:text-4xl">
 //       Our Technology Partners

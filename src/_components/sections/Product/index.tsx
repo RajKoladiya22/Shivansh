@@ -62,7 +62,11 @@ export const TheProductPage = () => {
       filtered = filtered.filter(
         (p) =>
           p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          p.description.toLowerCase().includes(searchTerm.toLowerCase()),
+          p.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          p.features.some((feature) =>
+            feature.toLowerCase().includes(searchTerm.toLowerCase()),
+          ) 
+          ,
       );
     }
 
@@ -194,7 +198,7 @@ export const TheProductPage = () => {
             <Search className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Search products, features, description,..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full rounded-lg border border-gray-300 py-3 pr-4 pl-10 focus:border-transparent focus:ring-2 focus:ring-[#C50202]"

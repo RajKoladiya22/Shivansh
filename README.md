@@ -8,15 +8,25 @@
 │   │   │
 │   │   ├─ about
 │   │   │   └─ page.tsx         ← /about
+│   │   ├─ api
+│   │   │   └─ og               ← /OG
+│   │   │       └── route.tsx   ← /OG image
 │   │   │
 │   │   ├─ team
 │   │   │   └─ page.tsx         ← /team
 │   │   │
 │   │   ├─ product
 │   │   │   └─ page.tsx         ← /product
+│   │   │   └─ [id]             ← /product details by id
+│   │   │       └─ page.tsx         ← /product details
+│   │   │
+│   │   ├─ blog
+│   │   │   └─ page.tsx         ← /blog
+│   │   │   └─ [id]             ← /blog details by id
+│   │   │       └─ page.tsx         ← /blog details
 │   │   │
 │   │   └─ contact
-│   │        └─ page.tsx         ← /contact
+│   │        └─ page.tsx        ← /contact
 │   │
 |   ├── components
 │   │   ├── index.ts                # ← exports from ui/, molecules/, sections/
