@@ -151,7 +151,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                     }
                   }}
                   className={`xs:p-3 flex-shrink-0 transform p-2 transition-all duration-300 ease-out sm:p-4 ${
-                    isHovered ? "z-20 scale-105" : "scale-100 opacity-80"
+                    isHovered ? "z-20 scale-105" : "scale-100 "
                   }`}
                   style={{
                     width: "clamp(150px, 20vw, 240px)",
@@ -170,8 +170,8 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                         isHovered ? "scale-110" : "scale-100"
                       } ${
                         isHovered
-                          ? "scale-110 grayscale-0"
-                          : "scale-100 grayscale-[40%]"
+                          ? "scale-110 grayscale-[40%]"
+                          : "scale-100 "
                       }`}
                     />
 
