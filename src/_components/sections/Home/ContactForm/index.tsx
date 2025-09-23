@@ -27,19 +27,30 @@ export const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+  try {
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    // Read text first, then parse JSON safely
+    const text = await response.text();
+    const result = text ? JSON.parse(text) : { success: true };
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
+    console.log("Form submission result:", result);
+
+    if (result.success) {
+      setIsSubmitted(true);
       setFormData({
         name: "",
         email: "",
@@ -49,8 +60,17 @@ export const ContactForm = () => {
         subject: "",
         message: "",
       });
-    }, 3000);
-  };
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } else {
+      alert("Failed to submit: " + result.error);
+    }
+  } catch (err) {
+    alert("Error submitting form: " + err);
+  }
+
+  setIsSubmitting(false);
+};
+
 
   return (
     // py-12
@@ -216,7 +236,8 @@ export const ContactForm = () => {
                   </div>
 
                   {/* Submit Button */}
-                  <button aria-label="Click"
+                  <button
+                    aria-label="Click"
                     type="button"
                     disabled={isSubmitting}
                     onClick={handleSubmit}
