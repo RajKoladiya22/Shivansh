@@ -829,7 +829,7 @@ export const teamMembers: TeamMember[] = [
     ],
   },
   {
-    id: 14,
+    id: 15,
     name: "Astha Pandya",
     position: "Accountant",
     department: "Operations",
