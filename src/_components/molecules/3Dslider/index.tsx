@@ -14,6 +14,16 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const resizeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const swipe = useRef<{
+    startX: number;
+    currentX: number;
+    isSwiping: boolean;
+  }>({
+    startX: 0,
+    currentX: 0,
+    isSwiping: false,
+  });
+
   const [paused, setPaused] = useState(false);
   const [hoveredId, setHoveredId] = useState<string | number | null>(null);
 
@@ -128,12 +138,6 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
     "h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem]";
 
   // Add inside your RotatingTeamSlider component, before the return
-
-  const swipe = useRef<{
-    startX: number;
-    currentX: number;
-    isSwiping: boolean;
-  }>({ startX: 0, currentX: 0, isSwiping: false });
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setPaused(true);
