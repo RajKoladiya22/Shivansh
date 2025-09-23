@@ -27,7 +27,9 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
 
   // Initialize item refs array
   useEffect(() => {
-    itemRefs.current = new Array<HTMLDivElement | null>(loopItems.length).fill(null);
+    itemRefs.current = new Array<HTMLDivElement | null>(loopItems.length).fill(
+      null,
+    );
   }, [loopItems.length]);
 
   const measure = () => {
@@ -125,6 +127,43 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   const sliderHeightClasses =
     "h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem]";
 
+  // Add inside your RotatingTeamSlider component, before the return
+
+  const swipe = useRef<{
+    startX: number;
+    currentX: number;
+    isSwiping: boolean;
+  }>({ startX: 0, currentX: 0, isSwiping: false });
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setPaused(true);
+    swipe.current.startX = e.touches[0]!.clientX;
+    swipe.current.currentX = e.touches[0]!.clientX;
+    swipe.current.isSwiping = true;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!swipe.current.isSwiping) return;
+    const touchX = e.touches[0]!.clientX;
+    const dx = touchX - swipe.current.currentX;
+    swipe.current.currentX = touchX;
+
+    if (innerRef.current) {
+      posRef.current += dx; // Move the slider by swipe distance
+      const loopW = loopWidthRef.current;
+      if (loopW > 0) {
+        if (posRef.current < -loopW) posRef.current += loopW;
+        if (posRef.current > 0) posRef.current -= loopW;
+      }
+      innerRef.current.style.transform = `translateX(${posRef.current}px)`;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    swipe.current.isSwiping = false;
+    setPaused(false);
+  };
+
   return (
     <section aria-label="Team carousel" className="w-full">
       <div className="mx-auto">
@@ -133,6 +172,9 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
           className={`relative w-full overflow-hidden ${sliderHeightClasses} flex items-center`}
           onMouseEnter={handleSliderEnter}
           onMouseLeave={handleSliderLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <div
             ref={innerRef}
@@ -151,7 +193,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                     }
                   }}
                   className={`xs:p-3 flex-shrink-0 transform p-2 transition-all duration-300 ease-out sm:p-4 ${
-                    isHovered ? "z-20 scale-105" : "scale-100 "
+                    isHovered ? "z-20 scale-105" : "scale-100"
                   }`}
                   style={{
                     width: "clamp(150px, 20vw, 240px)",
@@ -169,9 +211,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                       className={`h-full w-full object-cover transition-transform duration-300 ${
                         isHovered ? "scale-110" : "scale-100"
                       } ${
-                        isHovered
-                          ? "scale-110 grayscale-[40%]"
-                          : "scale-100 "
+                        isHovered ? "scale-110 grayscale-[40%]" : "scale-100"
                       }`}
                     />
 
