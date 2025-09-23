@@ -56,12 +56,12 @@ export const AboutUsLeftContent = () => (
           <div className="text-xs opacity-80">{"CA's"}</div>
         </div>
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
-          <div className="text-2xl font-bold">999+</div>
-          <div className="text-xs opacity-80">Tax Consultant</div>
+          <div className="text-2xl font-bold">3000+</div>
+          <div className="text-xs opacity-80">End Users</div>
         </div>
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
-          <div className="text-2xl font-bold">10 AM to 6 PM</div>
-          <div className="text-xs opacity-80">Support</div>
+          <div className="text-2xl font-bold">4.6+</div>
+          <div className="text-xs opacity-80">Rating</div>
         </div>
       </div>
     </div>

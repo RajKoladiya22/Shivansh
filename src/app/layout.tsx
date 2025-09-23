@@ -7,7 +7,7 @@ import { TRPCReactProvider } from "src/trpc/react";
 import { FloatingContactButton } from "../_components/ui";
 import { BASE_URL, DEFAULT_DESCRIPTION, SITE_NAME } from "src/config/constants";
 import { Footer } from "src/_components/molecules";
-import { Header,  } from "src/_components/molecules/Header";
+import { Header } from "src/_components/molecules/Header";
 import { WebsiteLoader } from "src/_components/molecules/Loader";
 
 const dmSans = DM_Sans({
@@ -206,7 +206,6 @@ export default function RootLayout({
         <link rel="preload" href="/images/logo/logo.png" as="image" />
       </head>
       <body cz-shortcut-listen="true">
-        
         <WebsiteLoader />
 
         <Header />
@@ -232,7 +231,7 @@ export default function RootLayout({
                 ratingValue: "4.9",
                 bestRating: "5",
               },
-              author: {"@type": "Person", "name": "Tally Solutions Ltd"},
+              author: { "@type": "Person", name: "Tally Solutions Ltd" },
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "214,215 Soham Arcad",

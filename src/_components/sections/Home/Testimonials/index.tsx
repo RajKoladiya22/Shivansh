@@ -36,7 +36,7 @@ export const CustomerTestimonials = () => {
             tablet: 1,
             desktop: 2,
           }}
-          autoPlay={true}
+          autoPlay={false}
           autoPlayInterval={5000}
           showArrows={true}
           showDots={true}

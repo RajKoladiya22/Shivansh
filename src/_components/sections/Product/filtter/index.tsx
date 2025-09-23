@@ -1,4 +1,5 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 import { ContactWidget } from '../../Blog/Sidebar';
 import type { SidebarFiltersProps } from '../../types/product.type';
 
@@ -16,6 +17,14 @@ export const SidebarFilters: React.FC<SidebarFiltersProps> = ({
   categories,
   industries,
 }) => {
+    useEffect(() => {
+    if (window.location.hash) {
+      const hashCategory = window.location.hash.substring(1); // Remove the '#' symbol
+      if (categories.includes(hashCategory)) {
+        setSelectedCategory(hashCategory);
+      }
+    }
+  }, [categories, setSelectedCategory]);
   return (
     <div className={`lg:w-80 ${showFilters ? 'block' : 'hidden lg:block'}`}>
       <div className="bg-white rounded-lg shadow-md p-6 sticky top-21">

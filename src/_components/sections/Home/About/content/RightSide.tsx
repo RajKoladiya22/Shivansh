@@ -33,7 +33,7 @@ export const AboutUsRightContent = () => {
               <div className="overflow-hidden rounded-lg border-4 border-blue-500">
                 <div className="relative aspect-[4/3]">
                   <Image
-                    src="/images/certificate/tally.png"
+                    src="/images/certificate/tally_certificate.png"
                     alt="Tally 3 Star Sales & Implementation Partner Certificate for Shivansh Infosys"
                     fill
                     className="object-contain"
@@ -93,7 +93,7 @@ export const AboutUsRightContent = () => {
             <div className="overflow-hidden rounded-xl bg-white shadow-2xl">
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/images/certificate/tally.png"
+                  src="/images/certificate/tally_certificate.png"
                   alt="Tally 3 Star Sales & Implementation Partner Certificate for Shivansh Infosys - Full Size"
                   fill
                   className="object-contain"

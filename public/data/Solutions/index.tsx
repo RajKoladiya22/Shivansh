@@ -12,7 +12,7 @@ export const industries: IndustryItem[] = [
     id: "manufacturers",
     title: "Manufacturers",
     description:
-      "Streamline production processes with our specialized Tally solutions for manufacturing efficiency and inventory management.",
+      "Easily manage raw materials, WIP, BOM, and inventory while gaining real-time insights on costs, stock, wastage, and dispatches to boost efficiency and profitability.",
     icon: <FactoryIcon className="h-8 w-8 text-white" />,
     color: "from-red-600 to-red-700",
   },
@@ -20,7 +20,7 @@ export const industries: IndustryItem[] = [
     id: "distributors",
     title: "Distributors",
     description:
-      "Optimize your supply chain with distribution-focused tools for order tracking, logistics management, and route optimization.",
+      "Streamline distribution with Tally tools like Salesman Module, Job Work TDLs, Material In–Out, and LR Transport for smooth logistics, real-time tracking, and faster growth.",
     icon: <TruckIcon className="h-8 w-8 text-white" />,
     color: "from-red-600 to-red-700",
   },
@@ -28,7 +28,7 @@ export const industries: IndustryItem[] = [
     id: "retailers",
     title: "Retailers",
     description:
-      "Transform retail operations with point-of-sale integration, inventory tracking, and customer relationship management tools.",
+      "Boost retail with Tally add-ons like Loyalty & Commission Module, industry-specific invoices, packing slips, price level management, and auto mail reminders for better customer connect.",
     icon: <ShoppingCartIcon className="h-8 w-8 text-white" />,
     color: "from-red-600 to-red-700",
   },
@@ -36,7 +36,7 @@ export const industries: IndustryItem[] = [
     id: "service-providers",
     title: "Service Providers",
     description:
-      "Manage service contracts, scheduling, and billing with our specialized solutions for service-based businesses.",
+      "Simplify service management with Tally solutions like Share Accounting, Service Invoices, AMC tracking, and Finance Module to stay organized and deliver efficiently.",
     icon: <WrenchIcon className="h-8 w-8 text-white" />,
     color: "from-red-600 to-red-700",
   },
@@ -44,7 +44,7 @@ export const industries: IndustryItem[] = [
     id: "enterprises",
     title: "Enterprises",
     description:
-      "Comprehensive ERP solutions for large organizations with multi-location management and consolidated reporting.",
+      "Ensure security with user access, approvals, and document attachments, while managing multi-company accounts, branch reports, multi-godown stock, and MIS insights.",
     icon: <UsersIcon className="h-8 w-8 text-white" />,
     color: "from-red-600 to-red-700",
   },
@@ -52,7 +52,7 @@ export const industries: IndustryItem[] = [
     id: "ca-tax",
     title: "CA & Tax Consultants",
     description:
-      "Specialized tools for accounting professionals with GST compliance, tax filing, and client management features.",
+      "Simplify compliance with Tally TDLs for GST, TDS, MSME, and 180-day reports, plus bulk entries and bank import features for faster, accurate operations.",
     icon: <CalculatorIcon className="h-8 w-8 text-white" />,
     color: "from-red-600 to-red-700",
   },

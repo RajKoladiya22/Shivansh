@@ -23,7 +23,7 @@ export const ProductsList: Product[] = [
       "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
     detailedVideoId: "gUGY1IC9gQk",
-    category: "Electronics",
+    category: "Manufacturers",
     industry: "Photography",
     isTopProduct: true,
     isLatest: false,
@@ -679,7 +679,7 @@ export const ProductsList: Product[] = [
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
     detailedVideoId: "gUGY1IC9gQk",
-    category: "Textiles",
+    category: "Retailers",
     industry: "Fashion",
     isTopProduct: false,
     isLatest: true,
@@ -837,7 +837,7 @@ export const ProductsList: Product[] = [
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop",
     introVideoId: "dQw4w9WgXcQ",
     detailedVideoId: "gUGY1IC9gQk",
-    category: "Tools",
+    category: "Distributors",
     industry: "Construction",
     isTopProduct: false,
     isLatest: false,
@@ -1321,7 +1321,7 @@ export const ProductsList: Product[] = [
     introVideoId: "dQw4w9WgXcQ",
     detailedVideoId: "gUGY1IC9gQk",
     category: "Audio",
-    industry: "Electronics",
+    industry: "Manufacturers",
     isTopProduct: true,
     isLatest: false,
     createdAt: "2024-02-28",
@@ -2112,9 +2112,9 @@ export const ProductsList: Product[] = [
   },
   {
     id: 14,
-    title: "Garden Landscaping Tools Set",
+    title: "Garden Landscaping Distributors Set",
     description:
-      "Complete set of hand and power tools for garden maintenance and landscaping.",
+      "Complete set of hand and power Distributors for garden maintenance and landscaping.",
     actualPrice: 6000,
     salePrice: 5000,
     image:
@@ -2265,7 +2265,7 @@ export const ProductsList: Product[] = [
         },
       ],
     },
-    tags: ["garden", "tools", "landscaping"],
+    tags: ["garden", "Distributors", "landscaping"],
     relatedProductIds: [6, 7],
   },
   {
@@ -2434,12 +2434,12 @@ export const ProductsList: Product[] = [
 
 export const categories = [
   "All",
-  "Electronics",
-  "Machinery",
-  "Food",
-  "Medical",
-  "Textiles",
-  "Tools",
+  "Manufacturers",
+  "Distributors",
+  "Retailers",
+  "Service Providers",
+  "Enterprises",
+  "CA & Tax Consultants",
 ];
 export const industries = [
   "All",

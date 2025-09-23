@@ -2,11 +2,11 @@ export  const testimonials = [
     {
       id: 1,
       quote:
-        "We use shivansh infosys often to update our website and their work is always top-notch. They are efficient and always complete projects in a timely manner.",
-      name: "Chelsea Davidson",
-      title: "FOUNDER AT FORTRESS OF INCA",
+        "I have been working with Shivansh Infosys for our Tally accounting software and am highly impressed with their professionalism and expertise. They deliver on time, keep our systems running smoothly, and provide timely updates with new upgrades and government policies. Their service quality is excellent, and I truly appreciate the continuous support from Mr. Mehul Patel. Highly recommended.",
+      name: "Manish Nakrani",
+      title: "VISHNU HARDWARE",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      document: "/testimonial/Testimonial_Vishnu.jpg",
       rating: 5,
     },
     {
@@ -16,7 +16,7 @@ export  const testimonials = [
       name: "John Smith",
       title: "CEO AT TECH SOLUTIONS",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
     {
@@ -26,7 +26,7 @@ export  const testimonials = [
       name: "Sarah Johnson",
       title: "MARKETING DIRECTOR AT GLOBAL CORP",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
     {
@@ -36,7 +36,7 @@ export  const testimonials = [
       name: "Michael Thompson",
       title: "CTO AT INNOVATE TECH",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
     {
@@ -46,7 +46,7 @@ export  const testimonials = [
       name: "Emily Roberts",
       title: "CMO AT VENTURE SPACES",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
     {
@@ -56,7 +56,7 @@ export  const testimonials = [
       name: "David Lee",
       title: "OPERATIONS HEAD AT SYNERGY TECH",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
     {
@@ -66,7 +66,7 @@ export  const testimonials = [
       name: "Priya Patel",
       title: "PRODUCT MANAGER AT NEXA DIGITAL",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
     {
@@ -76,7 +76,7 @@ export  const testimonials = [
       name: "Carlos Mendoza",
       title: "CEO AT CRE8IVE STUDIO",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
     {
@@ -86,7 +86,7 @@ export  const testimonials = [
       name: "Rachel Zhang",
       title: "HEAD OF MARKETING AT BLUEWAVE ENGAGEMENT",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
     {
@@ -96,7 +96,7 @@ export  const testimonials = [
       name: "Ahmed Khan",
       title: "DIRECTOR AT FUTURE VISION SOLUTIONS",
       avatar: "/api/placeholder/80/80",
-      document: "/api/placeholder/300/400",
+      
       rating: 5,
     },
   ];

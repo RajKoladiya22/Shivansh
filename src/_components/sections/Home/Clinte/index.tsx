@@ -14,6 +14,7 @@ export const ClinteSlider: React.FC = () => {
         <SectionHeader
           heading="We Work with Industry Leaders"
           showDescription={false}
+          containerClassName="pb-8"
         />
       </div>
 

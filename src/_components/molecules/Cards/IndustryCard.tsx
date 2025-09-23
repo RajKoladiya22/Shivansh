@@ -39,7 +39,7 @@ export const IndustryCard: React.FC<IndustryCardProps> = ({
           <p className="mb-6 flex-1 text-gray-600 group-hover:text-gray-900">{industry.description}</p>
 
           <div className="mt-auto flex items-center justify-between">
-            <Link href={PRODUCT} className="cursor-pointer flex items-center text-sm font-medium text-red-600 group-hover:underline hover:text-red-700">
+            <Link href={`${PRODUCT}#${industry.title}`} className="cursor-pointer flex items-center text-sm font-medium text-red-600 group-hover:underline hover:text-red-700">
               Explore Solutions
               <svg
                 xmlns="http://www.w3.org/2000/svg"

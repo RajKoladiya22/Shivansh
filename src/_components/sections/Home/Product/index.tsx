@@ -157,7 +157,7 @@ export const ProductShowcaseSection = () => {
         </div>
 
         {/* Statistics */}
-        <div className="mt-16 grid grid-cols-2 gap-8 text-center md:grid-cols-4">
+        {/* <div className="mt-16 grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           <div>
             <div className="text-3xl font-bold text-[#C50202]">
               {topProducts.length}+
@@ -176,7 +176,7 @@ export const ProductShowcaseSection = () => {
             <div className="text-3xl font-bold text-[#C50202]">4.6★</div>
             <div className="mt-1 text-gray-600">Average Rating</div>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* Video Modal */}
       <VideoModal

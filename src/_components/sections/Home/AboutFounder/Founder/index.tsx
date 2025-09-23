@@ -148,7 +148,7 @@ export const TheFounder = () => {
               <div className="pt-4">
                 <div className="flex flex-wrap gap-4">
                   {[
-                    { value: "1500+", label: "End Users" },
+                    { value: "3000+", label: "End Users" },
                     { value: "450+", label: "Companies" },
                     { value: "65K+", label: "YouTube Subs" },
                   ].map((stat, index) => (
