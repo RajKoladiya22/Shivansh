@@ -26,6 +26,10 @@ export const ContactForm = () => {
       [name]: value,
     }));
   };
+  interface FormResponse {
+  success: boolean;
+  error?: string;
+}
 
 const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
   e.preventDefault();
@@ -45,7 +49,7 @@ const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
 
     // Read text first, then parse JSON safely
     const text = await response.text();
-    const result = text ? JSON.parse(text) : { success: true };
+    const result:FormResponse  = text ? JSON.parse(text) : { success: true };
 
     console.log("Form submission result:", result);
 
