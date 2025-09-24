@@ -3,6 +3,7 @@ import type { Comment } from "src/_components/sections/types/youtube.type";
 export interface Testimonial {
     id: number;
     name: string;
+    heading: string;
     title: string;
     rating: number;
     quote: string;
