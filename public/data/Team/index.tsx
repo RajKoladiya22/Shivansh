@@ -68,7 +68,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Pooja Yadav",
-    position: "Cloud & Tally Solutions Specialist",
+    position: "Customer Relationships Manager",
     department: "Leadership",
     bio: "Visionary leader with 20+ years in fintech and enterprise solutions. Rajesh has pioneered digital transformation initiatives across Fortune 500 companies.",
     detailedBio:
@@ -129,7 +129,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 10,
     name: "Suresh Modi",
-    position: "Tally Developer (TDL Specialist)",
+    position: "Tally TDL Devloper ",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
@@ -193,7 +193,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 2,
     name: "Madhavi Mokde",
-    position: "Tally Prime & GST Specialist",
+    position: "Tally Customization Specialist",
     department: "Technology",
     bio: "Technology innovator specializing in scalable financial systems and AI-driven solutions. Priya leads our technical vision and product development.",
     detailedBio:
@@ -256,7 +256,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 11,
     name: "Adarsh Kahar",
-    position: "Tally Support & Client Relations Executive",
+    position: "Tally Solutions Specialist",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
@@ -320,7 +320,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 3,
     name: "Dhara Bhavsar",
-    position: "Sales & Renewal Executive",
+    position: "Sales Executive",
     department: "Finance",
     bio: "Financial strategist with deep expertise in accounting standards and regulatory compliance. Amit ensures financial excellence and risk management.",
     detailedBio:
@@ -383,7 +383,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 9,
     name: "Litan Das",
-    position: "GST ,Tally & Cloud Expert",
+    position: "Tally TDL & GST Expert",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
@@ -447,7 +447,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 4,
     name: "Krishna Lakhani",
-    position: "Adv. Tally & GST Supp. Specialist",
+    position: "Tally Customization Specialist",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
@@ -511,7 +511,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 5,
     name: "Hinal Patel",
-    position: "Tally & Biz Analyst Supp. Specialist",
+    position: "Customer Engagement & Marketing Executive",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
@@ -575,7 +575,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 7,
     name: "Priya Jain",
-    position: "Tally Support Executive",
+    position: "Tally Solutions Specialist",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
@@ -639,7 +639,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 8,
     name: "Harjeet singh",
-    position: "GST & Tally Expert",
+    position: "Accounts & Taxation Specialist",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:

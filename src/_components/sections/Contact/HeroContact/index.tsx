@@ -33,47 +33,47 @@ export const ContactHeroSection = () => {
   }
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    // e.preventDefault();
+    // setIsSubmitting(true);
 
-    try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+    // try {
+    //   const response = await fetch(
+    //     "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(formData),
+    //     }
+    //   );
 
-      // Read text first, then parse JSON safely
-      const text = await response.text();
-      const result: FormResponse = text ? JSON.parse(text) : { success: true };
+    //   // Read text first, then parse JSON safely
+    //   const text = await response.text();
+    //   const result: FormResponse = text ? JSON.parse(text) : { success: true };
 
-      console.log("Form submission result:", result);
+    //   console.log("Form submission result:", result);
 
-      if (result.success) {
-        setIsSubmitted(true);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          reason: "",
-          subject: "",
-          message: "",
-        });
-        setTimeout(() => setIsSubmitted(false), 3000);
-      } else {
-        alert("Failed to submit: " + result.error);
-      }
-    } catch (err) {
-      alert("Error submitting form: " + err);
-    }
+    //   if (result.success) {
+    //     setIsSubmitted(true);
+    //     setFormData({
+    //       name: "",
+    //       email: "",
+    //       phone: "",
+    //       company: "",
+    //       reason: "",
+    //       subject: "",
+    //       message: "",
+    //     });
+    //     setTimeout(() => setIsSubmitted(false), 3000);
+    //   } else {
+    //     alert("Failed to submit: " + result.error);
+    //   }
+    // } catch (err) {
+    //   alert("Error submitting form: " + err);
+    // }
 
-    setIsSubmitting(false);
+    // setIsSubmitting(false);
   };
 
   return (

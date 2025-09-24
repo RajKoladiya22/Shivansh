@@ -13,38 +13,38 @@ export  const testimonials = [
       id: 2,
       quote:
         "Outstanding service and exceptional quality. The team at Shivansh Infosys exceeded our expectations in every way. Highly recommended!",
-      name: "John Smith",
-      title: "CEO AT TECH SOLUTIONS",
+      name: "Tejash Joshi",
+      title: "TEJASH JOSHI & CO.",
       avatar: "/api/placeholder/80/80",
-      
+      document: "/testimonial/Testimonial_02.jpg",
       rating: 5,
     },
     {
       id: 3,
       quote:
         "Professional, reliable, and innovative. Working with Shivansh Infosys has been a game-changer for our business growth and digital presence.",
-      name: "Sarah Johnson",
-      title: "MARKETING DIRECTOR AT GLOBAL CORP",
+      name: "Henidh Shah",
+      title: "XFIBITY WEIGHT",
       avatar: "/api/placeholder/80/80",
-      
+      document: "/testimonial/Testimonial_03.jpg",
       rating: 5,
     },
     {
       id: 4,
       quote:
         "Their attention to detail and customer-focused approach sets them apart. We've seen a significant improvement in our online performance since partnering with them.",
-      name: "Michael Thompson",
-      title: "CTO AT INNOVATE TECH",
+      name: "Henidh shah",
+      title: "AXPERT",
       avatar: "/api/placeholder/80/80",
-      
+      document: "/testimonial/Testimonial_04.jpg",
       rating: 5,
     },
     {
       id: 5,
       quote:
         "Shivansh Infosys delivered a robust, scalable website redesign in just weeks. Their commitment to excellence and post-launch support is unmatched.",
-      name: "Emily Roberts",
-      title: "CMO AT VENTURE SPACES",
+      name: "Henidh shah",
+      title: "AXPERT",
       avatar: "/api/placeholder/80/80",
       
       rating: 5,

@@ -141,11 +141,11 @@ export const TheFounder = () => {
                 relationships and ensuring our clients are happy.
               </p>
 
-              <p className="leading-relaxed text-gray-600">
+              <p className="leading-relaxed text-gray-600 pb-5">
                 {`With over a decade of experience, we've maintained our commitment to excellence in every project we undertake. Our founder's passion for technology continues to drive our innovation.`}
               </p>
 
-              <div className="pt-4">
+              {/* <div className="pt-4">
                 <div className="flex flex-wrap gap-4">
                   {[
                     { value: "3000+", label: "End Users" },
@@ -165,11 +165,11 @@ export const TheFounder = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               <Link
                 href={ABOUT}
-                className={`${btn_color} mt-6 rounded-lg px-8 py-3 font-medium shadow-lg`}
+                className={`${btn_color} mt-8 rounded-lg px-8 py-3 font-medium shadow-lg`}
               >
                 Read Full Story
               </Link>
