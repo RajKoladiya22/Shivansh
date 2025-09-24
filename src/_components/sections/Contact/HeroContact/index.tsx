@@ -34,17 +34,40 @@ export const ContactHeroSection = () => {
   }
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec";
-    type SubmissionResponse = {
+
+  type SubmissionResponse = {
     success: boolean;
     error?: string | null;
     received?: Record<string, unknown>;
   };
-  // remove any manual Content-Type header and credentials
+
+  function isRecord(value: unknown): value is Record<string, unknown> {
+    return typeof value === "object" && value !== null;
+  }
+
+  function isSubmissionResponse(obj: unknown): obj is SubmissionResponse {
+    if (!isRecord(obj)) return false;
+
+    // success must exist and be boolean
+    if (typeof (obj as any).success !== "boolean") return false;
+
+    // if error exists it must be string or null
+    if ("error" in obj && (typeof (obj as any).error !== "string" && (obj as any).error !== null && (obj as any).error !== undefined)) {
+      return false;
+    }
+
+    // if received exists it must be an object (we accept any keys)
+    if ("received" in obj && (typeof (obj as any).received !== "object" || (obj as any).received === null)) {
+      return false;
+    }
+
+    return true;
+  }
+
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // build URLSearchParams from formData
     const body = new URLSearchParams();
     Object.entries(formData).forEach(([k, v]) => {
       if (v !== undefined && v !== null) body.append(k, String(v));
@@ -53,28 +76,47 @@ export const ContactHeroSection = () => {
     try {
       const response = await fetch(SCRIPT_URL, {
         method: "POST",
-        // no headers here. let browser set Content-Type to application/x-www-form-urlencoded
-        body: body, // URLSearchParams instance
+        body,
       });
 
-      const result:SubmissionResponse = await response.json();
-      // console.log("Submission result:", result);
+      // optional: handle non-2xx
+      if (!response.ok) {
+        // try to read error body safely
+        let errText = `HTTP ${response.status}`;
+        try {
+          const maybeJson = await response.json();
+          errText = JSON.stringify(maybeJson);
+        } catch {
+          // ignore non-json
+        }
+        throw new Error(`Submission failed: ${errText}`);
+      }
+
+      const raw = await response.json(); // raw is `any`
+      if (!isSubmissionResponse(raw)) {
+        console.error("Invalid response shape", raw);
+        throw new Error("Invalid server response");
+      }
+
+      const result: SubmissionResponse = raw;
+
       if (result.success) {
         setIsSubmitted(true);
         setFormData({ name: "", email: "", phone: "", company: "", reason: "", subject: "", message: "" });
-        setStatus({ submitted: true, message: 'Message sent successfully!', type: 'success', note: "Thank you for reaching out. We'll get back to you within 24 hours." });
+        setStatus({ submitted: true, message: "Message sent successfully!", type: "success", note: "Thank you for reaching out. We'll get back to you within 24 hours." });
       } else {
         setIsSubmitted(true);
-        setStatus({ submitted: false, message: result.error ?? 'Submission failed. Please try again.', type: 'error', note: 'Sorry for inconvenience please refresh page or call us +91 63530 61867' });
+        setStatus({ submitted: false, message: result.error ?? "Submission failed. Please try again.", type: "error", note: "Sorry for inconvenience please refresh page or call us +91 63530 61867" });
       }
     } catch (err) {
       setIsSubmitted(true);
-      setStatus({ submitted: false, message: 'Submission failed. Please try again.', type: 'error', note: 'Sorry for inconvenience please refresh page or call us +91 63530 61867' });
+      setStatus({ submitted: false, message: "Submission failed. Please try again.", type: "error", note: "Sorry for inconvenience please refresh page or call us +91 63530 61867" });
       console.error("Submission error:", err);
     } finally {
       setIsSubmitting(false);
     }
   };
+
 
 
   return (
