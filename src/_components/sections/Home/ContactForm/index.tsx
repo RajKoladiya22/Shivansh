@@ -31,87 +31,96 @@ export const ContactForm = () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec";
 
-  type SubmissionResponse = {
-    success: boolean;
-    error?: string | null;
-    received?: Record<string, unknown>;
-  };
 
-  function isRecord(value: unknown): value is Record<string, unknown> {
-    return typeof value === "object" && value !== null;
+type SubmissionResponse = {
+  success: boolean;
+  error?: string | null;
+  received?: Record<string, unknown>;
+};
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function isSubmissionResponse(obj: unknown): obj is SubmissionResponse {
+  if (!isRecord(obj)) return false;
+  const rec = obj as Record<string, unknown>;
+
+  // success must exist and be boolean
+  if (typeof rec.success !== "boolean") return false;
+
+  // if error exists it must be string or null or undefined
+  if ("error" in rec) {
+    const e = rec.error;
+    if (!(typeof e === "string" || e === null || typeof e === "undefined")) return false;
   }
 
-  function isSubmissionResponse(obj: unknown): obj is SubmissionResponse {
-    if (!isRecord(obj)) return false;
-
-    // success must exist and be boolean
-    if (typeof (obj).success !== "boolean") return false;
-
-    // if error exists it must be string or null
-    if ("error" in obj && (typeof (obj).error !== "string" && (obj).error !== null && (obj).error !== undefined)) {
-      return false;
-    }
-
-    // if received exists it must be an object (we acc keys)
-    if ("received" in obj && (typeof (obj).received !== "object" || (obj).received === null)) {
-      return false;
-    }
-
-    return true;
+  // if received exists it must be an object (non-null)
+  if ("received" in rec) {
+    if (!isRecord(rec.received)) return false;
   }
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  return true;
+}
 
-    const body = new URLSearchParams();
-    Object.entries(formData).forEach(([k, v]) => {
-      if (v !== undefined && v !== null) body.append(k, String(v));
+const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  const body = new URLSearchParams();
+  Object.entries(formData).forEach(([k, v]) => {
+    if (v !== undefined && v !== null) body.append(k, String(v));
+  });
+
+  try {
+    const response = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body,
     });
 
-    try {
-      const response = await fetch(SCRIPT_URL, {
-        method: "POST",
-        body,
-      });
+    // parse JSON as unknown (not `any`) and validate
+    const raw = (await response.json()) as unknown;
 
-      // optional: handle non-2xx
-      // if (!response.ok) {
-      //   // try to read error body safely
-      //   let errText = `HTTP ${response.status}`;
-      //   try {
-      //     const maybeJson = await response.json();
-      //     errText = JSON.stringify(maybeJson);
-      //   } catch {
-      //     // ignore non-json
-      //   }
-      //   throw new Error(`Submission failed: ${errText}`);
-      // }
-
-      const raw : Record<string, unknown> = await response.json(); // raw is `any`
-      if (!isSubmissionResponse(raw)) {
-        console.error("Invalid response shape", raw);
-        throw new Error("Invalid server response");
-      }
-
-      const result: SubmissionResponse = raw;
-
-      if (result.success) {
-        setIsSubmitted(true);
-        setFormData({ name: "", email: "", phone: "", company: "", reason: "", subject: "", message: "" });
-        setStatus({ submitted: true, message: "Message sent successfully!", type: "success", note: "Thank you for reaching out. We'll get back to you within 24 hours." });
-      } else {
-        setIsSubmitted(true);
-        setStatus({ submitted: false, message: result.error ?? "Submission failed. Please try again.", type: "error", note: "Sorry for inconvenience please refresh page or call us +91 63530 61867" });
-      }
-    } catch (err) {
-      setIsSubmitted(true);
-      setStatus({ submitted: false, message: "Submission failed. Please try again.", type: "error", note: "Sorry for inconvenience please refresh page or call us +91 63530 61867" });
-      console.error("Submission error:", err);
-    } finally {
-      setIsSubmitting(false);
+    if (!isSubmissionResponse(raw)) {
+      console.error("Invalid response shape", raw);
+      throw new Error("Invalid server response");
     }
-  };
+
+    // `raw` is now narrowed to SubmissionResponse
+    const result = raw;
+
+    if (result.success) {
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", company: "", reason: "", subject: "", message: "" });
+      setStatus({
+        submitted: true,
+        message: "Message sent successfully!",
+        type: "success",
+        note: "Thank you for reaching out. We'll get back to you within 24 hours.",
+      });
+    } else {
+      setIsSubmitted(true);
+      setStatus({
+        submitted: false,
+        message: result.error ?? "Submission failed. Please try again.",
+        type: "error",
+        note: "Sorry for inconvenience please refresh page or call us +91 63530 61867",
+      });
+    }
+  } catch (err: unknown) {
+    setIsSubmitted(true);
+    setStatus({
+      submitted: false,
+      message: "Submission failed. Please try again.",
+      type: "error",
+      note: "Sorry for inconvenience please refresh page or call us +91 63530 61867",
+    });
+    console.error("Submission error:", err);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
 
 

@@ -47,18 +47,20 @@ export const ContactHeroSection = () => {
 
   function isSubmissionResponse(obj: unknown): obj is SubmissionResponse {
     if (!isRecord(obj)) return false;
+    const rec = obj as Record<string, unknown>;
 
     // success must exist and be boolean
-    if (typeof (obj).success !== "boolean") return false;
+    if (typeof rec.success !== "boolean") return false;
 
-    // if error exists it must be string or null
-    if ("error" in obj && (typeof (obj).error !== "string" && (obj).error !== null && (obj).error !== undefined)) {
-      return false;
+    // if error exists it must be string or null or undefined
+    if ("error" in rec) {
+      const e = rec.error;
+      if (!(typeof e === "string" || e === null || typeof e === "undefined")) return false;
     }
 
-    // if received exists it must be an object (we acc keys)
-    if ("received" in obj && (typeof (obj).received !== "object" || (obj).received === null)) {
-      return false;
+    // if received exists it must be an object (non-null)
+    if ("received" in rec) {
+      if (!isRecord(rec.received)) return false;
     }
 
     return true;
@@ -79,38 +81,43 @@ export const ContactHeroSection = () => {
         body,
       });
 
-      // optional: handle non-2xx
-      // if (!response.ok) {
-      //   // try to read error body safely
-      //   let errText = `HTTP ${response.status}`;
-      //   try {
-      //     const maybeJson: SubmissionResponse = await response.json();
-      //     errText = JSON.stringify(maybeJson);
-      //   } catch {
-      //     // ignore non-json
-      //   }
-      //   throw new Error(`Submission failed: ${errText}`);
-      // }
+      // parse JSON as unknown (not `any`) and validate
+      const raw = (await response.json()) as unknown;
 
-      const raw:  Record<string, unknown> = await response.json(); // raw is `any`
       if (!isSubmissionResponse(raw)) {
         console.error("Invalid response shape", raw);
         throw new Error("Invalid server response");
       }
 
-      const result: SubmissionResponse = raw;
+      // `raw` is now narrowed to SubmissionResponse
+      const result = raw;
 
       if (result.success) {
         setIsSubmitted(true);
         setFormData({ name: "", email: "", phone: "", company: "", reason: "", subject: "", message: "" });
-        setStatus({ submitted: true, message: "Message sent successfully!", type: "success", note: "Thank you for reaching out. We'll get back to you within 24 hours." });
+        setStatus({
+          submitted: true,
+          message: "Message sent successfully!",
+          type: "success",
+          note: "Thank you for reaching out. We'll get back to you within 24 hours.",
+        });
       } else {
         setIsSubmitted(true);
-        setStatus({ submitted: false, message: result.error ?? "Submission failed. Please try again.", type: "error", note: "Sorry for inconvenience please refresh page or call us +91 63530 61867" });
+        setStatus({
+          submitted: false,
+          message: result.error ?? "Submission failed. Please try again.",
+          type: "error",
+          note: "Sorry for inconvenience please refresh page or call us +91 63530 61867",
+        });
       }
-    } catch (err) {
+    } catch (err: unknown) {
       setIsSubmitted(true);
-      setStatus({ submitted: false, message: "Submission failed. Please try again.", type: "error", note: "Sorry for inconvenience please refresh page or call us +91 63530 61867" });
+      setStatus({
+        submitted: false,
+        message: "Submission failed. Please try again.",
+        type: "error",
+        note: "Sorry for inconvenience please refresh page or call us +91 63530 61867",
+      });
       console.error("Submission error:", err);
     } finally {
       setIsSubmitting(false);
