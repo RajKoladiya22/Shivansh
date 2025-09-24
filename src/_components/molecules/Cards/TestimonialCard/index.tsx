@@ -44,7 +44,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
               >
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
               </svg>
-              <span className="pl-6 mb-2 bold">{heading}</span>
+              <span className="pl-7 mb-2 font-bold">{heading}</span>
               <p className="pl-6 text-gray-700 italic">{quote}</p>
             </div>
           </div>
@@ -55,7 +55,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
               className="group relative cursor-pointer overflow-hidden rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 transition-all duration-300 hover:shadow-md"
               onClick={() => setShowFullScreen(true)}
             >
-              <div className="flex h-60 items-center justify-center p-2 shadow-2xl shadow-xl transition-all duration-300 hover:scale-102 hover:shadow-2xl">
+              <div className="flex h-full items-center justify-center p-2 shadow-2xl shadow-xl transition-all duration-300 hover:scale-102 hover:shadow-2xl">
                 <div className="text-center">
                   {testimonial.document ? (
                     <>
