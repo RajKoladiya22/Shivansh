@@ -18,6 +18,7 @@ export const ContactHeroSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState({ submitted: false, message: '', type: '', note: '' });
 
   const handleInputChange = (e: InputChangeEvent) => {
     const { name, value } = e.target;
@@ -32,49 +33,44 @@ export const ContactHeroSection = () => {
     error?: string;
   }
 
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec";
+  // remove any manual Content-Type header and credentials
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    // e.preventDefault();
-    // setIsSubmitting(true);
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // try {
-    //   const response = await fetch(
-    //     "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(formData),
-    //     }
-    //   );
+    // build URLSearchParams from formData
+    const body = new URLSearchParams();
+    Object.entries(formData).forEach(([k, v]) => {
+      if (v !== undefined && v !== null) body.append(k, String(v));
+    });
 
-    //   // Read text first, then parse JSON safely
-    //   const text = await response.text();
-    //   const result: FormResponse = text ? JSON.parse(text) : { success: true };
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        // no headers here. let browser set Content-Type to application/x-www-form-urlencoded
+        body: body, // URLSearchParams instance
+      });
 
-    //   console.log("Form submission result:", result);
-
-    //   if (result.success) {
-    //     setIsSubmitted(true);
-    //     setFormData({
-    //       name: "",
-    //       email: "",
-    //       phone: "",
-    //       company: "",
-    //       reason: "",
-    //       subject: "",
-    //       message: "",
-    //     });
-    //     setTimeout(() => setIsSubmitted(false), 3000);
-    //   } else {
-    //     alert("Failed to submit: " + result.error);
-    //   }
-    // } catch (err) {
-    //   alert("Error submitting form: " + err);
-    // }
-
-    // setIsSubmitting(false);
+      const result = await response.json();
+      // console.log("Submission result:", result);
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", phone: "", company: "", reason: "", subject: "", message: "" });
+        setStatus({ submitted: true, message: 'Message sent successfully!', type: 'success', note: "Thank you for reaching out. We'll get back to you within 24 hours." });
+      } else {
+        setIsSubmitted(true);
+        setStatus({ submitted: false, message: result.error || 'Submission failed. Please try again.', type: 'error', note: 'Sorry for inconvenience please refresh page or call us +91 63530 61867' });
+      }
+    } catch (err) {
+      setIsSubmitted(true);
+      setStatus({ submitted: false, message: 'Submission failed. Please try again.', type: 'error', note: 'Sorry for inconvenience please refresh page or call us +91 63530 61867' });
+      console.error("Submission error:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   return (
     <div className="relative min-h-screen overflow-hidden pt-3 sm:pt-10">
@@ -128,11 +124,19 @@ export const ContactHeroSection = () => {
                     <CheckCircle className="h-8 w-8 sm:h-10 sm:w-10" />
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-red-700 sm:mb-4 sm:text-2xl">
-                    Message Sent Successfully!
+
+                    {status.message && (
+                      <>
+                        {status.message}
+                      </>
+                    )}
                   </h3>
                   <p className="text-sm text-gray-600 sm:text-base">
-                    {`Thank you for reaching out. We'll get back to you within
-                      24 hours.`}
+                    {status.note && (
+                      <>
+                        {status.note}
+                      </>
+                    )}
                   </p>
                 </div>
               ) : (

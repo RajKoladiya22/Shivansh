@@ -34,7 +34,7 @@ export const PurchaseFlowPopup: React.FC<PurchaseFlowPopupProps> = ({
 
   useEffect(() => {
     const group = flowGroups.find((grp) => grp.id === stepId);
-    console.log(group);
+    // console.log(group);
 
     setCurrentSteps(group?.steps ?? []);
   }, [stepId]);

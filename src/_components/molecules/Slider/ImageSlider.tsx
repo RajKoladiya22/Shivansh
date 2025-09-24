@@ -103,7 +103,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
     return 20;
   };
   const durationSec = computeDurationSec(speed);
-  console.log("durationSecz--->" ,durationSec);
+  // console.log("durationSecz--->" ,durationSec);
   
   const getAnimationClass = () => {
     const speedClass = speed === "fast" ? "fast" : speed === "slow" ? "slow" : "normal";

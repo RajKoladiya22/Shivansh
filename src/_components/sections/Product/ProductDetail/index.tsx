@@ -198,7 +198,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
   const HowToUse = (id: number) => {
     setIsPurchaseFlowOpen(true);
     setStepId(id);
-    console.log("stepId", stepId);
+    // console.log("stepId", stepId);
   };
 
   return (

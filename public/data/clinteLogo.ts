@@ -69,4 +69,9 @@ export const Clintelogos = [
     src: "/images/clinte_logo/c-14.png",
     alt: "Biz Analyst Logo",
   },
+  {
+    id: 15,
+    src: "/images/clinte_logo/c-15.png",
+    alt: "Biz Analyst Logo",
+  },
 ];

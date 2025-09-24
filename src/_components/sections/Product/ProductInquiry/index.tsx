@@ -39,7 +39,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
     urgency: "medium",
   });
 
-  console.log(onSubmit);
+  // console.log(onSubmit);
 
   // Reset form when modal opens with new product
   useEffect(() => {
