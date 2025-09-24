@@ -88,7 +88,7 @@ export const ContactForm = () => {
       //   throw new Error(`Submission failed: ${errText}`);
       // }
 
-      const raw = await response.json(); // raw is `any`
+      const raw : SubmissionResponse = await response.json(); // raw is `any`
       if (!isSubmissionResponse(raw)) {
         console.error("Invalid response shape", raw);
         throw new Error("Invalid server response");
