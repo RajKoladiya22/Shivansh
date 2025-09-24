@@ -36,11 +36,11 @@ export const CustomerTestimonials = () => {
             tablet: 1,
             desktop: 2,
           }}
-          autoPlay={false}
+          autoPlay={true}
           autoPlayInterval={5000}
           showArrows={true}
           showDots={true}
-          // arrowPosition="inside"
+          arrowPosition="inside"
           gap="1.5rem"
           className="py-8"
         />

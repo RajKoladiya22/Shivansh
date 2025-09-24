@@ -34,6 +34,11 @@ export const ContactHeroSection = () => {
   }
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec";
+    type SubmissionResponse = {
+    success: boolean;
+    error?: string | null;
+    received?: Record<string, unknown>;
+  };
   // remove any manual Content-Type header and credentials
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -52,7 +57,7 @@ export const ContactHeroSection = () => {
         body: body, // URLSearchParams instance
       });
 
-      const result = await response.json();
+      const result:SubmissionResponse = await response.json();
       // console.log("Submission result:", result);
       if (result.success) {
         setIsSubmitted(true);
@@ -60,7 +65,7 @@ export const ContactHeroSection = () => {
         setStatus({ submitted: true, message: 'Message sent successfully!', type: 'success', note: "Thank you for reaching out. We'll get back to you within 24 hours." });
       } else {
         setIsSubmitted(true);
-        setStatus({ submitted: false, message: result.error || 'Submission failed. Please try again.', type: 'error', note: 'Sorry for inconvenience please refresh page or call us +91 63530 61867' });
+        setStatus({ submitted: false, message: result.error ?? 'Submission failed. Please try again.', type: 'error', note: 'Sorry for inconvenience please refresh page or call us +91 63530 61867' });
       }
     } catch (err) {
       setIsSubmitted(true);

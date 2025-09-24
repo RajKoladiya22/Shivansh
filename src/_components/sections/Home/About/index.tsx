@@ -30,7 +30,7 @@ export const AboutUsSection = () => {
               We Also Work With
             </h3> */}
             <SectionHeader
-              heading="We Also Work With"
+              heading="Authorized Partner of"
               headingClassName="pb-5"
               // headingText="We Are Standing With 10+ Years Of Experience"
             />
