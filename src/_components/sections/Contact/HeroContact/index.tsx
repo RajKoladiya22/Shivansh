@@ -92,7 +92,7 @@ export const ContactHeroSection = () => {
       //   throw new Error(`Submission failed: ${errText}`);
       // }
 
-      const raw: SubmissionResponse = await response.json(); // raw is `any`
+      const raw:  Record<string, unknown> = await response.json(); // raw is `any`
       if (!isSubmissionResponse(raw)) {
         console.error("Invalid response shape", raw);
         throw new Error("Invalid server response");
