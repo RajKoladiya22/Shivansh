@@ -32,15 +32,15 @@ export const ContactForm = () => {
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec";
 
 
-type SubmissionResponse = {
-  success: boolean;
-  error?: string | null;
-  received?: Record<string, unknown>;
-};
+  type SubmissionResponse = {
+    success: boolean;
+    error?: string | null;
+    received?: Record<string, unknown>;
+  };
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
-}
+  function isRecord(value: unknown): value is Record<string, unknown> {
+    return typeof value === "object" && value !== null;
+  }
 
 function isSubmissionResponse(obj: unknown): obj is SubmissionResponse {
   if (!isRecord(obj)) return false;
@@ -52,74 +52,76 @@ function isSubmissionResponse(obj: unknown): obj is SubmissionResponse {
   // if error exists it must be string or null or undefined
   if ("error" in rec) {
     const e = rec.error;
-    if (!(typeof e === "string" || e === null || typeof e === "undefined")) return false;
+    // Fixed: Check for the actual types allowed by SubmissionResponse
+    if (e !== null && e !== undefined && typeof e !== "string") return false;
   }
 
-  // if received exists it must be an object (non-null)
+  // if received exists it must be an object (non-null) or undefined
   if ("received" in rec) {
-    if (!isRecord(rec.received)) return false;
+    const r = rec.received;
+    if (r !== undefined && !isRecord(r)) return false;
   }
 
   return true;
 }
 
-const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  const body = new URLSearchParams();
-  Object.entries(formData).forEach(([k, v]) => {
-    if (v !== undefined && v !== null) body.append(k, String(v));
-  });
-
-  try {
-    const response = await fetch(SCRIPT_URL, {
-      method: "POST",
-      body,
+    const body = new URLSearchParams();
+    Object.entries(formData).forEach(([k, v]) => {
+      if (v !== undefined && v !== null) body.append(k, String(v));
     });
 
-    // parse JSON as unknown (not `any`) and validate
-    const raw = (await response.json()) as unknown;
-
-    if (!isSubmissionResponse(raw)) {
-      console.error("Invalid response shape", raw);
-      throw new Error("Invalid server response");
-    }
-
-    // `raw` is now narrowed to SubmissionResponse
-    const result = raw;
-
-    if (result.success) {
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", phone: "", company: "", reason: "", subject: "", message: "" });
-      setStatus({
-        submitted: true,
-        message: "Message sent successfully!",
-        type: "success",
-        note: "Thank you for reaching out. We'll get back to you within 24 hours.",
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        body,
       });
-    } else {
+
+      // parse JSON as unknown (not `any`) and validate
+      const raw = (await response.json()) as unknown;
+
+      if (!isSubmissionResponse(raw)) {
+        console.error("Invalid response shape", raw);
+        throw new Error("Invalid server response");
+      }
+
+      // `raw` is now narrowed to SubmissionResponse
+      const result = raw;
+
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", phone: "", company: "", reason: "", subject: "", message: "" });
+        setStatus({
+          submitted: true,
+          message: "Message sent successfully!",
+          type: "success",
+          note: "Thank you for reaching out. We'll get back to you within 24 hours.",
+        });
+      } else {
+        setIsSubmitted(true);
+        setStatus({
+          submitted: false,
+          message: result.error ?? "Submission failed. Please try again.",
+          type: "error",
+          note: "Sorry for inconvenience please refresh page or call us +91 63530 61867",
+        });
+      }
+    } catch (err: unknown) {
       setIsSubmitted(true);
       setStatus({
         submitted: false,
-        message: result.error ?? "Submission failed. Please try again.",
+        message: "Submission failed. Please try again.",
         type: "error",
         note: "Sorry for inconvenience please refresh page or call us +91 63530 61867",
       });
+      console.error("Submission error:", err);
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (err: unknown) {
-    setIsSubmitted(true);
-    setStatus({
-      submitted: false,
-      message: "Submission failed. Please try again.",
-      type: "error",
-      note: "Sorry for inconvenience please refresh page or call us +91 63530 61867",
-    });
-    console.error("Submission error:", err);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
 
 
 

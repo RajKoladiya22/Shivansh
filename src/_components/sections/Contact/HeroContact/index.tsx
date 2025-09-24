@@ -45,26 +45,28 @@ export const ContactHeroSection = () => {
     return typeof value === "object" && value !== null;
   }
 
-  function isSubmissionResponse(obj: unknown): obj is SubmissionResponse {
-    if (!isRecord(obj)) return false;
-    const rec = obj as Record<string, unknown>;
+function isSubmissionResponse(obj: unknown): obj is SubmissionResponse {
+  if (!isRecord(obj)) return false;
+  const rec = obj as Record<string, unknown>;
 
-    // success must exist and be boolean
-    if (typeof rec.success !== "boolean") return false;
+  // success must exist and be boolean
+  if (typeof rec.success !== "boolean") return false;
 
-    // if error exists it must be string or null or undefined
-    if ("error" in rec) {
-      const e = rec.error;
-      if (!(typeof e === "string" || e === null || typeof e === "undefined")) return false;
-    }
-
-    // if received exists it must be an object (non-null)
-    if ("received" in rec) {
-      if (!isRecord(rec.received)) return false;
-    }
-
-    return true;
+  // if error exists it must be string or null or undefined
+  if ("error" in rec) {
+    const e = rec.error;
+    // Fixed: Check for the actual types allowed by SubmissionResponse
+    if (e !== null && e !== undefined && typeof e !== "string") return false;
   }
+
+  // if received exists it must be an object (non-null) or undefined
+  if ("received" in rec) {
+    const r = rec.received;
+    if (r !== undefined && !isRecord(r)) return false;
+  }
+
+  return true;
+}
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
