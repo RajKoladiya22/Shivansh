@@ -49,15 +49,15 @@ export const ContactHeroSection = () => {
     if (!isRecord(obj)) return false;
 
     // success must exist and be boolean
-    if (typeof (obj as any).success !== "boolean") return false;
+    if (typeof (obj).success !== "boolean") return false;
 
     // if error exists it must be string or null
-    if ("error" in obj && (typeof (obj as any).error !== "string" && (obj as any).error !== null && (obj as any).error !== undefined)) {
+    if ("error" in obj && (typeof (obj).error !== "string" && (obj).error !== null && (obj).error !== undefined)) {
       return false;
     }
 
-    // if received exists it must be an object (we accept any keys)
-    if ("received" in obj && (typeof (obj as any).received !== "object" || (obj as any).received === null)) {
+    // if received exists it must be an object (we acc keys)
+    if ("received" in obj && (typeof (obj).received !== "object" || (obj).received === null)) {
       return false;
     }
 
