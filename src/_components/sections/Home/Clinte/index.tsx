@@ -23,7 +23,7 @@ export const ClinteSlider: React.FC = () => {
         items={Clintelogos}
         orientation="horizontal"
         direction="left"
-        speed="normal"
+        speed="fast"
         pauseOnHover={true}
         showFadeEffect={true}
         fadeWidth="lg"

@@ -28,7 +28,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
   imageClassName = "",
   orientation = "horizontal",
   direction = "left",
-  speed = "slow",
+  speed = "fast",
   pauseOnHover = true,
   showFadeEffect = true,
   fadeWidth = "lg",
@@ -94,9 +94,21 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
       : verticalFadeHeightClasses[fadeWidth];
 
   // Animation class based on orientation, direction and speed
+  const computeDurationSec = (sp: string | number) => {
+    if (typeof sp === "number") return sp;
+    const s = String(sp).trim().toLowerCase();
+    if (s === "fast") return 6;
+    if (s === "normal") return 20;
+    if (s === "slow") return 40;
+    return 20;
+  };
+  const durationSec = computeDurationSec(speed);
+  console.log("durationSecz--->" ,durationSec);
+  
   const getAnimationClass = () => {
-    const speedClass =
-      speed === "fast" ? "fast" : speed === "slow" ? "slow" : "normal";
+    const speedClass = speed === "fast" ? "fast" : speed === "slow" ? "slow" : "normal";
+
+    // return `animate-slide-${orientation}-${validDirection}`;
     return `animate-slide-${orientation}-${validDirection}-${speedClass}`;
   };
 
@@ -104,9 +116,8 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
   const flexDirection = orientation === "horizontal" ? "flex" : "flex-col";
 
   // Image classes
-  const imageClasses = `object-contain transition-all duration-300 ${
-    grayscale ? "grayscale" : ""
-  } ${grayscaleOnHover ? "hover:grayscale" : ""} ${imageClassName}`;
+  const imageClasses = `object-contain transition-all duration-300 ${grayscale ? "grayscale" : ""
+    } ${grayscaleOnHover ? "hover:grayscale" : ""} ${imageClassName}`;
 
   // Container height for vertical orientation
   const containerHeight =
@@ -201,6 +212,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
       >
         <div
           className={`${getAnimationClass()} ${flexDirection} ${pauseOnHover ? "hover:pause" : ""}`}
+           style={{ animationDuration: `${durationSec}s` }}
         >
           {/* First set of items */}
           <div className={`${flexDirection} shrink-0 items-center`}>

@@ -34,4 +34,39 @@ export const Clintelogos = [
     src: "/images/clinte_logo/c-7.png",
     alt: "Biz Analyst Logo",
   },
+  {
+    id: 8,
+    src: "/images/clinte_logo/c-8.png",
+    alt: "Biz Analyst Logo",
+  },
+  {
+    id: 9,
+    src: "/images/clinte_logo/c-9.png",
+    alt: "Biz Analyst Logo",
+  },
+  {
+    id: 10,
+    src: "/images/clinte_logo/c-10.png",
+    alt: "Biz Analyst Logo",
+  },
+  {
+    id: 11,
+    src: "/images/clinte_logo/c-11.png",
+    alt: "Biz Analyst Logo",
+  },
+  {
+    id: 12,
+    src: "/images/clinte_logo/c-12.png",
+    alt: "Biz Analyst Logo",
+  },
+  {
+    id: 13,
+    src: "/images/clinte_logo/c-13.png",
+    alt: "Biz Analyst Logo",
+  },
+  {
+    id: 14,
+    src: "/images/clinte_logo/c-14.png",
+    alt: "Biz Analyst Logo",
+  },
 ];
