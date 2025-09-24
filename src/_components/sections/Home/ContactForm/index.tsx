@@ -76,17 +76,17 @@ export const ContactForm = () => {
       });
 
       // optional: handle non-2xx
-      if (!response.ok) {
-        // try to read error body safely
-        let errText = `HTTP ${response.status}`;
-        try {
-          const maybeJson = await response.json();
-          errText = JSON.stringify(maybeJson);
-        } catch {
-          // ignore non-json
-        }
-        throw new Error(`Submission failed: ${errText}`);
-      }
+      // if (!response.ok) {
+      //   // try to read error body safely
+      //   let errText = `HTTP ${response.status}`;
+      //   try {
+      //     const maybeJson = await response.json();
+      //     errText = JSON.stringify(maybeJson);
+      //   } catch {
+      //     // ignore non-json
+      //   }
+      //   throw new Error(`Submission failed: ${errText}`);
+      // }
 
       const raw = await response.json(); // raw is `any`
       if (!isSubmissionResponse(raw)) {
