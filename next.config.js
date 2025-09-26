@@ -16,7 +16,8 @@ const config = {
 
     deviceSizes: [640, 768, 1024, 1280, 1600],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 31536000, // 1 year
+    minimumCacheTTL: 0, // 0
+    // minimumCacheTTL: 31536000, // 1 year
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 
@@ -84,7 +85,7 @@ const config = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=31536000, stale-while-revalidate'
+            value: 'public, max-age=60, s-maxage=60, stale-while-revalidate=30'
           }
         ]
       },
@@ -93,7 +94,7 @@ const config = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
+            value: 'public, max-age=0,  s-maxage=60, must-revalidate'
           }
         ]
       },

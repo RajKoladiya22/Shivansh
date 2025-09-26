@@ -94,21 +94,24 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
       : verticalFadeHeightClasses[fadeWidth];
 
   // Animation class based on orientation, direction and speed
+  // Calculate duration based on number of items to ensure all items are visible
   const computeDurationSec = (sp: string | number) => {
     if (typeof sp === "number") return sp;
     const s = String(sp).trim().toLowerCase();
-    if (s === "fast") return 6;
-    if (s === "normal") return 20;
-    if (s === "slow") return 40;
-    return 20;
+    
+    // Base duration multiplied by item count factor to ensure all items show
+    const itemCountFactor = Math.max(1, items.length / 8); // Scale based on item count
+    
+    if (s === "fast") return Math.round(15 * itemCountFactor);
+    if (s === "normal") return Math.round(25 * itemCountFactor);
+    if (s === "slow") return Math.round(40 * itemCountFactor);
+    return Math.round(25 * itemCountFactor);
   };
+  
   const durationSec = computeDurationSec(speed);
-  // console.log("durationSecz--->" ,durationSec);
   
   const getAnimationClass = () => {
     const speedClass = speed === "fast" ? "fast" : speed === "slow" ? "slow" : "normal";
-
-    // return `animate-slide-${orientation}-${validDirection}`;
     return `animate-slide-${orientation}-${validDirection}-${speedClass}`;
   };
 
@@ -116,8 +119,9 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
   const flexDirection = orientation === "horizontal" ? "flex" : "flex-col";
 
   // Image classes
-  const imageClasses = `object-contain transition-all duration-300 ${grayscale ? "grayscale" : ""
-    } ${grayscaleOnHover ? "hover:grayscale" : ""} ${imageClassName}`;
+  const imageClasses = `object-contain transition-all duration-300 ${
+    grayscale ? "grayscale" : ""
+  } ${grayscaleOnHover ? "hover:grayscale" : ""} ${imageClassName}`;
 
   // Container height for vertical orientation
   const containerHeight =
@@ -128,13 +132,13 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
     const itemContent = (() => {
       if (type === "image" && isImageItem(item)) {
         return (
-          <div className="relative h-12 w-24 sm:h-16 sm:w-32 md:h-20 md:w-40 lg:h-24 lg:w-48">
+          <div className="relative h-12 w-20 sm:h-16 sm:w-28 md:h-20 md:w-36 lg:h-24 lg:w-44 flex-shrink-0">
             <Image
               src={item.src}
               alt={item.alt}
               fill
               className={imageClasses}
-              sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, (max-width: 1024px) 160px, 192px"
+              sizes="(max-width: 640px) 80px, (max-width: 768px) 112px, (max-width: 1024px) 144px, 176px"
               priority={item.id <= priority}
             />
           </div>
@@ -147,7 +151,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
         } else if (typeof item.component === "function") {
           // If it's a component function, render it with props
           const Component = item.component as ElementType;
-          return <Component {...item.props!} />;
+          return <Component {...(item.props || {})} />;
         } else {
           // Fallback for other cases
           return item.component;
@@ -155,11 +159,12 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
       }
       return null;
     })();
-    const Nub: number = Math.random();
+
     return (
       <div
-        key={`${key + Nub} `}
+        key={key}
         className={`flex shrink-0 items-center justify-center ${currentSpacingClasses} ${itemClassName}`}
+        style={{ minWidth: orientation === "horizontal" ? "auto" : undefined }}
       >
         {itemContent}
       </div>
@@ -208,20 +213,32 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
 
       {/* Scrolling Container */}
       <div
-        className={`relative ${orientation === "vertical" ? "h-full" : ""} ${containerClassName}`}
+        className={`relative ${
+          orientation === "vertical" ? "h-full" : ""
+        } ${containerClassName}`}
       >
         <div
-          className={`${getAnimationClass()} ${flexDirection} ${pauseOnHover ? "hover:pause" : ""}`}
-           style={{ animationDuration: `${durationSec}s` }}
+          className={`${getAnimationClass()} ${flexDirection} ${
+            pauseOnHover ? "hover:pause" : ""
+          }`}
+          style={{ 
+            animationDuration: `${durationSec}s`,
+            width: orientation === "horizontal" ? "fit-content" : "100%"
+          }}
         >
           {/* First set of items */}
-          <div className={`${flexDirection} shrink-0 items-center`}>
+          <div className={`${flexDirection} shrink-0 items-center`} style={{ width: "fit-content" }}>
             {items.map((item) => renderItem(item, `${item.id}-1`))}
           </div>
 
           {/* Second set for seamless loop */}
-          <div className={`${flexDirection} shrink-0 items-center`}>
+          <div className={`${flexDirection} shrink-0 items-center`} style={{ width: "fit-content" }}>
             {items.map((item) => renderItem(item, `${item.id}-2`))}
+          </div>
+
+          {/* Third set to ensure complete visibility on mobile */}
+          <div className={`${flexDirection} shrink-0 items-center sm:hidden`} style={{ width: "fit-content" }}>
+            {items.map((item) => renderItem(item, `${item.id}-3`))}
           </div>
         </div>
       </div>
@@ -266,7 +283,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
           }
         }
 
-        /* Horizontal Left direction animations */
+        /* Base animation classes with dynamic durations based on item count */
         .animate-slide-horizontal-left-slow {
           animation: slide-horizontal-left 40s linear infinite;
         }
@@ -277,7 +294,6 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
           animation: slide-horizontal-left 20s linear infinite;
         }
 
-        /* Horizontal Right direction animations */
         .animate-slide-horizontal-right-slow {
           animation: slide-horizontal-right 40s linear infinite;
         }
@@ -288,7 +304,6 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
           animation: slide-horizontal-right 20s linear infinite;
         }
 
-        /* Vertical Up direction animations */
         .animate-slide-vertical-up-slow {
           animation: slide-vertical-up 40s linear infinite;
         }
@@ -299,7 +314,6 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
           animation: slide-vertical-up 20s linear infinite;
         }
 
-        /* Vertical Down direction animations */
         .animate-slide-vertical-down-slow {
           animation: slide-vertical-down 40s linear infinite;
         }
@@ -315,85 +329,75 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
           animation-play-state: paused;
         }
 
-        /* Responsive speeds for horizontal */
+        /* Mobile responsive speeds (small screens) */
         @media (max-width: 640px) {
           .animate-slide-horizontal-left-slow,
-          .animate-slide-horizontal-right-slow {
-            animation-duration: 25s;
-          }
-          .animate-slide-horizontal-left-normal,
-          .animate-slide-horizontal-right-normal {
-            animation-duration: 20s;
-          }
-          .animate-slide-horizontal-left-fast,
-          .animate-slide-horizontal-right-fast {
-            animation-duration: 15s;
-          }
+          .animate-slide-horizontal-right-slow,
           .animate-slide-vertical-up-slow,
           .animate-slide-vertical-down-slow {
-            animation-duration: 25s;
+            animation-duration: 30s;
           }
+          
+          .animate-slide-horizontal-left-normal,
+          .animate-slide-horizontal-right-normal,
           .animate-slide-vertical-up-normal,
           .animate-slide-vertical-down-normal {
-            animation-duration: 20s;
+            animation-duration: 22s;
           }
+          
+          .animate-slide-horizontal-left-fast,
+          .animate-slide-horizontal-right-fast,
           .animate-slide-vertical-up-fast,
           .animate-slide-vertical-down-fast {
-            animation-duration: 15s;
+            animation-duration: 16s;
           }
         }
 
+        /* Tablet responsive speeds (medium screens) */
         @media (min-width: 641px) and (max-width: 1024px) {
           .animate-slide-horizontal-left-slow,
-          .animate-slide-horizontal-right-slow {
-            animation-duration: 35s;
-          }
-          .animate-slide-horizontal-left-normal,
-          .animate-slide-horizontal-right-normal {
-            animation-duration: 25s;
-          }
-          .animate-slide-horizontal-left-fast,
-          .animate-slide-horizontal-right-fast {
-            animation-duration: 18s;
-          }
+          .animate-slide-horizontal-right-slow,
           .animate-slide-vertical-up-slow,
           .animate-slide-vertical-down-slow {
             animation-duration: 35s;
           }
+          
+          .animate-slide-horizontal-left-normal,
+          .animate-slide-horizontal-right-normal,
           .animate-slide-vertical-up-normal,
           .animate-slide-vertical-down-normal {
-            animation-duration: 25s;
+            animation-duration: 26s;
           }
+          
+          .animate-slide-horizontal-left-fast,
+          .animate-slide-horizontal-right-fast,
           .animate-slide-vertical-up-fast,
           .animate-slide-vertical-down-fast {
             animation-duration: 18s;
           }
         }
 
+        /* Desktop responsive speeds (large screens) */
         @media (min-width: 1025px) {
           .animate-slide-horizontal-left-slow,
-          .animate-slide-horizontal-right-slow {
-            animation-duration: 45s;
-          }
-          .animate-slide-horizontal-left-normal,
-          .animate-slide-horizontal-right-normal {
-            animation-duration: 35s;
-          }
-          .animate-slide-horizontal-left-fast,
-          .animate-slide-horizontal-right-fast {
-            animation-duration: 25s;
-          }
+          .animate-slide-horizontal-right-slow,
           .animate-slide-vertical-up-slow,
           .animate-slide-vertical-down-slow {
-            animation-duration: 45s;
+            animation-duration: 40s;
           }
+          
+          .animate-slide-horizontal-left-normal,
+          .animate-slide-horizontal-right-normal,
           .animate-slide-vertical-up-normal,
           .animate-slide-vertical-down-normal {
-            animation-duration: 35s;
+            animation-duration: 30s;
           }
+          
+          .animate-slide-horizontal-left-fast,
+          .animate-slide-horizontal-right-fast,
           .animate-slide-vertical-up-fast,
           .animate-slide-vertical-down-fast {
-            animation-duration: 25s;
+            animation-duration: 20s;
           }
         }
 
