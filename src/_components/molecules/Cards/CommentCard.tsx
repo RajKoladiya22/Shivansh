@@ -65,6 +65,7 @@ export const CommentCard: React.FC<CommentCardProps> = ({
               const fallback = target.nextElementSibling as HTMLElement;
               if (fallback) fallback.style.display = "flex";
             }}
+            unoptimized 
           />
         ) : null}
         <div

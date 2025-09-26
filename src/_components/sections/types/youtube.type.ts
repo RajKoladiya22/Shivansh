@@ -10,6 +10,8 @@ export interface Comment {
 export interface YouTubeVideo {
   id: string;
   title: string;
+  like?: string;
+  view?: string;
   thumbnail: string;
   duration: string;
   description: string;

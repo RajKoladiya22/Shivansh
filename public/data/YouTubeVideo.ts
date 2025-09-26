@@ -1,11 +1,13 @@
 export const mockVideos = [
   {
-    id: "video-0",
-    title: "Important for GSTR-1 Filing from TallyPrime 6.1",
-    thumbnail: "https://img.youtube.com/vi/Ixhablct0Kw/maxresdefault.jpg",
-    duration: "10:21",
-    description: "Documents Summary Important for GSTR-1 Filing from TallyPrime 6.1",
-    videoId: "Ixhablct0Kw",
+    id: "video-1",
+    title: "HOW TO CANCEL E-INVOICE & SALES INVOICE IN TALLY PRIME | E INVOICE IN TALLY PRIME",
+    thumbnail: "https://img.youtube.com/vi/w8I-MUuppkE/mqdefault.jpg",
+    duration: "04:00",
+    view: "200k",
+    like: "2k",
+    description: "Step-by-step guide to cancel e-invoices and sales invoices in Tally Prime. Shows how to reverse vouchers in Tally, update GST records, and submit cancellations on the e-invoice portal.",
+    videoId: "w8I-MUuppkE",
     comments: [
       {
         id: "Uga1A2B3C4",
@@ -130,10 +132,12 @@ export const mockVideos = [
     ]
   },
   {
-    id: "video-1",
+    id: "video-2",
     title: "Lock Transaction TallyPrime No Alter",
-    thumbnail: "https://img.youtube.com/vi/aQLWBvdjpII/maxresdefault.jpg",
+    thumbnail: "https://img.youtube.com/vi/aQLWBvdjpII/mqdefault.jpg",
     duration: "05:07",
+    view: "200k",
+    like: "2k",
     description: "Lock Selected Transaction in TallyPrime | No Alter - Delete & Cancel by User",
     videoId: "aQLWBvdjpII",
     comments: [
@@ -260,28 +264,24 @@ export const mockVideos = [
     ]
   },
   {
-    id: "video-2",
-    title: "How to Reset Tally License Activation Password in TallyPrime 6.1",
-    thumbnail: "https://img.youtube.com/vi/x8R1L0oVmMA/maxresdefault.jpg",
-    duration: "01:07",
-    description: "Detailed explanation How to Reset Tally License Activation Password in TallyPrime 6.1",
-    videoId: "x8R1L0oVmMA"
-  },
-  {
     id: "video-3",
-    title: "TallyPrime 6.1 is LIVE! Upgrade Now 🚀 | Hetansh Academy",
-    thumbnail: "https://img.youtube.com/vi/t-p-dvk7-1U/maxresdefault.jpg",
+    title: "Salary Entry in Tally ERP 9 | Staff Payment Entry in Tally | Cost Center in Tally | Hetansh Academy",
+    thumbnail: "https://img.youtube.com/vi/5q8Oc-o6f48/mqdefault.jpg",
     duration: "00:51",
-    description: "Detailed explanation TallyPrime 6.1 is LIVE! Upgrade Now 🚀 | Hetansh Academy",
-    videoId: "t-p-dvk7-1U"
+    view: "201k",
+    like: "2.9k",
+    description: "Detailed explanation Salary Entry in Tally ERP 9 | Staff Payment Entry in Tally | Cost Center in Tally | Hetansh Academy",
+    videoId: "5q8Oc-o6f48"
   },
   {
     id: "video-4",
-    title: "TallyPrime 6.1 New Update Full Demo",
-    thumbnail: "https://img.youtube.com/vi/qvdOBkDZFc0/maxresdefault.jpg",
+    title: "HOW TO CREATE STOCK ITEM WITH GST TAX RATE & HSN IN TALLY PRIME | STOCK ITEM CREATE IN TALLY PRIME",
+    thumbnail: "https://img.youtube.com/vi/x720Vs3vaPA/mqdefault.jpg",
     duration: "08:46",
-    description: "TallyPrime 6.1 New Update Full Demo | IMS, Edit Log Report, MSME, GSTR-1, Smart Bank Reco",
-    videoId: "qvdOBkDZFc0",
+    view: "200k",
+    like: "1.8k",
+    description: "Step-by-step guide to create a stock item in Tally Prime and assign its HSN code and GST tax rate Covers where to enter HSN, set GST classification and tax percentage, and save the item so invoices and reports apply the correct tax.",
+    videoId: "x720Vs3vaPA",
     comments: [
       {
         id: "Uga1A2B3C4",
@@ -407,58 +407,72 @@ export const mockVideos = [
   },
   {
     id: "video-5",
-    title: "TDL FOR TALLY PRIME USERS",
-    thumbnail: "https://img.youtube.com/vi/GYmHhR7-mzQ/maxresdefault.jpg",
+    title: "Tally से Invoice को PDF में Export कैसे करे ? | How to export sales invoice in PDF in tally ERP9 ?",
+    thumbnail: "https://img.youtube.com/vi/vxfygCwf4qw/mqdefault.jpg",
     duration: "02:24",
-    description: "🚀 PARTY ADDRESS BOOK IN TALLY PRIME WITH MULTIPLE FILTER | TDL FOR TALLY PRIME",
-    videoId: "GYmHhR7-mzQ"
+    view: "190k",
+    like: "1.6k",
+    description: "🚀 Explains the step-by-step process to generate, preview, and save invoices as PDF for easy sharing and record keeping.",
+    videoId: "vxfygCwf4qw"
   },
   {
     id: "video-6",
-    title: "CSS Flexbox Guide",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "HOW TO RECONCILIATIONS GSTR 2B & GSTR 2A IN TALLY PRIME | TDL FOR GSTR 2B RECONCILIATION ",
+    thumbnail: "https://img.youtube.com/vi/gkipmX-l6Z8/mqdefault.jpg",
     duration: "08:30",
-    description: "Detailed explanation of css flexbox guide. Learn step-by-step process with practical examples.",
-    videoId: "dQw4w9WgXcQ"
+    view: "180k",
+    like: "1.1k",
+    description: "Explains how to use TDL for matching input tax credit, identifying mismatches, and ensuring accurate GST compliance.",
+    videoId: "gkipmX-l6Z8"
   },
   {
     id: "video-7",
-    title: "HTML5 Semantic Elements",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    duration: "07:45",
-    description: "Detailed explanation of html5 semantic elements. Learn step-by-step process with practical examples.",
-    videoId: "dQw4w9WgXcQ"
+    title: "HOW TO EXPORT SALES INVOICE IN PDF IN TALLY PRIME | HOW TO SET EXPORT PATH IN TALLY PRIME",
+    thumbnail: "https://img.youtube.com/vi/T7rGCXEI7CM/mqdefault.jpg",
+    duration: "08:30",
+    view: "150k",
+    like: "900k",
+    description: "Step-by-step guide to export sales invoices in PDF format in Tally Prime. Covers how to set the default export path for saving invoices directly to a chosen folder.",
+    videoId: "T7rGCXEI7CM"
   },
   {
     id: "video-8",
-    title: "Next.js Basics",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "HOW TO SETUP PAGE SIZE FOR A4 PAPER, HEIGHT, WIDTH, TOP MARGIN, LEFT MARGIN IN TALLY PRIME",
+    thumbnail: "https://img.youtube.com/vi/lXwK1mzKE8A/mqdefault.jpg",
     duration: "13:10",
-    description: "Detailed explanation of next.js basics. Learn step-by-step process with practical examples.",
-    videoId: "dQw4w9WgXcQ"
+    view: "160k",
+    like: "800",
+    description: "Explains how to adjust height, width, top margin, and left margin for accurate invoice and report printing.",
+    videoId: "lXwK1mzKE8A"
   },
   {
     id: "video-9",
-    title: "GraphQL vs REST",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "LIVE DEMO - HOW TO UPLOAD GSTR1 RETURN FROM TALLY PRIME | GST RETURN FROM TALLYPRIME",
+    thumbnail: "https://img.youtube.com/vi/g0waXw5pJiI/mqdefault.jpg",
     duration: "15:20",
-    description: "Detailed explanation of graphql vs rest. Learn step-by-step process with practical examples.",
-    videoId: "dQw4w9WgXcQ"
+    view: "130k",
+    like: "1.7k",
+    description: "Live demo guide on uploading GSTR-1 return from Tally Prime. Shows how to generate, validate, and upload GST return data directly from TallyPrime.",
+    videoId: "g0waXw5pJiI"
   },
   {
     id: "video-10",
-    title: "Using Docker for Development",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "HOW TO ACCESS TALLY PRIME DATA IN TALLY ERP 9 | TALLY PRIME TIPS & TRICKS | TALLY DATA RE-WRITE",
+    thumbnail: "https://img.youtube.com/vi/_xVogLG9CyM/mqdefault.jpg",
     duration: "18:05",
-    description: "Detailed explanation of using docker for development. Learn step-by-step process with practical examples.",
-    videoId: "dQw4w9WgXcQ"
+    view: "132k",
+    like: "850",
+    description: "Guide to access Tally Prime data in Tally ERP 9. Explains tips, tricks, and the data re-write process to ensure smooth compatibility and error-free access.",
+    videoId: "_xVogLG9CyM"
   },
   {
     id: "video-11",
-    title: "Deploying to Vercel",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+    title: "How to split company data in Tally Prime for New Year 2021 - 22 | Hetansh Academy",
+    thumbnail: "https://img.youtube.com/vi/Bq4EIJNpl7w/mqdefault.jpg",
     duration: "10:17",
-    description: "Detailed explanation of deploying to vercel. Learn step-by-step process with practical examples.",
-    videoId: "dQw4w9WgXcQ"
+    view: "120k",
+    like: "1k",
+    description: "Step-by-step guide to split company data in Tally Prime for the new financial year 2021–22. Explains how to safely divide data, carry forward balances, and start fresh books in Tally.",
+    videoId: "Bq4EIJNpl7w"
   }
 ];
