@@ -134,7 +134,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Suresh Modi is our talented Tally Developer. With his brilliant expertise in TDL development, he creates customized solutions for Shivansh Infosys as per client requirements. His innovative approach and strong technical skills ensure that every solution is tailored to enhance efficiency and simplify business processes.",
-    image: "/images/STAFF/08.png",
+    image: "/images/team/08.png",
     src: "/images/STAFF/08.png",
     experience: "12+ Years",
     specialties: [
@@ -261,7 +261,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Adarsh Kahar is our dependable Tally Support & Client Relations Executive. He not only assists clients with Tally operations and technical queries but also actively visits customer offices in Vapi town to strengthen relationships and provide on-site support. His dedication and client-focused approach ensure smooth Tally usage and long-term trust with our customers.",
-    image: "/images/STAFF/11.png",
+    image: "/images/team/11.png",
     src: "/images/STAFF/11.png",
     experience: "12+ Years",
     specialties: [
@@ -388,7 +388,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Mr. Das is our GST, Tally & Cloud Expert. He has in-depth knowledge of GST compliance, Tally solutions, and cloud support, helping clients manage their business operations smoothly and securely.",
-    image: "/images/STAFF/10.png",
+    image: "/images/team/10.png",
     src: "/images/STAFF/10.png",
     experience: "12+ Years",
     specialties: [
@@ -644,7 +644,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "Mr. Harjeet Singh brings extensive expertise in GST compliance, Tally solutions, and taxation. With his in-depth knowledge and experience, he provides valuable guidance to businesses for efficient tax planning, Tally customization, and regulatory compliance.",
-    image: "/images/STAFF/09.png",
+    image: "/images/team/09.png",
     src: "/images/STAFF/09.png",
     experience: "12+ Years",
     specialties: [
@@ -708,7 +708,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "She manages accounts with accuracy and efficiency, ensuring smooth financial operations and maintaining transparency in all records.",
-    image: "/images/STAFF/13.png",
+    image: "/images/team/13.png",
     src: "/images/STAFF/13.png",
     experience: "12+ Years",
     specialties: [
@@ -772,7 +772,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "She brings creativity and innovation to our designs, ensuring that our brand and client projects always stand out with a professional touch..",
-    image: "/images/STAFF/12.png",
+    image: "/images/team/12.png",
     src: "/images/STAFF/12.png",
     experience: "12+ Years",
     specialties: [
@@ -836,7 +836,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "She brings creativity and innovation to our designs, ensuring that our brand and client projects always stand out with a professional touch..",
-    image: "/images/STAFF/14.png",
+    image: "/images/team/14.png",
     src: "/images/STAFF/14.png",
     experience: "12+ Years",
     specialties: [
