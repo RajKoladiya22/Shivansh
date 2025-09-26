@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
 import "./ProfileCard.css";
+import Image from "next/image";
 
 interface ProfileCardProps {
   avatarUrl: string;
@@ -80,8 +81,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   name = "Javi A. Torres",
   title = "Software Engineer",
   handle = "javicodes",
-  status = "Online",
-  contactText = "Contact",
+  // status = "Online",
+  // contactText = "Contact",
   showUserInfo = true,
   onContactClick,
 }) => {
@@ -170,7 +171,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         }
       },
     };
-  }, [enableTilt]);
+  }, [enableTilt, isDesktop]);
 
   const handlePointerMove = useCallback(
     (event: PointerEvent) => {
@@ -338,9 +339,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient]
   );
 
-  const handleContactClick = useCallback(() => {
-    onContactClick?.();
-  }, [onContactClick]);
+  // const handleContactClick = useCallback(() => {
+  //   onContactClick?.();
+  // }, [onContactClick]);
 
   return (
     <div
@@ -353,7 +354,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-            <img
+            <Image
+              width={40}
+              height={40}
               className="avatar"
               src={avatarUrl}
               alt={`${name ?? "User"} avatar`}
@@ -367,7 +370,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               <div className="pc-user-info">
                 <div className="pc-user-details">
                   <div className="pc-mini-avatar">
-                    <img
+                    <Image
+                      width={40}
+                      height={40}
                       src={miniAvatarUrl ?? avatarUrl}
                       alt={`${name ?? "User"} mini avatar`}
                       loading="lazy"

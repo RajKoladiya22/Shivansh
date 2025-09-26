@@ -25,7 +25,7 @@ import {
   hero_heading_font,
   hero_headline_font,
 } from "src/config/constants";
-import { ProfileCard } from "src/_components/molecules";
+// import { ProfileCard } from "src/_components/molecules";
 
 export const TeamSection = () => {
   // const [activeSlide, setActiveSlide] = useState(0);
@@ -94,7 +94,7 @@ export const TeamSection = () => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [selectedMember]);
+  }, [selectedMember, nextTestimonial, prevTestimonial]);
 
   return (
     <section className="bg-white py-19 sm:py-12 md:py-16 lg:py-20 xl:py-24">

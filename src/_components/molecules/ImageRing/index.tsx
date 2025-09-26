@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 import GalleryHero from "src/_components/sections/Gallery/GalleryHero";
 import Image from "next/image";
 

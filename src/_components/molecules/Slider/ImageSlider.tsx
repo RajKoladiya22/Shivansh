@@ -151,7 +151,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
         } else if (typeof item.component === "function") {
           // If it's a component function, render it with props
           const Component = item.component as ElementType;
-          return <Component {...(item.props || {})} />;
+          return <Component {...(item.props ?? {})} />;
         } else {
           // Fallback for other cases
           return item.component;

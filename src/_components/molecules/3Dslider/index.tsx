@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import type { TeamMember } from "src/_components/sections/types/team.type";
 
@@ -209,8 +210,10 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                   <div
                     className={`relative mx-auto overflow-hidden rounded-2xl border-4 border-white shadow-lg ${imageSizeClasses}`}
                   >
-                    <img
-                      src={m.src}
+                    <Image
+                      width={208}
+                      height={260}
+                      src={m.src ?? "/images/team/skeleton_1.png"}
                       alt={m.name}
                       className={`h-full w-full object-cover transition-transform duration-300 ${
                         isHovered ? "scale-110" : "scale-100"

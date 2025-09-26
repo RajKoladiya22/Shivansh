@@ -28,10 +28,10 @@ export const ContactHeroSection = () => {
     }));
   };
 
-  interface FormResponse {
-    success: boolean;
-    error?: string;
-  }
+  // interface FormResponse {
+  //   success: boolean;
+  //   error?: string;
+  // }
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydaEtap8EIr60R9NBzndNdQjTerddJEdO3RgzFWNRY3c-wwB0kNxrn3BYWo_dszowM/exec";
 
