@@ -4,7 +4,8 @@ import { Search, Filter, Grid, List } from "lucide-react";
 import { SidebarFilters } from "./filtter";
 import { ContactWidget } from "../Blog/Sidebar";
 import { ProductCard } from "src/_components/molecules/Cards/productsCard";
-import { categories, industries, ProductsList } from "public/data/Product";
+import { categories, industries } from "public/data/Product";
+import ProductsList from 'public/data/Product/products.json';
 import { VideoModal } from "./VideoModal";
 import { LoadingSpinner } from "./loader";
 import type {
@@ -65,8 +66,8 @@ export const TheProductPage = () => {
           p.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
           p.features.some((feature) =>
             feature.toLowerCase().includes(searchTerm.toLowerCase()),
-          ) 
-          ,
+          )
+        ,
       );
     }
 
@@ -210,31 +211,28 @@ export const TheProductPage = () => {
             <div className="flex flex-wrap gap-2">
               <button aria-label="Click"
                 onClick={() => setSortBy("all")}
-                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${
-                  sortBy === "all"
+                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${sortBy === "all"
                     ? "bg-[#C50202] text-white"
                     : "bg-white text-gray-700 hover:bg-[#FCF2F2]"
-                }`}
+                  }`}
               >
                 All Products
               </button>
               <button aria-label="Click"
                 onClick={() => setSortBy("top")}
-                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${
-                  sortBy === "top"
+                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${sortBy === "top"
                     ? "bg-[#C50202] text-white"
                     : "bg-white text-gray-700 hover:bg-[#FCF2F2]"
-                }`}
+                  }`}
               >
                 Top Products
               </button>
               <button aria-label="Click"
                 onClick={() => setSortBy("latest")}
-                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${
-                  sortBy === "latest"
+                className={`cursor-pointer rounded-lg px-4 py-2 font-medium transition-colors ${sortBy === "latest"
                     ? "bg-[#C50202] text-white"
                     : "bg-white text-gray-700 hover:bg-[#FCF2F2]"
-                }`}
+                  }`}
               >
                 Latest Products
               </button>
@@ -296,11 +294,10 @@ export const TheProductPage = () => {
             ) : (
               <>
                 <div
-                  className={`grid gap-6 ${
-                    viewMode === "grid"
+                  className={`grid gap-6 ${viewMode === "grid"
                       ? "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3"
                       : "grid-cols-1"
-                  }`}
+                    }`}
                 >
                   {displayedProducts.map((product) => (
                     <>

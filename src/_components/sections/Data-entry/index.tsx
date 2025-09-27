@@ -9,36 +9,21 @@ import {
   Award,
   ChevronUp,
   Monitor,
-  Globe,
-  Shield,
   CheckCircle,
-  ArrowRight,
   ChevronDown,
-  Video,
   Clock,
   Users,
   Check,
-  FileText,
-  MessageCircle,
   Phone,
-  Workflow,
-  Database,
-  Settings,
   Calculator,
   BarChart3,
   FileSpreadsheet,
-  Upload,
-  BookOpen,
-  Layers,
   GraduationCap,
-  Trophy,
   TrendingUp,
-  MousePointer,
   Keyboard,
   Eye,
   Brain,
   Lightbulb,
-  PenTool,
 } from "lucide-react";
 import {
   btn_color,
@@ -338,12 +323,12 @@ export const TheDataEntryPage = () => {
             {/* Action Buttons */}
             <div className="mt-5 mb-16 flex flex-col justify-center space-y-4 pt-2 sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-center">
               <button
-                                            aria-label="Click"
-                                            className={`flex transform cursor-pointer items-center justify-center gap-2 rounded-lg ${btn_color} px-6 py-3 font-bold tracking-wide text-white`}
-                                            onClick={() => {
-                                              window.location.href = "tel:+918141703007";
-                                            }}
-                                          >
+                aria-label="Click"
+                className={`flex transform cursor-pointer items-center justify-center gap-2 rounded-lg ${btn_color} px-6 py-3 font-bold tracking-wide text-white`}
+                onClick={() => {
+                  window.location.href = "tel:+918141703007";
+                }}
+              >
                 <GraduationCap className="h-5 w-5" />
                 Start Training
               </button>
@@ -537,7 +522,7 @@ export const TheDataEntryPage = () => {
                     ))}
                   </div>
 
-                <div className="grid grid-cols-2 gap-6 text-center">
+                  <div className="grid grid-cols-2 gap-6 text-center">
                     <div className="rounded-lg border border-red-200 bg-white p-4">
                       <div className="text-2xl font-bold text-red-600">1-2</div>
                       <div className="text-sm text-gray-600">Weeks</div>
