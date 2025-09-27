@@ -59,7 +59,7 @@ export async function generateMetadata({
     keywords: [
       product.title.toLowerCase(),
       ...product.tags,
-      ...product.category.map(cat => cat.toLowerCase()),
+      ...product.category.map(cat => cat.toLowerCase()).join(', '),
       product.industry.toLowerCase(),
       "buy online",
       "best price",
@@ -67,17 +67,17 @@ export async function generateMetadata({
       "quality assured",
       "tally certified partner",
       "tally solutions provider",
-      `${product.category.map(cat => cat.toLowerCase())} equipment`,
+      `${product.category.map(cat => cat.toLowerCase()).join(', ')} equipment`,
       `${product.industry} solutions`,
       `${product.title} features`,
       `${product.title} benefits`,
       `${product.title} price`,
-      `${product.category.map(cat => cat.toLowerCase())} software`,
-      `tally ${product.category.map(cat => cat.toLowerCase())}`,
+      `${product.category.map(cat => cat.toLowerCase()).join(', ')} software`,
+      `tally ${product.category.map(cat => cat.toLowerCase()).join(', ')}`
     ],
     openGraph: {
       title: `${product.title} - ${priceInfo}`,
-      description: `${product.description} Professional grade ${product.category.join(", ").toLowerCase()} for ${product.industry.toLowerCase()}. Rated ${product.review.averageRating}⭐ by ${product.review.reviewCount} customers.`,
+      description: `${product.description} Professional grade ${product.category.map(cat => cat.toLowerCase()).join(', ')} for ${product.industry.toLowerCase()}. Rated ${product.review.averageRating}⭐ by ${product.review.reviewCount} customers.`,
       url: `${BASE_URL}/product/${product.id}`,
       type: "website",
       locale: "en_IN",
@@ -181,7 +181,7 @@ export default async function ProductDetailPage({
       name: "Tally Solutions",
       url: "https://tallysolutions.com",
     },
-    category: product.category,
+    category: product.category.map(cat => cat.toLowerCase()).join(', '),
     productID: product.id.toString(),
     mpn: `${product.category.join("-").toUpperCase()}-${product.id}`,
     sku: `SKU-${product.id.toString().padStart(6, "0")}`,
@@ -260,8 +260,8 @@ export default async function ProductDetailPage({
       {
         "@type": "ListItem",
         position: 3,
-        name: product.category,
-        item: `${BASE_URL}/product?category=${product.category.join(",").toLowerCase()}`,
+        name: product.category.map(cat => cat.toLowerCase()).join(', '),
+        item: `${BASE_URL}/product?#${product.category.map(cat => cat.toLowerCase()).join(', ')}`,
       },
       {
         "@type": "ListItem",
@@ -329,7 +329,7 @@ export default async function ProductDetailPage({
       "@type": "Person",
       name: "Verified Customer",
     },
-    reviewBody: `Excellent ${product.category.join(", ").toLowerCase()}! ${product.benefits[0]} and the overall quality exceeds expectations. Highly recommended for ${product.industry.toLowerCase()} professionals.`,
+    reviewBody: `Excellent ${product.category.map(cat => cat.toLowerCase()).join(', ')}! ${product.benefits[0]} and the overall quality exceeds expectations. Highly recommended for ${product.industry.toLowerCase()} professionals.`,
     datePublished: product.createdAt,
   };
 

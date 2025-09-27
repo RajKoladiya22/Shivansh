@@ -44,10 +44,10 @@ export const ProductSocialShareModal = ({
 
   // Enhanced share content for products
   const shareTitle = `${product.title} - ${hasDiscount ? `${discountPercentage}% OFF` : "Best Price"}`;
-  const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ""}\n⭐ ${product.review.averageRating}/5 (${product.review.reviewCount} reviews)\n🏷️ ${product.category.map(cat => cat.toLowerCase())} | ${product.industry}`;
+  const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ""}\n⭐ ${product.review.averageRating}/5 (${product.review.reviewCount} reviews)\n🏷️ ${product.category.map(cat => cat.toLowerCase()).join(', ')} | ${product.industry}`;
   const hashtags = [
     ...product.tags,
-    product.category.map(cat => cat.toLowerCase()),
+    product.category.map(cat => cat.toLowerCase()).join(', '),
     "deals",
     "shopping",
   ]
@@ -168,7 +168,7 @@ export const ProductSocialShareModal = ({
                   <div className="flex items-center gap-1">
                     <Tag className="h-3 w-3 text-[#C50202]" />
                     <span className="text-xs font-medium text-[#C50202]">
-                      {product.category}
+                      {product.category.map(cat => cat.toLowerCase()).join(', ')}
                     </span>
                   </div>
                 </div>
