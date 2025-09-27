@@ -47,7 +47,7 @@ export const ProductSocialShareModal = ({
   const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ""}\n⭐ ${product.review.averageRating}/5 (${product.review.reviewCount} reviews)\n🏷️ ${product.category} | ${product.industry}`;
   const hashtags = [
     ...product.tags,
-    product.category.toLowerCase(),
+    product.category.map(cat => cat.toLowerCase()),
     "deals",
     "shopping",
   ]
