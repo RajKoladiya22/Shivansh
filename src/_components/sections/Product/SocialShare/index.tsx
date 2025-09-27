@@ -44,7 +44,7 @@ export const ProductSocialShareModal = ({
 
   // Enhanced share content for products
   const shareTitle = `${product.title} - ${hasDiscount ? `${discountPercentage}% OFF` : "Best Price"}`;
-  const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ""}\n⭐ ${product.review.averageRating}/5 (${product.review.reviewCount} reviews)\n🏷️ ${product.category} | ${product.industry}`;
+  const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ""}\n⭐ ${product.review.averageRating}/5 (${product.review.reviewCount} reviews)\n🏷️ ${product.category.map(cat => cat.toLowerCase())} | ${product.industry}`;
   const hashtags = [
     ...product.tags,
     product.category.map(cat => cat.toLowerCase()),
