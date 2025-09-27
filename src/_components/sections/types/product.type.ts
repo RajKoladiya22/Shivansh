@@ -33,7 +33,7 @@ export interface Product {
   image: string;
   introVideoId: string;
   detailedVideoId: string;
-  category: string;
+  category: string[];
   industry: string;
   isTopProduct: boolean;
   isLatest: boolean;
@@ -44,6 +44,7 @@ export interface Product {
   review: Review;
   tags: string[];
   relatedProductIds: number[];
+  isActive?: boolean;
 }
 
 export interface PriceRange {

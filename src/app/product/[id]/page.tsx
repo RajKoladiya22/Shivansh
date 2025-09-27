@@ -59,7 +59,7 @@ export async function generateMetadata({
     keywords: [
       product.title.toLowerCase(),
       ...product.tags,
-      product.category.toLowerCase(),
+      ...product.category.map(cat => cat.toLowerCase()),
       product.industry.toLowerCase(),
       "buy online",
       "best price",
@@ -77,7 +77,7 @@ export async function generateMetadata({
     ],
     openGraph: {
       title: `${product.title} - ${priceInfo}`,
-      description: `${product.description} Professional grade ${product.category.toLowerCase()} for ${product.industry.toLowerCase()}. Rated ${product.review.averageRating}⭐ by ${product.review.reviewCount} customers.`,
+      description: `${product.description} Professional grade ${product.category.join(", ").toLowerCase()} for ${product.industry.toLowerCase()}. Rated ${product.review.averageRating}⭐ by ${product.review.reviewCount} customers.`,
       url: `${BASE_URL}/product/${product.id}`,
       type: "website",
       locale: "en_IN",
@@ -183,7 +183,7 @@ export default async function ProductDetailPage({
     },
     category: product.category,
     productID: product.id.toString(),
-    mpn: `${product.category.toUpperCase()}-${product.id}`,
+    mpn: `${product.category.join("-").toUpperCase()}-${product.id}`,
     sku: `SKU-${product.id.toString().padStart(6, "0")}`,
     gtin: `${Date.now()}${product.id}`.substring(0, 13), // Mock GTIN
     url: `${BASE_URL}/product/${product.id}`,
@@ -261,7 +261,7 @@ export default async function ProductDetailPage({
         "@type": "ListItem",
         position: 3,
         name: product.category,
-        item: `${BASE_URL}/product?category=${product.category.toLowerCase()}`,
+        item: `${BASE_URL}/product?category=${product.category.join(",").toLowerCase()}`,
       },
       {
         "@type": "ListItem",
@@ -329,7 +329,7 @@ export default async function ProductDetailPage({
       "@type": "Person",
       name: "Verified Customer",
     },
-    reviewBody: `Excellent ${product.category.toLowerCase()}! ${product.benefits[0]} and the overall quality exceeds expectations. Highly recommended for ${product.industry.toLowerCase()} professionals.`,
+    reviewBody: `Excellent ${product.category.join(", ").toLowerCase()}! ${product.benefits[0]} and the overall quality exceeds expectations. Highly recommended for ${product.industry.toLowerCase()} professionals.`,
     datePublished: product.createdAt,
   };
 

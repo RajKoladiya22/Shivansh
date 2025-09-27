@@ -66,13 +66,16 @@
 │   │   └── design-tokens.css       # custom CSS vars, if any
 │   │
 ├── public
-│       └── images
-│           ├── hero.jpg
-│           ├── logo-zipper.svg
-│           ├── avatar-mehul.png
-│           └── …others
-│    
-├── env.ts                      # t3-env schema
+│       ├── images
+│       │   ├── hero.jpg
+│       │   ├── logo-zipper.svg
+│       │   ├── avatar-mehul.png
+│       │   └── …others
+│       └── data
+│           ├── product.tsx          # store list of products in array
+│           ├── blog.tsx             # store list of blog in array
+│           └── …others  
+├── env.ts                           # t3-env schema
 ├── next.config.js
 ├── tsconfig.json
 └── package.json

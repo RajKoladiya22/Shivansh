@@ -135,11 +135,11 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
   // don't try to build images array until product is loaded
   const productImages = product
     ? [
-        product.image,
-        `${product.image}&variant=1`,
-        `${product.image}&variant=2`,
-        `${product.image}&variant=3`,
-      ]
+      product.image,
+      `${product.image}&variant=1`,
+      `${product.image}&variant=2`,
+      `${product.image}&variant=3`,
+    ]
     : [];
 
   const relatedProducts = product
@@ -242,21 +242,19 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <div className="flex rounded-lg bg-gray-100 p-1">
               <button aria-label="Click"
                 onClick={() => setSelectedVideoType("intro")}
-                className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                  selectedVideoType === "intro"
+                className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${selectedVideoType === "intro"
                     ? "bg-white text-[#C50202] shadow-sm"
                     : "text-gray-600 hover:text-gray-900"
-                }`}
+                  }`}
               >
                 Intro Video
               </button>
               <button aria-label="Click"
                 onClick={() => setSelectedVideoType("detail")}
-                className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                  selectedVideoType === "detail"
+                className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${selectedVideoType === "detail"
                     ? "bg-white text-[#C50202] shadow-sm"
                     : "text-gray-600 hover:text-gray-900"
-                }`}
+                  }`}
               >
                 Detail Video
               </button>
@@ -329,7 +327,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   {Math.round(
                     ((product.actualPrice - product.salePrice) /
                       product.actualPrice) *
-                      100,
+                    100,
                   )}
                   % OFF
                 </span>
@@ -391,11 +389,17 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <span className="rounded bg-gray-100 px-2 py-1 text-sm text-gray-500">
-                  {product.category}
+                  {product.industry} 
                 </span>
                 <span className="text-sm text-gray-500">•</span>
                 <span className="text-sm text-gray-500">
-                  {product.industry}
+
+                  {product.category.map((cat, idx) => (
+                    <span key={idx}>
+                      {cat}
+                      {idx < product.category.length - 1 ? ", " : ""}
+                    </span>
+                  ))}
                 </span>
               </div>
 
@@ -409,11 +413,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`h-5 w-5 ${
-                          i < Math.floor(product.review.averageRating)
+                        className={`h-5 w-5 ${i < Math.floor(product.review.averageRating)
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-300"
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
@@ -513,11 +516,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <button aria-label="Click"
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`min-w-max border-b-2 px-6 py-4 text-sm font-medium transition-colors ${
-                      activeTab === tab.id
+                    className={`min-w-max border-b-2 px-6 py-4 text-sm font-medium transition-colors ${activeTab === tab.id
                         ? "border-[#C50202] text-[#C50202]"
                         : "border-transparent text-gray-500 hover:text-gray-700"
-                    }`}
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -561,7 +563,12 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                       <div className="flex justify-between border-b pb-2">
                         <dt className="text-gray-500">Category:</dt>
                         <dd className="font-medium text-gray-900">
-                          {product.category}
+                          {product.category.map((cat, idx) => (
+                            <span key={idx}>
+                              {cat}
+                              {idx < product.category.length - 1 ? ", " : ""}
+                            </span>
+                          ))}
                         </dd>
                       </div>
                       <div className="flex justify-between border-b pb-2">
@@ -615,11 +622,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         {Array.from({ length: 5 }, (_, i) => (
                           <Star
                             key={i}
-                            className={`h-6 w-6 ${
-                              i < Math.floor(product.review.averageRating)
+                            className={`h-6 w-6 ${i < Math.floor(product.review.averageRating)
                                 ? "fill-yellow-400 text-yellow-400"
                                 : "text-gray-300"
-                            }`}
+                              }`}
                           />
                         ))}
                       </div>
@@ -726,11 +732,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                               {Array.from({ length: 5 }, (_, i) => (
                                 <Star
                                   key={i}
-                                  className={`h-4 w-4 ${
-                                    i < Math.floor(review.rating)
+                                  className={`h-4 w-4 ${i < Math.floor(review.rating)
                                       ? "fill-yellow-400 text-yellow-400"
                                       : "text-gray-300"
-                                  }`}
+                                    }`}
                                 />
                               ))}
                               <span className="ml-1 text-sm text-gray-600">
@@ -747,24 +752,24 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                       {/* Load More Button */}
                       {visibleReviewsCount <
                         product.review.allReviews.length && (
-                        <div className="mt-6 text-center">
-                          <button aria-label="Click"
-                            onClick={() =>
-                              setVisibleReviewsCount((prev) => prev + 5)
-                            }
-                            className="rounded-lg border border-[#C50202] px-6 py-2 font-medium text-[#C50202] transition-colors hover:bg-[#C50202] hover:text-white"
-                          >
-                            Load More Reviews
-                            {/* (
+                          <div className="mt-6 text-center">
+                            <button aria-label="Click"
+                              onClick={() =>
+                                setVisibleReviewsCount((prev) => prev + 5)
+                              }
+                              className="rounded-lg border border-[#C50202] px-6 py-2 font-medium text-[#C50202] transition-colors hover:bg-[#C50202] hover:text-white"
+                            >
+                              Load More Reviews
+                              {/* (
                             {Math.min(
                               5,
                               product.review.allReviews.length -
                                 visibleReviewsCount,
                             )}{" "}
                             more) */}
-                          </button>
-                        </div>
-                      )}
+                            </button>
+                          </div>
+                        )}
 
                       {/* Show fewer reviews button when all are loaded */}
                       {visibleReviewsCount >=

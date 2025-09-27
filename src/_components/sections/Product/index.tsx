@@ -72,7 +72,7 @@ export const TheProductPage = () => {
 
     // Category filter
     if (selectedCategory !== "All") {
-      filtered = filtered.filter((p) => p.category === selectedCategory);
+      filtered = filtered.filter((p) => Array.isArray(p.category) ? p.category.includes(selectedCategory) : p.category === selectedCategory);
     }
 
     // Industry filter
