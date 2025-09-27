@@ -389,7 +389,13 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <span className="rounded bg-gray-100 px-2 py-1 text-sm text-gray-500">
-                  {product.industry} 
+                 
+                  {product.industry.map((ind, idx) => (
+                    <span key={idx}>
+                      {ind}
+                      {idx < product.industry.length - 1 ? ", " : ""}
+                    </span>
+                  ))}
                 </span>
                 <span className="text-sm text-gray-500">•</span>
                 <span className="text-sm text-gray-500">

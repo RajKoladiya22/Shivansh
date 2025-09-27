@@ -60,7 +60,7 @@ export async function generateMetadata({
       product.title.toLowerCase(),
       ...product.tags,
       ...product.category.map(cat => cat.toLowerCase()).join(', '),
-      product.industry.toLowerCase(),
+      ...product.industry.map(ind => ind.toLowerCase()).join(', '),
       "buy online",
       "best price",
       "professional grade",
@@ -68,7 +68,7 @@ export async function generateMetadata({
       "tally certified partner",
       "tally solutions provider",
       `${product.category.map(cat => cat.toLowerCase()).join(', ')} equipment`,
-      `${product.industry} solutions`,
+      `${product.industry.map(ind => ind.toLowerCase()).join(', ')} solutions`,
       `${product.title} features`,
       `${product.title} benefits`,
       `${product.title} price`,
@@ -77,7 +77,7 @@ export async function generateMetadata({
     ],
     openGraph: {
       title: `${product.title} - ${priceInfo}`,
-      description: `${product.description} Professional grade ${product.category.map(cat => cat.toLowerCase()).join(', ')} for ${product.industry.toLowerCase()}. Rated ${product.review.averageRating}⭐ by ${product.review.reviewCount} customers.`,
+      description: `${product.description} Professional grade ${product.category.map(cat => cat.toLowerCase()).join(', ')} for ${product.industry.map(ind => ind.toLowerCase()).join(', ')}. Rated ${product.review.averageRating}⭐ by ${product.review.reviewCount} customers.`,
       url: `${BASE_URL}/product/${product.id}`,
       type: "website",
       locale: "en_IN",
@@ -295,10 +295,10 @@ export default async function ProductDetailPage({
       },
       {
         "@type": "Question",
-        name: `Is ${product.title} suitable for ${product.industry.toLowerCase()} applications?`,
+        name: `Is ${product.title} suitable for ${product.industry.map(ind => ind.toLowerCase()).join(', ')} applications?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Yes, ${product.title} is specifically designed for ${product.industry.toLowerCase()} applications. It offers ${product.benefits.join(", ").toLowerCase()} making it ideal for professional ${product.industry.toLowerCase()} use.`,
+          text: `Yes, ${product.title} is specifically designed for ${product.industry.map(ind => ind.toLowerCase()).join(', ')} applications. It offers ${product.benefits.join(", ").toLowerCase()} making it ideal for professional ${product.industry.map(ind => ind.toLowerCase()).join(', ')} use.`,
         },
       },
       {
@@ -329,7 +329,7 @@ export default async function ProductDetailPage({
       "@type": "Person",
       name: "Verified Customer",
     },
-    reviewBody: `Excellent ${product.category.map(cat => cat.toLowerCase()).join(', ')}! ${product.benefits[0]} and the overall quality exceeds expectations. Highly recommended for ${product.industry.toLowerCase()} professionals.`,
+    reviewBody: `Excellent ${product.category.map(cat => cat.toLowerCase()).join(', ')}! ${product.benefits[0]} and the overall quality exceeds expectations. Highly recommended for ${product.industry.map(ind => ind.toLowerCase()).join(', ')} professionals.`,
     datePublished: product.createdAt,
   };
 

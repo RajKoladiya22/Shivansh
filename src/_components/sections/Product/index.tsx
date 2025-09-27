@@ -77,7 +77,7 @@ export const TheProductPage = () => {
 
     // Industry filter
     if (selectedIndustry !== "All") {
-      filtered = filtered.filter((p) => p.industry === selectedIndustry);
+      filtered = filtered.filter((p) => Array.isArray(p.industry) ? p.industry.includes(selectedIndustry) : p.industry === selectedIndustry);
     }
 
     // Price filter

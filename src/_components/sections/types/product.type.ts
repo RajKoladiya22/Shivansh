@@ -34,7 +34,7 @@ export interface Product {
   introVideoId: string;
   detailedVideoId: string;
   category: string[];
-  industry: string;
+  industry: string[];
   isTopProduct: boolean;
   isLatest: boolean;
   createdAt: string;
