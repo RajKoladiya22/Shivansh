@@ -57,12 +57,12 @@ export const testimonials = [
   {
     id: 6,
     quote:
-      "We saw a 40% increase in traffic and streamlined processes after Shivansh Infosys revamped our platform. Their innovative approach stands out.",
-    heading: "Feedback of Tally Server ",
-    name: "David Lee",
-    title: "OPERATIONS HEAD AT SYNERGY TECH",
-    avatar: "/api/placeholder/80/80",
-
+      "We have found him to be practical, approachable, and extremely reliable. For any consultant or professional who wants to get more out of Tally, Mehulbhai Patel is someone we can confidently recommend.",
+    heading: "Technical Support",
+    name: "Viraj Dave",
+    title: "Dave Tax Consultants",
+    avatar: "/api/placeholder/80/80", 
+    document: "/testimonial/Testimonial_Viraj_Dave.jpg",
     rating: 5,
   },
   {
