@@ -57,7 +57,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
             <span className="bg-opacity-3 absolute inset-0 inline-flex animate-ping rounded-full bg-red-600 opacity-75"></span>
             {/* Button */}
             <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-(--primery-color) text-white transition-all duration-300 group-hover:scale-110">
-              <Play className="ml-1 h-4 w-4" />
+              <Play className="ml-1 h-2 w-2" />
             </div>
           </div>
         </div>
