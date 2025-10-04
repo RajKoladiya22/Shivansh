@@ -74,4 +74,29 @@ export const Clintelogos = [
     src: "/images/clinte_logo/c-15.png",
     alt: "akshar Logo",
   },
+  {
+    id: 16,
+    src: "/images/clinte_logo/c-16.png",
+    alt: "Jalaram Logo",
+  },
+  {
+    id: 17,
+    src: "/images/clinte_logo/c-17.png",
+    alt: "Kesari Logo",
+  },
+  {
+    id: 18,
+    src: "/images/clinte_logo/c-18.png",
+    alt: "Ceramic Logo",
+  },
+  {
+    id: 19,
+    src: "/images/clinte_logo/c-19.png",
+    alt: "BI Logo",
+  },
+  {
+    id: 20,
+    src: "/images/clinte_logo/c-20.png",
+    alt: "V Logo",
+  },
 ];
