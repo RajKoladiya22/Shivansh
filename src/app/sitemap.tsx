@@ -15,8 +15,8 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "public/data/Blog";
 import { getBaseUrl, STATIC_ROUTES } from "src/lib/routes";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 86400;
+export const dynamic = 'force-static'; 
+// export const revalidate = 86400;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getBaseUrl();

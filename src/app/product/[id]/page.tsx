@@ -1,11 +1,12 @@
 // app/products/[id]/page.tsx
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ProductsList } from "public/data/Product";
+// import { ProductsList } from "public/data/Product";
+import ProductsList from 'public/data/Product/products.json';
 import { TheProductDetailPage } from "src/_components/sections/Product/ProductDetail";
 import type { Product } from "src/_components/sections/types/product.type";
 import { BASE_URL, SITE_NAME } from "src/config/constants";
-// import { ProductsList, type Product } from "src/data/Product"; // Adjust import path
+// import { ProductsList, type Product } from "src/data/Product"; 
 
 interface ProductDetailPageProps {
   params: Promise<{

@@ -12,7 +12,8 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { ProductsList } from "public/data/Product";
+// import { ProductsList } from "public/data/Product";
+import ProductsList from 'public/data/Product/products.json';
 import Link from "next/link";
 import Image from "next/image";
 import { ProductSocialShareButton } from "../SocialShare";

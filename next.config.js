@@ -6,6 +6,8 @@ import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
+  // output: 'export',
+
   allowedDevOrigins: [
     '192.168.29.130',
     '*.192.168.29.130',
@@ -104,7 +106,6 @@ const config = {
   // Enable compression
   compress: true,
 };
-
 
 
 export default config;

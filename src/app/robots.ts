@@ -1,6 +1,8 @@
 // src/app/robots.ts
 import type { MetadataRoute } from 'next'
 
+export const dynamic = 'force-static'; 
+
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.NODE_ENV === 'production' 
     ? 'https://shivansh-three.vercel.app'
@@ -9,7 +11,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
-      allow: ['/', '/about', '/team', '/product', '/contact', '/blog', '/service', '/career', '/gallery'],
+      allow: ['/', '/about', '/team', '/product', '/contact', '/blog', '/service', '/career', '/gallery', '/service', '/tally', '/terms', '/privacy'],
       disallow: [
         '/private/',
         '/admin/',
