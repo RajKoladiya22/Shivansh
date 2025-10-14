@@ -134,7 +134,7 @@ export const HowItWork = () => {
                   {[
                     { value: "3000+", label: "End Users" },
                     { value: "450+", label: "Companies" },
-                    { value: "65K+", label: "YouTube Subs" },
+                    { value: "66K+", label: "YouTube Subs" },
                   ].map((stat, index) => (
                     <div
                       key={index}

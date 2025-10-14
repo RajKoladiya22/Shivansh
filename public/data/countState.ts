@@ -4,7 +4,7 @@ import type { StatItem } from "src/_components/sections/types/startItem.type";
 
 export const stats: StatItem[] = [
   {
-    number: "14+",
+    number: "18+",
     description: "Years of Experience",
     icon: FaChartLine,
   },
@@ -19,13 +19,13 @@ export const stats: StatItem[] = [
     icon: FaHandshake,
   },
   {
-    number: "65,000+",
+    number: "66,000+",
     description: "Youtube Subscribers",
     icon: FaYoutube,
   },
   
   {
-    number: "13+",
+    number: "13",
     description: "GST Expert & Tally Certified Team",
     icon: FaCertificate, // fallback to Wrench or another valid Lucide icon
   },

@@ -243,12 +243,14 @@ export const ContactForm = () => {
                       className="w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm transition-colors duration-300 focus:border-red-600 focus:outline-none sm:px-4 sm:py-3 sm:text-base"
                     >
                       <option value="">Select a reason</option>
-                      <option value="consultation">Expert Consultation</option>
-                      <option value="support">Customer Support</option>
-                      <option value="partnership">
+                      <option value="Expert Consultation">Expert Consultation</option>
+                      <option value="Customer Support">Customer Support</option>
+                      <option value="Partnership">
                         Partnership Opportunity
                       </option>
-                      <option value="general">General Inquiry</option>
+                      <option value="TDL Inquiry">TDL Inquiry</option>
+                      <option value="New Tally Inquiry">New Tally Inquiry</option>
+                      <option value="General Inquiry">General Inquiry</option>
                     </select>
                   </div>
 

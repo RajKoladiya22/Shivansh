@@ -94,10 +94,8 @@ export const AboutUsHero = () => {
 
               {/* Subheading */}
               <p className={`max-w-2xl ${hero_content_font}`}>
-                {`A passionate team of creative professionals dedicated to
-                transforming your digital vision into reality. We don't just
-                build websites and apps – we craft experiences that inspire and
-                engage.`}
+                {`We provide smart, reliable solutions for Tally customers.
+By understanding each client’s challenges, we deliver customized, value-driven results.`}
               </p>
             </div>
 

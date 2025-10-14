@@ -33,12 +33,12 @@ const serviceFeatures = [
     icon: <Clock className="h-6 w-6" />,
     title: "One-year dedicated support for Tally users",
     description:
-      "Comprehensive annual support package covering all your Tally ERP needs",
+      "Comprehensive annual support package covering all your Tally Prime needs",
     details: [
       "12 months of unlimited technical support",
       "Priority queue access for faster resolution",
       "Dedicated account manager assigned",
-      "Regular system health checks and optimization",
+      "A dedicated WhatsApp group for timely updates and fast support.",
     ],
   },
   {
@@ -71,7 +71,7 @@ const serviceFeatures = [
     description:
       "Support available in multiple regional languages for better communication",
     details: [
-      "Hindi, English, Gujarati support",
+      "Hindi, English, Gujarati, Marathi, Panjabi, Bengali support",
       "Regional language documentation",
       "Native language speaking experts",
       "Cultural understanding of business practices",
@@ -91,10 +91,10 @@ const serviceFeatures = [
   },
   {
     icon: <Video className="h-6 w-6" />,
-    title: "Monthly Webinars & Training",
+    title: "Timely Webinars & Training",
     description: "Stay updated with the latest features and industry practices",
     details: [
-      "Monthly live webinars on Tally updates and features",
+      "Timely live webinars on Tally updates and features",
       "Interactive Q&A sessions with experts",
       "Training on new tools and compliance changes",
       "Session recordings and learning materials provided",
@@ -113,7 +113,7 @@ const whyNeeded = [
     icon: <Target className="h-8 w-8" />,
     title: "Complex Software Management",
     description:
-      "Tally ERP and accounting software require expert knowledge for optimal performance and troubleshooting.",
+      "Tally Prime and accounting software require expert knowledge for optimal performance and troubleshooting.",
   },
   {
     icon: <Shield className="h-8 w-8" />,
@@ -132,10 +132,10 @@ const whyNeeded = [
 const benefits = [
   "Reduced operational downtime by 90%",
   "Faster issue resolution within 5 minutes",
-  "Expert Tally ERP guidance and troubleshooting",
+  "Expert Tally Prime guidance and troubleshooting",
   "Custom TDL solutions for business automation",
   "Comprehensive staff training programs",
-  "24/7 multi-channel support availability",
+  "Multi-channel support availability",
   "Proactive system monitoring and maintenance",
   "Compliance with GST and accounting standards",
 ];
@@ -159,7 +159,7 @@ const faqs = [
   {
     question: "Is remote support secure for accessing our systems?",
     answer:
-      "Absolutely. We use enterprise-grade secure remote access tools with end-to-end encryption. Access is granted only with your permission and all sessions are logged for security.",
+      "Absolutely. We use entPrimerise-grade secure remote access tools with end-to-end encryption. Access is granted only with your permission and all sessions are logged for security.",
   },
   {
     question: "Do you provide training for our staff?",
@@ -179,7 +179,7 @@ const testimonials = [
     name: "Priya Sharma",
     company: "XYZ Trading Co.",
     rating: 5,
-    text: "24/7 support is a game-changer for our business. Quick responses and expert solutions every time.",
+    text: "Support is a game-changer for our business. Quick responses and expert solutions every time.",
   },
   {
     name: "Amit Patel",
@@ -192,23 +192,13 @@ const testimonials = [
 const stats = [
   {
     icon: <Users className="h-8 w-8" />,
-    value: "1000+",
+    value: "3000+",
     label: "Happy Clients",
   },
   {
-    icon: <Clock className="h-8 w-8" />,
-    value: "5 min",
-    label: "Response Time",
-  },
-  {
     icon: <CheckCircle className="h-8 w-8" />,
-    value: "99%",
+    value: "99.9%",
     label: "Resolution Rate",
-  },
-  {
-    icon: <Award className="h-8 w-8" />,
-    value: "24/7",
-    label: "Support Available",
   },
 ];
 
@@ -232,7 +222,7 @@ export const TheCustomerSupportPage = () => {
             {/* Badge */}
             <div className="relative inline-block">
               <p className={`z-10 ${hero_heading_font}`}>
-                24/7 Expert Support Available
+                Expert Support Available
               </p>
               <div
                 className={`absolute top-0 h-[50%] rounded-lg bg-(--pink) sm:h-full`}
@@ -259,7 +249,7 @@ export const TheCustomerSupportPage = () => {
 
               {/* Subheading */}
               <p className={`mx-auto max-w-2xl ${hero_content_font}`}>
-                {`Expert assistance for all your Tally ERP and business software needs with round-the-clock availability.`}
+                {`Expert assistance for all your Tally Prime and business software needs with round-the-clock availability.`}
               </p>
             </div>
 
@@ -278,7 +268,7 @@ export const TheCustomerSupportPage = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-8 rounded-2xl border border-red-100 bg-white/80 p-8 shadow-lg backdrop-blur-sm md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-8 rounded-2xl border border-red-100 bg-white/80 p-8 shadow-lg backdrop-blur-sm md:grid-cols-2">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="mb-3 flex justify-center text-red-600">
@@ -402,18 +392,18 @@ export const TheCustomerSupportPage = () => {
             </div>
             <div>
               <div className="rounded-2xl bg-gradient-to-br from-red-50 to-red-100 p-8 lg:p-12">
-                <div className="text-center">
+                <div className="">
                   <div className="mb-4">
-                    <span className="text-2xl text-gray-500 line-through">
+                    {/* <span className="text-2xl text-gray-500 line-through">
                       ₹5,000/-
-                    </span>
-                    <div className="text-6xl font-bold text-red-600">
+                    </span> */}
+                    {/* <div className="text-6xl font-bold text-red-600">
                       ₹ **0/-
-                    </div>
+                    </div> */}
                   </div>
-                  <div className="mb-2 text-xl font-semibold text-gray-900">
+                  {/* <div className="mb-2 text-xl font-semibold text-gray-900">
                     Starting Price
-                  </div>
+                  </div> */}
                   <div className="mb-8 text-gray-600">
                     *Limited time offer for qualifying businesses
                   </div>
@@ -582,7 +572,7 @@ export const TheCustomerSupportPage = () => {
               Ready to Get Expert Support?
             </h3>
             <p className="mx-auto mb-6 max-w-2xl text-base opacity-90 sm:mb-8 sm:text-lg md:text-xl">
-              {`Join 500+ satisfied clients who trust us with their Tally ERP and business support needs. Get started today!`}
+              {`Join 500+ satisfied clients who trust us with their Tally Prime and business support needs. Get started today!`}
             </p>
             <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
               <Link
@@ -602,7 +592,7 @@ export const TheCustomerSupportPage = () => {
               </button>
             </div>
             <p className="mt-2 text-xs text-gray-500">
-              24/7 Support Available • Quick Response Guaranteed • Expert Team
+              On Time Support Available • Quick Response Guaranteed • Expert Team
               Ready
             </p>
           </div>

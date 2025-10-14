@@ -20,7 +20,7 @@ import Link from "next/link";
 export const stats = [
   {
     icon: <Users className="h-6 w-6" />,
-    number: "2000+",
+    number: "3000+",
     label: "Happy Clients",
   },
   {
@@ -29,13 +29,8 @@ export const stats = [
     label: "Success Rate",
   },
   {
-    icon: <Clock className="h-6 w-6" />,
-    number: "24/7",
-    label: "Support Available",
-  },
-  {
     icon: <Star className="h-6 w-6" />,
-    number: "4.8/5",
+    number: "4.6/5",
     label: "Client Rating",
   },
 ];
@@ -45,7 +40,7 @@ export const services = [
     title: "Customer Support",
     icon: <Headphones className="h-8 w-8" />,
     shortDescription:
-      "24/7 dedicated customer support to resolve your queries instantly",
+      "Dedicated customer support to resolve your queries instantly",
     fullDescription:
       "Our expert customer support team provides round-the-clock assistance to ensure your business operations run smoothly without any interruptions.",
     features: [
@@ -63,7 +58,7 @@ export const services = [
     ],
     pricing: "Starting from ₹ **0/year",
     duration: "Ongoing Support",
-    clients: "500+",
+    clients: "1000+",
     rating: 4.9,
     color: "from-rose-500 to-rose-600",
     bgColor: "bg-rose-50",
@@ -91,7 +86,7 @@ export const services = [
     ],
     pricing: "Starting from ₹ **0/-",
     duration: "3-5 Business Days",
-    clients: "300+",
+    clients: "800+",
     rating: 4.8,
     color: "from-amber-500 to-amber-600",
     bgColor: "bg-amber-50",
@@ -108,7 +103,7 @@ export const services = [
     features: [
       "Tally-E‑Way Bill Portal Setup",
       "Real-time Tracking",
-      "30‑Day Post‑Setup Support",
+      "1-month Post‑Setup Support",
       "Hands‑On Staff Training",
       "Compliance Monitoring",
     ],
@@ -120,7 +115,7 @@ export const services = [
     ],
     pricing: "Starting from ₹ **0/-",
     duration: "2-4 Business Days",
-    clients: "250+",
+    clients: "700+",
     rating: 4.7,
     color: "from-orange-500 to-orange-600",
     bgColor: "bg-orange-50",
@@ -150,7 +145,7 @@ export const services = [
     ],
     pricing: "Starting from ₹ **0/-",
     duration: "5-7 Business Days",
-    clients: "400+",
+    clients: "800+",
     rating: 4.9,
     color: "from-red-500 to-red-600",
     bgColor: "bg-red-50",
@@ -161,7 +156,7 @@ export const services = [
     title: "Tally Implementation",
     icon: <Calculator className="h-8 w-8" />,
     shortDescription:
-      "Complete Tally ERP setup and customization for your business",
+      "Complete Tally Prime setup and customization for your business",
     fullDescription:
       "Get your accounting system up and running with our comprehensive Tally implementation service, including customization and data migration.",
     features: [
@@ -180,7 +175,7 @@ export const services = [
     ],
     pricing: "Starting from ₹ **0/-",
     duration: "4-6 Business Days",
-    clients: "600+",
+    clients: "1000+",
     rating: 4.8,
     color: "from-purple-500 to-purple-600",
     bgColor: "bg-purple-50",
@@ -209,7 +204,7 @@ export const services = [
     ],
     pricing: "Starting from ₹ **0/person",
     duration: "1-2 Weeks",
-    clients: "200+",
+    clients: "700+",
     rating: 4.7,
     color: "from-indigo-500 to-indigo-600",
     bgColor: "bg-indigo-50",
@@ -231,7 +226,7 @@ export const TheServicesPage = () => {
           <div className="mb-16">
             <SectionHeader
               heading="OUR SERVICE"
-              headingText="Complete Business Solutions"
+              headingText="Complete Tally Services"
               headingDescription="From customer support to security setup, we provide end-to-end solutions 
               to help your business thrive in the digital age."
             />
@@ -306,7 +301,7 @@ export const TheServicesPage = () => {
                   </div>
 
                   {/* Pricing & Duration */}
-                  <div className="mb-6 rounded-xl bg-gray-50 p-4">
+                  {/* <div className="mb-6 rounded-xl bg-gray-50 p-4">
                     <div className="mb-2 flex items-center justify-between">
                       <span className="text-sm text-gray-600">
                         Starting Price:
@@ -321,7 +316,7 @@ export const TheServicesPage = () => {
                         {service.duration}
                       </span>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* CTA Buttons */}
                   <div className="flex flex-col gap-3 sm:flex-row">
@@ -371,7 +366,7 @@ export const TheServicesPage = () => {
                   },
                   {
                     title: "Ongoing Support",
-                    desc: "24/7 customer support and maintenance services",
+                    desc: "On Time customer support and maintenance services",
                   },
                   {
                     title: "Cost-Effective",

@@ -27,7 +27,7 @@ import {
   hero_headline_font,
 } from "src/config/constants";
 import { MoreService } from "src/_components/molecules/Section/service";
-import { FaWhatsapp } from "react-icons/fa";
+
 
 const serviceFeatures = [
   {
@@ -42,18 +42,18 @@ const serviceFeatures = [
       "Real-time status updates and tracking",
     ],
   },
-  {
-    icon: <Navigation className="h-6 w-6" />,
-    title: "Real-time Tracking",
-    description:
-      "Monitor your goods movement with live tracking and status updates",
-    details: [
-      "GPS-based vehicle tracking integration",
-      "Real-time e-way bill status monitoring",
-      "Automatic alerts for expiry and updates",
-      "Route optimization suggestions",
-    ],
-  },
+  // {
+  //   icon: <Navigation className="h-6 w-6" />,
+  //   title: "Real-time Tracking",
+  //   description:
+  //     "Monitor your goods movement with live tracking and status updates",
+  //   details: [
+  //     "GPS-based vehicle tracking integration",
+  //     "Real-time e-way bill status monitoring",
+  //     "Automatic alerts for expiry and updates",
+  //     "Route optimization suggestions",
+  //   ],
+  // },
   {
     icon: <Clock className="h-6 w-6" />,
     title: "30-Day Post-Setup Support",
@@ -66,18 +66,18 @@ const serviceFeatures = [
       "Regular system health checks",
     ],
   },
-  {
-    icon: <Users className="h-6 w-6" />,
-    title: "Hands-On Staff Training",
-    description:
-      "Comprehensive training program for your logistics and accounting teams",
-    details: [
-      "Interactive training sessions for staff",
-      "Step-by-step process documentation",
-      "Best practices for compliance management",
-      "Ongoing support during learning phase",
-    ],
-  },
+  // {
+  //   icon: <Users className="h-6 w-6" />,
+  //   title: "Hands-On Staff Training",
+  //   description:
+  //     "Comprehensive training program for your logistics and accounting teams",
+  //   details: [
+  //     "Interactive training sessions for staff",
+  //     "Step-by-step process documentation",
+  //     "Best practices for compliance management",
+  //     "Ongoing support during learning phase",
+  //   ],
+  // },
   {
     icon: <Shield className="h-6 w-6" />,
     title: "Compliance Monitoring",
@@ -193,7 +193,7 @@ const testimonials = [
 const stats = [
   {
     icon: <Users className="h-8 w-8" />,
-    value: "250+",
+    value: "700+",
     label: "Successful Setups",
   },
   {
@@ -221,7 +221,7 @@ const pricingFeatures = [
   "Compliance Monitoring Setup",
   "Automated Generation System",
   "Integration with Transport Systems",
-  "24/7 Technical Assistance",
+  "Technical Assistance",
 ];
 
 export const TheEWayBillPage = () => {
@@ -404,18 +404,18 @@ export const TheEWayBillPage = () => {
 
             <div>
               <div className="rounded-2xl bg-gradient-to-br from-red-50 to-red-100 p-8 lg:p-12">
-                <div className="text-center">
-                  <div className="mb-4">
+                <div className="">
+                  {/* <div className="mb-4">
                     <span className="text-2xl text-gray-500 line-through">
                       ₹25,000/-
                     </span>
                     <div className="text-6xl font-bold text-red-600">
                       ₹ **0/-
                     </div>
-                  </div>
-                  <div className="mb-2 text-xl font-semibold text-gray-900">
+                  </div> */}
+                  {/* <div className="mb-2 text-xl font-semibold text-gray-900">
                     Starting Price
-                  </div>
+                  </div> */}
                   <div className="mb-8 text-gray-600">
                     *Limited time offer for qualifying businesses
                   </div>

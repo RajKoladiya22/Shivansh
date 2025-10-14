@@ -62,7 +62,7 @@ const serviceFeatures = [
       "Priority technical support for any issues",
       "Quick resolution of integration problems",
       "Performance optimization and fine-tuning",
-      "Regular system health monitoring",
+      "Error resolution: fixing detected issues.",
     ],
   },
   {
@@ -86,18 +86,18 @@ const serviceFeatures = [
       "Pre-upload data validation checks",
       "Real-time error detection and alerts",
       "Automatic correction suggestions",
-      "Compliance verification before submission",
+      "Track IRN & Ensure 100% GST Compliance.",
     ],
   },
   {
     icon: <Settings className="h-6 w-6" />,
-    title: "Custom Configuration & Setup",
+    title: "E-Invoice Compliance Process",
     description: "Tailored setup based on your specific business requirements",
     details: [
-      "Business-specific workflow configuration",
-      "Custom field mapping and validation rules",
-      "Integration with existing ERP systems",
-      "Automated backup and recovery setup",
+      "Check E-Invoice Applicability & Turnover Limit",
+      "Generate IRN Instantly via Tally Integration.",
+      "Validate Data to Avoid Rejection Errors.",
+      "Sales invoices with e-way bill print/export",
     ],
   },
 ];
@@ -137,7 +137,7 @@ const benefits = [
   "Elimination of manual data entry errors",
   "Seamless integration with existing Tally setup",
   "Comprehensive staff training and support",
-  "24/7 technical assistance during transition",
+  "Technical assistance during transition",
 ];
 
 const faqs = [
@@ -154,7 +154,7 @@ const faqs = [
   {
     question: "Will this work with my existing Tally version?",
     answer:
-      "We support all modern versions of Tally ERP. Our team will assess your current setup and ensure compatibility or recommend necessary upgrades.",
+      "We support all modern versions of Tally Prime. Our team will assess your current setup and ensure compatibility or recommend necessary upgrades.",
   },
   {
     question: "What happens if there are errors after setup?",
@@ -192,7 +192,7 @@ const testimonials = [
 const stats = [
   {
     icon: <Users className="h-8 w-8" />,
-    value: "300+",
+    value: "800+",
     label: "Successful Setups",
   },
   {
@@ -207,20 +207,20 @@ const stats = [
   },
   {
     icon: <Award className="h-8 w-8" />,
-    value: "4.8",
+    value: "4.9",
     label: "Client Rating",
   },
 ];
 
 const pricingFeatures = [
   "Complete E-Invoice Portal Integration",
-  "Tally ERP Configuration & Setup",
+  "Tally Prime Configuration & Setup",
   "Staff Training & Documentation",
   "1-Month Dedicated Support",
   "Real-time Validation Setup",
   "Bulk Processing Configuration",
   "Error Resolution & Optimization",
-  "24/7 Technical Assistance",
+  "Technical Assistance",
 ];
 
 export const TheEInvoicePage = () => {
@@ -403,8 +403,8 @@ export const TheEInvoicePage = () => {
 
             <div>
               <div className="rounded-2xl bg-gradient-to-br from-red-50 to-red-100 p-8 lg:p-12">
-                <div className="text-center">
-                  <div className="mb-4">
+                <div className="">
+                  {/* <div className="mb-4">
                     <span className="text-2xl text-gray-500 line-through">
                       ₹25,000/-
                     </span>
@@ -414,7 +414,7 @@ export const TheEInvoicePage = () => {
                   </div>
                   <div className="mb-2 text-xl font-semibold text-gray-900">
                     Starting Price
-                  </div>
+                  </div> */}
                   <div className="mb-8 text-gray-600">
                     *Limited time offer for qualifying businesses
                   </div>

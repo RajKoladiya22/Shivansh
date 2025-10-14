@@ -396,13 +396,15 @@ const ContactAddress = memo(() => (
       <IconWrapper>
         <MapPin className="h-3 w-3 text-white" />
       </IconWrapper>
-      <p className="text-sm leading-relaxed text-gray-400">{COMPANY_ADDRESS}</p>
+      <span>Officr: 1</span>
+      <p className="text-sm leading-relaxed text-gray-400">&nbsp;0{COMPANY_ADDRESS}</p>
     </div>
     <div className="flex items-start">
       <IconWrapper>
         <MapPin className="h-3 w-3 text-white" />
       </IconWrapper>
-      <p className="text-sm leading-relaxed text-gray-400">{BRANCH_ADDRESS}</p>
+      <span>Officr: 2</span>
+      <p className="text-sm leading-relaxed text-gray-400">&nbsp;0{BRANCH_ADDRESS}</p>
     </div>
   </>
 ));

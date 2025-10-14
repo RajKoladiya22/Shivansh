@@ -224,7 +224,7 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
                   </div>
                   <div className="flex items-center gap-1">
                     <Award className="h-4 w-4 text-purple-600" />
-                    <span>24/7 Support</span>
+                    <span>On Time Support</span>
                   </div>
                 </div>
               </div>

@@ -13,7 +13,7 @@ export const AboutUsSection = () => {
         <div className="mx-auto max-w-screen-2xl">
           <SectionHeader
             heading="ABOUT US"
-            headingText="We Are Standing With 14+ Years Of Experience"
+            headingText="We Are Standing With 18+ Years Of Experience"
             headingTextClassName="pb-10"
           />
 

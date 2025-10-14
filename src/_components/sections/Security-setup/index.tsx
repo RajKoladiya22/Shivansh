@@ -37,7 +37,7 @@ const serviceFeatures = [
     details: [
       "Multi-level user role definitions",
       "Department-wise access restrictions",
-      "Time-based access controls",
+      "Back-based access controls",
       "Granular permission management",
     ],
   },
@@ -53,53 +53,53 @@ const serviceFeatures = [
       "Multi-factor authentication setup",
     ],
   },
-  {
-    icon: <Lock className="h-6 w-6" />,
-    title: "Data Encryption",
-    description:
-      "Advanced encryption solutions to protect sensitive business data at rest and in transit",
-    details: [
-      "End-to-end data encryption",
-      "Database security hardening",
-      "File-level encryption setup",
-      "Secure backup encryption",
-    ],
-  },
-  {
-    icon: <Shield className="h-6 w-6" />,
-    title: "Access Control Systems",
-    description:
-      "Implement robust access control mechanisms to prevent unauthorized system access",
-    details: [
-      "Network access control setup",
-      "VPN configuration for remote access",
-      "IP-based access restrictions",
-      "Session management controls",
-    ],
-  },
-  {
-    icon: <Eye className="h-6 w-6" />,
-    title: "Security Auditing",
-    description:
-      "Comprehensive security audit and monitoring systems for continuous protection",
-    details: [
-      "Real-time security event monitoring",
-      "Audit trail configuration",
-      "Compliance reporting setup",
-      "Security incident response procedures",
-    ],
-  },
-  {
-    icon: <AlertTriangle className="h-6 w-6" />,
-    title: "Threat Monitoring",
-    description: "Advanced threat detection and monitoring systems to identify security risks",
-    details: [
-      "24/7 threat monitoring setup",
-      "Intrusion detection systems",
-      "Malware protection configuration",
-      "Real-time alert mechanisms",
-    ],
-  },
+  // {
+  //   icon: <Lock className="h-6 w-6" />,
+  //   title: "Data Encryption",
+  //   description:
+  //     "Advanced encryption solutions to protect sensitive business data at rest and in transit",
+  //   details: [
+  //     "End-to-end data encryption",
+  //     "Database security hardening",
+  //     "File-level encryption setup",
+  //     "Secure backup encryption",
+  //   ],
+  // },
+  // {
+  //   icon: <Shield className="h-6 w-6" />,
+  //   title: "Access Control Systems",
+  //   description:
+  //     "Implement robust access control mechanisms to prevent unauthorized system access",
+  //   details: [
+  //     "Network access control setup",
+  //     "VPN configuration for remote access",
+  //     "IP-based access restrictions",
+  //     "Session management controls",
+  //   ],
+  // },
+  // {
+  //   icon: <Eye className="h-6 w-6" />,
+  //   title: "Security Auditing",
+  //   description:
+  //     "Comprehensive security audit and monitoring systems for continuous protection",
+  //   details: [
+  //     "Real-time security event monitoring",
+  //     "Audit trail configuration",
+  //     "Compliance reporting setup",
+  //     "Security incident response procedures",
+  //   ],
+  // },
+  // {
+  //   icon: <AlertTriangle className="h-6 w-6" />,
+  //   title: "Threat Monitoring",
+  //   description: "Advanced threat detection and monitoring systems to identify security risks",
+  //   details: [
+  //     "Threat monitoring setup",
+  //     "Intrusion detection systems",
+  //     "Malware protection configuration",
+  //     "Real-time alert mechanisms",
+  //   ],
+  // },
 ];
 
 const whyNeeded = [
@@ -133,7 +133,7 @@ const benefits = [
   "Multi-layered security architecture implementation",
   "Role-based access control with granular permissions",
   "Advanced data encryption and protection",
-  "24/7 threat monitoring and detection",
+  "Threat monitoring and detection",
   "Comprehensive security audit trails",
   "Incident response and recovery procedures",
   "Staff security training and awareness",
@@ -192,7 +192,7 @@ const testimonials = [
 const stats = [
   {
     icon: <Users className="h-8 w-8" />,
-    value: "400+",
+    value: "700+",
     label: "Secure Setups",
   },
   {
@@ -401,8 +401,8 @@ export const TheSecuritySetupPage = () => {
 
             <div>
               <div className="rounded-2xl bg-gradient-to-br from-red-50 to-red-100 p-8 lg:p-12">
-                <div className="text-center">
-                  <div className="mb-4">
+                <div className="">
+                  {/* <div className="mb-4">
                     <span className="text-2xl text-gray-500 line-through">
                       ₹35,000/-
                     </span>
@@ -412,7 +412,7 @@ export const TheSecuritySetupPage = () => {
                   </div>
                   <div className="mb-2 text-xl font-semibold text-gray-900">
                     Starting Price
-                  </div>
+                  </div> */}
                   <div className="mb-8 text-gray-600">
                     *Limited time offer for qualifying businesses
                   </div>
@@ -592,7 +592,7 @@ export const TheSecuritySetupPage = () => {
               </button>
             </div>
             <p className="mt-2 text-xs text-gray-500">
-              24/7 Security Monitoring • Expert Response Team • Advanced Protection
+              Security Monitoring • Expert Response Team • Advanced Protection
             </p>
           </div>
         </div>

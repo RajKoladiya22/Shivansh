@@ -17,7 +17,7 @@ export const reasons = [
   },
   {
     icon: <Headphones className="h-8 w-8" />,
-    title: "24/7 Customer Support",
+    title: "Customer Support",
     description:
       "Need help? Our dedicated support team is here to assist you around the clock.",
   },

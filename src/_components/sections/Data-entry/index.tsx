@@ -494,8 +494,8 @@ export const TheDataEntryPage = () => {
 
             <div>
               <div className="rounded-2xl bg-gradient-to-br from-red-50 to-red-100 p-8 lg:p-12">
-                <div className="text-center">
-                  <div className="mb-4">
+                <div className="">
+                  {/* <div className="mb-4">
                     <span className="text-2xl text-gray-500 line-through">
                       ₹5,000/-
                     </span>
@@ -508,7 +508,7 @@ export const TheDataEntryPage = () => {
                   </div>
                   <div className="mb-8 text-gray-600">
                     *Special pricing for group training programs
-                  </div>
+                  </div> */}
 
                   <div className="mb-8 space-y-3">
                     {pricingFeatures.slice(0, 4).map((feature, index) => (

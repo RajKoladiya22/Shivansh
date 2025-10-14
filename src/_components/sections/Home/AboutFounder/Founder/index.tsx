@@ -15,7 +15,7 @@ export const TheFounder = () => {
   useEffect(() => {
     if (isInView) {
       let start = 0;
-      const end = 14;
+      const end = 18;
       const duration = 2000;
       // const incrementTime = 50;
 
@@ -44,7 +44,8 @@ export const TheFounder = () => {
             <SectionHeader
               heading="ABOUT THE FOUNDER"
               headingText="Hello, We're Shivansh Infosys"
-              headingDescription="We are a digital agency with a team of passionate individuals. The journey started with a single man's dream to build a company providing remarkable IT services."
+              headingDescription="Mehul Patel, founder of a successful business solutions firm, leads a team of 13 experts, offering 400+ solutions to 3,000+ clients. His leadership focuses on growth for both customers and team members.
+"
               // headingTextClassName="pb-10"
             />
           </motion.div>

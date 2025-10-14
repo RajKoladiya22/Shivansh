@@ -1016,9 +1016,9 @@ export const TeamData = [
 ];
 
 export const teamFacts = [
-  "50+ Projects Delivered",
-  "7 Creative Minds",
-  "5 Years of Innovation",
+  "400+ Projects Delivered",
+  "13 Creative Minds",
+  "18 Years of Innovation",
   "100% Client Satisfaction",
-  "24/7 Support Available",
+  "On Time Support Available",
 ];

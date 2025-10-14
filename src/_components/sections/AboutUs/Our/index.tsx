@@ -26,7 +26,7 @@ const CertificationBadge: React.FC<{ title: string; subtitle: string }> = ({
     <div className="bg-gray-300 mb-4 flex h-16 w-16 items-center justify-center rounded-lg">
       {/* <Award className="h-8 w-8 text-white" /> */}
       <Image
-        src="/images/industry_logo/tally.avif"
+        src="/images/industry_logo/tally_white.jpg"
         alt="Tally Logo"
         width={64}
         height={64}
@@ -77,19 +77,19 @@ export const OurSection: React.FC = () => {
             />
             <StatCard
               icon={<Shield />}
-              number="280+"
+              number="500+"
               label="Success Stories"
               color="bg-red-200"
             />
             <StatCard
               icon={<Brain />}
-              number="15+"
+              number="18+"
               label="Years of Experience"
               color="bg-red-200"
             />
             <StatCard
               icon={<Zap />}
-              number="99+"
+              number="99.9+"
               label="Client Satisfaction"
               color="bg-red-200"
             />
@@ -129,13 +129,9 @@ export const OurSection: React.FC = () => {
               Our Certifications
             </h3>
             <p className="mx-auto max-w-4xl text-gray-600">
-              As an <span className="font-semibold">ISO-certified</span>{" "}
-              company, we proudly hold{" "}
-              <span className="font-semibold">ISO 9001:2015</span> for
-              unparalleled quality management and{" "}
-              <span className="font-semibold">ISO 27001:2022</span> for top-tier
-              information security. Your success and data security are at the
-              core of everything we do.
+
+              We are Certify that <span className="font-semibold">Shivansh Infosys</span>{" "}
+              is Reconised as a <span className="font-semibold">3 Starr Sakes & Implementation Partner</span>{" "}
             </p>
           </div>
 

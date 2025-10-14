@@ -48,7 +48,7 @@ export const AboutUsLeftContent = () => (
       {/* Stats Section */}
       <div className="mt-10 grid grid-cols-2 gap-4">
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
-          <div className="text-2xl font-bold">14+</div>
+          <div className="text-2xl font-bold">18+</div>
           <div className="text-xs opacity-80">Years Experience</div>
         </div>
         <div className="rounded-lg bg-red-900/40 p-3 text-center">
