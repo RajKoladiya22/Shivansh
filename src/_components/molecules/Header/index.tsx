@@ -684,11 +684,11 @@ const AnimatedLogo = memo(() => (
         />
       </div>
       <div className="min-w-0 flex-1">
-        <h2 className="text-lg leading-tight font-bold sm:text-xl lg:text-2xl">
+        <h2 className="text-lg leading-tight font-bold sm:text-xl lg:text-[22px]">
           <span className="text-[#C50202]">SHIVANSH</span>{" "}
           <span className="text-gray-900">INFOSYS</span>
         </h2>
-        <p className="text-xs leading-tight font-medium text-gray-500 lg:text-sm">
+        <p className="text-xs leading-tight font-medium text-gray-500 lg:text-[13px]">
           <span className="whitespace-nowrap">Quick Response</span>
           <span className="mx-1">-</span>
           <span className="whitespace-nowrap">Quick Support</span>
@@ -731,7 +731,7 @@ const AnimatedContactInfo = memo(
             </span>
             <a
               href={`tel:${PHONE_NUMBER}`}
-              className={`${isMobile ? "block text-sm" : "text-lg"} font-bold text-gray-800 transition-colors duration-200 hover:text-red-600`}
+              className={`${isMobile ? "block text-sm" : "lg:text-[17px]"} font-bold text-gray-800 transition-colors duration-200 hover:text-red-600`}
               aria-label={`Call us at ${PHONE_NUMBER}`}
             >
               {PHONE_NUMBER}
