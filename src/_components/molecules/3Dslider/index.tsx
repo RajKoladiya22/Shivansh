@@ -532,7 +532,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
 
                       {/* Decorative corner accent */}
                       <div
-                        className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-400/30 to-transparent transition-all duration-500 ${
+                        className={`absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-blue-400/30 to-transparent transition-all duration-100 ${
                           isHovered ? "opacity-100 scale-100" : "opacity-0 scale-50"
                         }`}
                       />
