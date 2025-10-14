@@ -526,7 +526,7 @@ export const Hero2 = () => {
               </div>
             </div>
             {/* Main Heading */}
-            <div className="mb-6 text-center sm:mb-8 md:mb-12">
+            <div className="mb-6 text-center sm:mb-8 md:mb-8">
               <h1
                 className={`${hero_headline_font} mb-4 text-2xl leading-tight font-bold sm:mb-6 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl`}
               >
