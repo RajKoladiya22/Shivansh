@@ -502,7 +502,8 @@ export const Hero2 = () => {
 
   return (
     <>
-      <section className="relative flex h-[100vh] flex-col bg-white ">
+    // h-[100vh]
+      <section className="relative flex  flex-col bg-white "> 
         {/* Header Content */}
         <div className="flex-shrink-0 pt-18 sm:py-12 md:py-16 lg:py-20 xl:pt-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
