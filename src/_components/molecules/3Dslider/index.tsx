@@ -431,7 +431,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
 
         <div
           ref={containerRef} //h-[28rem] md:h-[32rem] lg:h-[36rem]
-          className="relative w-full overflow-hidden h-[28rem] md:h-[310px] lg:h-[280px]  flex items-center"
+          className="relative w-full overflow-hidden h-[28rem] md:h-[310px] lg:h-[380px]  flex items-center"
           onMouseEnter={handleSliderEnter}
           onMouseLeave={handleSliderLeave}
           onTouchStart={handleTouchStart}
@@ -481,7 +481,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                     }}
                   >
                     {/* Main Image Container */}
-                    <div className="relative w-full h-[250px] md:h-[290px] lg:h-[250px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                    <div className="relative w-full h-[250px] md:h-[290px] lg:h-[350px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                       <Image
                         width={280}
                         height={420}
