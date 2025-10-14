@@ -439,8 +439,8 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
           onTouchEnd={handleTouchEnd}
         >
           {/* Gradient Overlays for smooth edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-7 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-7 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none" />
 
           <div
             ref={innerRef}
@@ -481,7 +481,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                     }}
                   >
                     {/* Main Image Container */}
-                    <div className="relative w-full h-[320px] md:h-[380px] lg:h-[420px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                    <div className="relative w-full h-[280px] md:h-[340px] lg:h-[390px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                       <Image
                         width={280}
                         height={420}
@@ -532,7 +532,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
 
                       {/* Decorative corner accent */}
                       <div
-                        className={`absolute top-0 right-0 w-10 h-10 bg-gradient-to-bl from-blue-400/30 to-transparent transition-all duration-500 ${
+                        className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-400/30 to-transparent transition-all duration-500 ${
                           isHovered ? "opacity-100 scale-100" : "opacity-0 scale-50"
                         }`}
                       />
