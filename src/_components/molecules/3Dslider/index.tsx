@@ -426,7 +426,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
   };
 
   return (
-    <section aria-label="Team carousel" className="w-full py-12">
+    <section aria-label="Team carousel" className="w-full py-12 overflow-hidden" >
       <div className="mx-auto">
 
         <div
@@ -458,7 +458,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                       itemRefs.current[idx] = el;
                     }
                   }}
-                  className={`flex-shrink-0 transform transition-all duration-500 ease-out ${
+                  className={`flex-shrink-0 transform transition-all duration-500 ease-out overflow-hidden ${
                     isHovered ? "z-20 scale-110 -rotate-1" : "scale-100 rotate-0"
                   }`}
                   style={{
@@ -481,7 +481,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                     }}
                   >
                     {/* Main Image Container */}
-                    <div className="relative w-full h-[280px] md:h-[340px] lg:h-[390px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                    <div className="relative w-full h-[250px] md:h-[290px] lg:h-[280px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                       <Image
                         width={280}
                         height={420}
