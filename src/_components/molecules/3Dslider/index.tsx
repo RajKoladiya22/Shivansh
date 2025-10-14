@@ -431,7 +431,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
 
         <div
           ref={containerRef} //h-[28rem] md:h-[32rem] lg:h-[36rem]
-          className="relative w-full overflow-hidden h-[280px] md:h-[310px] lg:h-[280px]  flex items-center"
+          className="relative w-full overflow-hidden h-[28rem] md:h-[310px] lg:h-[280px]  flex items-center"
           onMouseEnter={handleSliderEnter}
           onMouseLeave={handleSliderLeave}
           onTouchStart={handleTouchStart}
