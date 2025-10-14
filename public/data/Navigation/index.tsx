@@ -6,7 +6,7 @@ export const navItems = [
   { id: 5, label: "Team", href: "/team" },
   { id: 6, label: "Blog", href: "/blog" },
   { id: 7, label: "Gallery", href: "/gallery" },
-  { id: 8, label: "Career", href: "/career" },
+  // { id: 8, label: "Career", href: "/career" },
   // { label: "Contact", href: "/contact" },
 ];
 
