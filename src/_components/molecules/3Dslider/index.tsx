@@ -481,7 +481,7 @@ export default function RotatingTeamSlider({ members, speed = 60 }: Props) {
                     }}
                   >
                     {/* Main Image Container */}
-                    <div className="relative w-75 h-[250px] md:h-[290px] lg:h-[250px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                    <div className="relative w-full h-[250px] md:h-[290px] lg:h-[250px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                       <Image
                         width={280}
                         height={420}
