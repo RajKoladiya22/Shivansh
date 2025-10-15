@@ -136,10 +136,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
   // don't try to build images array until product is loaded
   const productImages = product
     ? [
-      product.image,
-      `${product.image}&variant=1`,
-      `${product.image}&variant=2`,
-      `${product.image}&variant=3`,
+      getYouTubeThumbnail(product.detailedVideoId),
+      `${getYouTubeThumbnail(product.detailedVideoId)}&variant=1`,
+      `${getYouTubeThumbnail(product.detailedVideoId)}&variant=2`,
+      `${getYouTubeThumbnail(product.detailedVideoId)}&variant=3`,
     ]
     : [];
 
@@ -420,7 +420,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`h-5 w-5 ${i < Math.floor(product.review.averageRating)
+                        className={`h-5 w-5 ${i < Math.floor(product.review?.averageRating!)
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-300"
                           }`}
@@ -428,10 +428,10 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     ))}
                   </div>
                   <span className="text-sm font-medium text-gray-700">
-                    {product.review.averageRating}
+                    {product.review?.averageRating}
                   </span>
                   <span className="text-sm text-gray-500">
-                    ({product.review.reviewCount} reviews)
+                    ({product.review?.reviewCount} reviews)
                   </span>
                 </div>
               </div>
@@ -623,13 +623,13 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <div className="flex flex-col items-center md:flex-row md:items-start md:justify-between">
                     <div className="mb-6 text-center md:mb-0 md:text-left">
                       <div className="text-6xl font-bold text-[#C50202]">
-                        {product.review.averageRating}
+                        {product.review?.averageRating}
                       </div>
                       <div className="mb-2 flex justify-center md:justify-start">
                         {Array.from({ length: 5 }, (_, i) => (
                           <Star
                             key={i}
-                            className={`h-6 w-6 ${i < Math.floor(product.review.averageRating)
+                            className={`h-6 w-6 ${i < Math.floor(product.review?.averageRating!)
                                 ? "fill-yellow-400 text-yellow-400"
                                 : "text-gray-300"
                               }`}
@@ -637,7 +637,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         ))}
                       </div>
                       <p className="text-gray-600">
-                        Based on {product.review.reviewCount} reviews
+                        Based on {product.review?.reviewCount} reviews
                       </p>
                     </div>
 
@@ -709,7 +709,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         Customer Reviews
                       </h3>
 
-                      {product.review.allReviews
+                      {product.review?.allReviews
                         .slice(0, visibleReviewsCount)
                         .map((review, index) => (
                           <div
@@ -758,7 +758,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
                       {/* Load More Button */}
                       {visibleReviewsCount <
-                        product.review.allReviews.length && (
+                        (product.review?.allReviews?.length ?? 0) && (
                           <div className="mt-6 text-center">
                             <button aria-label="Click"
                               onClick={() =>
@@ -770,7 +770,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                               {/* (
                             {Math.min(
                               5,
-                              product.review.allReviews.length -
+                              product.review?.allReviews.length -
                                 visibleReviewsCount,
                             )}{" "}
                             more) */}
@@ -780,8 +780,8 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
                       {/* Show fewer reviews button when all are loaded */}
                       {visibleReviewsCount >=
-                        product.review.allReviews.length &&
-                        product.review.allReviews.length > 5 && (
+                        (product.review?.allReviews?.length ?? 0) &&
+                        (product.review?.allReviews?.length ?? 0) > 5 && (
                           <div className="mt-6 text-center">
                             <button aria-label="Click"
                               onClick={() => setVisibleReviewsCount(5)}

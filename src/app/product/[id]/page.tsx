@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 // import { ProductsList } from "public/data/Product";
 import ProductsList from 'public/data/Product/products.json';
+import { getYouTubeThumbnail } from "src/_components/molecules/Thumbnail";
 import { TheProductDetailPage } from "src/_components/sections/Product/ProductDetail";
 import type { Product } from "src/_components/sections/types/product.type";
 import { BASE_URL, SITE_NAME } from "src/config/constants";
@@ -56,7 +57,7 @@ export async function generateMetadata({
 
   return {
     title: `${product.title} | ${priceInfo} | ${SITE_NAME}`,
-    description: `${product.description} ${product.features.slice(0, 3).join(", ")}. Rated ${product.review.averageRating}/5 by ${product.review.reviewCount} customers. ${product.salePrice < product.actualPrice ? `Save ₹${(product.actualPrice - product.salePrice).toLocaleString()}!` : "Best price guaranteed."}`,
+    description: `${product.description} ${product.features.slice(0, 3).join(", ")}. Rated ${product.review?.averageRating}/5 by ${product.review?.reviewCount} customers. ${product.salePrice < product.actualPrice ? `Save ₹${(product.actualPrice - product.salePrice).toLocaleString()}!` : "Best price guaranteed."}`,
     keywords: [
       product.title.toLowerCase(),
       ...product.tags,
@@ -78,34 +79,34 @@ export async function generateMetadata({
     ],
     openGraph: {
       title: `${product.title} - ${priceInfo}`,
-      description: `${product.description} Professional grade ${product.category.map(cat => cat.toLowerCase()).join(', ')} for ${product.industry.map(ind => ind.toLowerCase()).join(', ')}. Rated ${product.review.averageRating}⭐ by ${product.review.reviewCount} customers.`,
+      description: `${product.description} Professional grade ${product.category.map(cat => cat.toLowerCase()).join(', ')} for ${product.industry.map(ind => ind.toLowerCase()).join(', ')}. Rated ${product.review?.averageRating}⭐ by ${product.review?.reviewCount} customers.`,
       url: `${BASE_URL}/product/${product.id}`,
       type: "website",
       locale: "en_IN",
       siteName: SITE_NAME,
       images: [
         {
-          url: product.image,
+          url: getYouTubeThumbnail(product.detailedVideoId),
           width: 1200,
           height: 630,
           alt: `${product.title} - Tally Solution by ${SITE_NAME}`,
         },
         ...(product.detailedVideoId
           ? [
-              {
-                url: `https://img.youtube.com/vi/${product.detailedVideoId}/maxresdefault.jpg`,
-                width: 1280,
-                height: 720,
-                alt: `${product.title} Demo Video`,
-              },
-            ]
+            {
+              url: `https://img.youtube.com/vi/${product.detailedVideoId}/maxresdefault.jpg`,
+              width: 1280,
+              height: 720,
+              alt: `${product.title} Demo Video`,
+            },
+          ]
           : []),
       ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${product.title} - ${priceInfo}`,
-      description: `${product.description.substring(0, 120)}... Rated ${product.review.averageRating}⭐`,
+      description: `${product.description.substring(0, 120)}... Rated ${product.review?.averageRating}⭐`,
       // images: [product.image],
       images: `https://img.youtube.com/vi/${product.detailedVideoId}/maxresdefault.jpg`,
       site: "@shivanshinfosys",
@@ -131,7 +132,7 @@ export async function generateMetadata({
       "product:availability": "in stock",
       "product:condition": "new",
       "product:retailer_item_id": product.id.toString(),
-      "og:image:secure_url": product.image,
+      "og:image:secure_url": getYouTubeThumbnail(product.detailedVideoId),
       "article:author": SITE_NAME,
       "article:publisher": BASE_URL,
     },
@@ -168,9 +169,9 @@ export default async function ProductDetailPage({
     name: product.title,
     description: product.description,
     image: [
-      product.image,
-      `${product.image}?w=800&h=600`,
-      `${product.image}?w=400&h=300`,
+      getYouTubeThumbnail(product.detailedVideoId),
+      `${getYouTubeThumbnail(product.detailedVideoId)}?w=800&h=600`,
+      `${getYouTubeThumbnail(product.detailedVideoId)}?w=400&h=300`,
     ],
     brand: {
       "@type": "Brand",
@@ -208,8 +209,8 @@ export default async function ProductDetailPage({
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: product.review.averageRating,
-      reviewCount: product.review.reviewCount,
+      ratingValue: product.review?.averageRating,
+      reviewCount: product.review?.reviewCount,
       bestRating: 5,
       worstRating: 1,
     },
@@ -234,7 +235,7 @@ export default async function ProductDetailPage({
         "@type": "VideoObject",
         name: `${product.title} - Product Demo`,
         description: `Watch ${product.title} in action`,
-        thumbnailUrl: product.image,
+        thumbnailUrl: getYouTubeThumbnail(product.detailedVideoId),
         embedUrl: `https://www.youtube.com/embed/${product.introVideoId}`,
         uploadDate: product.createdAt,
       },
@@ -307,7 +308,7 @@ export default async function ProductDetailPage({
         name: `What do customers say about ${product.title}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `${product.title} has received excellent reviews with an average rating of ${product.review.averageRating} out of 5 stars from ${product.review.reviewCount} verified customers. Users particularly appreciate its reliability and professional-grade performance.`,
+          text: `${product.title} has received excellent reviews with an average rating of ${product.review?.averageRating} out of 5 stars from ${product.review?.reviewCount} verified customers. Users particularly appreciate its reliability and professional-grade performance.`,
         },
       },
     ],
@@ -323,7 +324,7 @@ export default async function ProductDetailPage({
     },
     reviewRating: {
       "@type": "Rating",
-      ratingValue: product.review.averageRating,
+      ratingValue: product.review?.averageRating,
       bestRating: 5,
     },
     author: {

@@ -13,7 +13,6 @@ export interface ReviewItem {
 export interface Review {
   averageRating: number;
   reviewCount: number;
-  latestReviews?: ReviewItem[];
   allReviews: ReviewItem[]; // Add this for all reviews
 }
 
@@ -30,7 +29,6 @@ export interface Product {
   description: string;
   actualPrice: number;
   salePrice: number;
-  image: string;
   introVideoId: string;
   detailedVideoId: string;
   category: string[];
@@ -41,7 +39,7 @@ export interface Product {
   features: string[];
   benefits: string[];
   specs?: ProductSpec[];
-  review: Review;
+  review?: Review;
   tags: string[];
   relatedProductIds: number[];
   isActive?: boolean;

@@ -31,12 +31,12 @@ const CertificationBadge: React.FC<{ title: string; subtitle: string }> = ({
         width={64}
         height={64}
         className="inset-0 object-contain"
-        // style={{
-        //   margin: "auto",
-        //   top: "60%",
-        //   left: "50%",
-        //   transform: "translate(-50%, -40%)",
-        // }}
+      // style={{
+      //   margin: "auto",
+      //   top: "60%",
+      //   left: "50%",
+      //   transform: "translate(-50%, -40%)",
+      // }}
       />
     </div>
     <h4 className="text-center font-bold text-gray-900">{title}</h4>
@@ -131,7 +131,7 @@ export const OurSection: React.FC = () => {
             <p className="mx-auto max-w-4xl text-gray-600">
 
               We are Certify that <span className="font-semibold">Shivansh Infosys</span>{" "}
-              is Reconised as a <span className="font-semibold">3 Starr Sakes & Implementation Partner</span>{" "}
+              is Reconised as a <span className="font-semibold">3 Star Sale & Implementation Partner</span>{" "}
             </p>
           </div>
 

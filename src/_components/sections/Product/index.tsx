@@ -168,7 +168,7 @@ export const TheProductPage = () => {
     setPriceRange({ min: "", max: "" });
     setSortBy("all");
   };
-
+ 
   // Fixed: Proper inquiry handling
   const handleInquiryClick = (product: Product) => {
     setSelectedProduct(product);

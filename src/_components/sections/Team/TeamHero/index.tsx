@@ -144,19 +144,19 @@ export const TeamSection = () => {
           {[
             {
               icon: <Users className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />,
-              number: "50+",
+              number: "14",
               label: "Team Members",
               color: "from-blue-500 to-blue-600",
             },
             {
               icon: <Award className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />,
-              number: "15+",
+              number: "17+",
               label: "Years Experience",
               color: "from-green-500 to-green-600",
             },
             {
               icon: <Target className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />,
-              number: "600+",
+              number: "7000+",
               label: "Projects Delivered",
               color: "from-purple-500 to-purple-600",
             },
@@ -164,8 +164,8 @@ export const TeamSection = () => {
               icon: (
                 <Lightbulb className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
               ),
-              number: "25+",
-              label: "Innovation Awards",
+              number: "1000+",
+              label: "Testimonials",
               color: "from-orange-500 to-orange-600",
             },
           ].map((stat, index) => (
@@ -635,7 +635,7 @@ export const TeamSection = () => {
                         >
                           {selectedMember.position}
                         </p>
-                        <div className="flex flex-col items-center justify-center space-y-1 text-xs text-gray-600 sm:flex-row sm:space-y-0 sm:space-x-4 sm:text-sm">
+                        {/* <div className="flex flex-col items-center justify-center space-y-1 text-xs text-gray-600 sm:flex-row sm:space-y-0 sm:space-x-4 sm:text-sm">
                           <div className="flex items-center">
                             <MapPin className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
                             {selectedMember.location}
@@ -644,7 +644,7 @@ export const TeamSection = () => {
                             <Calendar className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
                             Since {selectedMember.joinDate}
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -780,7 +780,7 @@ export const TeamSection = () => {
                               {selectedMember.social.phone}
                             </a>
                           )}
-                          <div className="flex space-x-2 pt-2 sm:space-x-3">
+                          {/* <div className="flex space-x-2 pt-2 sm:space-x-3">
                             {selectedMember.social.linkedin && (
                               <a
                                 href={selectedMember.social.linkedin}
@@ -805,7 +805,7 @@ export const TeamSection = () => {
                                 <FaTwitter className="h-4 w-4 sm:h-5 sm:w-5" />
                               </a>
                             )}
-                          </div>
+                          </div> */}
                         </div>
                       </div>
 
