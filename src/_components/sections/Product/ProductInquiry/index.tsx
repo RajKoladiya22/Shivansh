@@ -162,10 +162,10 @@ export const ProductInquiryPopup: React.FC<ProductInquiryPopupProps> = ({
                   <div className="flex items-center gap-1 rounded-full bg-white px-3 py-1.5 shadow-md">
                     <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     <span className="text-sm font-medium">
-                      {product.review.averageRating}
+                      {product.review?.averageRating}
                     </span>
                     <span className="text-xs text-gray-500">
-                      ({product.review.reviewCount})
+                      ({product.review?.reviewCount})
                     </span>
                   </div>
                 </div>

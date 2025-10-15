@@ -44,7 +44,7 @@ export const ProductSocialShareModal = ({
 
   // Enhanced share content for products
   const shareTitle = `${product.title} - ${hasDiscount ? `${discountPercentage}% OFF` : "Best Price"}`;
-  const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ""}\n⭐ ${product.review.averageRating}/5 (${product.review.reviewCount} reviews)\n🏷️ ${product.category.map(cat => cat.toLowerCase()).join(', ')} | ${product.industry.map(ind => ind.toLowerCase()).join(', ')}`;
+  const shareText = `${product.description}\n\n💰 Price: ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (was ₹${product.actualPrice.toLocaleString()})` : ""}\n⭐ ${product.review?.averageRating}/5 (${product.review?.reviewCount} reviews)\n🏷️ ${product.category.map(cat => cat.toLowerCase()).join(', ')} | ${product.industry.map(ind => ind.toLowerCase()).join(', ')}`;
   const hashtags = [
     ...product.tags,
     product.category.map(cat => cat.toLowerCase()).join(', '),
@@ -57,7 +57,7 @@ export const ProductSocialShareModal = ({
   // Social media share URLs with product-specific content
   const shareLinks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareTitle + "\n\n" + shareText)}`,
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`${shareTitle}\n\n${product.description.substring(0, 100)}...\n\n💰 ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (${discountPercentage}% OFF!)` : ""}\n⭐ ${product.review.averageRating}/5`)}&hashtags=${encodeURIComponent(hashtags)}`,
+    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(`${shareTitle}\n\n${product.description.substring(0, 100)}...\n\n💰 ₹${product.salePrice.toLocaleString()}${hasDiscount ? ` (${discountPercentage}% OFF!)` : ""}\n⭐ ${product.review?.averageRating}/5`)}&hashtags=${encodeURIComponent(hashtags)}`,
     whatsapp: `https://wa.me/?text=${encodeURIComponent(`🛍️ *${shareTitle}*\n\n${shareText}\n\n${shareUrl}\n\nCheck it out!`)}`,
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareTitle)}&summary=${encodeURIComponent(shareText)}`,
     instagram: `https://instagram.com/`, // Instagram doesn't support direct sharing with URL
@@ -161,8 +161,8 @@ export const ProductSocialShareModal = ({
                   <div className="flex items-center gap-1">
                     <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                     <span className="text-xs text-gray-600">
-                      {product.review.averageRating} (
-                      {product.review.reviewCount})
+                      {product.review?.averageRating} (
+                      {product.review?.reviewCount})
                     </span>
                   </div>
                   <div className="flex items-center gap-1">
