@@ -420,7 +420,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`h-5 w-5 ${i < Math.floor(product.review?.averageRating!)
+                        className={`h-5 w-5 ${i < Math.floor(product.review?.averageRating ?? 0)
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-300"
                           }`}
@@ -629,7 +629,7 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         {Array.from({ length: 5 }, (_, i) => (
                           <Star
                             key={i}
-                            className={`h-6 w-6 ${i < Math.floor(product.review?.averageRating!)
+                            className={`h-6 w-6 ${i < Math.floor(product.review?.averageRating ?? 0)
                                 ? "fill-yellow-400 text-yellow-400"
                                 : "text-gray-300"
                               }`}
