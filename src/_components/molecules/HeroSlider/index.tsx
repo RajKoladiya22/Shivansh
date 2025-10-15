@@ -78,15 +78,11 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const [windowSize, setWindowSize] = useState({ width: 1200, height: 800 });
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  // const [isLoading, setIsLoading] = useState(true);
-
   // Performance & control refs
   const rafIdRef = useRef<number | null>(null);
   const rotationValueRef = useRef<number>(0);
   const speedTweenRef = useRef<gsap.core.Tween | null>(null);
-  const autoRotateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
+  const autoRotateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const speedControllerRef = useRef({ value: 0 });
   const isActiveRef = useRef<boolean>(true);
   const isPausedRef = useRef<boolean>(false);
@@ -98,7 +94,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const lastPointerTimeRef = useRef<number | null>(null);
   const velocityRef = useRef(0);
 
-  // Prefers reduced motion (set in effect)
+  // Prefers reduced motion
   const prefersReducedMotionRef = useRef(false);
 
   const carouselConfig = useMemo(
@@ -106,12 +102,11 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     [config],
   );
 
-  // compute isMobile from windowSize (kept up-to-date via resize listener)
+  // Compute responsive breakpoints
   const isMobile = windowSize.width < 768;
   const isTablet = windowSize.width >= 768 && windowSize.width < 1024;
-  const isDesktop = windowSize.width >= 1024;
 
-  // Dynamic image dimensions based on screen size and slide dimensions
+  // Dynamic image dimensions
   const getImageDimensions = useMemo(() => {
     const slideHeight = carouselConfig.slideHeight;
     const anglePerSlide = 360 / carouselConfig.slidesInRing;
@@ -134,7 +129,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       height = slideHeight;
     }
 
-    // Ensure minimum quality for sharp images
+    // Ensure minimum quality
     const minWidth = 400;
     const minHeight = 400;
 
@@ -147,8 +142,8 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const carouselStyles = useMemo(
     () =>
       ({
-        "--viewport-height": "clamp(30rem, 60vh, 50rem)", // Responsive height
-        "--viewport-height-m": "clamp(25rem, 50vh, 40rem)", // Mobile height
+        "--viewport-height": "clamp(30rem, 60vh, 50rem)",
+        "--viewport-height-m": "clamp(25rem, 50vh, 40rem)",
         "--perspective": "clamp(800px, 100vw, 1400px)",
         "--perspective-m": "700px",
         "--block-offset": "clamp(-12rem, -15vh, -18rem)",
@@ -162,7 +157,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     [fadeout],
   );
 
-  // -- Guard & processed slides (avoid division by zero)
+  // Process slides
   const processedSlides = useMemo(() => {
     if (!slides || slides.length === 0) return [];
     const originalSlideCount = slides.length;
@@ -179,11 +174,10 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       }
     }
 
-    // Ensure every slide has an id to use as React key
     return processed.map((s, i) => ({ ...s, id: s.id ?? `slide-${i}` }));
   }, [slides, carouselConfig.slidesInRing]);
 
-  // normalize helper
+  // Normalize angle helper
   const normalize = (a: number) => ((a % 360) + 360) % 360;
 
   // Rotation update (RAF)
@@ -215,7 +209,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       speedTweenRef.current.kill();
     }
 
-    // Use tween on controller; RAF started in onUpdate
     speedTweenRef.current = gsap.to(speedControllerRef.current, {
       value: carouselConfig.rotationSpeed,
       duration: carouselConfig.pauseEaseDuration,
@@ -275,7 +268,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     startAutoRotation,
   ]);
 
-  // goToIndex snaps to a slide index (index is in [0, slideCount))
+  // Navigation
   const goToIndex = useCallback(
     (index: number) => {
       const slideCount =
@@ -288,7 +281,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       const k = Math.round((current - baseAngle) / 360);
       const target = baseAngle + 360 * k;
 
-      // Stop auto rotation while animating to index
       stopAutoRotation();
 
       const rotationObj = { value: rotationValueRef.current };
@@ -306,7 +298,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
           currentIndexRef.current = index % slideCount;
           setSelectedIndex(index % slideCount);
 
-          // small pause then resume auto rotation if allowed
           setTimeout(() => {
             isPausedRef.current = false;
             resumeAutoRotation();
@@ -338,7 +329,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     goToIndex(nextIndex);
   }, [goToIndex, processedSlides.length]);
 
-  // Tap / click handler: toggle selection on mobile
+  // Event handlers
   const handleSlideTap = useCallback(
     (index: number) => {
       if (selectedIndex === index) {
@@ -351,7 +342,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     [goToIndex, resumeAutoRotation, selectedIndex],
   );
 
-  // Mouse enter/leave handlers
   const handleContainerMouseEnter = useCallback(() => {
     if (!carouselConfig.pauseOnHover) return;
     if (autoRotateTimeoutRef.current) {
@@ -376,7 +366,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     resumeAutoRotation();
   }, [resumeAutoRotation]);
 
-  // Initialize slides state
+  // Initialize slides
   useEffect(() => {
     setAllSlides(
       processedSlides.map((slide, i) => ({
@@ -389,7 +379,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     );
   }, [processedSlides]);
 
-  // Setup main effect (positioning + entrance animation)
+  // Setup carousel positioning and animation
   useEffect(() => {
     if (!ringRef.current || !stageRef.current || allSlides.length === 0) return;
 
@@ -405,13 +395,9 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       (anglePerSlide - carouselConfig.slideSpacing) *
       (Math.PI / 180) *
       carouselConfig.radius;
-    const slideWidth = arcLength;
+    const slideWidth = Math.max(arcLength, getImageDimensions.width);
 
-    const computedSlideWidth = Math.round(arcLength);
-    const desiredSlideWidth = Math.max(computedSlideWidth, getImageDimensions.width)
-
-    // stage.style.width = `${slideWidth}px`;
-    stage.style.width = `${desiredSlideWidth}px`;
+    stage.style.width = `${slideWidth}px`;
     stage.style.height = `${carouselConfig.slideHeight}px`;
     stage.style.willChange = "transform";
 
@@ -428,10 +414,8 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       slideEl.style.transformStyle = "preserve-3d";
       slideEl.style.backfaceVisibility = "hidden";
 
-      // Positioning transform uses same sign as original code
       slideEl.style.transform = `rotateY(${index * -anglePerSlide}deg) translateZ(${-carouselConfig.radius}px)`;
       slideEl.style.transformOrigin = `50% 50% 0px`;
-
       slideEl.style.position = "absolute";
 
       const img = slideEl.querySelector("img");
@@ -441,7 +425,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       }
     });
 
-    // Entrance animations: respect prefers-reduced-motion
+    // Entrance animations
     const doEntrance =
       carouselConfig.entranceAnimation !== "none" &&
       !prefersReducedMotionRef.current;
@@ -489,7 +473,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       startAutoRotation();
     }
 
-    // cleanup on unmount
     return () => {
       isActiveRef.current = false;
       isPausedRef.current = true;
@@ -513,15 +496,13 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       if (ring) ring.style.willChange = "auto";
       if (stage) stage.style.willChange = "auto";
     };
-    // intentionally include allSlides and carouselConfig and startAutoRotation
-  }, [allSlides, carouselConfig, startAutoRotation]);
+  }, [allSlides, carouselConfig, startAutoRotation, getImageDimensions.width]);
 
-  // mount/unmount lifecycle and preferences
+  // Lifecycle and preferences
   useEffect(() => {
     isActiveRef.current = true;
     isPausedRef.current = false;
 
-    // prefers reduce motion
     if (typeof window !== "undefined" && "matchMedia" in window) {
       prefersReducedMotionRef.current = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
@@ -534,7 +515,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     };
   }, []);
 
-  // Resize listener to update windowSize (so isMobile is accurate)
+  // Resize listener
   useEffect(() => {
     const onResize = () =>
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
@@ -543,7 +524,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Keyboard navigation (focus must be on container)
+  // Keyboard navigation
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
@@ -553,7 +534,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
         e.preventDefault();
         next();
       } else if (e.key === " " || e.key === "Spacebar") {
-        // toggle pause/play
         e.preventDefault();
         if (isPausedRef.current) {
           resumeAutoRotation();
@@ -568,13 +548,12 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     [next, prev, resumeAutoRotation, stopAutoRotation],
   );
 
-  // Pointer / drag handlers for touch & mouse
+  // Pointer/drag handlers
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       const el = containerRef.current;
       if (!el) return;
 
-      // capture pointer for consistent move/up events
       (e.target as Element).setPointerCapture?.(e.pointerId);
 
       isDraggingRef.current = true;
@@ -582,7 +561,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       lastPointerTimeRef.current = e.timeStamp;
       velocityRef.current = 0;
 
-      // stop auto rotation while dragging
       stopAutoRotation();
     },
     [stopAutoRotation],
@@ -594,8 +572,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     const now = e.timeStamp;
     const deltaX = e.clientX - lastPointerXRef.current;
     const dt = Math.max(1, now - (lastPointerTimeRef.current ?? now));
-    // sensitivity: degree per pixel (tweakable)
-    const sensitivity = 0.35; // deg per px
+    const sensitivity = 0.35;
     const deltaDeg = deltaX * sensitivity;
 
     rotationValueRef.current += deltaDeg;
@@ -603,7 +580,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       ringRef.current.style.transform = `rotateY(${rotationValueRef.current}deg)`;
     }
 
-    // compute velocity (deg / ms)
     velocityRef.current = deltaDeg / dt;
 
     lastPointerXRef.current = e.clientX;
@@ -617,7 +593,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       lastPointerXRef.current = null;
       lastPointerTimeRef.current = null;
 
-      // snap to nearest slide
       const anglePerSlide = 360 / carouselConfig.slidesInRing;
       const slideCount =
         slideElementsRef.current?.length ?? processedSlides.length;
@@ -626,14 +601,11 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
         return;
       }
 
-      // compute nearest index (see analysis: -index*angle + rotation ≈ 0 => index ≈ rotation/angle)
       const current = normalize(rotationValueRef.current);
       let nearestIndex = Math.round(current / anglePerSlide) % slideCount;
       if (nearestIndex < 0) nearestIndex += slideCount;
 
       goToIndex(nearestIndex);
-
-      // resume rotation after a short delay using existing resumeAutoRotation
       resumeAutoRotation();
     },
     [
@@ -644,7 +616,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     ],
   );
 
-  // CSS styles for stage (simple)
   const CSSstyles = useMemo(
     () => ({
       base: {
@@ -657,7 +628,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`curved-carousel relative z-10 w-full overflow-visible select-none ${className}`}
+      className={`curved-carousel relative z-10 w-full overflow-visible select-none ${className} `}
       style={carouselStyles}
       onMouseEnter={handleContainerMouseEnter}
       onMouseLeave={handleContainerMouseLeave}
@@ -668,7 +639,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       role="region"
       aria-roledescription="carousel"
       aria-label="Curved image carousel"
-      tabIndex={0} // focusable for keyboard
+      tabIndex={0}
     >
       {/* Stage */}
       <div
@@ -685,7 +656,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
             <div
               key={slide.id}
               data-render-index={index}
-              className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-3xl"
+              className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-3xl shadow-xl"
               onMouseEnter={handleSlideMouseEnter}
               onMouseLeave={handleSlideMouseLeave}
               onClick={() =>
@@ -700,48 +671,33 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
                 }
               }}
             >
-              <Image
-                src={slide.src ?? "/images/STAFF/06.png"}
-                width={100}
-                height={100}
-                alt={slide.alt ?? slide.name ?? `Slide ${index + 1}`}
-                className="h-full w-full rounded-3xl object-cover transition-transform duration-300 group-hover:scale-105"
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src={slide.src ?? "/images/team/skeleton_1.png"}
+                  fill
+                  sizes="(max-width: 767px) 300px, (max-width: 1024px) 400px, 500px"
+                  quality={90}
+                  alt={slide.alt ?? slide.name ?? `Team Member ${index + 1}`}
+                  className="object-cover transition-all duration-500 group-hover:scale-105"
+                  style={{ 
+                    imageRendering: "auto", 
+                    transform: "translateZ(0)" 
+                  }}
+                  priority={index < 3}
+                />
+              </div>
 
-              <Image
-                src={slide.src ?? "/images/STAFF/06.png"}
-                // width={getImageDimensions.width}
-                // height={getImageDimensions.height}
-                fill
-                sizes="(max-width: 767px) 300px, (max-width: 1024px) 400px, 700px"
-                quality={85}
-                alt={slide.alt ?? slide.name ?? `Slide ${index + 1}`}
-                className={`} h-full w-full rounded-3xl object-cover transition-all duration-500 group-hover:scale-105`}
-                style={{ imageRendering: "auto", transform: "translateZ(0)" }}
-                priority={index < 3}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyLW4QIHDVJycIqqURWcoUFGV1hl/RGgdvvKIKmhpg2yYJK7gDJJtc15rVd2vQG5YSBE4JIqQUmghTWpq1vJJPCz8O8PZYXzltHgUKCKxmUIekzKoKOCKUSXMd9HZTXhZYTQWcvwqy6Uf7P8nJRTlJMIdLvqcWkiJSdEkx/PGFrW/5Br7h7P6K3VHJUaKbEUmgSDcGDSXh"
-              />
-
-              {/* Hover Overlay */}
-              <div
-                className={`absolute inset-0 flex flex-col justify-end rounded-3xl bg-gradient-to-b from-transparent via-black/70 to-black transition-opacity duration-400 ${
-                  selectedIndex === index ? "opacity-100" : "opacity-0"
-                } group-hover:opacity-100`}
-              >
-                <div
-                  className={`transform p-4 text-white transition-transform duration-500 ease-out md:p-5 lg:p-6`}
-                >
-                  <div className="space-y-2 md:space-y-3">
-                    <div>
-                      <h3 className="line-clamp-1 text-2xl font-bold md:text-5xl">
-                        {slide.name ?? `Team Member ${index + 1}`}
-                      </h3>
-                      <p className="text-xl font-medium text-white md:text-3xl">
-                        {slide.position ?? "Team Member"}
-                      </p>
-                      <div className="mt-2 h-0.5 w-40 bg-[var(--primery-color)]"></div>
-                    </div>
+              {/* Hover Overlay - Only shows on hover */}
+              <div className="absolute inset-0 flex flex-col justify-end rounded-3xl bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                <div className="transform p-4 text-white transition-all duration-500 ease-out md:p-6 translate-y-4 group-hover:translate-y-0">
+                  <div className="space-y-2">
+                    <h3 className="line-clamp-2 text-xl font-bold md:text-3xl lg:text-4xl">
+                      {slide.name ?? `Team Member ${index + 1}`}
+                    </h3>
+                    <p className="text-base font-medium text-white/90 md:text-xl lg:text-2xl">
+                      {slide.position ?? "Team Member"}
+                    </p>
+                    <div className="mt-2 h-0.5 w-20 bg-gradient-to-r from-blue-500 to-purple-500"></div>
                   </div>
                 </div>
               </div>
@@ -750,32 +706,30 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
         </div>
       </div>
 
-      <div className="pointer-events-none absolute -inset-4 z-30 flex sm:hidden">
-        {/* Left / Right buttons (center vertically) */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-4 md:px-6">
-          <button
-            type="button"
-            aria-label="Previous"
-            onClick={prev}
-            className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/50 p-3 text-white shadow-lg backdrop-blur transition-colors hover:bg-black/75 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30 md:h-14 md:w-14 md:p-4"
-          >
-            <span className="text-2xl leading-none select-none md:text-3xl">
-              ‹
-            </span>
-          </button>
+      {/* Navigation Buttons - Show on mobile only */}
+      {isMobile && (
+        <div className="pointer-events-none absolute inset-0 z-30 flex">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-4">
+            <button
+              type="button"
+              aria-label="Previous"
+              onClick={prev}
+              className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/50 text-white shadow-lg backdrop-blur transition-all hover:bg-black/75 hover:scale-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+            >
+              <span className="text-2xl leading-none select-none">‹</span>
+            </button>
 
-          <button
-            type="button"
-            aria-label="Next"
-            onClick={next}
-            className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/50 p-3 text-white shadow-lg backdrop-blur transition-colors hover:bg-black/75 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30 md:h-14 md:w-14 md:p-4"
-          >
-            <span className="text-2xl leading-none select-none md:text-3xl">
-              ›
-            </span>
-          </button>
+            <button
+              type="button"
+              aria-label="Next"
+              onClick={next}
+              className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/50 text-white shadow-lg backdrop-blur transition-all hover:bg-black/75 hover:scale-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30"
+            >
+              <span className="text-2xl leading-none select-none">›</span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       <style jsx>{`
         .curved-carousel {
@@ -786,27 +740,12 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
           mask-image: var(--fadeout);
           contain: layout style paint;
         }
+
         @media (max-width: 600px) {
           .curved-carousel {
             -webkit-mask-image: none;
             mask-image: none;
           }
-        }
-
-        .carousel-slide {
-          contain: layout style paint;
-        }
-
-        .carousel-slide img {
-          // image-rendering: -webkit-optimize-contrast;
-          // image-rendering: optimize-contrast;
-          // image-rendering: -webkit-optimize-contrast;
-          // image-rendering: optimize-contrast;
-          // image-rendering: crisp-edges;
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-          transform: translateZ(0);
-          will-change: transform;
         }
 
         @media (max-width: 767px) {
@@ -816,23 +755,15 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
           }
         }
 
-        /* Ensure buttons are always visible and properly positioned */
-        @media (max-width: 640px) {
-          .curved-carousel .absolute.bottom-6 {
-            bottom: 1rem;
-            padding: 0 1rem;
-          }
+        .carousel-slide {
+          contain: layout style paint;
+        }
 
-          .curved-carousel .absolute.bottom-6 > div {
-            flex-direction: column;
-            gap: 1rem;
-            width: 100%;
-          }
-
-          .curved-carousel .absolute.bottom-6 button {
-            width: 100%;
-            min-width: 200px;
-          }
+        .carousel-slide img {
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          will-change: transform;
         }
       `}</style>
     </div>

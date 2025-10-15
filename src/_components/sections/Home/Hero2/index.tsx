@@ -451,7 +451,7 @@
 import Link from "next/link";
 import { SERVICE } from "public/data/Navigation";
 import { teamMembers } from "public/data/Team";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useMemo } from "react";
 import {
   btn_color,
   hero_content_font,
@@ -461,6 +461,7 @@ import {
 
 
 import RotatingTeamSlider from "src/_components/molecules/3Dslider/index";
+import { CurvedCarousel, type CarouselConfig } from "src/_components/molecules/HeroSlider";
 
 export const Hero2 = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -500,10 +501,35 @@ export const Hero2 = () => {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
+  const curvedCarouselConfig = useMemo<Partial<CarouselConfig>>(
+    () => ({
+      slideHeight:
+        typeof window !== "undefined"
+          ? window.innerWidth < 1024
+            ? 450
+            : 525
+          : 650,
+      radius:
+        typeof window !== "undefined"
+          ? window.innerWidth < 1024
+            ? 800
+            : 1100
+          : 1100,
+
+      slidesInRing: 15,
+      autoRotate: true,
+      rotationSpeed: 0.15,
+      pauseOnHover: true,
+      entranceAnimation: "fadeUp",
+      fadeout: true,
+    }),
+    [typeof window !== "undefined" ? window.innerWidth : 0],
+  );
+
   return (
     <>
-    
-      <section className="relative flex  flex-col bg-white "> 
+
+      <section className="relative flex  flex-col bg-white ">
         {/* h-[100vh] */}
         {/* Header Content */}
         <div className="flex-shrink-0 pt-18 sm:py-12 md:py-16 lg:py-20 xl:pt-24">
@@ -559,7 +585,7 @@ export const Hero2 = () => {
                     onClick={handleYouTubeClick}
                   >
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="http:www.w3.org/2000/svg"
                       className="h-5 w-5"
                       viewBox="0 0 24 24"
                       fill="currentColor"
@@ -592,13 +618,30 @@ export const Hero2 = () => {
         </div>
 
         {/* Carousel Container - Responsive */}
-        <div className="mb-2 flex min-h-0 flex-1 items-center justify-center w-full">
+        <div className="mb-2 flex min-h-100 flex-1 items-center justify-center w-full">
           {/* <GSAPCarousel
           /> */}
-           {/* <App /> */}
-           <RotatingTeamSlider
+          {/* <App /> */}
+          {/* <RotatingTeamSlider
            members={teamMembers}
+            /> */}
+
+          {isMobile ? (
+            // Mobile Slider
+            <RotatingTeamSlider
+              members={teamMembers}
             />
+          ) : (
+            // Desktop Curved Carousel
+            <div className="max-w-8xl relative w-full">
+              <CurvedCarousel
+                slides={teamMembers}
+                config={curvedCarouselConfig}
+                fadeout={true}
+                className="w-full"
+              />
+            </div>
+          )}
         </div>
       </section>
     </>
