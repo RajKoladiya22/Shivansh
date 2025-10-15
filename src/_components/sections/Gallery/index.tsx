@@ -1,19 +1,22 @@
 "use client";
 
 import React, { useState, useCallback, useMemo } from "react";
-import { Award, Users, Calendar, Trophy, HomeIcon } from "lucide-react";
+import { Award, Users, Calendar, Trophy, HomeIcon, Utensils, Ticket } from "lucide-react";
 import { GalleryItemComponent } from "./GalleryItem";
 import { Lightbox } from "./Lightbox";
 import GalleryHero from "./GalleryHero";
 import Link from "next/link";
 import { CAREER } from "public/data/Navigation";
+import { galleryItems } from "public/data/Gallery";
 
 export type CategoryKey =
   | "all"
   | "achievement"
   | "team-fun"
   | "event"
-  | "milestone";
+  | "milestone"
+  | "festival"
+  | "lunch";
 
 export interface GalleryItem {
   id: number;
@@ -26,113 +29,15 @@ export interface GalleryItem {
 }
 
 // Sample data with placeholder images
-export const galleryItems: GalleryItem[] = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Annual Team Retreat 2024",
-    description:
-      "Amazing team bonding experience at the mountains with adventure activities, strategic planning sessions, and unforgettable memories. Our team came together to strengthen relationships and align our vision for the future.",
-    category: "team-fun",
-    date: "March 2024",
-    tags: ["Team Building", "Adventure", "Planning", "Mountains"],
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Best Innovation Award 2024",
-    description:
-      "Recognized by the Industry Excellence Council for outstanding innovation in technology solutions. This award reflects our commitment to pushing boundaries and creating impactful solutions.",
-    category: "achievement",
-    date: "February 2024",
-    tags: ["Innovation", "Award", "Recognition", "Excellence"],
-  },
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Major Project Success",
-    description:
-      "Celebrating the successful launch of our flagship product that has impacted thousands of users. The entire team worked tirelessly to make this dream a reality.",
-    category: "milestone",
-    date: "January 2024",
-    tags: ["Success", "Launch", "Milestone", "Product"],
-  },
-  {
-    id: 4,
-    image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Annual Sports Championship",
-    description:
-      "Fun-filled sports activities promoting health, wellness, and healthy competition among teams. Cricket, football, badminton, and many more exciting games.",
-    category: "team-fun",
-    date: "December 2023",
-    tags: ["Sports", "Competition", "Health", "Wellness"],
-  },
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Regional Hackathon Champions",
-    description:
-      "Our development team won the prestigious regional hackathon with an innovative AI-powered solution. 48 hours of intense coding and creativity paid off brilliantly.",
-    category: "achievement",
-    date: "November 2023",
-    tags: ["Hackathon", "AI", "Championship", "Innovation"],
-  },
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Festival of Lights Celebration",
-    description:
-      "Colorful Diwali celebrations bringing everyone together. Traditional decorations, delicious food, cultural performances, and the joy of being together as one big family.",
-    category: "event",
-    date: "October 2023",
-    tags: ["Festival", "Culture", "Unity", "Tradition"],
-  },
-  {
-    id: 7,
-    image:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Monthly Team Lunch",
-    description:
-      "Regular team bonding over delicious food and great conversations. These monthly gatherings help us stay connected beyond work.",
-    category: "team-fun",
-    date: "September 2023",
-    tags: ["Bonding", "Food", "Conversations", "Monthly"],
-  },
-  {
-    id: 8,
-    image:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Client Appreciation Event",
-    description:
-      "Special event to thank our amazing clients for their trust and partnership. Building lasting relationships beyond business.",
-    category: "event",
-    date: "August 2023",
-    tags: ["Clients", "Appreciation", "Partnership", "Gratitude"],
-  },
-  {
-    id: 9,
-    image:
-      "https://images.unsplash.com/photo-1523908511403-7fc7b25592f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    title: "Team Certification Achievement",
-    description:
-      "Proud moment as our team members received industry certifications, showcasing their dedication to continuous learning and professional growth.",
-    category: "achievement",
-    date: "July 2023",
-    tags: ["Certification", "Learning", "Growth", "Professional"],
-  },
-];
+
 
 export const categoryIcons: Record<CategoryKey, React.ElementType> = {
   achievement: Award,
   "team-fun": Users,
   event: Calendar,
   milestone: Trophy,
+  lunch: Utensils,
+  festival: Ticket,
   all: HomeIcon,
 };
 
@@ -141,13 +46,17 @@ export const categoryColors: Record<CategoryKey, string> = {
   "team-fun": "bg-blue-500",
   event: "bg-purple-500",
   milestone: "bg-green-500",
+  lunch: "bg-orange-500",
+  festival: "bg-fuchsia-500",
   all: "bg‑red‑500",
 };
 
 export const categoryLabels: Record<Exclude<CategoryKey, "all">, string> = {
   achievement: "Achievements",
   "team-fun": "Team Fun",
+  lunch: "Lunch",
   event: "Events",
+  festival: "Festival",
   milestone: "Milestones",
 };
 

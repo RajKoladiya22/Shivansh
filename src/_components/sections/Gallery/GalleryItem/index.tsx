@@ -20,7 +20,7 @@ export const GalleryItemComponent = React.memo(
 
     return (
       <div
-      key={index}
+        key={index}
         className={`group relative transform cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl ${className}`}
         onClick={onClick}
       >
@@ -33,13 +33,13 @@ export const GalleryItemComponent = React.memo(
           </div>
         )}
         <Image
-        width={100}
-        height={100}
+          width={1200}
+          height={900}
+          quality={95}
           src={item.image}
           alt={item.title}
-          className={`w-full object-cover transition-all duration-700 group-hover:scale-110 ${className.includes("h-") ? "" : "h-64"} ${
-            imageLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`w-full object-cover transition-all duration-700 group-hover:scale-110 ${className.includes("h-") ? "" : "h-64"} ${imageLoaded ? "opacity-100" : "opacity-0"
+            }`}
           onLoad={() => setImageLoaded(true)}
           loading="lazy"
         />

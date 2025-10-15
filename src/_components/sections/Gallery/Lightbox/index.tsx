@@ -150,13 +150,13 @@ export function Lightbox({
               </div>
             )}
             <Image
-            width={100}
-            height={100}
+              width={1200} 
+              height={900} 
+              quality={95}
               src={currentItem.image}
               alt={currentItem.title}
-              className={`h-64 w-full object-cover transition-opacity duration-300 sm:h-96 lg:h-[600px] ${
-                imageLoaded ? "opacity-100" : "opacity-0"
-              }`}
+              className={`h-64 w-full object-cover transition-opacity duration-300 sm:h-96 lg:h-[600px] ${imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
               onLoad={() => setImageLoaded(true)}
             />
 
