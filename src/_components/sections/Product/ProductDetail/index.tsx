@@ -134,14 +134,14 @@ export const TheProductDetailPage: React.FC<ProductDetailPageProps> = ({
   //   console.log("product", product);
 
   // don't try to build images array until product is loaded
-  const productImages = product
-    ? [
-      getYouTubeThumbnail(product.detailedVideoId),
-      `${getYouTubeThumbnail(product.detailedVideoId)}&variant=1`,
-      `${getYouTubeThumbnail(product.detailedVideoId)}&variant=2`,
-      `${getYouTubeThumbnail(product.detailedVideoId)}&variant=3`,
-    ]
-    : [];
+  // const productImages = product
+  //   ? [
+  //     getYouTubeThumbnail(product.detailedVideoId),
+  //     `${getYouTubeThumbnail(product.detailedVideoId)}&variant=1`,
+  //     `${getYouTubeThumbnail(product.detailedVideoId)}&variant=2`,
+  //     `${getYouTubeThumbnail(product.detailedVideoId)}&variant=3`,
+  //   ]
+  //   : [];
 
   const relatedProducts = product
     ? ProductsList.filter((p) => product.relatedProductIds.includes(p.id))
