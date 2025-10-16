@@ -381,6 +381,70 @@ export const teamMembers: TeamMember[] = [
     ],
   },
   {
+    id: 14,
+    name: "Reshma Mistry",
+    position: "Graphic Designer",
+    department: "Operations",
+    bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
+    detailedBio:
+      "She brings creativity and innovation to our designs, ensuring that our brand and client projects always stand out with a professional touch..",
+    image: "/images/team/12.png",
+    src: "/images/STAFF/12.png",
+    experience: "12+ Years",
+    specialties: [
+      "Process Optimization",
+      "Client Success",
+      "Quality Management",
+      "Team Leadership",
+    ],
+    social: {
+      linkedin: "#",
+      twitter: "#",
+      email: "sneha@company.com",
+      phone: "+91 98765 43213",
+    },
+    achievements: [
+      "Operations Excellence",
+      "Client Success Champion",
+      "Quality Leadership Award",
+    ],
+    education: [
+      "MBA Operations - XLRI Jamshedpur",
+      "B.Tech Industrial Engineering - NIT Trichy",
+    ],
+    certifications: [
+      "Six Sigma Black Belt",
+      "Project Management Professional",
+      "Customer Success Manager",
+    ],
+    location: "Pune, India",
+    joinDate: "2012",
+    testimonials: [
+      {
+        id: 1,
+        clientName: "Karan Malhotra",
+        clientCompany: "ServiceFirst Group",
+        clientPosition: "COO",
+        testimonial:
+          "Sneha's operational expertise transformed our implementation process. What typically takes 6 months was completed in 2 months with zero issues. Her team's proactive support and attention to detail is outstanding.",
+        rating: 5,
+        projectType: "Process Optimization",
+        date: "2024",
+      },
+      {
+        id: 2,
+        clientName: "Meera Joshi",
+        clientCompany: "GrowthTech Solutions",
+        clientPosition: "Founder",
+        testimonial:
+          "Sneha's client-centric approach is refreshing. She personally ensured our team was comfortable with the new system and provided ongoing support that exceeded our expectations. Her leadership makes all the difference.",
+        rating: 5,
+        projectType: "Client Success",
+        date: "2023",
+      },
+    ],
+  },
+  {
     id: 9,
     name: "Litan Das",
     position: "Tally TDL & GST Expert",
@@ -765,15 +829,15 @@ export const teamMembers: TeamMember[] = [
     ],
   },
   {
-    id: 14,
-    name: "Reshma Mistry",
-    position: "Graphic Designer",
+    id: 15,
+    name: "Astha Pandya",
+    position: "Accountant",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "She brings creativity and innovation to our designs, ensuring that our brand and client projects always stand out with a professional touch..",
-    image: "/images/team/12.png",
-    src: "/images/STAFF/12.png",
+    image: "/images/team/14.png",
+    src: "/images/STAFF/14.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",
@@ -829,15 +893,15 @@ export const teamMembers: TeamMember[] = [
     ],
   },
   {
-    id: 15,
-    name: "Astha Pandya",
-    position: "Accountant",
+    id: 14,
+    name: "Reshma Mistry",
+    position: "Graphic Designer",
     department: "Operations",
     bio: "Operations excellence leader focused on process optimization and client success. Sneha drives operational efficiency and service quality.",
     detailedBio:
       "She brings creativity and innovation to our designs, ensuring that our brand and client projects always stand out with a professional touch..",
-    image: "/images/team/14.png",
-    src: "/images/STAFF/14.png",
+    image: "/images/team/12.png",
+    src: "/images/STAFF/12.png",
     experience: "12+ Years",
     specialties: [
       "Process Optimization",

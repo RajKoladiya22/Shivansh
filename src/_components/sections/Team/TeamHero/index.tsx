@@ -190,7 +190,7 @@ export const TeamSection = () => {
 
         {/* Desktop Team Grid */}
         <div className="hidden gap-6 lg:gap-8 xl:grid xl:grid-cols-2 2xl:grid-cols-4">
-          {teamMembers.map((member) => (
+          {teamMembers.slice(0, teamMembers.length - 1).map((member) => (
             <div
               key={member.id}
               className="group cursor-pointer"
@@ -305,7 +305,7 @@ export const TeamSection = () => {
         <div className="xl:hidden">
           {/* Tablet Grid (md and lg screens) */}
           <div className="hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-            {teamMembers.map((member) => (
+            {teamMembers.slice(0, teamMembers.length - 1).map((member) => (
               <div
                 key={member.id}
                 className="group cursor-pointer"
@@ -407,7 +407,7 @@ export const TeamSection = () => {
               {/* Carousel Container */}
               <div className="overflow-hidden rounded-xl">
                 <div className="grid-row-2 grid transition-transform duration-300 ease-in-out">
-                  {/* {teamMembers.map((member) => (
+                  {/* {teamMembers.slice(0, teamMembers.length - 1).map((member) => (
                     <div
                       key={member.id}
                       className="my-2 w-full flex-shrink-0 cursor-pointer px-1"
@@ -428,7 +428,7 @@ export const TeamSection = () => {
                     </div>
                   ))} */}
 
-                  {teamMembers.map((member) => (
+                  {teamMembers.slice(0, teamMembers.length - 1).map((member) => (
                     <div
                       key={member.id}
                       className="my-2 w-full flex-shrink-0 cursor-pointer px-1"

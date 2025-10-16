@@ -93,8 +93,12 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const lastPointerXRef = useRef<number | null>(null);
   const lastPointerTimeRef = useRef<number | null>(null);
   const velocityRef = useRef(0);
-  const isHoveringSlideRef = useRef(false);
   const wasDraggingRef = useRef(false);
+  const dragStartXRef = useRef<number>(0);
+
+  // Hover state - SIMPLIFIED
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isHoveringRef = useRef(false);
 
   // Prefers reduced motion
   const prefersReducedMotionRef = useRef(false);
@@ -159,34 +163,36 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     [fadeout],
   );
 
-  // Process slides
+  // FIXED: Process slides with proper duplication to avoid first slide repeating
   const processedSlides = useMemo(() => {
     if (!slides || slides.length === 0) return [];
     const originalSlideCount = slides.length;
-    const processed = [...slides];
-
-    if (originalSlideCount < carouselConfig.slidesInRing) {
-      const duplicatesNeeded = carouselConfig.slidesInRing - originalSlideCount;
-      for (let i = 0; i < duplicatesNeeded; i++) {
-        const slideToClone = slides[i % originalSlideCount]!;
-        // Create a numeric unique ID for clones to satisfy TeamMember.id typing (number)
-        // Use a numeric offset to ensure clones don't collide with original indices
-        const baseId =
-          typeof slideToClone.id === "number" ? slideToClone.id : i;
-        const cloneId =
-          baseId + originalSlideCount * (Math.floor(i / originalSlideCount) + 1) + (i % originalSlideCount);
-        processed.push({
-          ...slideToClone,
-          id: cloneId,
-        });
-      }
+    
+    // If we have enough slides, just use them with unique keys
+    if (originalSlideCount >= carouselConfig.slidesInRing) {
+      return slides.map((slide, idx) => ({
+        ...slide,
+        uniqueKey: `slide-${idx}`,
+      }));
     }
 
-    // Ensure every slide has a unique ID
-    return processed.map((s, i) => ({ 
-      ...s, 
-      id: s.id ?? `slide-${i}` 
-    }));
+    // If we need more slides, distribute duplicates evenly
+    const processed: Array<TeamMember & { uniqueKey: string }> = [];
+    const totalNeeded = carouselConfig.slidesInRing;
+    const duplicatesPerSlide = Math.ceil(totalNeeded / originalSlideCount);
+    
+    for (let i = 0; i < totalNeeded; i++) {
+      const sourceIndex = i % originalSlideCount;
+      const duplicateCount = Math.floor(i / originalSlideCount);
+      const slideToUse = slides[sourceIndex]!;
+      
+      processed.push({
+        ...slideToUse,
+        uniqueKey: `slide-${sourceIndex}-dup-${duplicateCount}`,
+      });
+    }
+
+    return processed;
   }, [slides, carouselConfig.slidesInRing]);
 
   // Normalize angle helper
@@ -269,7 +275,8 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       if (
         carouselConfig.autoRotate &&
         isActiveRef.current &&
-        !isPausedRef.current
+        !isPausedRef.current &&
+        !isHoveringRef.current
       ) {
         startAutoRotation();
       }
@@ -312,7 +319,9 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
 
           setTimeout(() => {
             isPausedRef.current = false;
-            resumeAutoRotation();
+            if (!isHoveringRef.current) {
+              resumeAutoRotation();
+            }
           }, 200);
         },
       });
@@ -354,37 +363,53 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
     [goToIndex, resumeAutoRotation, selectedIndex],
   );
 
+  // FIXED: Simplified hover logic
   const handleContainerMouseEnter = useCallback(() => {
-    if (!carouselConfig.pauseOnHover || isHoveringSlideRef.current) return;
-    if (autoRotateTimeoutRef.current) {
-      clearTimeout(autoRotateTimeoutRef.current);
+    if (!carouselConfig.pauseOnHover) return;
+    
+    isHoveringRef.current = true;
+    
+    // Clear any pending hover timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
     }
-    stopAutoRotation();
+
+    // Only stop if we're not dragging
+    if (!isDraggingRef.current) {
+      if (autoRotateTimeoutRef.current) {
+        clearTimeout(autoRotateTimeoutRef.current);
+      }
+      stopAutoRotation();
+    }
   }, [carouselConfig.pauseOnHover, stopAutoRotation]);
 
   const handleContainerMouseLeave = useCallback(() => {
-    if (!carouselConfig.pauseOnHover || isHoveringSlideRef.current) return;
-    resumeAutoRotation();
-  }, [carouselConfig.pauseOnHover, resumeAutoRotation]);
-
-  const handleSlideMouseEnter = useCallback(() => {
-    isHoveringSlideRef.current = true;
-    if (autoRotateTimeoutRef.current) {
-      clearTimeout(autoRotateTimeoutRef.current);
+    if (!carouselConfig.pauseOnHover) return;
+    
+    isHoveringRef.current = false;
+    
+    // Clear any pending hover timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
     }
-    stopAutoRotation();
-  }, [stopAutoRotation]);
 
-  const handleSlideMouseLeave = useCallback(() => {
-    isHoveringSlideRef.current = false;
-    resumeAutoRotation();
-  }, [resumeAutoRotation]);
+    // Resume after a short delay if not dragging
+    if (!isDraggingRef.current) {
+      hoverTimeoutRef.current = setTimeout(() => {
+        if (!isHoveringRef.current && !isDraggingRef.current) {
+          resumeAutoRotation();
+        }
+      }, carouselConfig.resumeDelay);
+    }
+  }, [carouselConfig.pauseOnHover, carouselConfig.resumeDelay, resumeAutoRotation]);
 
   // Initialize slides
   useEffect(() => {
     setAllSlides(
       processedSlides.map((slide, i) => ({
-        id: typeof slide.id === "string" ? slide.id : String(slide.id ?? i),
+        id: slide.uniqueKey,
         src: slide.src ?? slide.image,
         name: slide.name,
         position: slide.position,
@@ -501,6 +526,9 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       if (autoRotateTimeoutRef.current) {
         clearTimeout(autoRotateTimeoutRef.current);
       }
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
 
       if (slideElementsRef.current) {
         slideElementsRef.current.forEach((slide) => {
@@ -571,11 +599,17 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       (e.target as Element).setPointerCapture?.(e.pointerId);
 
       isDraggingRef.current = true;
-      wasDraggingRef.current = false; // Reset - we'll set this to true if they actually drag
-      isHoveringSlideRef.current = false; // Reset hover state when dragging starts
+      wasDraggingRef.current = false;
+      dragStartXRef.current = e.clientX;
       lastPointerXRef.current = e.clientX;
       lastPointerTimeRef.current = e.timeStamp;
       velocityRef.current = 0;
+
+      // Clear hover timeouts
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+        hoverTimeoutRef.current = null;
+      }
 
       stopAutoRotation();
     },
@@ -587,9 +621,10 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
 
     const now = e.timeStamp;
     const deltaX = e.clientX - lastPointerXRef.current;
+    const totalDeltaX = e.clientX - dragStartXRef.current;
     
-    // Track if we've actually moved significantly (more than 5px) - this is a drag
-    if (Math.abs(deltaX) > 5) {
+    // Track if we've actually moved significantly (more than 5px total) - this is a drag
+    if (Math.abs(totalDeltaX) > 5) {
       wasDraggingRef.current = true;
     }
     
@@ -611,6 +646,9 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const onPointerUp = useCallback(
     (e: React.PointerEvent) => {
       if (!isDraggingRef.current) return;
+      
+      const wasDragging = wasDraggingRef.current;
+      
       isDraggingRef.current = false;
       lastPointerXRef.current = null;
       lastPointerTimeRef.current = null;
@@ -618,23 +656,29 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       const anglePerSlide = 360 / carouselConfig.slidesInRing;
       const slideCount =
         slideElementsRef.current?.length ?? processedSlides.length;
+      
       if (slideCount === 0) {
-        resumeAutoRotation();
+        if (!isHoveringRef.current) {
+          resumeAutoRotation();
+        }
         return;
       }
 
-      const current = normalize(rotationValueRef.current);
-      let nearestIndex = Math.round(current / anglePerSlide) % slideCount;
-      if (nearestIndex < 0) nearestIndex += slideCount;
+      // Only snap to nearest if we actually dragged
+      if (wasDragging) {
+        const current = normalize(rotationValueRef.current);
+        let nearestIndex = Math.round(current / anglePerSlide) % slideCount;
+        if (nearestIndex < 0) nearestIndex += slideCount;
 
-      // Snap to nearest slide after drag
-      goToIndex(nearestIndex);
+        goToIndex(nearestIndex);
+      }
       
-      // Don't immediately resume if mouse is still over a slide
+      // Resume rotation after a delay, unless hovering
       setTimeout(() => {
-        if (!isHoveringSlideRef.current) {
+        if (!isHoveringRef.current) {
           resumeAutoRotation();
         }
+        wasDraggingRef.current = false;
       }, 100);
     },
     [
@@ -647,10 +691,13 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
 
   const onPointerCancel = useCallback(() => {
     isDraggingRef.current = false;
-    isHoveringSlideRef.current = false;
+    wasDraggingRef.current = false;
     lastPointerXRef.current = null;
     lastPointerTimeRef.current = null;
-    resumeAutoRotation();
+    
+    if (!isHoveringRef.current) {
+      resumeAutoRotation();
+    }
   }, [resumeAutoRotation]);
 
   const CSSstyles = useMemo(
@@ -695,8 +742,6 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
               key={slide.id}
               data-render-index={index}
               className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-3xl shadow-xl"
-              onMouseEnter={handleSlideMouseEnter}
-              onMouseLeave={handleSlideMouseLeave}
               onClick={(e) => {
                 // Prevent click if user was dragging
                 if (wasDraggingRef.current) {
@@ -736,7 +781,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
               </div>
 
               {/* Hover Overlay - Only shows on hover */}
-              <div className="absolute inset-0 flex flex-col justify-end rounded-3xl bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              <div className="absolute inset-0 flex flex-col justify-end rounded-3xl bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none">
                 <div className="transform p-4 text-white transition-all duration-500 ease-out md:p-6 translate-y-4 group-hover:translate-y-0">
                   <div className="space-y-2">
                     <h3 className="line-clamp-2 text-xl font-bold md:text-3xl lg:text-4xl">
