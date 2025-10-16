@@ -93,6 +93,8 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   const lastPointerXRef = useRef<number | null>(null);
   const lastPointerTimeRef = useRef<number | null>(null);
   const velocityRef = useRef(0);
+  const isHoveringSlideRef = useRef(false);
+  const wasDraggingRef = useRef(false);
 
   // Prefers reduced motion
   const prefersReducedMotionRef = useRef(false);
@@ -167,14 +169,24 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       const duplicatesNeeded = carouselConfig.slidesInRing - originalSlideCount;
       for (let i = 0; i < duplicatesNeeded; i++) {
         const slideToClone = slides[i % originalSlideCount]!;
+        // Create a numeric unique ID for clones to satisfy TeamMember.id typing (number)
+        // Use a numeric offset to ensure clones don't collide with original indices
+        const baseId =
+          typeof slideToClone.id === "number" ? slideToClone.id : i;
+        const cloneId =
+          baseId + originalSlideCount * (Math.floor(i / originalSlideCount) + 1) + (i % originalSlideCount);
         processed.push({
           ...slideToClone,
-          id: typeof slideToClone.id === "number" ? slideToClone.id : i,
+          id: cloneId,
         });
       }
     }
 
-    return processed.map((s, i) => ({ ...s, id: s.id ?? `slide-${i}` }));
+    // Ensure every slide has a unique ID
+    return processed.map((s, i) => ({ 
+      ...s, 
+      id: s.id ?? `slide-${i}` 
+    }));
   }, [slides, carouselConfig.slidesInRing]);
 
   // Normalize angle helper
@@ -343,7 +355,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   );
 
   const handleContainerMouseEnter = useCallback(() => {
-    if (!carouselConfig.pauseOnHover) return;
+    if (!carouselConfig.pauseOnHover || isHoveringSlideRef.current) return;
     if (autoRotateTimeoutRef.current) {
       clearTimeout(autoRotateTimeoutRef.current);
     }
@@ -351,11 +363,12 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   }, [carouselConfig.pauseOnHover, stopAutoRotation]);
 
   const handleContainerMouseLeave = useCallback(() => {
-    if (!carouselConfig.pauseOnHover) return;
+    if (!carouselConfig.pauseOnHover || isHoveringSlideRef.current) return;
     resumeAutoRotation();
   }, [carouselConfig.pauseOnHover, resumeAutoRotation]);
 
   const handleSlideMouseEnter = useCallback(() => {
+    isHoveringSlideRef.current = true;
     if (autoRotateTimeoutRef.current) {
       clearTimeout(autoRotateTimeoutRef.current);
     }
@@ -363,6 +376,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
   }, [stopAutoRotation]);
 
   const handleSlideMouseLeave = useCallback(() => {
+    isHoveringSlideRef.current = false;
     resumeAutoRotation();
   }, [resumeAutoRotation]);
 
@@ -557,6 +571,8 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       (e.target as Element).setPointerCapture?.(e.pointerId);
 
       isDraggingRef.current = true;
+      wasDraggingRef.current = false; // Reset - we'll set this to true if they actually drag
+      isHoveringSlideRef.current = false; // Reset hover state when dragging starts
       lastPointerXRef.current = e.clientX;
       lastPointerTimeRef.current = e.timeStamp;
       velocityRef.current = 0;
@@ -571,6 +587,12 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
 
     const now = e.timeStamp;
     const deltaX = e.clientX - lastPointerXRef.current;
+    
+    // Track if we've actually moved significantly (more than 5px) - this is a drag
+    if (Math.abs(deltaX) > 5) {
+      wasDraggingRef.current = true;
+    }
+    
     const dt = Math.max(1, now - (lastPointerTimeRef.current ?? now));
     const sensitivity = 0.35;
     const deltaDeg = deltaX * sensitivity;
@@ -605,8 +627,15 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       let nearestIndex = Math.round(current / anglePerSlide) % slideCount;
       if (nearestIndex < 0) nearestIndex += slideCount;
 
+      // Snap to nearest slide after drag
       goToIndex(nearestIndex);
-      resumeAutoRotation();
+      
+      // Don't immediately resume if mouse is still over a slide
+      setTimeout(() => {
+        if (!isHoveringSlideRef.current) {
+          resumeAutoRotation();
+        }
+      }, 100);
     },
     [
       carouselConfig.slidesInRing,
@@ -615,6 +644,14 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       resumeAutoRotation,
     ],
   );
+
+  const onPointerCancel = useCallback(() => {
+    isDraggingRef.current = false;
+    isHoveringSlideRef.current = false;
+    lastPointerXRef.current = null;
+    lastPointerTimeRef.current = null;
+    resumeAutoRotation();
+  }, [resumeAutoRotation]);
 
   const CSSstyles = useMemo(
     () => ({
@@ -636,6 +673,7 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
+      onPointerCancel={onPointerCancel}
       role="region"
       aria-roledescription="carousel"
       aria-label="Curved image carousel"
@@ -659,9 +697,19 @@ export const CurvedCarousel: React.FC<CurvedCarouselProps> = ({
               className="carousel-slide group absolute cursor-pointer overflow-hidden rounded-3xl shadow-xl"
               onMouseEnter={handleSlideMouseEnter}
               onMouseLeave={handleSlideMouseLeave}
-              onClick={() =>
-                isMobile ? handleSlideTap(index) : goToIndex(index)
-              }
+              onClick={(e) => {
+                // Prevent click if user was dragging
+                if (wasDraggingRef.current) {
+                  e.preventDefault();
+                  wasDraggingRef.current = false;
+                  return;
+                }
+                if (isMobile) {
+                  handleSlideTap(index);
+                } else {
+                  goToIndex(index);
+                }
+              }}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
