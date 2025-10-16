@@ -150,9 +150,9 @@ export function YouTubeJourneySection() {
                     </h2>
 
                     <p className="mx-auto max-w-3xl text-base leading-relaxed text-gray-700 md:text-lg">
-                        Since 2017, we've been creating comprehensive video tutorials on Tally software,
+                        {`Since 2017, we've been creating comprehensive video tutorials on Tally software,
                         delivering regular updates on the latest features, TDL demonstrations, and expert
-                        education to help businesses master their financial management.
+                        education to help businesses master their financial management.`}
                     </p>
                 </div>
 
@@ -188,8 +188,8 @@ export function YouTubeJourneySection() {
                                 </div>
 
                                 <p className="mb-6 text-base leading-relaxed opacity-95 md:text-lg">
-                                    Join thousands of professionals who trust us for accurate, timely, and
-                                    practical Tally education. From beginners to experts, we've got you covered.
+                                    {`Join thousands of professionals who trust us for accurate, timely, and
+                                    practical Tally education. From beginners to experts, we've got you covered.`}
                                 </p>
 
                                 <a
