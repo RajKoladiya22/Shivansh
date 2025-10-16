@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { Play, Users, Eye, Video, Calendar, TrendingUp, Star, ThumbsUp, Award } from "lucide-react";
-
 interface StatCardProps {
     icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; // Icon accepts SVG props like className
     number: number | string;
@@ -22,6 +21,9 @@ interface FeatureBadgeProps {
 }
 
 
+
+
+
 const StatCard: React.FC<StatCardProps> = ({ icon: Icon, number, label, color, delay }) => (
     <div
         className={`group transform rounded-2xl border border-red-100 bg-white p-6 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${delay}`}
@@ -38,7 +40,6 @@ const StatCard: React.FC<StatCardProps> = ({ icon: Icon, number, label, color, d
         </div>
     </div>
 );
-
 
 const CommentCard: React.FC<CommentCardProps> = ({ author, comment, likes, highlight }) => (
     <div className={`group relative rounded-xl border-2 bg-white p-5 shadow-md transition-all duration-300 hover:shadow-xl ${highlight ? 'border-yellow-300 bg-gradient-to-br from-yellow-50 to-white' : 'border-gray-200'}`}>
@@ -242,11 +243,43 @@ export function YouTubeJourneySection() {
                             </p>
                         </div>
 
-                        <div className="space-y-4">
-                            {comments.map((comment, index) => (
-                                <CommentCard key={index} {...comment} />
-                            ))}
+                        {/* Vertical Infinite Slider */}
+                        <div className="relative h-[480px] overflow-hidden rounded-2xl border-2 border-red-100 bg-gradient-to-b from-white to-red-50 p-4 shadow-lg">
+                            {/* Gradient Overlays for fade effect */}
+                            <div className="pointer-events-none absolute top-0 left-0 right-0 z-10 h-24 bg-gradient-to-b from-white to-transparent"></div>
+                            <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-24 bg-gradient-to-t from-red-50 to-transparent"></div>
+
+                            {/* Scrolling Container */}
+                            <div className="animate-scroll space-y-4">
+                                {/* First set of comments */}
+                                {comments.map((comment, index) => (
+                                    <CommentCard key={`first-${index}`} {...comment} />
+                                ))}
+                                {/* Duplicate set for seamless loop */}
+                                {comments.map((comment, index) => (
+                                    <CommentCard key={`second-${index}`} {...comment} />
+                                ))}
+                            </div>
                         </div>
+
+                        <style jsx>{`
+              @keyframes scroll {
+                0% {
+                  transform: translateY(0);
+                }
+                100% {
+                  transform: translateY(-50%);
+                }
+              }
+              
+              .animate-scroll {
+                animation: scroll 20s linear infinite;
+              }
+              
+              .animate-scroll:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
 
                         {/* Community Stats */}
                         <div className="rounded-xl border-2 border-red-200 bg-gradient-to-r from-red-50 to-white p-6">
@@ -270,7 +303,7 @@ export function YouTubeJourneySection() {
                 </div>
 
                 {/* CTA Section */}
-                <div className="mx-auto max-w-8xl">
+                <div className="mx-auto max-w-4xl">
                     <div className="rounded-2xl bg-gradient-to-r from-gray-900 to-black p-8 text-center text-white shadow-2xl md:p-12">
                         <h3 className="mb-4 text-2xl font-bold md:text-3xl lg:text-4xl">
                             Start Learning Today!
